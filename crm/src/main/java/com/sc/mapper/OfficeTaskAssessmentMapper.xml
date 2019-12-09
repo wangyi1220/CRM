@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.OfficeTaskAssessmentMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.OfficeTaskAssessment" >
+    <constructor >
+      <idArg column="TASK_ID" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TSAK_TITLE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TASK_CONCRETE_CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TASK_ISSUER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TASK_KPI" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TASK_START_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="TASK_STOP_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="FINAL_UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TASK_ID, TSAK_TITLE, TASK_CONCRETE_CONTENT, TASK_ISSUER, TASK_KPI, TASK_START_TIME, 
+    TASK_STOP_TIME, COMPANY_ID, FINAL_UPDATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.OfficeTaskAssessmentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from OFFICE_TASK_ASSESSMENT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from OFFICE_TASK_ASSESSMENT
+    where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from OFFICE_TASK_ASSESSMENT
+    where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.OfficeTaskAssessmentExample" >
+    delete from OFFICE_TASK_ASSESSMENT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.OfficeTaskAssessment" >
+    insert into OFFICE_TASK_ASSESSMENT (TASK_ID, TSAK_TITLE, TASK_CONCRETE_CONTENT, 
+      TASK_ISSUER, TASK_KPI, TASK_START_TIME, 
+      TASK_STOP_TIME, COMPANY_ID, FINAL_UPDATE_TIME
+      )
+    values (#{taskId,jdbcType=DECIMAL}, #{tsakTitle,jdbcType=VARCHAR}, #{taskConcreteContent,jdbcType=VARCHAR}, 
+      #{taskIssuer,jdbcType=VARCHAR}, #{taskKpi,jdbcType=VARCHAR}, #{taskStartTime,jdbcType=TIMESTAMP}, 
+      #{taskStopTime,jdbcType=TIMESTAMP}, #{companyId,jdbcType=DECIMAL}, #{finalUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.OfficeTaskAssessment" >
+    insert into OFFICE_TASK_ASSESSMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        TASK_ID,
+      </if>
+      <if test="tsakTitle != null" >
+        TSAK_TITLE,
+      </if>
+      <if test="taskConcreteContent != null" >
+        TASK_CONCRETE_CONTENT,
+      </if>
+      <if test="taskIssuer != null" >
+        TASK_ISSUER,
+      </if>
+      <if test="taskKpi != null" >
+        TASK_KPI,
+      </if>
+      <if test="taskStartTime != null" >
+        TASK_START_TIME,
+      </if>
+      <if test="taskStopTime != null" >
+        TASK_STOP_TIME,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="finalUpdateTime != null" >
+        FINAL_UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=DECIMAL},
+      </if>
+      <if test="tsakTitle != null" >
+        #{tsakTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskConcreteContent != null" >
+        #{taskConcreteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="taskIssuer != null" >
+        #{taskIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="taskKpi != null" >
+        #{taskKpi,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStartTime != null" >
+        #{taskStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskStopTime != null" >
+        #{taskStopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="finalUpdateTime != null" >
+        #{finalUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.OfficeTaskAssessmentExample" resultType="java.lang.Integer" >
+    select count(*) from OFFICE_TASK_ASSESSMENT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update OFFICE_TASK_ASSESSMENT
+    <set >
+      <if test="record.taskId != null" >
+        TASK_ID = #{record.taskId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tsakTitle != null" >
+        TSAK_TITLE = #{record.tsakTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskConcreteContent != null" >
+        TASK_CONCRETE_CONTENT = #{record.taskConcreteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskIssuer != null" >
+        TASK_ISSUER = #{record.taskIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskKpi != null" >
+        TASK_KPI = #{record.taskKpi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskStartTime != null" >
+        TASK_START_TIME = #{record.taskStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.taskStopTime != null" >
+        TASK_STOP_TIME = #{record.taskStopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.finalUpdateTime != null" >
+        FINAL_UPDATE_TIME = #{record.finalUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update OFFICE_TASK_ASSESSMENT
+    set TASK_ID = #{record.taskId,jdbcType=DECIMAL},
+      TSAK_TITLE = #{record.tsakTitle,jdbcType=VARCHAR},
+      TASK_CONCRETE_CONTENT = #{record.taskConcreteContent,jdbcType=VARCHAR},
+      TASK_ISSUER = #{record.taskIssuer,jdbcType=VARCHAR},
+      TASK_KPI = #{record.taskKpi,jdbcType=VARCHAR},
+      TASK_START_TIME = #{record.taskStartTime,jdbcType=TIMESTAMP},
+      TASK_STOP_TIME = #{record.taskStopTime,jdbcType=TIMESTAMP},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      FINAL_UPDATE_TIME = #{record.finalUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.OfficeTaskAssessment" >
+    update OFFICE_TASK_ASSESSMENT
+    <set >
+      <if test="tsakTitle != null" >
+        TSAK_TITLE = #{tsakTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskConcreteContent != null" >
+        TASK_CONCRETE_CONTENT = #{taskConcreteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="taskIssuer != null" >
+        TASK_ISSUER = #{taskIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="taskKpi != null" >
+        TASK_KPI = #{taskKpi,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStartTime != null" >
+        TASK_START_TIME = #{taskStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskStopTime != null" >
+        TASK_STOP_TIME = #{taskStopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="finalUpdateTime != null" >
+        FINAL_UPDATE_TIME = #{finalUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.OfficeTaskAssessment" >
+    update OFFICE_TASK_ASSESSMENT
+    set TSAK_TITLE = #{tsakTitle,jdbcType=VARCHAR},
+      TASK_CONCRETE_CONTENT = #{taskConcreteContent,jdbcType=VARCHAR},
+      TASK_ISSUER = #{taskIssuer,jdbcType=VARCHAR},
+      TASK_KPI = #{taskKpi,jdbcType=VARCHAR},
+      TASK_START_TIME = #{taskStartTime,jdbcType=TIMESTAMP},
+      TASK_STOP_TIME = #{taskStopTime,jdbcType=TIMESTAMP},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      FINAL_UPDATE_TIME = #{finalUpdateTime,jdbcType=TIMESTAMP}
+    where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </update>
+</mapper>

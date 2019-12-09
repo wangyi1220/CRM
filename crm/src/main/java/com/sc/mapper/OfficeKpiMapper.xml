@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.OfficeKpiMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.OfficeKpi" >
+    <constructor >
+      <arg column="KPI_ID" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="KPI_KPI" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="KPI_DETAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="FINAL_UPDATA_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    KPI_ID, KPI_KPI, KPI_DETAIL, COMPANY_ID, FINAL_UPDATA_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.OfficeKpiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from OFFICE_KPI
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.sc.entity.OfficeKpiExample" >
+    delete from OFFICE_KPI
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.OfficeKpi" >
+    insert into OFFICE_KPI (KPI_ID, KPI_KPI, KPI_DETAIL, 
+      COMPANY_ID, FINAL_UPDATA_TIME)
+    values (#{kpiId,jdbcType=DECIMAL}, #{kpiKpi,jdbcType=VARCHAR}, #{kpiDetail,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=DECIMAL}, #{finalUpdataTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.OfficeKpi" >
+    insert into OFFICE_KPI
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kpiId != null" >
+        KPI_ID,
+      </if>
+      <if test="kpiKpi != null" >
+        KPI_KPI,
+      </if>
+      <if test="kpiDetail != null" >
+        KPI_DETAIL,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="finalUpdataTime != null" >
+        FINAL_UPDATA_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kpiId != null" >
+        #{kpiId,jdbcType=DECIMAL},
+      </if>
+      <if test="kpiKpi != null" >
+        #{kpiKpi,jdbcType=VARCHAR},
+      </if>
+      <if test="kpiDetail != null" >
+        #{kpiDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="finalUpdataTime != null" >
+        #{finalUpdataTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.OfficeKpiExample" resultType="java.lang.Integer" >
+    select count(*) from OFFICE_KPI
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update OFFICE_KPI
+    <set >
+      <if test="record.kpiId != null" >
+        KPI_ID = #{record.kpiId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.kpiKpi != null" >
+        KPI_KPI = #{record.kpiKpi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kpiDetail != null" >
+        KPI_DETAIL = #{record.kpiDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.finalUpdataTime != null" >
+        FINAL_UPDATA_TIME = #{record.finalUpdataTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update OFFICE_KPI
+    set KPI_ID = #{record.kpiId,jdbcType=DECIMAL},
+      KPI_KPI = #{record.kpiKpi,jdbcType=VARCHAR},
+      KPI_DETAIL = #{record.kpiDetail,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      FINAL_UPDATA_TIME = #{record.finalUpdataTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

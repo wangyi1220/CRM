@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.SaleKhfeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.SaleKhfeedback" >
+    <constructor >
+      <idArg column="FEEDBACK_RECOR_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="RECORD_PRIORITY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="STATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FEEDBACK_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FEEDBACK_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="FEEDBACK_REASON" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PERSON_IN_CHARGE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FEEDBACK_SOURCE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FEEDBACL_THEME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FEEDBACK_DISCRIBE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ANALYSIS " jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="LAST_MODIFIED" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FEEDBACK_RECOR_ID, RECORD_PRIORITY, USER_ID, STATE, FEEDBACK_TYPE, FEEDBACK_TIME, 
+    FEEDBACK_REASON, PERSON_IN_CHARGE, FEEDBACK_SOURCE, FEEDBACL_THEME, FEEDBACK_DISCRIBE, 
+    "ANALYSIS ", COMPANY_ID, LAST_MODIFIED
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SaleKhfeedbackExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from SALE_KHFEEDBACK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SALE_KHFEEDBACK
+    where FEEDBACK_RECOR_ID = #{feedbackRecorId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SALE_KHFEEDBACK
+    where FEEDBACK_RECOR_ID = #{feedbackRecorId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.SaleKhfeedbackExample" >
+    delete from SALE_KHFEEDBACK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.SaleKhfeedback" >
+    insert into SALE_KHFEEDBACK (FEEDBACK_RECOR_ID, RECORD_PRIORITY, 
+      USER_ID, STATE, FEEDBACK_TYPE, 
+      FEEDBACK_TIME, FEEDBACK_REASON, PERSON_IN_CHARGE, 
+      FEEDBACK_SOURCE, FEEDBACL_THEME, FEEDBACK_DISCRIBE, 
+      "ANALYSIS ", COMPANY_ID, LAST_MODIFIED
+      )
+    values (#{feedbackRecorId,jdbcType=DECIMAL}, #{recordPriority,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=DECIMAL}, #{state,jdbcType=VARCHAR}, #{feedbackType,jdbcType=VARCHAR}, 
+      #{feedbackTime,jdbcType=TIMESTAMP}, #{feedbackReason,jdbcType=VARCHAR}, #{personInCharge,jdbcType=VARCHAR}, 
+      #{feedbackSource,jdbcType=VARCHAR}, #{feedbaclTheme,jdbcType=VARCHAR}, #{feedbackDiscribe,jdbcType=VARCHAR}, 
+      #{analysis,jdbcType=VARCHAR}, #{companyId,jdbcType=DECIMAL}, #{lastModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.SaleKhfeedback" >
+    insert into SALE_KHFEEDBACK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackRecorId != null" >
+        FEEDBACK_RECOR_ID,
+      </if>
+      <if test="recordPriority != null" >
+        RECORD_PRIORITY,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="feedbackType != null" >
+        FEEDBACK_TYPE,
+      </if>
+      <if test="feedbackTime != null" >
+        FEEDBACK_TIME,
+      </if>
+      <if test="feedbackReason != null" >
+        FEEDBACK_REASON,
+      </if>
+      <if test="personInCharge != null" >
+        PERSON_IN_CHARGE,
+      </if>
+      <if test="feedbackSource != null" >
+        FEEDBACK_SOURCE,
+      </if>
+      <if test="feedbaclTheme != null" >
+        FEEDBACL_THEME,
+      </if>
+      <if test="feedbackDiscribe != null" >
+        FEEDBACK_DISCRIBE,
+      </if>
+      <if test="analysis != null" >
+        "ANALYSIS ",
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="lastModified != null" >
+        LAST_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackRecorId != null" >
+        #{feedbackRecorId,jdbcType=DECIMAL},
+      </if>
+      <if test="recordPriority != null" >
+        #{recordPriority,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackType != null" >
+        #{feedbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null" >
+        #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackReason != null" >
+        #{feedbackReason,jdbcType=VARCHAR},
+      </if>
+      <if test="personInCharge != null" >
+        #{personInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackSource != null" >
+        #{feedbackSource,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbaclTheme != null" >
+        #{feedbaclTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDiscribe != null" >
+        #{feedbackDiscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null" >
+        #{analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModified != null" >
+        #{lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.SaleKhfeedbackExample" resultType="java.lang.Integer" >
+    select count(*) from SALE_KHFEEDBACK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SALE_KHFEEDBACK
+    <set >
+      <if test="record.feedbackRecorId != null" >
+        FEEDBACK_RECOR_ID = #{record.feedbackRecorId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.recordPriority != null" >
+        RECORD_PRIORITY = #{record.recordPriority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedbackType != null" >
+        FEEDBACK_TYPE = #{record.feedbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedbackTime != null" >
+        FEEDBACK_TIME = #{record.feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.feedbackReason != null" >
+        FEEDBACK_REASON = #{record.feedbackReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personInCharge != null" >
+        PERSON_IN_CHARGE = #{record.personInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedbackSource != null" >
+        FEEDBACK_SOURCE = #{record.feedbackSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedbaclTheme != null" >
+        FEEDBACL_THEME = #{record.feedbaclTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedbackDiscribe != null" >
+        FEEDBACK_DISCRIBE = #{record.feedbackDiscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.analysis != null" >
+        "ANALYSIS " = #{record.analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastModified != null" >
+        LAST_MODIFIED = #{record.lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SALE_KHFEEDBACK
+    set FEEDBACK_RECOR_ID = #{record.feedbackRecorId,jdbcType=DECIMAL},
+      RECORD_PRIORITY = #{record.recordPriority,jdbcType=VARCHAR},
+      USER_ID = #{record.userId,jdbcType=DECIMAL},
+      STATE = #{record.state,jdbcType=VARCHAR},
+      FEEDBACK_TYPE = #{record.feedbackType,jdbcType=VARCHAR},
+      FEEDBACK_TIME = #{record.feedbackTime,jdbcType=TIMESTAMP},
+      FEEDBACK_REASON = #{record.feedbackReason,jdbcType=VARCHAR},
+      PERSON_IN_CHARGE = #{record.personInCharge,jdbcType=VARCHAR},
+      FEEDBACK_SOURCE = #{record.feedbackSource,jdbcType=VARCHAR},
+      FEEDBACL_THEME = #{record.feedbaclTheme,jdbcType=VARCHAR},
+      FEEDBACK_DISCRIBE = #{record.feedbackDiscribe,jdbcType=VARCHAR},
+      "ANALYSIS " = #{record.analysis,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      LAST_MODIFIED = #{record.lastModified,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SaleKhfeedback" >
+    update SALE_KHFEEDBACK
+    <set >
+      <if test="recordPriority != null" >
+        RECORD_PRIORITY = #{recordPriority,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackType != null" >
+        FEEDBACK_TYPE = #{feedbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null" >
+        FEEDBACK_TIME = #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackReason != null" >
+        FEEDBACK_REASON = #{feedbackReason,jdbcType=VARCHAR},
+      </if>
+      <if test="personInCharge != null" >
+        PERSON_IN_CHARGE = #{personInCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackSource != null" >
+        FEEDBACK_SOURCE = #{feedbackSource,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbaclTheme != null" >
+        FEEDBACL_THEME = #{feedbaclTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackDiscribe != null" >
+        FEEDBACK_DISCRIBE = #{feedbackDiscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null" >
+        "ANALYSIS " = #{analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModified != null" >
+        LAST_MODIFIED = #{lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where FEEDBACK_RECOR_ID = #{feedbackRecorId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SaleKhfeedback" >
+    update SALE_KHFEEDBACK
+    set RECORD_PRIORITY = #{recordPriority,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      STATE = #{state,jdbcType=VARCHAR},
+      FEEDBACK_TYPE = #{feedbackType,jdbcType=VARCHAR},
+      FEEDBACK_TIME = #{feedbackTime,jdbcType=TIMESTAMP},
+      FEEDBACK_REASON = #{feedbackReason,jdbcType=VARCHAR},
+      PERSON_IN_CHARGE = #{personInCharge,jdbcType=VARCHAR},
+      FEEDBACK_SOURCE = #{feedbackSource,jdbcType=VARCHAR},
+      FEEDBACL_THEME = #{feedbaclTheme,jdbcType=VARCHAR},
+      FEEDBACK_DISCRIBE = #{feedbackDiscribe,jdbcType=VARCHAR},
+      "ANALYSIS " = #{analysis,jdbcType=VARCHAR},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      LAST_MODIFIED = #{lastModified,jdbcType=TIMESTAMP}
+    where FEEDBACK_RECOR_ID = #{feedbackRecorId,jdbcType=DECIMAL}
+  </update>
+</mapper>

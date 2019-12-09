@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.SysDeptMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.SysDept" >
+    <constructor >
+      <idArg column="DEPT_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="DEPT_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BEIZHU" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="CHANG_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DEPT_ID, DEPT_NAME, BEIZHU, COMPANY_ID, CHANG_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SysDeptExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from SYS_DEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_DEPT
+    where DEPT_ID = #{deptId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SYS_DEPT
+    where DEPT_ID = #{deptId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.SysDeptExample" >
+    delete from SYS_DEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.SysDept" >
+    insert into SYS_DEPT (DEPT_ID, DEPT_NAME, BEIZHU, 
+      COMPANY_ID, CHANG_DATE)
+    values (#{deptId,jdbcType=DECIMAL}, #{deptName,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=DECIMAL}, #{changDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.SysDept" >
+    insert into SYS_DEPT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="changDate != null" >
+        CHANG_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=DECIMAL},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="changDate != null" >
+        #{changDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.SysDeptExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_DEPT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_DEPT
+    <set >
+      <if test="record.deptId != null" >
+        DEPT_ID = #{record.deptId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deptName != null" >
+        DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beizhu != null" >
+        BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.changDate != null" >
+        CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_DEPT
+    set DEPT_ID = #{record.deptId,jdbcType=DECIMAL},
+      DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SysDept" >
+    update SYS_DEPT
+    <set >
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="changDate != null" >
+        CHANG_DATE = #{changDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DEPT_ID = #{deptId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SysDept" >
+    update SYS_DEPT
+    set DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      BEIZHU = #{beizhu,jdbcType=VARCHAR},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      CHANG_DATE = #{changDate,jdbcType=TIMESTAMP}
+    where DEPT_ID = #{deptId,jdbcType=DECIMAL}
+  </update>
+</mapper>

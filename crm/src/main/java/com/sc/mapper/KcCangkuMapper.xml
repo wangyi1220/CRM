@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.KcCangkuMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.KcCangku" >
+    <constructor >
+      <idArg column="CANGKU_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CANGKU_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CANGKU_NOTE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CANGKU_LAST_MODIFY_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="COMPANY_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CANGKU_ID, CANGKU_NAME, CANGKU_NOTE, CANGKU_LAST_MODIFY_TIME, COMPANY_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.KcCangkuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from KC_CANGKU
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from KC_CANGKU
+    where CANGKU_ID = #{cangkuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from KC_CANGKU
+    where CANGKU_ID = #{cangkuId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.KcCangkuExample" >
+    delete from KC_CANGKU
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.KcCangku" >
+    insert into KC_CANGKU (CANGKU_ID, CANGKU_NAME, CANGKU_NOTE, 
+      CANGKU_LAST_MODIFY_TIME, COMPANY_ID)
+    values (#{cangkuId,jdbcType=VARCHAR}, #{cangkuName,jdbcType=VARCHAR}, #{cangkuNote,jdbcType=VARCHAR}, 
+      #{cangkuLastModifyTime,jdbcType=TIMESTAMP}, #{companyId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.KcCangku" >
+    insert into KC_CANGKU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cangkuId != null" >
+        CANGKU_ID,
+      </if>
+      <if test="cangkuName != null" >
+        CANGKU_NAME,
+      </if>
+      <if test="cangkuNote != null" >
+        CANGKU_NOTE,
+      </if>
+      <if test="cangkuLastModifyTime != null" >
+        CANGKU_LAST_MODIFY_TIME,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cangkuId != null" >
+        #{cangkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="cangkuName != null" >
+        #{cangkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cangkuNote != null" >
+        #{cangkuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="cangkuLastModifyTime != null" >
+        #{cangkuLastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.KcCangkuExample" resultType="java.lang.Integer" >
+    select count(*) from KC_CANGKU
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update KC_CANGKU
+    <set >
+      <if test="record.cangkuId != null" >
+        CANGKU_ID = #{record.cangkuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cangkuName != null" >
+        CANGKU_NAME = #{record.cangkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cangkuNote != null" >
+        CANGKU_NOTE = #{record.cangkuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cangkuLastModifyTime != null" >
+        CANGKU_LAST_MODIFY_TIME = #{record.cangkuLastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update KC_CANGKU
+    set CANGKU_ID = #{record.cangkuId,jdbcType=VARCHAR},
+      CANGKU_NAME = #{record.cangkuName,jdbcType=VARCHAR},
+      CANGKU_NOTE = #{record.cangkuNote,jdbcType=VARCHAR},
+      CANGKU_LAST_MODIFY_TIME = #{record.cangkuLastModifyTime,jdbcType=TIMESTAMP},
+      COMPANY_ID = #{record.companyId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.KcCangku" >
+    update KC_CANGKU
+    <set >
+      <if test="cangkuName != null" >
+        CANGKU_NAME = #{cangkuName,jdbcType=VARCHAR},
+      </if>
+      <if test="cangkuNote != null" >
+        CANGKU_NOTE = #{cangkuNote,jdbcType=VARCHAR},
+      </if>
+      <if test="cangkuLastModifyTime != null" >
+        CANGKU_LAST_MODIFY_TIME = #{cangkuLastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CANGKU_ID = #{cangkuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.KcCangku" >
+    update KC_CANGKU
+    set CANGKU_NAME = #{cangkuName,jdbcType=VARCHAR},
+      CANGKU_NOTE = #{cangkuNote,jdbcType=VARCHAR},
+      CANGKU_LAST_MODIFY_TIME = #{cangkuLastModifyTime,jdbcType=TIMESTAMP},
+      COMPANY_ID = #{companyId,jdbcType=VARCHAR}
+    where CANGKU_ID = #{cangkuId,jdbcType=VARCHAR}
+  </update>
+</mapper>

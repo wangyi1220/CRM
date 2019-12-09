@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.SysUserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.SysUserinfo" >
+    <constructor >
+      <idArg column="EMP_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="EMP_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMP_SEX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMP_PHOTO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ID_NUMBER" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="JIAXIANG" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="XIANZAI" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMP_EDU" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ZHENGZHI" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="GRADUATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PHONE_NUMBER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ONLINE_CONTACT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ONLINE_DETAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CHECK_STATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="POST_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="EMP_STATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BEIZHU" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="CHANG_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EMP_ID, EMP_NAME, EMP_SEX, EMP_PHOTO, ID_NUMBER, JIAXIANG, XIANZAI, EMP_EDU, ZHENGZHI, 
+    GRADUATE, PHONE_NUMBER, ONLINE_CONTACT, ONLINE_DETAIL, CHECK_STATE, POST_ID, EMP_STATE, 
+    BEIZHU, COMPANY_ID, CHANG_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SysUserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from SYS_USERINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USERINFO
+    where EMP_ID = #{empId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SYS_USERINFO
+    where EMP_ID = #{empId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.SysUserinfoExample" >
+    delete from SYS_USERINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.SysUserinfo" >
+    insert into SYS_USERINFO (EMP_ID, EMP_NAME, EMP_SEX, 
+      EMP_PHOTO, ID_NUMBER, JIAXIANG, 
+      XIANZAI, EMP_EDU, ZHENGZHI, 
+      GRADUATE, PHONE_NUMBER, ONLINE_CONTACT, 
+      ONLINE_DETAIL, CHECK_STATE, POST_ID, 
+      EMP_STATE, BEIZHU, COMPANY_ID, 
+      CHANG_DATE)
+    values (#{empId,jdbcType=DECIMAL}, #{empName,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, 
+      #{empPhoto,jdbcType=VARCHAR}, #{idNumber,jdbcType=DECIMAL}, #{jiaxiang,jdbcType=VARCHAR}, 
+      #{xianzai,jdbcType=VARCHAR}, #{empEdu,jdbcType=VARCHAR}, #{zhengzhi,jdbcType=VARCHAR}, 
+      #{graduate,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{onlineContact,jdbcType=VARCHAR}, 
+      #{onlineDetail,jdbcType=VARCHAR}, #{checkState,jdbcType=VARCHAR}, #{postId,jdbcType=DECIMAL}, 
+      #{empState,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}, #{companyId,jdbcType=DECIMAL}, 
+      #{changDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.SysUserinfo" >
+    insert into SYS_USERINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        EMP_ID,
+      </if>
+      <if test="empName != null" >
+        EMP_NAME,
+      </if>
+      <if test="empSex != null" >
+        EMP_SEX,
+      </if>
+      <if test="empPhoto != null" >
+        EMP_PHOTO,
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER,
+      </if>
+      <if test="jiaxiang != null" >
+        JIAXIANG,
+      </if>
+      <if test="xianzai != null" >
+        XIANZAI,
+      </if>
+      <if test="empEdu != null" >
+        EMP_EDU,
+      </if>
+      <if test="zhengzhi != null" >
+        ZHENGZHI,
+      </if>
+      <if test="graduate != null" >
+        GRADUATE,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+      <if test="onlineContact != null" >
+        ONLINE_CONTACT,
+      </if>
+      <if test="onlineDetail != null" >
+        ONLINE_DETAIL,
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE,
+      </if>
+      <if test="postId != null" >
+        POST_ID,
+      </if>
+      <if test="empState != null" >
+        EMP_STATE,
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="changDate != null" >
+        CHANG_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        #{empId,jdbcType=DECIMAL},
+      </if>
+      <if test="empName != null" >
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empSex != null" >
+        #{empSex,jdbcType=VARCHAR},
+      </if>
+      <if test="empPhoto != null" >
+        #{empPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="jiaxiang != null" >
+        #{jiaxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="xianzai != null" >
+        #{xianzai,jdbcType=VARCHAR},
+      </if>
+      <if test="empEdu != null" >
+        #{empEdu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhengzhi != null" >
+        #{zhengzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineContact != null" >
+        #{onlineContact,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineDetail != null" >
+        #{onlineDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null" >
+        #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=DECIMAL},
+      </if>
+      <if test="empState != null" >
+        #{empState,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="changDate != null" >
+        #{changDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.SysUserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_USERINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_USERINFO
+    <set >
+      <if test="record.empId != null" >
+        EMP_ID = #{record.empId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.empName != null" >
+        EMP_NAME = #{record.empName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empSex != null" >
+        EMP_SEX = #{record.empSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empPhoto != null" >
+        EMP_PHOTO = #{record.empPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idNumber != null" >
+        ID_NUMBER = #{record.idNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jiaxiang != null" >
+        JIAXIANG = #{record.jiaxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xianzai != null" >
+        XIANZAI = #{record.xianzai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empEdu != null" >
+        EMP_EDU = #{record.empEdu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhengzhi != null" >
+        ZHENGZHI = #{record.zhengzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduate != null" >
+        GRADUATE = #{record.graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null" >
+        PHONE_NUMBER = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlineContact != null" >
+        ONLINE_CONTACT = #{record.onlineContact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlineDetail != null" >
+        ONLINE_DETAIL = #{record.onlineDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkState != null" >
+        CHECK_STATE = #{record.checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postId != null" >
+        POST_ID = #{record.postId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.empState != null" >
+        EMP_STATE = #{record.empState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beizhu != null" >
+        BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.changDate != null" >
+        CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_USERINFO
+    set EMP_ID = #{record.empId,jdbcType=DECIMAL},
+      EMP_NAME = #{record.empName,jdbcType=VARCHAR},
+      EMP_SEX = #{record.empSex,jdbcType=VARCHAR},
+      EMP_PHOTO = #{record.empPhoto,jdbcType=VARCHAR},
+      ID_NUMBER = #{record.idNumber,jdbcType=DECIMAL},
+      JIAXIANG = #{record.jiaxiang,jdbcType=VARCHAR},
+      XIANZAI = #{record.xianzai,jdbcType=VARCHAR},
+      EMP_EDU = #{record.empEdu,jdbcType=VARCHAR},
+      ZHENGZHI = #{record.zhengzhi,jdbcType=VARCHAR},
+      GRADUATE = #{record.graduate,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{record.phoneNumber,jdbcType=VARCHAR},
+      ONLINE_CONTACT = #{record.onlineContact,jdbcType=VARCHAR},
+      ONLINE_DETAIL = #{record.onlineDetail,jdbcType=VARCHAR},
+      CHECK_STATE = #{record.checkState,jdbcType=VARCHAR},
+      POST_ID = #{record.postId,jdbcType=DECIMAL},
+      EMP_STATE = #{record.empState,jdbcType=VARCHAR},
+      BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SysUserinfo" >
+    update SYS_USERINFO
+    <set >
+      <if test="empName != null" >
+        EMP_NAME = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empSex != null" >
+        EMP_SEX = #{empSex,jdbcType=VARCHAR},
+      </if>
+      <if test="empPhoto != null" >
+        EMP_PHOTO = #{empPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER = #{idNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="jiaxiang != null" >
+        JIAXIANG = #{jiaxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="xianzai != null" >
+        XIANZAI = #{xianzai,jdbcType=VARCHAR},
+      </if>
+      <if test="empEdu != null" >
+        EMP_EDU = #{empEdu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhengzhi != null" >
+        ZHENGZHI = #{zhengzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        GRADUATE = #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineContact != null" >
+        ONLINE_CONTACT = #{onlineContact,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineDetail != null" >
+        ONLINE_DETAIL = #{onlineDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE = #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null" >
+        POST_ID = #{postId,jdbcType=DECIMAL},
+      </if>
+      <if test="empState != null" >
+        EMP_STATE = #{empState,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        BEIZHU = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="changDate != null" >
+        CHANG_DATE = #{changDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EMP_ID = #{empId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SysUserinfo" >
+    update SYS_USERINFO
+    set EMP_NAME = #{empName,jdbcType=VARCHAR},
+      EMP_SEX = #{empSex,jdbcType=VARCHAR},
+      EMP_PHOTO = #{empPhoto,jdbcType=VARCHAR},
+      ID_NUMBER = #{idNumber,jdbcType=DECIMAL},
+      JIAXIANG = #{jiaxiang,jdbcType=VARCHAR},
+      XIANZAI = #{xianzai,jdbcType=VARCHAR},
+      EMP_EDU = #{empEdu,jdbcType=VARCHAR},
+      ZHENGZHI = #{zhengzhi,jdbcType=VARCHAR},
+      GRADUATE = #{graduate,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      ONLINE_CONTACT = #{onlineContact,jdbcType=VARCHAR},
+      ONLINE_DETAIL = #{onlineDetail,jdbcType=VARCHAR},
+      CHECK_STATE = #{checkState,jdbcType=VARCHAR},
+      POST_ID = #{postId,jdbcType=DECIMAL},
+      EMP_STATE = #{empState,jdbcType=VARCHAR},
+      BEIZHU = #{beizhu,jdbcType=VARCHAR},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      CHANG_DATE = #{changDate,jdbcType=TIMESTAMP}
+    where EMP_ID = #{empId,jdbcType=DECIMAL}
+  </update>
+</mapper>

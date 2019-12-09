@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.SaleKhinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.SaleKhinfo" >
+    <constructor >
+      <idArg column="USER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USER_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_ATTRIBUTE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WEB" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STOCK_CODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SUPERIOR_UNIT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OWNER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMPLOYEES_NUMBER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="INDUSTRY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="USER_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_STATE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_SOURCE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CHARGE_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="GDPHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MPHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_FAX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DEPOSIT_BANK" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BANK_ACCOUNT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="NEXT_CONTACT_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="E_MAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SIC_CODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PAY_METHOD" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IS_EFFECTIVE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DETAILED_ADDRESS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="REMARKS_INFO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="LAST_MODIFIED" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, USER_ATTRIBUTE, WEB, STOCK_CODE, SUPERIOR_UNIT, OWNER, EMPLOYEES_NUMBER, 
+    INDUSTRY_ID, USER_TYPE, USER_STATE, USER_SOURCE, CHARGE_ID, GDPHONE, MPHONE, USER_FAX, 
+    DEPOSIT_BANK, BANK_ACCOUNT, NEXT_CONTACT_TIME, E_MAIL, SIC_CODE, PAY_METHOD, IS_EFFECTIVE, 
+    DETAILED_ADDRESS, REMARKS_INFO, COMPANY_ID, LAST_MODIFIED
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SaleKhinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from SALE_KHINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SALE_KHINFO
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SALE_KHINFO
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sc.entity.SaleKhinfoExample" >
+    delete from SALE_KHINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sc.entity.SaleKhinfo" >
+    insert into SALE_KHINFO (USER_ID, USER_NAME, USER_ATTRIBUTE, 
+      WEB, STOCK_CODE, SUPERIOR_UNIT, 
+      OWNER, EMPLOYEES_NUMBER, INDUSTRY_ID, 
+      USER_TYPE, USER_STATE, USER_SOURCE, 
+      CHARGE_ID, GDPHONE, MPHONE, 
+      USER_FAX, DEPOSIT_BANK, BANK_ACCOUNT, 
+      NEXT_CONTACT_TIME, E_MAIL, SIC_CODE, 
+      PAY_METHOD, IS_EFFECTIVE, DETAILED_ADDRESS, 
+      REMARKS_INFO, COMPANY_ID, LAST_MODIFIED
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{userAttribute,jdbcType=VARCHAR}, 
+      #{web,jdbcType=VARCHAR}, #{stockCode,jdbcType=VARCHAR}, #{superiorUnit,jdbcType=VARCHAR}, 
+      #{owner,jdbcType=VARCHAR}, #{employeesNumber,jdbcType=VARCHAR}, #{industryId,jdbcType=DECIMAL}, 
+      #{userType,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}, #{userSource,jdbcType=VARCHAR}, 
+      #{chargeId,jdbcType=DECIMAL}, #{gdphone,jdbcType=VARCHAR}, #{mphone,jdbcType=VARCHAR}, 
+      #{userFax,jdbcType=VARCHAR}, #{depositBank,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{nextContactTime,jdbcType=TIMESTAMP}, #{eMail,jdbcType=VARCHAR}, #{sicCode,jdbcType=VARCHAR}, 
+      #{payMethod,jdbcType=VARCHAR}, #{isEffective,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, 
+      #{remarksInfo,jdbcType=VARCHAR}, #{companyId,jdbcType=DECIMAL}, #{lastModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.entity.SaleKhinfo" >
+    insert into SALE_KHINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userAttribute != null" >
+        USER_ATTRIBUTE,
+      </if>
+      <if test="web != null" >
+        WEB,
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE,
+      </if>
+      <if test="superiorUnit != null" >
+        SUPERIOR_UNIT,
+      </if>
+      <if test="owner != null" >
+        OWNER,
+      </if>
+      <if test="employeesNumber != null" >
+        EMPLOYEES_NUMBER,
+      </if>
+      <if test="industryId != null" >
+        INDUSTRY_ID,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="userState != null" >
+        USER_STATE,
+      </if>
+      <if test="userSource != null" >
+        USER_SOURCE,
+      </if>
+      <if test="chargeId != null" >
+        CHARGE_ID,
+      </if>
+      <if test="gdphone != null" >
+        GDPHONE,
+      </if>
+      <if test="mphone != null" >
+        MPHONE,
+      </if>
+      <if test="userFax != null" >
+        USER_FAX,
+      </if>
+      <if test="depositBank != null" >
+        DEPOSIT_BANK,
+      </if>
+      <if test="bankAccount != null" >
+        BANK_ACCOUNT,
+      </if>
+      <if test="nextContactTime != null" >
+        NEXT_CONTACT_TIME,
+      </if>
+      <if test="eMail != null" >
+        E_MAIL,
+      </if>
+      <if test="sicCode != null" >
+        SIC_CODE,
+      </if>
+      <if test="payMethod != null" >
+        PAY_METHOD,
+      </if>
+      <if test="isEffective != null" >
+        IS_EFFECTIVE,
+      </if>
+      <if test="detailedAddress != null" >
+        DETAILED_ADDRESS,
+      </if>
+      <if test="remarksInfo != null" >
+        REMARKS_INFO,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="lastModified != null" >
+        LAST_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAttribute != null" >
+        #{userAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="web != null" >
+        #{web,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorUnit != null" >
+        #{superiorUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null" >
+        #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="employeesNumber != null" >
+        #{employeesNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="industryId != null" >
+        #{industryId,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userSource != null" >
+        #{userSource,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="gdphone != null" >
+        #{gdphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mphone != null" >
+        #{mphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userFax != null" >
+        #{userFax,jdbcType=VARCHAR},
+      </if>
+      <if test="depositBank != null" >
+        #{depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nextContactTime != null" >
+        #{nextContactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="sicCode != null" >
+        #{sicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="isEffective != null" >
+        #{isEffective,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddress != null" >
+        #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="remarksInfo != null" >
+        #{remarksInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModified != null" >
+        #{lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sc.entity.SaleKhinfoExample" resultType="java.lang.Integer" >
+    select count(*) from SALE_KHINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SALE_KHINFO
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAttribute != null" >
+        USER_ATTRIBUTE = #{record.userAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="record.web != null" >
+        WEB = #{record.web,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockCode != null" >
+        STOCK_CODE = #{record.stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.superiorUnit != null" >
+        SUPERIOR_UNIT = #{record.superiorUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.owner != null" >
+        OWNER = #{record.owner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employeesNumber != null" >
+        EMPLOYEES_NUMBER = #{record.employeesNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industryId != null" >
+        INDUSTRY_ID = #{record.industryId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userType != null" >
+        USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userState != null" >
+        USER_STATE = #{record.userState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSource != null" >
+        USER_SOURCE = #{record.userSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chargeId != null" >
+        CHARGE_ID = #{record.chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gdphone != null" >
+        GDPHONE = #{record.gdphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mphone != null" >
+        MPHONE = #{record.mphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFax != null" >
+        USER_FAX = #{record.userFax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depositBank != null" >
+        DEPOSIT_BANK = #{record.depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankAccount != null" >
+        BANK_ACCOUNT = #{record.bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nextContactTime != null" >
+        NEXT_CONTACT_TIME = #{record.nextContactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.eMail != null" >
+        E_MAIL = #{record.eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sicCode != null" >
+        SIC_CODE = #{record.sicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payMethod != null" >
+        PAY_METHOD = #{record.payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isEffective != null" >
+        IS_EFFECTIVE = #{record.isEffective,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailedAddress != null" >
+        DETAILED_ADDRESS = #{record.detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarksInfo != null" >
+        REMARKS_INFO = #{record.remarksInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastModified != null" >
+        LAST_MODIFIED = #{record.lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SALE_KHINFO
+    set USER_ID = #{record.userId,jdbcType=DECIMAL},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      USER_ATTRIBUTE = #{record.userAttribute,jdbcType=VARCHAR},
+      WEB = #{record.web,jdbcType=VARCHAR},
+      STOCK_CODE = #{record.stockCode,jdbcType=VARCHAR},
+      SUPERIOR_UNIT = #{record.superiorUnit,jdbcType=VARCHAR},
+      OWNER = #{record.owner,jdbcType=VARCHAR},
+      EMPLOYEES_NUMBER = #{record.employeesNumber,jdbcType=VARCHAR},
+      INDUSTRY_ID = #{record.industryId,jdbcType=DECIMAL},
+      USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      USER_STATE = #{record.userState,jdbcType=VARCHAR},
+      USER_SOURCE = #{record.userSource,jdbcType=VARCHAR},
+      CHARGE_ID = #{record.chargeId,jdbcType=DECIMAL},
+      GDPHONE = #{record.gdphone,jdbcType=VARCHAR},
+      MPHONE = #{record.mphone,jdbcType=VARCHAR},
+      USER_FAX = #{record.userFax,jdbcType=VARCHAR},
+      DEPOSIT_BANK = #{record.depositBank,jdbcType=VARCHAR},
+      BANK_ACCOUNT = #{record.bankAccount,jdbcType=VARCHAR},
+      NEXT_CONTACT_TIME = #{record.nextContactTime,jdbcType=TIMESTAMP},
+      E_MAIL = #{record.eMail,jdbcType=VARCHAR},
+      SIC_CODE = #{record.sicCode,jdbcType=VARCHAR},
+      PAY_METHOD = #{record.payMethod,jdbcType=VARCHAR},
+      IS_EFFECTIVE = #{record.isEffective,jdbcType=VARCHAR},
+      DETAILED_ADDRESS = #{record.detailedAddress,jdbcType=VARCHAR},
+      REMARKS_INFO = #{record.remarksInfo,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
+      LAST_MODIFIED = #{record.lastModified,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SaleKhinfo" >
+    update SALE_KHINFO
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAttribute != null" >
+        USER_ATTRIBUTE = #{userAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="web != null" >
+        WEB = #{web,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE = #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorUnit != null" >
+        SUPERIOR_UNIT = #{superiorUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null" >
+        OWNER = #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="employeesNumber != null" >
+        EMPLOYEES_NUMBER = #{employeesNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="industryId != null" >
+        INDUSTRY_ID = #{industryId,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        USER_STATE = #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userSource != null" >
+        USER_SOURCE = #{userSource,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeId != null" >
+        CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="gdphone != null" >
+        GDPHONE = #{gdphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mphone != null" >
+        MPHONE = #{mphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userFax != null" >
+        USER_FAX = #{userFax,jdbcType=VARCHAR},
+      </if>
+      <if test="depositBank != null" >
+        DEPOSIT_BANK = #{depositBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nextContactTime != null" >
+        NEXT_CONTACT_TIME = #{nextContactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null" >
+        E_MAIL = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="sicCode != null" >
+        SIC_CODE = #{sicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        PAY_METHOD = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="isEffective != null" >
+        IS_EFFECTIVE = #{isEffective,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddress != null" >
+        DETAILED_ADDRESS = #{detailedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="remarksInfo != null" >
+        REMARKS_INFO = #{remarksInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModified != null" >
+        LAST_MODIFIED = #{lastModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SaleKhinfo" >
+    update SALE_KHINFO
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_ATTRIBUTE = #{userAttribute,jdbcType=VARCHAR},
+      WEB = #{web,jdbcType=VARCHAR},
+      STOCK_CODE = #{stockCode,jdbcType=VARCHAR},
+      SUPERIOR_UNIT = #{superiorUnit,jdbcType=VARCHAR},
+      OWNER = #{owner,jdbcType=VARCHAR},
+      EMPLOYEES_NUMBER = #{employeesNumber,jdbcType=VARCHAR},
+      INDUSTRY_ID = #{industryId,jdbcType=DECIMAL},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      USER_STATE = #{userState,jdbcType=VARCHAR},
+      USER_SOURCE = #{userSource,jdbcType=VARCHAR},
+      CHARGE_ID = #{chargeId,jdbcType=DECIMAL},
+      GDPHONE = #{gdphone,jdbcType=VARCHAR},
+      MPHONE = #{mphone,jdbcType=VARCHAR},
+      USER_FAX = #{userFax,jdbcType=VARCHAR},
+      DEPOSIT_BANK = #{depositBank,jdbcType=VARCHAR},
+      BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
+      NEXT_CONTACT_TIME = #{nextContactTime,jdbcType=TIMESTAMP},
+      E_MAIL = #{eMail,jdbcType=VARCHAR},
+      SIC_CODE = #{sicCode,jdbcType=VARCHAR},
+      PAY_METHOD = #{payMethod,jdbcType=VARCHAR},
+      IS_EFFECTIVE = #{isEffective,jdbcType=VARCHAR},
+      DETAILED_ADDRESS = #{detailedAddress,jdbcType=VARCHAR},
+      REMARKS_INFO = #{remarksInfo,jdbcType=VARCHAR},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      LAST_MODIFIED = #{lastModified,jdbcType=TIMESTAMP}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+</mapper>
