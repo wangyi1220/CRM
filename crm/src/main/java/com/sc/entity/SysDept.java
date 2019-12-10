@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysDept implements Serializable {
     private Long deptId;
 
@@ -12,9 +14,16 @@ public class SysDept implements Serializable {
 
     private Long companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysDept [deptId=" + deptId + ", deptName=" + deptName + ", beizhu=" + beizhu + ", companyId="
+				+ companyId + ", changDate=" + changDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysDept(Long deptId, String deptName, String beizhu, Long companyId, Date changDate) {
         this.deptId = deptId;

@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SaleKhinfo implements Serializable {
     private Long userId;
 
@@ -40,6 +42,7 @@ public class SaleKhinfo implements Serializable {
 
     private String bankAccount;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date nextContactTime;
 
     private String eMail;
@@ -56,9 +59,23 @@ public class SaleKhinfo implements Serializable {
 
     private Long companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModified;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SaleKhinfo [userId=" + userId + ", userName=" + userName + ", userAttribute=" + userAttribute + ", web="
+				+ web + ", stockCode=" + stockCode + ", superiorUnit=" + superiorUnit + ", owner=" + owner
+				+ ", employeesNumber=" + employeesNumber + ", industryId=" + industryId + ", userType=" + userType
+				+ ", userState=" + userState + ", userSource=" + userSource + ", chargeId=" + chargeId + ", gdphone="
+				+ gdphone + ", mphone=" + mphone + ", userFax=" + userFax + ", depositBank=" + depositBank
+				+ ", bankAccount=" + bankAccount + ", nextContactTime=" + nextContactTime + ", eMail=" + eMail
+				+ ", sicCode=" + sicCode + ", payMethod=" + payMethod + ", isEffective=" + isEffective
+				+ ", detailedAddress=" + detailedAddress + ", remarksInfo=" + remarksInfo + ", companyId=" + companyId
+				+ ", lastModified=" + lastModified + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SaleKhinfo(Long userId, String userName, String userAttribute, String web, String stockCode, String superiorUnit, String owner, String employeesNumber, Long industryId, String userType, String userState, String userSource, Long chargeId, String gdphone, String mphone, String userFax, String depositBank, String bankAccount, Date nextContactTime, String eMail, String sicCode, String payMethod, String isEffective, String detailedAddress, String remarksInfo, Long companyId, Date lastModified) {
         this.userId = userId;

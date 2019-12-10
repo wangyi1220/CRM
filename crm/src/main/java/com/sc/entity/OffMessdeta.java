@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class OffMessdeta implements Serializable {
     private Long detailsid;
 
@@ -14,9 +16,16 @@ public class OffMessdeta implements Serializable {
 
     private Long companyid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lasttime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "OffMessdeta [detailsid=" + detailsid + ", messid=" + messid + ", receiverid=" + receiverid
+				+ ", messstate=" + messstate + ", companyid=" + companyid + ", lasttime=" + lasttime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public OffMessdeta(Long detailsid, Long messid, Long receiverid, String messstate, Long companyid, Date lasttime) {
         this.detailsid = detailsid;

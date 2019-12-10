@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SaleKhfeedback implements Serializable {
     private Long feedbackRecorId;
 
@@ -14,6 +16,7 @@ public class SaleKhfeedback implements Serializable {
 
     private String feedbackType;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date feedbackTime;
 
     private String feedbackReason;
@@ -30,9 +33,19 @@ public class SaleKhfeedback implements Serializable {
 
     private Long companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModified;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SaleKhfeedback [feedbackRecorId=" + feedbackRecorId + ", recordPriority=" + recordPriority + ", userId="
+				+ userId + ", state=" + state + ", feedbackType=" + feedbackType + ", feedbackTime=" + feedbackTime
+				+ ", feedbackReason=" + feedbackReason + ", personInCharge=" + personInCharge + ", feedbackSource="
+				+ feedbackSource + ", feedbaclTheme=" + feedbaclTheme + ", feedbackDiscribe=" + feedbackDiscribe
+				+ ", analysis=" + analysis + ", companyId=" + companyId + ", lastModified=" + lastModified + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SaleKhfeedback(Long feedbackRecorId, String recordPriority, Long userId, String state, String feedbackType, Date feedbackTime, String feedbackReason, String personInCharge, String feedbackSource, String feedbaclTheme, String feedbackDiscribe, String analysis, Long companyId, Date lastModified) {
         this.feedbackRecorId = feedbackRecorId;
