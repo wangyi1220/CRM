@@ -30,34 +30,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h2><a href="usersctrl/goadd.do">添加用户</a></h2>
     	<table border="1" width="80%" style="text-align: center" cellpadding="0" cellspacing="0">
     		<tr>
-    			<th>编号</th>
-    			<th>头像</th>
+    			
     			<th>用户名</th>
-    			<th>性别</th>
-    			<th>年龄</th>
-    			<th>生日</th>
-    			<th>状态</th>
-    			<th>操作</th>
+    			<th>密码</th>
+    			
     		</tr>
     		<c:forEach items="${p.list }" var="user">
 	    		<tr>
-	    			<td>${user.uid }</td>
-	    			<td><img alt="暂无图片" src="upload/${user.pic }" width="50px" height="50px"></td>
-	    			<td>${user.uname }</td>
-	    			<td>${user.sex }</td>
-	    			<td>${user.age }</td>
-	    			<td>
-	    				
-	    				<fmt:formatDate value="${user.birthday }" pattern="yyyy-MM-dd"/>
-	    			</td>
-	    			<td>${user.active }</td>
-	    			<td><a href="usersctrl/goupdate.do?uid=${user.uid }">修改</a>/
-	    			<a href="usersctrl/delete.do?uid=${user.uid }" onclick="return confirm('是否确定删除此用户')">删除</a></td>
+	    			
+	    			<td>${user.usersName }</td>
+	    			<td>${user.usersPassword }</td>
+	    			
 	    		</tr>
     		</c:forEach>
     		
     		 <tr>
-             <td style="text-align: center;" colspan="8">
+             <td style="text-align: center;" colspan="2">
                 <a href="usersctrl/listpage.do?pageNum=${p.firstPage }">首页</a>
                 <a href="usersctrl/listpage.do?pageNum=${p.prePage }">上一页</a>
                 <a href="usersctrl/listpage.do?pageNum=${p.nextPage }">下一页</a>

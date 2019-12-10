@@ -20,7 +20,7 @@ import com.sc.realm.CustomFormAuthenticationFilter;
 import com.sc.realm.CustomRealmMD5;
 
 
-@Configuration	//shiro≈‰÷√¿‡
+//@Configuration	//shiro≈‰÷√¿‡
 public class ShiroConfig {
 	
 	@Autowired
