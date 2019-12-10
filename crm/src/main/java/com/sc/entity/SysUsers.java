@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysUsers implements Serializable {
     private Long usersId;
 
@@ -16,9 +18,17 @@ public class SysUsers implements Serializable {
 
     private String usersState;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysUsers [usersId=" + usersId + ", usersName=" + usersName + ", usersPassword=" + usersPassword
+				+ ", empId=" + empId + ", companyId=" + companyId + ", usersState=" + usersState + ", changeDate="
+				+ changeDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysUsers(Long usersId, String usersName, String usersPassword, Long empId, Long companyId, String usersState, Date changeDate) {
         this.usersId = usersId;

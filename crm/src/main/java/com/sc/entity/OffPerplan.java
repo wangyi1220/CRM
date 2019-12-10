@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class OffPerplan implements Serializable {
     private BigDecimal planid;
 
@@ -11,6 +13,7 @@ public class OffPerplan implements Serializable {
 
     private String plantheme;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date starttime;
 
     private Long writeperid;
@@ -19,9 +22,17 @@ public class OffPerplan implements Serializable {
 
     private Long companyid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lasttime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "OffPerplan [planid=" + planid + ", plankind=" + plankind + ", plantheme=" + plantheme + ", starttime="
+				+ starttime + ", writeperid=" + writeperid + ", plandesc=" + plandesc + ", companyid=" + companyid
+				+ ", lasttime=" + lasttime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public OffPerplan(BigDecimal planid, String plankind, String plantheme, Date starttime, Long writeperid, String plandesc, Long companyid, Date lasttime) {
         this.planid = planid;

@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysLog implements Serializable {
     private Long logId;
 
@@ -12,9 +14,16 @@ public class SysLog implements Serializable {
 
     private String power;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date visitDate;
 
-    private Long companyId;
+    @Override
+	public String toString() {
+		return "SysLog [logId=" + logId + ", userId=" + userId + ", visitIp=" + visitIp + ", power=" + power
+				+ ", visitDate=" + visitDate + ", companyId=" + companyId + "]";
+	}
+
+	private Long companyId;
 
     private static final long serialVersionUID = 1L;
 
