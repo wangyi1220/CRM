@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class JhCgdxq implements Serializable {
     private String cgXqId;
 
@@ -20,9 +22,17 @@ public class JhCgdxq implements Serializable {
 
     private String gsId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "JhCgdxq [cgXqId=" + cgXqId + ", cgdId=" + cgdId + ", cpId=" + cpId + ", cpNumber=" + cpNumber
+				+ ", isRk=" + isRk + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime="
+				+ ltime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public JhCgdxq(String cgXqId, String cgdId, String cpId, Long cpNumber, String isRk, String operator, String remark, String gsId, Date ltime) {
         this.cgXqId = cgXqId;

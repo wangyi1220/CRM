@@ -3,11 +3,14 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SaleKhrecord implements Serializable {
     private Long contactRecordId;
 
     private String contactTitle;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date contactTime;
 
     private Long userId;
@@ -16,9 +19,17 @@ public class SaleKhrecord implements Serializable {
 
     private Long companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModified;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SaleKhrecord [contactRecordId=" + contactRecordId + ", contactTitle=" + contactTitle + ", contactTime="
+				+ contactTime + ", userId=" + userId + ", contactContent=" + contactContent + ", companyId=" + companyId
+				+ ", lastModified=" + lastModified + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SaleKhrecord(Long contactRecordId, String contactTitle, Date contactTime, Long userId, String contactContent, Long companyId, Date lastModified) {
         this.contactRecordId = contactRecordId;

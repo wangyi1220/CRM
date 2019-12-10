@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class OfficeKpi implements Serializable {
     private BigDecimal kpiId;
 
@@ -13,9 +15,16 @@ public class OfficeKpi implements Serializable {
 
     private BigDecimal companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date finalUpdataTime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "OfficeKpi [kpiId=" + kpiId + ", kpiKpi=" + kpiKpi + ", kpiDetail=" + kpiDetail + ", companyId="
+				+ companyId + ", finalUpdataTime=" + finalUpdataTime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public OfficeKpi(BigDecimal kpiId, String kpiKpi, String kpiDetail, BigDecimal companyId, Date finalUpdataTime) {
         this.kpiId = kpiId;

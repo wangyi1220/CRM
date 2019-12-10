@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class OfficeTaskDetail implements Serializable {
     private BigDecimal taskDetailId;
 
@@ -17,9 +19,17 @@ public class OfficeTaskDetail implements Serializable {
 
     private BigDecimal companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date finalUpdataTime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "OfficeTaskDetail [taskDetailId=" + taskDetailId + ", taskId=" + taskId + ", taskUserId=" + taskUserId
+				+ ", taskIsfinshed=" + taskIsfinshed + ", status=" + status + ", companyId=" + companyId
+				+ ", finalUpdataTime=" + finalUpdataTime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public OfficeTaskDetail(BigDecimal taskDetailId, BigDecimal taskId, BigDecimal taskUserId, String taskIsfinshed, String status, BigDecimal companyId, Date finalUpdataTime) {
         this.taskDetailId = taskDetailId;

@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class JhCgd implements Serializable {
     private String cgdId;
 
     private String cgTheme;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date cgTime;
 
     private String gysId;
@@ -18,7 +21,8 @@ public class JhCgd implements Serializable {
     private String fkqk;
 
     private String cgJz;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date jhtime;
 
     private String jhplace;
@@ -30,10 +34,19 @@ public class JhCgd implements Serializable {
     private String remark;
 
     private String gsId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private String fphm;
+    @Override
+	public String toString() {
+		return "JhCgd [cgdId=" + cgdId + ", cgTheme=" + cgTheme + ", cgTime=" + cgTime + ", gysId=" + gysId
+				+ ", hkMoney=" + hkMoney + ", fkqk=" + fkqk + ", cgJz=" + cgJz + ", jhtime=" + jhtime + ", jhplace="
+				+ jhplace + ", jhway=" + jhway + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId
+				+ ", ltime=" + ltime + ", fphm=" + fphm + "]";
+	}
+
+	private String fphm;
 
     private static final long serialVersionUID = 1L;
 

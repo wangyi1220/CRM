@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysRole implements Serializable {
     private Long roleId;
 
@@ -14,9 +16,16 @@ public class SysRole implements Serializable {
 
     private Long operaterId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysRole [roleId=" + roleId + ", roleName=" + roleName + ", roleDescribe=" + roleDescribe
+				+ ", superRoleId=" + superRoleId + ", operaterId=" + operaterId + ", changeDate=" + changeDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysRole(Long roleId, String roleName, String roleDescribe, Long superRoleId, Long operaterId, Date changeDate) {
         this.roleId = roleId;
