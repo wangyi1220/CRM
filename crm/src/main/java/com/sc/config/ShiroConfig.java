@@ -82,6 +82,9 @@ public class ShiroConfig {
 		filterMap.put("/datagrid.jsp", "anon");
 		filterMap.put("/usersctrl/listjson.do", "anon");
 		
+		/*≤‚ ‘*/
+		filterMap.put("/test/test1.do", "anon");
+		
 		//…Ë÷√»®œﬁ
 		/*List<SysPermission> list = this.sysPermissionService.getallpermission();*/
 		/*if(list!=null&&list.size()>0){

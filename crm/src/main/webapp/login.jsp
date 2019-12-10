@@ -54,6 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="submit" value="登陆">
 		</form>
 		
+		<a href="test/test1.do">test</a>
+		
 	</center>
 	
   </body>
