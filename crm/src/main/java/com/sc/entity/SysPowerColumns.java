@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysPowerColumns implements Serializable {
     private Long columnsId;
 
@@ -10,9 +12,16 @@ public class SysPowerColumns implements Serializable {
 
     private String remarks;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysPowerColumns [columnsId=" + columnsId + ", columnsName=" + columnsName + ", remarks=" + remarks
+				+ ", changeDate=" + changeDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysPowerColumns(Long columnsId, String columnsName, String remarks, Date changeDate) {
         this.columnsId = columnsId;

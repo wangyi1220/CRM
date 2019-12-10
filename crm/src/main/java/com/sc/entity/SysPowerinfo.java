@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysPowerinfo implements Serializable {
     private Long powerId;
 
@@ -14,9 +16,17 @@ public class SysPowerinfo implements Serializable {
 
     private String remarks;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
-    private String powerCode;
+    @Override
+	public String toString() {
+		return "SysPowerinfo [powerId=" + powerId + ", powerName=" + powerName + ", powerUrl=" + powerUrl
+				+ ", powerColumnsId=" + powerColumnsId + ", remarks=" + remarks + ", changeDate=" + changeDate
+				+ ", powerCode=" + powerCode + "]";
+	}
+
+	private String powerCode;
 
     private static final long serialVersionUID = 1L;
 
