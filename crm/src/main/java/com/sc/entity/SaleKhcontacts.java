@@ -3,7 +3,15 @@ package com.sc.entity;
 import java.io.Serializable;
 
 public class SaleKhcontacts implements Serializable {
-    private Long contactId;
+    @Override
+	public String toString() {
+		return "SaleKhcontacts [contactId=" + contactId + ", userId=" + userId + ", contactName=" + contactName
+				+ ", englishName=" + englishName + ", post=" + post + ", department=" + department + ", mphone="
+				+ mphone + ", ophone=" + ophone + ", eMail=" + eMail + ", address=" + address + ", remarksInfo="
+				+ remarksInfo + ", companyId=" + companyId + "]";
+	}
+
+	private Long contactId;
 
     private Long userId;
 

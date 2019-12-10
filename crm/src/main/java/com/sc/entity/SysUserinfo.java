@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysUserinfo implements Serializable {
     private Long empId;
 
@@ -40,9 +42,20 @@ public class SysUserinfo implements Serializable {
 
     private Long companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysUserinfo [empId=" + empId + ", empName=" + empName + ", empSex=" + empSex + ", empPhoto=" + empPhoto
+				+ ", idNumber=" + idNumber + ", jiaxiang=" + jiaxiang + ", xianzai=" + xianzai + ", empEdu=" + empEdu
+				+ ", zhengzhi=" + zhengzhi + ", graduate=" + graduate + ", phoneNumber=" + phoneNumber
+				+ ", onlineContact=" + onlineContact + ", onlineDetail=" + onlineDetail + ", checkState=" + checkState
+				+ ", postId=" + postId + ", empState=" + empState + ", beizhu=" + beizhu + ", companyId=" + companyId
+				+ ", changDate=" + changDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysUserinfo(Long empId, String empName, String empSex, String empPhoto, Long idNumber, String jiaxiang, String xianzai, String empEdu, String zhengzhi, String graduate, String phoneNumber, String onlineContact, String onlineDetail, String checkState, Long postId, String empState, String beizhu, Long companyId, Date changDate) {
         this.empId = empId;
