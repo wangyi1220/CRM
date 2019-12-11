@@ -46,10 +46,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     		 <tr>
              <td style="text-align: center;" colspan="2">
-                <a href="usersctrl/listpage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="usersctrl/listpage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="usersctrl/listpage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="usersctrl/listpage.do?pageNum=${p.lastPage }">尾页</a>
+                <a href="SysUsersCtrl/listPage.do?pageNum=${p.firstPage }">首页</a>
+                <a href="SysUsersCtrl/listPage.do?pageNum=${p.prePage }">上一页</a>
+                <a href="SysUsersCtrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
+                <a href="SysUsersCtrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
                                        当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>
