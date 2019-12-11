@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">办公管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_basic.html">基本表单</a>
+                            <li><a class="J_menuItem" href="offmessctrl/listpage.do">短消息</a>
                             </li>
                             
                             <li>
