@@ -8,16 +8,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class OffMess implements Serializable {
     private Long messid;
 
-    private String title;
+    private String title;//标题
 
-    private String content;
+    private String content;//内容
 
-    private String sender;
+    private String sender;//发送人
 
-    private Long companyid;
+    private Long companyid;//公司id
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date lasttime;
+    private Date lasttime;//最后修改时间
 
     @Override
 	public String toString() {

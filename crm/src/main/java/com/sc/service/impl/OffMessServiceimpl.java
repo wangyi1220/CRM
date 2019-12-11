@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMess;
 import com.sc.mapper.OffMessMapper;
@@ -18,7 +19,7 @@ public class OffMessServiceimpl implements OffMessService {
 	
 	@Override
 	public void add(OffMess m) {
-		// TODO Auto-generated method stub
+		 this.offMessMapper.insert(m);
 
 	}
 
@@ -48,8 +49,14 @@ public class OffMessServiceimpl implements OffMessService {
 
 	@Override
 	public PageInfo<OffMess> selectpage(Integer pageNum, Integer pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		//设置分页数据，开始分页
+				PageHelper.startPage(pageNum, pageSize);
+				//查询当前页的集合数据
+				List<OffMess> list = this.offMessMapper.selectByExample(null);
+				//封装成pageinfo对象
+				PageInfo<OffMess> page=new PageInfo<OffMess>(list);
+				
+				return page;
 	}
 
 }
