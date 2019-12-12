@@ -69,14 +69,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">基本表单</a>
                             </li>
-                            
                             <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
+                                <a href="#">权限管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">用户表单</a>
+                            </li>
+                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">部门表单</a>
+                            </li>
+                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">。。表单</a>
+                            </li>
+                            <li>
                             
                         </ul>
                     </li>
@@ -117,9 +128,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">库存管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_basic.html">基本表单</a>
+                            <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_仓库信息表</a>
                             </li>
-                            
+                             <li><a class="J_menuItem" href="#">库存_商品信息表</a>
+                            </li>
                             <li>
                                 <a href="#">文件上传 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">

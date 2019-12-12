@@ -1,43 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sc.mapper.SysCompanyinfoMapper" >
-  <resultMap id="BaseResultMap" type="com.sc.entity.SysCompanyinfo" >
-    <constructor >
-      <idArg column="PK" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="COMPANY_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="COMPANY_CODE" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="CONTACTS" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="COMPANY_ADDRESS" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="FIXEDPHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="MOBILEPHONE" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="FAX" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="BANK_DEPOSIT" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="BANK_ACCOUNT" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="EFFECTIVE" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="BEIZHU" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="CHANG_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.mapper.SysCompanyinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sc.entity.SysCompanyinfo">
+    <constructor>
+      <idArg column="PK" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="COMPANY_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EMAIL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CONTACTS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COMPANY_ADDRESS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FIXEDPHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MOBILEPHONE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="FAX" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BANK_DEPOSIT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BANK_ACCOUNT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EFFECTIVE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="BEIZHU" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="CHANG_DATE" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -48,25 +48,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -77,203 +77,203 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     PK, COMPANY_NAME, COMPANY_CODE, EMAIL, CONTACTS, COMPANY_ADDRESS, FIXEDPHONE, MOBILEPHONE, 
     FAX, BANK_DEPOSIT, BANK_ACCOUNT, EFFECTIVE, BEIZHU, CHANG_DATE
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SysCompanyinfoExample" >
+  <select id="selectByExample" parameterType="com.sc.entity.SysCompanyinfoExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from SYS_COMPANYINFO
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from SYS_COMPANYINFO
-    where PK = #{pk,jdbcType=VARCHAR}
+    where PK = #{pk,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from SYS_COMPANYINFO
-    where PK = #{pk,jdbcType=VARCHAR}
+    where PK = #{pk,jdbcType=DECIMAL}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sc.entity.SysCompanyinfoExample" >
+  <delete id="deleteByExample" parameterType="com.sc.entity.SysCompanyinfoExample">
     delete from SYS_COMPANYINFO
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sc.entity.SysCompanyinfo" >
+  <insert id="insert" parameterType="com.sc.entity.SysCompanyinfo">
     insert into SYS_COMPANYINFO (PK, COMPANY_NAME, COMPANY_CODE, 
       EMAIL, CONTACTS, COMPANY_ADDRESS, 
       FIXEDPHONE, MOBILEPHONE, FAX, 
       BANK_DEPOSIT, BANK_ACCOUNT, EFFECTIVE, 
       BEIZHU, CHANG_DATE)
-    values (#{pk,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+    values (#{pk,jdbcType=DECIMAL}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, 
       #{fixedphone,jdbcType=VARCHAR}, #{mobilephone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
       #{bankDeposit,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{effective,jdbcType=VARCHAR}, 
       #{beizhu,jdbcType=VARCHAR}, #{changDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.sc.entity.SysCompanyinfo" >
+  <insert id="insertSelective" parameterType="com.sc.entity.SysCompanyinfo">
     insert into SYS_COMPANYINFO
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pk != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pk != null">
         PK,
       </if>
-      <if test="companyName != null" >
+      <if test="companyName != null">
         COMPANY_NAME,
       </if>
-      <if test="companyCode != null" >
+      <if test="companyCode != null">
         COMPANY_CODE,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         EMAIL,
       </if>
-      <if test="contacts != null" >
+      <if test="contacts != null">
         CONTACTS,
       </if>
-      <if test="companyAddress != null" >
+      <if test="companyAddress != null">
         COMPANY_ADDRESS,
       </if>
-      <if test="fixedphone != null" >
+      <if test="fixedphone != null">
         FIXEDPHONE,
       </if>
-      <if test="mobilephone != null" >
+      <if test="mobilephone != null">
         MOBILEPHONE,
       </if>
-      <if test="fax != null" >
+      <if test="fax != null">
         FAX,
       </if>
-      <if test="bankDeposit != null" >
+      <if test="bankDeposit != null">
         BANK_DEPOSIT,
       </if>
-      <if test="bankAccount != null" >
+      <if test="bankAccount != null">
         BANK_ACCOUNT,
       </if>
-      <if test="effective != null" >
+      <if test="effective != null">
         EFFECTIVE,
       </if>
-      <if test="beizhu != null" >
+      <if test="beizhu != null">
         BEIZHU,
       </if>
-      <if test="changDate != null" >
+      <if test="changDate != null">
         CHANG_DATE,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pk != null" >
-        #{pk,jdbcType=VARCHAR},
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pk != null">
+        #{pk,jdbcType=DECIMAL},
       </if>
-      <if test="companyName != null" >
+      <if test="companyName != null">
         #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="companyCode != null" >
+      <if test="companyCode != null">
         #{companyCode,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="contacts != null" >
+      <if test="contacts != null">
         #{contacts,jdbcType=VARCHAR},
       </if>
-      <if test="companyAddress != null" >
+      <if test="companyAddress != null">
         #{companyAddress,jdbcType=VARCHAR},
       </if>
-      <if test="fixedphone != null" >
+      <if test="fixedphone != null">
         #{fixedphone,jdbcType=VARCHAR},
       </if>
-      <if test="mobilephone != null" >
+      <if test="mobilephone != null">
         #{mobilephone,jdbcType=VARCHAR},
       </if>
-      <if test="fax != null" >
+      <if test="fax != null">
         #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="bankDeposit != null" >
+      <if test="bankDeposit != null">
         #{bankDeposit,jdbcType=VARCHAR},
       </if>
-      <if test="bankAccount != null" >
+      <if test="bankAccount != null">
         #{bankAccount,jdbcType=VARCHAR},
       </if>
-      <if test="effective != null" >
+      <if test="effective != null">
         #{effective,jdbcType=VARCHAR},
       </if>
-      <if test="beizhu != null" >
+      <if test="beizhu != null">
         #{beizhu,jdbcType=VARCHAR},
       </if>
-      <if test="changDate != null" >
+      <if test="changDate != null">
         #{changDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sc.entity.SysCompanyinfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.sc.entity.SysCompanyinfoExample" resultType="java.lang.Integer">
     select count(*) from SYS_COMPANYINFO
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update SYS_COMPANYINFO
-    <set >
-      <if test="record.pk != null" >
-        PK = #{record.pk,jdbcType=VARCHAR},
+    <set>
+      <if test="record.pk != null">
+        PK = #{record.pk,jdbcType=DECIMAL},
       </if>
-      <if test="record.companyName != null" >
+      <if test="record.companyName != null">
         COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyCode != null" >
+      <if test="record.companyCode != null">
         COMPANY_CODE = #{record.companyCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
+      <if test="record.email != null">
         EMAIL = #{record.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.contacts != null" >
+      <if test="record.contacts != null">
         CONTACTS = #{record.contacts,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyAddress != null" >
+      <if test="record.companyAddress != null">
         COMPANY_ADDRESS = #{record.companyAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.fixedphone != null" >
+      <if test="record.fixedphone != null">
         FIXEDPHONE = #{record.fixedphone,jdbcType=VARCHAR},
       </if>
-      <if test="record.mobilephone != null" >
+      <if test="record.mobilephone != null">
         MOBILEPHONE = #{record.mobilephone,jdbcType=VARCHAR},
       </if>
-      <if test="record.fax != null" >
+      <if test="record.fax != null">
         FAX = #{record.fax,jdbcType=VARCHAR},
       </if>
-      <if test="record.bankDeposit != null" >
+      <if test="record.bankDeposit != null">
         BANK_DEPOSIT = #{record.bankDeposit,jdbcType=VARCHAR},
       </if>
-      <if test="record.bankAccount != null" >
+      <if test="record.bankAccount != null">
         BANK_ACCOUNT = #{record.bankAccount,jdbcType=VARCHAR},
       </if>
-      <if test="record.effective != null" >
+      <if test="record.effective != null">
         EFFECTIVE = #{record.effective,jdbcType=VARCHAR},
       </if>
-      <if test="record.beizhu != null" >
+      <if test="record.beizhu != null">
         BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
       </if>
-      <if test="record.changDate != null" >
+      <if test="record.changDate != null">
         CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update SYS_COMPANYINFO
-    set PK = #{record.pk,jdbcType=VARCHAR},
+    set PK = #{record.pk,jdbcType=DECIMAL},
       COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
       COMPANY_CODE = #{record.companyCode,jdbcType=VARCHAR},
       EMAIL = #{record.email,jdbcType=VARCHAR},
@@ -287,56 +287,56 @@
       EFFECTIVE = #{record.effective,jdbcType=VARCHAR},
       BEIZHU = #{record.beizhu,jdbcType=VARCHAR},
       CHANG_DATE = #{record.changDate,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SysCompanyinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SysCompanyinfo">
     update SYS_COMPANYINFO
-    <set >
-      <if test="companyName != null" >
+    <set>
+      <if test="companyName != null">
         COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="companyCode != null" >
+      <if test="companyCode != null">
         COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         EMAIL = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="contacts != null" >
+      <if test="contacts != null">
         CONTACTS = #{contacts,jdbcType=VARCHAR},
       </if>
-      <if test="companyAddress != null" >
+      <if test="companyAddress != null">
         COMPANY_ADDRESS = #{companyAddress,jdbcType=VARCHAR},
       </if>
-      <if test="fixedphone != null" >
+      <if test="fixedphone != null">
         FIXEDPHONE = #{fixedphone,jdbcType=VARCHAR},
       </if>
-      <if test="mobilephone != null" >
+      <if test="mobilephone != null">
         MOBILEPHONE = #{mobilephone,jdbcType=VARCHAR},
       </if>
-      <if test="fax != null" >
+      <if test="fax != null">
         FAX = #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="bankDeposit != null" >
+      <if test="bankDeposit != null">
         BANK_DEPOSIT = #{bankDeposit,jdbcType=VARCHAR},
       </if>
-      <if test="bankAccount != null" >
+      <if test="bankAccount != null">
         BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
       </if>
-      <if test="effective != null" >
+      <if test="effective != null">
         EFFECTIVE = #{effective,jdbcType=VARCHAR},
       </if>
-      <if test="beizhu != null" >
+      <if test="beizhu != null">
         BEIZHU = #{beizhu,jdbcType=VARCHAR},
       </if>
-      <if test="changDate != null" >
+      <if test="changDate != null">
         CHANG_DATE = #{changDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where PK = #{pk,jdbcType=VARCHAR}
+    where PK = #{pk,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SysCompanyinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SysCompanyinfo">
     update SYS_COMPANYINFO
     set COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
       COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
@@ -351,6 +351,7 @@
       EFFECTIVE = #{effective,jdbcType=VARCHAR},
       BEIZHU = #{beizhu,jdbcType=VARCHAR},
       CHANG_DATE = #{changDate,jdbcType=TIMESTAMP}
-    where PK = #{pk,jdbcType=VARCHAR}
+    where PK = #{pk,jdbcType=DECIMAL}
   </update>
+
 </mapper>

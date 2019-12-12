@@ -27,4 +27,7 @@ public interface SysPowerColumnsMapper {
     int updateByPrimaryKeySelective(SysPowerColumns record);
 
     int updateByPrimaryKey(SysPowerColumns record);
+    
+    public List<SysPowerColumns> selectPowerinfo();
+    
 }
