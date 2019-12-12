@@ -10,21 +10,13 @@ public interface JhXbhMapper {
 
     int deleteByExample(JhXbhExample example);
 
-    int deleteByPrimaryKey(String xbhId);
-
     int insert(JhXbh record);
 
     int insertSelective(JhXbh record);
 
     List<JhXbh> selectByExample(JhXbhExample example);
 
-    JhXbh selectByPrimaryKey(String xbhId);
-
     int updateByExampleSelective(@Param("record") JhXbh record, @Param("example") JhXbhExample example);
 
     int updateByExample(@Param("record") JhXbh record, @Param("example") JhXbhExample example);
-
-    int updateByPrimaryKeySelective(JhXbh record);
-
-    int updateByPrimaryKey(JhXbh record);
 }
