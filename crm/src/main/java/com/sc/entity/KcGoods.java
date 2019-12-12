@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class KcGoods implements Serializable {
-    private String goodsId;
+    private Long goodsId;
 
     private String goodsName;
 
@@ -16,7 +16,7 @@ public class KcGoods implements Serializable {
 
     private String unit;
 
-    private String cangkuId;
+    private Long cangkuId;
 
     private String kcNum;
 
@@ -28,7 +28,7 @@ public class KcGoods implements Serializable {
 
     private String note;
 
-    private String companyId;
+    private Long companyId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModifyTime;
@@ -43,7 +43,7 @@ public class KcGoods implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    public KcGoods(String goodsId, String goodsName, String goodsKinds, String goodsSpecs, String unit, String cangkuId, String kcNum, String goodsCost, String goodsPrice, String goodsSellingPrice, String note, String companyId, Date lastModifyTime) {
+    public KcGoods(Long goodsId, String goodsName, String goodsKinds, String goodsSpecs, String unit, Long cangkuId, String kcNum, String goodsCost, String goodsPrice, String goodsSellingPrice, String note, Long companyId, Date lastModifyTime) {
         this.goodsId = goodsId;
         this.goodsName = goodsName;
         this.goodsKinds = goodsKinds;
@@ -63,12 +63,12 @@ public class KcGoods implements Serializable {
         super();
     }
 
-    public String getGoodsId() {
+    public Long getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId == null ? null : goodsId.trim();
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getGoodsName() {
@@ -103,12 +103,12 @@ public class KcGoods implements Serializable {
         this.unit = unit == null ? null : unit.trim();
     }
 
-    public String getCangkuId() {
+    public Long getCangkuId() {
         return cangkuId;
     }
 
-    public void setCangkuId(String cangkuId) {
-        this.cangkuId = cangkuId == null ? null : cangkuId.trim();
+    public void setCangkuId(Long cangkuId) {
+        this.cangkuId = cangkuId;
     }
 
     public String getKcNum() {
@@ -151,12 +151,12 @@ public class KcGoods implements Serializable {
         this.note = note == null ? null : note.trim();
     }
 
-    public String getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
     public Date getLastModifyTime() {

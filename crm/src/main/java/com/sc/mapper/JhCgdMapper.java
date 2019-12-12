@@ -10,7 +10,7 @@ public interface JhCgdMapper {
 
     int deleteByExample(JhCgdExample example);
 
-    int deleteByPrimaryKey(String cgdId);
+    int deleteByPrimaryKey(Long cgdId);
 
     int insert(JhCgd record);
 
@@ -18,7 +18,7 @@ public interface JhCgdMapper {
 
     List<JhCgd> selectByExample(JhCgdExample example);
 
-    JhCgd selectByPrimaryKey(String cgdId);
+    JhCgd selectByPrimaryKey(Long cgdId);
 
     int updateByExampleSelective(@Param("record") JhCgd record, @Param("example") JhCgdExample example);
 

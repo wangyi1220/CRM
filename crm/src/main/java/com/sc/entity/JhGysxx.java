@@ -7,7 +7,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class JhGysxx implements Serializable {
-    private String gysId;
+    private Long gysId;
 
     private String gysName;
 
@@ -39,7 +39,7 @@ public class JhGysxx implements Serializable {
 
     private String remark;
 
-    private String gsId;
+    private BigDecimal gsId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
@@ -54,7 +54,7 @@ public class JhGysxx implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    public JhGysxx(String gysId, String gysName, String gysJc, String lxr, BigDecimal gdPhone, Long ydPhone, String lxcz, String lxdz, Long lxyb, String mail, String khbank, String yhzh, String gszy, String isYx, String operator, String remark, String gsId, Date ltime) {
+    public JhGysxx(Long gysId, String gysName, String gysJc, String lxr, BigDecimal gdPhone, Long ydPhone, String lxcz, String lxdz, Long lxyb, String mail, String khbank, String yhzh, String gszy, String isYx, String operator, String remark, BigDecimal gsId, Date ltime) {
         this.gysId = gysId;
         this.gysName = gysName;
         this.gysJc = gysJc;
@@ -79,12 +79,12 @@ public class JhGysxx implements Serializable {
         super();
     }
 
-    public String getGysId() {
+    public Long getGysId() {
         return gysId;
     }
 
-    public void setGysId(String gysId) {
-        this.gysId = gysId == null ? null : gysId.trim();
+    public void setGysId(Long gysId) {
+        this.gysId = gysId;
     }
 
     public String getGysName() {
@@ -207,12 +207,12 @@ public class JhGysxx implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getGsId() {
+    public BigDecimal getGsId() {
         return gsId;
     }
 
-    public void setGsId(String gsId) {
-        this.gsId = gsId == null ? null : gsId.trim();
+    public void setGsId(BigDecimal gsId) {
+        this.gsId = gsId;
     }
 
     public Date getLtime() {
