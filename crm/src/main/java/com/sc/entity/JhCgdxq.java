@@ -3,14 +3,12 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class JhCgdxq implements Serializable {
-    private String cgXqId;
+    private Long cgXqId;
 
-    private String cgdId;
+    private Long cgdId;
 
-    private String cpId;
+    private Long cpId;
 
     private Long cpNumber;
 
@@ -20,21 +18,15 @@ public class JhCgdxq implements Serializable {
 
     private String remark;
 
-    private String gsId;
+    private Long gsId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    @Override
-	public String toString() {
-		return "JhCgdxq [cgXqId=" + cgXqId + ", cgdId=" + cgdId + ", cpId=" + cpId + ", cpNumber=" + cpNumber
-				+ ", isRk=" + isRk + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime="
-				+ ltime + "]";
-	}
+    private String isrk;
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    public JhCgdxq(String cgXqId, String cgdId, String cpId, Long cpNumber, String isRk, String operator, String remark, String gsId, Date ltime) {
+    public JhCgdxq(Long cgXqId, Long cgdId, Long cpId, Long cpNumber, String isRk, String operator, String remark, Long gsId, Date ltime, String isrk) {
         this.cgXqId = cgXqId;
         this.cgdId = cgdId;
         this.cpId = cpId;
@@ -44,34 +36,35 @@ public class JhCgdxq implements Serializable {
         this.remark = remark;
         this.gsId = gsId;
         this.ltime = ltime;
+        this.isrk = isrk;
     }
 
     public JhCgdxq() {
         super();
     }
 
-    public String getCgXqId() {
+    public Long getCgXqId() {
         return cgXqId;
     }
 
-    public void setCgXqId(String cgXqId) {
-        this.cgXqId = cgXqId == null ? null : cgXqId.trim();
+    public void setCgXqId(Long cgXqId) {
+        this.cgXqId = cgXqId;
     }
 
-    public String getCgdId() {
+    public Long getCgdId() {
         return cgdId;
     }
 
-    public void setCgdId(String cgdId) {
-        this.cgdId = cgdId == null ? null : cgdId.trim();
+    public void setCgdId(Long cgdId) {
+        this.cgdId = cgdId;
     }
 
-    public String getCpId() {
+    public Long getCpId() {
         return cpId;
     }
 
-    public void setCpId(String cpId) {
-        this.cpId = cpId == null ? null : cpId.trim();
+    public void setCpId(Long cpId) {
+        this.cpId = cpId;
     }
 
     public Long getCpNumber() {
@@ -106,12 +99,12 @@ public class JhCgdxq implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getGsId() {
+    public Long getGsId() {
         return gsId;
     }
 
-    public void setGsId(String gsId) {
-        this.gsId = gsId == null ? null : gsId.trim();
+    public void setGsId(Long gsId) {
+        this.gsId = gsId;
     }
 
     public Date getLtime() {
@@ -120,5 +113,13 @@ public class JhCgdxq implements Serializable {
 
     public void setLtime(Date ltime) {
         this.ltime = ltime;
+    }
+
+    public String getIsrk() {
+        return isrk;
+    }
+
+    public void setIsrk(String isrk) {
+        this.isrk = isrk == null ? null : isrk.trim();
     }
 }

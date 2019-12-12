@@ -10,7 +10,7 @@ public interface SaleSoutOrderMapper {
 
     int deleteByExample(SaleSoutOrderExample example);
 
-    int deleteByPrimaryKey(String sorderId);
+    int deleteByPrimaryKey(Long sorderId);
 
     int insert(SaleSoutOrder record);
 
@@ -18,7 +18,7 @@ public interface SaleSoutOrderMapper {
 
     List<SaleSoutOrder> selectByExample(SaleSoutOrderExample example);
 
-    SaleSoutOrder selectByPrimaryKey(String sorderId);
+    SaleSoutOrder selectByPrimaryKey(Long sorderId);
 
     int updateByExampleSelective(@Param("record") SaleSoutOrder record, @Param("example") SaleSoutOrderExample example);
 

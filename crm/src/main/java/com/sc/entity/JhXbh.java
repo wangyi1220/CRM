@@ -3,14 +3,11 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class JhXbh implements Serializable {
-    private String xbhId;
+    private Long id;
 
-    private String cpId;
+    private Long cpId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date jhTime;
 
     private String state;
@@ -19,21 +16,14 @@ public class JhXbh implements Serializable {
 
     private String remark;
 
-    private String gsId;
+    private Long gsId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    @Override
-	public String toString() {
-		return "JhXbh [xbhId=" + xbhId + ", cpId=" + cpId + ", jhTime=" + jhTime + ", state=" + state + ", operator="
-				+ operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime=" + ltime + "]";
-	}
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-    public JhXbh(String xbhId, String cpId, Date jhTime, String state, String operator, String remark, String gsId, Date ltime) {
-        this.xbhId = xbhId;
+    public JhXbh(Long id, Long cpId, Date jhTime, String state, String operator, String remark, Long gsId, Date ltime) {
+        this.id = id;
         this.cpId = cpId;
         this.jhTime = jhTime;
         this.state = state;
@@ -47,20 +37,20 @@ public class JhXbh implements Serializable {
         super();
     }
 
-    public String getXbhId() {
-        return xbhId;
+    public Long getId() {
+        return id;
     }
 
-    public void setXbhId(String xbhId) {
-        this.xbhId = xbhId == null ? null : xbhId.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getCpId() {
+    public Long getCpId() {
         return cpId;
     }
 
-    public void setCpId(String cpId) {
-        this.cpId = cpId == null ? null : cpId.trim();
+    public void setCpId(Long cpId) {
+        this.cpId = cpId;
     }
 
     public Date getJhTime() {
@@ -95,12 +85,12 @@ public class JhXbh implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getGsId() {
+    public Long getGsId() {
         return gsId;
     }
 
-    public void setGsId(String gsId) {
-        this.gsId = gsId == null ? null : gsId.trim();
+    public void setGsId(Long gsId) {
+        this.gsId = gsId;
     }
 
     public Date getLtime() {

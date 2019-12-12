@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class JhCgd implements Serializable {
-    private String cgdId;
+    private Long cgdId;
 
     private String cgTheme;
-    
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+
     private Date cgTime;
 
     private String gysId;
@@ -21,8 +18,7 @@ public class JhCgd implements Serializable {
     private String fkqk;
 
     private String cgJz;
-    
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+
     private Date jhtime;
 
     private String jhplace;
@@ -33,24 +29,15 @@ public class JhCgd implements Serializable {
 
     private String remark;
 
-    private String gsId;
-    
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Long gsId;
+
     private Date ltime;
 
-    @Override
-	public String toString() {
-		return "JhCgd [cgdId=" + cgdId + ", cgTheme=" + cgTheme + ", cgTime=" + cgTime + ", gysId=" + gysId
-				+ ", hkMoney=" + hkMoney + ", fkqk=" + fkqk + ", cgJz=" + cgJz + ", jhtime=" + jhtime + ", jhplace="
-				+ jhplace + ", jhway=" + jhway + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId
-				+ ", ltime=" + ltime + ", fphm=" + fphm + "]";
-	}
-
-	private String fphm;
+    private String fphm;
 
     private static final long serialVersionUID = 1L;
 
-    public JhCgd(String cgdId, String cgTheme, Date cgTime, String gysId, BigDecimal hkMoney, String fkqk, String cgJz, Date jhtime, String jhplace, String jhway, String operator, String remark, String gsId, Date ltime, String fphm) {
+    public JhCgd(Long cgdId, String cgTheme, Date cgTime, String gysId, BigDecimal hkMoney, String fkqk, String cgJz, Date jhtime, String jhplace, String jhway, String operator, String remark, Long gsId, Date ltime, String fphm) {
         this.cgdId = cgdId;
         this.cgTheme = cgTheme;
         this.cgTime = cgTime;
@@ -72,12 +59,12 @@ public class JhCgd implements Serializable {
         super();
     }
 
-    public String getCgdId() {
+    public Long getCgdId() {
         return cgdId;
     }
 
-    public void setCgdId(String cgdId) {
-        this.cgdId = cgdId == null ? null : cgdId.trim();
+    public void setCgdId(Long cgdId) {
+        this.cgdId = cgdId;
     }
 
     public String getCgTheme() {
@@ -168,12 +155,12 @@ public class JhCgd implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getGsId() {
+    public Long getGsId() {
         return gsId;
     }
 
-    public void setGsId(String gsId) {
-        this.gsId = gsId == null ? null : gsId.trim();
+    public void setGsId(Long gsId) {
+        this.gsId = gsId;
     }
 
     public Date getLtime() {

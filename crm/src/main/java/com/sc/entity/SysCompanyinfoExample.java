@@ -115,62 +115,52 @@ public class SysCompanyinfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPkEqualTo(String value) {
+        public Criteria andPkEqualTo(Long value) {
             addCriterion("PK =", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkNotEqualTo(String value) {
+        public Criteria andPkNotEqualTo(Long value) {
             addCriterion("PK <>", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkGreaterThan(String value) {
+        public Criteria andPkGreaterThan(Long value) {
             addCriterion("PK >", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkGreaterThanOrEqualTo(String value) {
+        public Criteria andPkGreaterThanOrEqualTo(Long value) {
             addCriterion("PK >=", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkLessThan(String value) {
+        public Criteria andPkLessThan(Long value) {
             addCriterion("PK <", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkLessThanOrEqualTo(String value) {
+        public Criteria andPkLessThanOrEqualTo(Long value) {
             addCriterion("PK <=", value, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkLike(String value) {
-            addCriterion("PK like", value, "pk");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkNotLike(String value) {
-            addCriterion("PK not like", value, "pk");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkIn(List<String> values) {
+        public Criteria andPkIn(List<Long> values) {
             addCriterion("PK in", values, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkNotIn(List<String> values) {
+        public Criteria andPkNotIn(List<Long> values) {
             addCriterion("PK not in", values, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkBetween(String value1, String value2) {
+        public Criteria andPkBetween(Long value1, Long value2) {
             addCriterion("PK between", value1, value2, "pk");
             return (Criteria) this;
         }
 
-        public Criteria andPkNotBetween(String value1, String value2) {
+        public Criteria andPkNotBetween(Long value1, Long value2) {
             addCriterion("PK not between", value1, value2, "pk");
             return (Criteria) this;
         }
