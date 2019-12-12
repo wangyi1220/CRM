@@ -19,6 +19,7 @@ public class OffMessServiceimpl implements OffMessService {
 	
 	@Override
 	public void add(OffMess m) {
+		
 		 this.offMessMapper.insert(m);
 
 	}

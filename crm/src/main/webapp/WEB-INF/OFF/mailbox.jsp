@@ -33,7 +33,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="ibox float-e-margins">
                     <div class="ibox-content mailbox-content">
                         <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="../offmessctrl/goadd.do">写信</a>
+                           <a class="btn btn-block btn-primary compose-mail" href="../offmessctrl/goadd.do">写信</a>
+                            
+                            
                             <div class="space-25"></div>
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
@@ -81,10 +83,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </h2>
                     <div class="mail-tools tooltip-demo m-t-md">
                         <div class="btn-group pull-right">
+                         <a href="../offmessctrl/listpage.do?pageNum=${p.prePage }">
                             <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
+                            </button></a>
+                            <a href="../offmessctrl/listpage.do?pageNum=${p.nextPage }"><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
                             </button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
-                            </button>
+                             </a>
 
                         </div>
                         <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="

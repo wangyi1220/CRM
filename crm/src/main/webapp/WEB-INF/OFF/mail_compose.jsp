@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="mail-body">
 
-                        <form class="form-horizontal" method="get">
+                        <form  action="../offmessctrl/add.do" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">发送到：</label>
 
@@ -89,10 +89,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">主题：</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="">
+                                    <input type="text" class="form-control" value=""  name="title">
                                 </div>
                             </div>
-                        </form>
+                        
 
                     </div>
 
@@ -104,18 +104,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             
 
                         </div>
+                        
+                        
                         <div class="clearfix"></div>
                     </div>
                     <div class="mail-body text-right tooltip-demo">
-                        <a href="mailbox.html" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> 发送</a>
+                        <a href="" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i><input  class="btn btn-sm btn-primary" type="submit" value="发送"></a>
                         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
                         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a>
+                        
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
     <script src="<%=basePath %>js/jquery.min.js?v=2.1.4"></script>
     <script src="<%=basePath %>js/bootstrap.min.js?v=3.3.5"></script>
     <script src="<%=basePath %>js/content.min.js?v=1.0.0"></script>
