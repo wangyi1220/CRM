@@ -10,7 +10,7 @@ public interface JhCgdxqMapper {
 
     int deleteByExample(JhCgdxqExample example);
 
-    int deleteByPrimaryKey(String cgXqId);
+    int deleteByPrimaryKey(Long cgXqId);
 
     int insert(JhCgdxq record);
 
@@ -18,7 +18,7 @@ public interface JhCgdxqMapper {
 
     List<JhCgdxq> selectByExample(JhCgdxqExample example);
 
-    JhCgdxq selectByPrimaryKey(String cgXqId);
+    JhCgdxq selectByPrimaryKey(Long cgXqId);
 
     int updateByExampleSelective(@Param("record") JhCgdxq record, @Param("example") JhCgdxqExample example);
 

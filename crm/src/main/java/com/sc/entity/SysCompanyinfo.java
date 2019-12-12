@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SysCompanyinfo implements Serializable {
-    private String pk;
+    private Long pk;
 
     private String companyName;
 
@@ -45,7 +45,7 @@ public class SysCompanyinfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    public SysCompanyinfo(String pk, String companyName, String companyCode, String email, String contacts, String companyAddress, String fixedphone, String mobilephone, String fax, String bankDeposit, String bankAccount, String effective, String beizhu, Date changDate) {
+    public SysCompanyinfo(Long pk, String companyName, String companyCode, String email, String contacts, String companyAddress, String fixedphone, String mobilephone, String fax, String bankDeposit, String bankAccount, String effective, String beizhu, Date changDate) {
         this.pk = pk;
         this.companyName = companyName;
         this.companyCode = companyCode;
@@ -66,12 +66,12 @@ public class SysCompanyinfo implements Serializable {
         super();
     }
 
-    public String getPk() {
+    public Long getPk() {
         return pk;
     }
 
-    public void setPk(String pk) {
-        this.pk = pk == null ? null : pk.trim();
+    public void setPk(Long pk) {
+        this.pk = pk;
     }
 
     public String getCompanyName() {
