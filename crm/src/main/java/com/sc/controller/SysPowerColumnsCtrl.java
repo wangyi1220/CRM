@@ -1,12 +1,28 @@
 package com.sc.controller;
 
+import java.sql.SQLException;
+import java.util.Date;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.github.pagehelper.PageInfo;
+import com.sc.entity.SysPowerColumns;
+import com.sc.service.SysPowerColumnsService;
+import com.sc.service.impl.SysPowerColumnsServiceImpl;
+
+import oracle.sql.DATE;
 
 @Controller
 @RequestMapping("/SysPowerColumnsCtrl")
 public class SysPowerColumnsCtrl {
+	
+	@Autowired
+	SysPowerColumnsService sysPowerColumnsService;
 	
 	@RequestMapping("/inAddPowerColumns.do")
 	public ModelAndView inAddPowerColumns(ModelAndView mav){
@@ -17,9 +33,25 @@ public class SysPowerColumnsCtrl {
 	}
 	
 	@RequestMapping("/addPowerColumns.do")
-	public ModelAndView addPowerColumns(ModelAndView mav){
+	public ModelAndView addPowerColumns(ModelAndView mav,SysPowerColumns spc) throws SQLException{
 		
+		System.out.println("名："+spc.getColumnsName());
+		System.out.println("注解："+spc.getRemarks());
+		Date date = new Date();
+		spc.setChangeDate(date);
+		this.sysPowerColumnsService.addSysPowerColumns(spc);
+		System.out.println("添加成功");
 		mav.setViewName("wangyi/addpowercolumns");
+		return mav;
+		
+	}
+	
+	@RequestMapping("/PowerinfoList.do")
+	public ModelAndView PowerinfoList(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="5")Integer pageSize){
+		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize));
+		mav.setViewName("wangyi/powerinfolist");
 		return mav;
 		
 	}
