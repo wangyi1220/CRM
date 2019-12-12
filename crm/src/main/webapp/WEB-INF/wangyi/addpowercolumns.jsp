@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="mail-body">
 
-                        <form class="form-horizontal" method="get" action="../SysPowerColumnsCtrl/addPowerColumns.do">
+                        <form target="_self" class="form-horizontal" method="get" action="../SysPowerColumnsCtrl/addPowerColumns.do">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">权限分栏名：</label>
 
@@ -63,9 +63,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
 
                    
-                    <div class="mail-body text-right tooltip-demo">
+                    <div class="mail-body text-right tooltip-demo J_menuItem">
                         <button  class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send">
-                        <i class="fa fa-reply"></i>提交</button>
+                        <i class="fa fa-reply "></i>提交</button>
                         
                     </div>
                     </form>
