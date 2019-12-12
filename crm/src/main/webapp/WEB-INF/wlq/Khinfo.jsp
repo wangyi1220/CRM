@@ -36,7 +36,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">
+                       <form action="SalekhinfoController/list.do" method="post" target="_self">
+                            <div class="input-group">
+                            <input type="text" placeholder="请输入客户名称" name="userName" class="input form-control">
+                            <span class="input-group-btn">
+                            <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                            </span>    
                         </div>
+                        </form>
+                        </div>
+                        <br>
+                         <a href="">
+                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         </a>
+                        <br>
+
+                        
                         <div class="ibox-content">
 
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
@@ -56,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${p}" var="info" >
+                                <c:forEach items="${p.list}" var="info" >
                                 <tr>
                                     <td>${info.userId}</td>
                                     <td>${info.userName}</td>
@@ -71,6 +86,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     
                                 </tr>
                                 </c:forEach>
+                                
+                                <tr>
+                                    <td style="text-align: center;" colspan="10">
+                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.firstPage }">首页</a>
+                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.prePage }">上一页</a>
+                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.nextPage }">下一页</a>
+                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.lastPage }">尾页</a>
+                                                                             当前${p.pageNum }/${p.pages }页，共${p.total }条
+                                     </td>
+                                </tr>
 
                                 </tbody>
                                 <tfoot>

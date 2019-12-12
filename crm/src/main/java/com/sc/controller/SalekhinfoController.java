@@ -21,17 +21,17 @@ public class SalekhinfoController {
 	@RequestMapping("/list.do")
 	public ModelAndView list(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="10")Integer pageSize){
+			@RequestParam(defaultValue="10")Integer pageSize,
+			SaleKhinfo s){
 		System.out.println("查询客户信息表");
 		
-		//查询list集合-分页     ${page.list}
-		mav.addObject("p", saleService.select(pageNum, pageSize));
+		//查询list集合-分页     ${p.list}
+		mav.addObject("p", saleService.select(pageNum, pageSize, s));
 		
 		mav.setViewName("wlq/Khinfo");
 		
 		return mav;
 	}
-	
 	
 
 }
