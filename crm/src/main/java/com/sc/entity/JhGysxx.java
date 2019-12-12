@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class JhGysxx implements Serializable {
     private Long gysId;
 
@@ -39,9 +41,18 @@ public class JhGysxx implements Serializable {
 
     private BigDecimal gsId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "JhGysxx [gysId=" + gysId + ", gysName=" + gysName + ", gysJc=" + gysJc + ", lxr=" + lxr + ", gdPhone="
+				+ gdPhone + ", ydPhone=" + ydPhone + ", lxcz=" + lxcz + ", lxdz=" + lxdz + ", lxyb=" + lxyb + ", mail="
+				+ mail + ", khbank=" + khbank + ", yhzh=" + yhzh + ", gszy=" + gszy + ", isYx=" + isYx + ", operator="
+				+ operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime=" + ltime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public JhGysxx(Long gysId, String gysName, String gysJc, String lxr, BigDecimal gdPhone, Long ydPhone, String lxcz, String lxdz, Long lxyb, String mail, String khbank, String yhzh, String gszy, String isYx, String operator, String remark, BigDecimal gsId, Date ltime) {
         this.gysId = gysId;
