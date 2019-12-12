@@ -3,11 +3,14 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class JhXbh implements Serializable {
     private Long id;
 
     private Long cpId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date jhTime;
 
     private String state;
@@ -18,9 +21,16 @@ public class JhXbh implements Serializable {
 
     private Long gsId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "JhXbh [id=" + id + ", cpId=" + cpId + ", jhTime=" + jhTime + ", state=" + state + ", operator="
+				+ operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime=" + ltime + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public JhXbh(Long id, Long cpId, Date jhTime, String state, String operator, String remark, Long gsId, Date ltime) {
         this.id = id;

@@ -3,6 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysCompanyinfo implements Serializable {
     private Long pk;
 
@@ -30,9 +32,18 @@ public class SysCompanyinfo implements Serializable {
 
     private String beizhu;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysCompanyinfo [pk=" + pk + ", companyName=" + companyName + ", companyCode=" + companyCode + ", email="
+				+ email + ", contacts=" + contacts + ", companyAddress=" + companyAddress + ", fixedphone=" + fixedphone
+				+ ", mobilephone=" + mobilephone + ", fax=" + fax + ", bankDeposit=" + bankDeposit + ", bankAccount="
+				+ bankAccount + ", effective=" + effective + ", beizhu=" + beizhu + ", changDate=" + changDate + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public SysCompanyinfo(Long pk, String companyName, String companyCode, String email, String contacts, String companyAddress, String fixedphone, String mobilephone, String fax, String bankDeposit, String bankAccount, String effective, String beizhu, Date changDate) {
         this.pk = pk;
