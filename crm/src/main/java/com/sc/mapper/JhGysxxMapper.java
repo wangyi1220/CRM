@@ -10,7 +10,7 @@ public interface JhGysxxMapper {
 
     int deleteByExample(JhGysxxExample example);
 
-    int deleteByPrimaryKey(String gysId);
+    int deleteByPrimaryKey(Long gysId);
 
     int insert(JhGysxx record);
 
@@ -18,7 +18,7 @@ public interface JhGysxxMapper {
 
     List<JhGysxx> selectByExample(JhGysxxExample example);
 
-    JhGysxx selectByPrimaryKey(String gysId);
+    JhGysxx selectByPrimaryKey(Long gysId);
 
     int updateByExampleSelective(@Param("record") JhGysxx record, @Param("example") JhGysxxExample example);
 

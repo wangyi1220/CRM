@@ -115,62 +115,52 @@ public class JhCgdxqExample {
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdEqualTo(String value) {
+        public Criteria andCgXqIdEqualTo(Long value) {
             addCriterion("CG_XQ_ID =", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdNotEqualTo(String value) {
+        public Criteria andCgXqIdNotEqualTo(Long value) {
             addCriterion("CG_XQ_ID <>", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdGreaterThan(String value) {
+        public Criteria andCgXqIdGreaterThan(Long value) {
             addCriterion("CG_XQ_ID >", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdGreaterThanOrEqualTo(String value) {
+        public Criteria andCgXqIdGreaterThanOrEqualTo(Long value) {
             addCriterion("CG_XQ_ID >=", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdLessThan(String value) {
+        public Criteria andCgXqIdLessThan(Long value) {
             addCriterion("CG_XQ_ID <", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdLessThanOrEqualTo(String value) {
+        public Criteria andCgXqIdLessThanOrEqualTo(Long value) {
             addCriterion("CG_XQ_ID <=", value, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdLike(String value) {
-            addCriterion("CG_XQ_ID like", value, "cgXqId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCgXqIdNotLike(String value) {
-            addCriterion("CG_XQ_ID not like", value, "cgXqId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCgXqIdIn(List<String> values) {
+        public Criteria andCgXqIdIn(List<Long> values) {
             addCriterion("CG_XQ_ID in", values, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdNotIn(List<String> values) {
+        public Criteria andCgXqIdNotIn(List<Long> values) {
             addCriterion("CG_XQ_ID not in", values, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdBetween(String value1, String value2) {
+        public Criteria andCgXqIdBetween(Long value1, Long value2) {
             addCriterion("CG_XQ_ID between", value1, value2, "cgXqId");
             return (Criteria) this;
         }
 
-        public Criteria andCgXqIdNotBetween(String value1, String value2) {
+        public Criteria andCgXqIdNotBetween(Long value1, Long value2) {
             addCriterion("CG_XQ_ID not between", value1, value2, "cgXqId");
             return (Criteria) this;
         }
@@ -185,62 +175,52 @@ public class JhCgdxqExample {
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdEqualTo(String value) {
+        public Criteria andCgdIdEqualTo(Long value) {
             addCriterion("CGD_ID =", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdNotEqualTo(String value) {
+        public Criteria andCgdIdNotEqualTo(Long value) {
             addCriterion("CGD_ID <>", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdGreaterThan(String value) {
+        public Criteria andCgdIdGreaterThan(Long value) {
             addCriterion("CGD_ID >", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdGreaterThanOrEqualTo(String value) {
+        public Criteria andCgdIdGreaterThanOrEqualTo(Long value) {
             addCriterion("CGD_ID >=", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdLessThan(String value) {
+        public Criteria andCgdIdLessThan(Long value) {
             addCriterion("CGD_ID <", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdLessThanOrEqualTo(String value) {
+        public Criteria andCgdIdLessThanOrEqualTo(Long value) {
             addCriterion("CGD_ID <=", value, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdLike(String value) {
-            addCriterion("CGD_ID like", value, "cgdId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCgdIdNotLike(String value) {
-            addCriterion("CGD_ID not like", value, "cgdId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCgdIdIn(List<String> values) {
+        public Criteria andCgdIdIn(List<Long> values) {
             addCriterion("CGD_ID in", values, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdNotIn(List<String> values) {
+        public Criteria andCgdIdNotIn(List<Long> values) {
             addCriterion("CGD_ID not in", values, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdBetween(String value1, String value2) {
+        public Criteria andCgdIdBetween(Long value1, Long value2) {
             addCriterion("CGD_ID between", value1, value2, "cgdId");
             return (Criteria) this;
         }
 
-        public Criteria andCgdIdNotBetween(String value1, String value2) {
+        public Criteria andCgdIdNotBetween(Long value1, Long value2) {
             addCriterion("CGD_ID not between", value1, value2, "cgdId");
             return (Criteria) this;
         }
@@ -255,62 +235,52 @@ public class JhCgdxqExample {
             return (Criteria) this;
         }
 
-        public Criteria andCpIdEqualTo(String value) {
+        public Criteria andCpIdEqualTo(Long value) {
             addCriterion("CP_ID =", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdNotEqualTo(String value) {
+        public Criteria andCpIdNotEqualTo(Long value) {
             addCriterion("CP_ID <>", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdGreaterThan(String value) {
+        public Criteria andCpIdGreaterThan(Long value) {
             addCriterion("CP_ID >", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdGreaterThanOrEqualTo(String value) {
+        public Criteria andCpIdGreaterThanOrEqualTo(Long value) {
             addCriterion("CP_ID >=", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdLessThan(String value) {
+        public Criteria andCpIdLessThan(Long value) {
             addCriterion("CP_ID <", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdLessThanOrEqualTo(String value) {
+        public Criteria andCpIdLessThanOrEqualTo(Long value) {
             addCriterion("CP_ID <=", value, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdLike(String value) {
-            addCriterion("CP_ID like", value, "cpId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCpIdNotLike(String value) {
-            addCriterion("CP_ID not like", value, "cpId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCpIdIn(List<String> values) {
+        public Criteria andCpIdIn(List<Long> values) {
             addCriterion("CP_ID in", values, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdNotIn(List<String> values) {
+        public Criteria andCpIdNotIn(List<Long> values) {
             addCriterion("CP_ID not in", values, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdBetween(String value1, String value2) {
+        public Criteria andCpIdBetween(Long value1, Long value2) {
             addCriterion("CP_ID between", value1, value2, "cpId");
             return (Criteria) this;
         }
 
-        public Criteria andCpIdNotBetween(String value1, String value2) {
+        public Criteria andCpIdNotBetween(Long value1, Long value2) {
             addCriterion("CP_ID not between", value1, value2, "cpId");
             return (Criteria) this;
         }
@@ -595,62 +565,52 @@ public class JhCgdxqExample {
             return (Criteria) this;
         }
 
-        public Criteria andGsIdEqualTo(String value) {
+        public Criteria andGsIdEqualTo(Long value) {
             addCriterion("GS_ID =", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotEqualTo(String value) {
+        public Criteria andGsIdNotEqualTo(Long value) {
             addCriterion("GS_ID <>", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdGreaterThan(String value) {
+        public Criteria andGsIdGreaterThan(Long value) {
             addCriterion("GS_ID >", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdGreaterThanOrEqualTo(String value) {
+        public Criteria andGsIdGreaterThanOrEqualTo(Long value) {
             addCriterion("GS_ID >=", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLessThan(String value) {
+        public Criteria andGsIdLessThan(Long value) {
             addCriterion("GS_ID <", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLessThanOrEqualTo(String value) {
+        public Criteria andGsIdLessThanOrEqualTo(Long value) {
             addCriterion("GS_ID <=", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLike(String value) {
-            addCriterion("GS_ID like", value, "gsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGsIdNotLike(String value) {
-            addCriterion("GS_ID not like", value, "gsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGsIdIn(List<String> values) {
+        public Criteria andGsIdIn(List<Long> values) {
             addCriterion("GS_ID in", values, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotIn(List<String> values) {
+        public Criteria andGsIdNotIn(List<Long> values) {
             addCriterion("GS_ID not in", values, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdBetween(String value1, String value2) {
+        public Criteria andGsIdBetween(Long value1, Long value2) {
             addCriterion("GS_ID between", value1, value2, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotBetween(String value1, String value2) {
+        public Criteria andGsIdNotBetween(Long value1, Long value2) {
             addCriterion("GS_ID not between", value1, value2, "gsId");
             return (Criteria) this;
         }
@@ -712,6 +672,76 @@ public class JhCgdxqExample {
 
         public Criteria andLtimeNotBetween(Date value1, Date value2) {
             addCriterion("LTIME not between", value1, value2, "ltime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkIsNull() {
+            addCriterion("ISRK is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkIsNotNull() {
+            addCriterion("ISRK is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkEqualTo(String value) {
+            addCriterion("ISRK =", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkNotEqualTo(String value) {
+            addCriterion("ISRK <>", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkGreaterThan(String value) {
+            addCriterion("ISRK >", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkGreaterThanOrEqualTo(String value) {
+            addCriterion("ISRK >=", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkLessThan(String value) {
+            addCriterion("ISRK <", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkLessThanOrEqualTo(String value) {
+            addCriterion("ISRK <=", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkLike(String value) {
+            addCriterion("ISRK like", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkNotLike(String value) {
+            addCriterion("ISRK not like", value, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkIn(List<String> values) {
+            addCriterion("ISRK in", values, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkNotIn(List<String> values) {
+            addCriterion("ISRK not in", values, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkBetween(String value1, String value2) {
+            addCriterion("ISRK between", value1, value2, "isrk");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsrkNotBetween(String value1, String value2) {
+            addCriterion("ISRK not between", value1, value2, "isrk");
             return (Criteria) this;
         }
     }

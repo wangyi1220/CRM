@@ -116,62 +116,52 @@ public class JhGysxxExample {
             return (Criteria) this;
         }
 
-        public Criteria andGysIdEqualTo(String value) {
+        public Criteria andGysIdEqualTo(Long value) {
             addCriterion("GYS_ID =", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdNotEqualTo(String value) {
+        public Criteria andGysIdNotEqualTo(Long value) {
             addCriterion("GYS_ID <>", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdGreaterThan(String value) {
+        public Criteria andGysIdGreaterThan(Long value) {
             addCriterion("GYS_ID >", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdGreaterThanOrEqualTo(String value) {
+        public Criteria andGysIdGreaterThanOrEqualTo(Long value) {
             addCriterion("GYS_ID >=", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdLessThan(String value) {
+        public Criteria andGysIdLessThan(Long value) {
             addCriterion("GYS_ID <", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdLessThanOrEqualTo(String value) {
+        public Criteria andGysIdLessThanOrEqualTo(Long value) {
             addCriterion("GYS_ID <=", value, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdLike(String value) {
-            addCriterion("GYS_ID like", value, "gysId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGysIdNotLike(String value) {
-            addCriterion("GYS_ID not like", value, "gysId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGysIdIn(List<String> values) {
+        public Criteria andGysIdIn(List<Long> values) {
             addCriterion("GYS_ID in", values, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdNotIn(List<String> values) {
+        public Criteria andGysIdNotIn(List<Long> values) {
             addCriterion("GYS_ID not in", values, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdBetween(String value1, String value2) {
+        public Criteria andGysIdBetween(Long value1, Long value2) {
             addCriterion("GYS_ID between", value1, value2, "gysId");
             return (Criteria) this;
         }
 
-        public Criteria andGysIdNotBetween(String value1, String value2) {
+        public Criteria andGysIdNotBetween(Long value1, Long value2) {
             addCriterion("GYS_ID not between", value1, value2, "gysId");
             return (Criteria) this;
         }
@@ -1206,62 +1196,52 @@ public class JhGysxxExample {
             return (Criteria) this;
         }
 
-        public Criteria andGsIdEqualTo(String value) {
+        public Criteria andGsIdEqualTo(BigDecimal value) {
             addCriterion("GS_ID =", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotEqualTo(String value) {
+        public Criteria andGsIdNotEqualTo(BigDecimal value) {
             addCriterion("GS_ID <>", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdGreaterThan(String value) {
+        public Criteria andGsIdGreaterThan(BigDecimal value) {
             addCriterion("GS_ID >", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdGreaterThanOrEqualTo(String value) {
+        public Criteria andGsIdGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("GS_ID >=", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLessThan(String value) {
+        public Criteria andGsIdLessThan(BigDecimal value) {
             addCriterion("GS_ID <", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLessThanOrEqualTo(String value) {
+        public Criteria andGsIdLessThanOrEqualTo(BigDecimal value) {
             addCriterion("GS_ID <=", value, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdLike(String value) {
-            addCriterion("GS_ID like", value, "gsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGsIdNotLike(String value) {
-            addCriterion("GS_ID not like", value, "gsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGsIdIn(List<String> values) {
+        public Criteria andGsIdIn(List<BigDecimal> values) {
             addCriterion("GS_ID in", values, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotIn(List<String> values) {
+        public Criteria andGsIdNotIn(List<BigDecimal> values) {
             addCriterion("GS_ID not in", values, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdBetween(String value1, String value2) {
+        public Criteria andGsIdBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("GS_ID between", value1, value2, "gsId");
             return (Criteria) this;
         }
 
-        public Criteria andGsIdNotBetween(String value1, String value2) {
+        public Criteria andGsIdNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("GS_ID not between", value1, value2, "gsId");
             return (Criteria) this;
         }

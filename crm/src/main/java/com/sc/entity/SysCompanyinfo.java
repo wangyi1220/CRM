@@ -3,10 +3,8 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class SysCompanyinfo implements Serializable {
-    private String pk;
+    private Long pk;
 
     private String companyName;
 
@@ -32,20 +30,11 @@ public class SysCompanyinfo implements Serializable {
 
     private String beizhu;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changDate;
 
-    @Override
-	public String toString() {
-		return "SysCompanyinfo [pk=" + pk + ", companyName=" + companyName + ", companyCode=" + companyCode + ", email="
-				+ email + ", contacts=" + contacts + ", companyAddress=" + companyAddress + ", fixedphone=" + fixedphone
-				+ ", mobilephone=" + mobilephone + ", fax=" + fax + ", bankDeposit=" + bankDeposit + ", bankAccount="
-				+ bankAccount + ", effective=" + effective + ", beizhu=" + beizhu + ", changDate=" + changDate + "]";
-	}
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-    public SysCompanyinfo(String pk, String companyName, String companyCode, String email, String contacts, String companyAddress, String fixedphone, String mobilephone, String fax, String bankDeposit, String bankAccount, String effective, String beizhu, Date changDate) {
+    public SysCompanyinfo(Long pk, String companyName, String companyCode, String email, String contacts, String companyAddress, String fixedphone, String mobilephone, String fax, String bankDeposit, String bankAccount, String effective, String beizhu, Date changDate) {
         this.pk = pk;
         this.companyName = companyName;
         this.companyCode = companyCode;
@@ -66,12 +55,12 @@ public class SysCompanyinfo implements Serializable {
         super();
     }
 
-    public String getPk() {
+    public Long getPk() {
         return pk;
     }
 
-    public void setPk(String pk) {
-        this.pk = pk == null ? null : pk.trim();
+    public void setPk(Long pk) {
+        this.pk = pk;
     }
 
     public String getCompanyName() {

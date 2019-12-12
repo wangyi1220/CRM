@@ -3,18 +3,16 @@ package com.sc.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class SaleSoutOrder implements Serializable {
-    private String sorderId;
+    private Long sorderId;
 
-    private String sorderDate;
+    private Date sorderDate;
 
     private String invoiceNum;
 
-    private String uid;
+    private Long uid;
 
-    private String cid;
+    private Long cid;
 
     private String samount;
 
@@ -26,22 +24,13 @@ public class SaleSoutOrder implements Serializable {
 
     private String note;
 
-    private String companyId;
+    private Long companyId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModifyTime;
 
-    @Override
-	public String toString() {
-		return "SaleSoutOrder [sorderId=" + sorderId + ", sorderDate=" + sorderDate + ", invoiceNum=" + invoiceNum
-				+ ", uid=" + uid + ", cid=" + cid + ", samount=" + samount + ", sstatus=" + sstatus + ", isRebate="
-				+ isRebate + ", orderStatus=" + orderStatus + ", note=" + note + ", companyId=" + companyId
-				+ ", lastModifyTime=" + lastModifyTime + "]";
-	}
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-    public SaleSoutOrder(String sorderId, String sorderDate, String invoiceNum, String uid, String cid, String samount, String sstatus, String isRebate, String orderStatus, String note, String companyId, Date lastModifyTime) {
+    public SaleSoutOrder(Long sorderId, Date sorderDate, String invoiceNum, Long uid, Long cid, String samount, String sstatus, String isRebate, String orderStatus, String note, Long companyId, Date lastModifyTime) {
         this.sorderId = sorderId;
         this.sorderDate = sorderDate;
         this.invoiceNum = invoiceNum;
@@ -60,20 +49,20 @@ public class SaleSoutOrder implements Serializable {
         super();
     }
 
-    public String getSorderId() {
+    public Long getSorderId() {
         return sorderId;
     }
 
-    public void setSorderId(String sorderId) {
-        this.sorderId = sorderId == null ? null : sorderId.trim();
+    public void setSorderId(Long sorderId) {
+        this.sorderId = sorderId;
     }
 
-    public String getSorderDate() {
+    public Date getSorderDate() {
         return sorderDate;
     }
 
-    public void setSorderDate(String sorderDate) {
-        this.sorderDate = sorderDate == null ? null : sorderDate.trim();
+    public void setSorderDate(Date sorderDate) {
+        this.sorderDate = sorderDate;
     }
 
     public String getInvoiceNum() {
@@ -84,20 +73,20 @@ public class SaleSoutOrder implements Serializable {
         this.invoiceNum = invoiceNum == null ? null : invoiceNum.trim();
     }
 
-    public String getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
-    public String getCid() {
+    public Long getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
-        this.cid = cid == null ? null : cid.trim();
+    public void setCid(Long cid) {
+        this.cid = cid;
     }
 
     public String getSamount() {
@@ -140,12 +129,12 @@ public class SaleSoutOrder implements Serializable {
         this.note = note == null ? null : note.trim();
     }
 
-    public String getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
     public Date getLastModifyTime() {
