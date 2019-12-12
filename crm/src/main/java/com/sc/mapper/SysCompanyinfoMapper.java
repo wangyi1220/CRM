@@ -10,7 +10,7 @@ public interface SysCompanyinfoMapper {
 
     int deleteByExample(SysCompanyinfoExample example);
 
-    int deleteByPrimaryKey(String pk);
+    int deleteByPrimaryKey(Long pk);
 
     int insert(SysCompanyinfo record);
 
@@ -18,7 +18,7 @@ public interface SysCompanyinfoMapper {
 
     List<SysCompanyinfo> selectByExample(SysCompanyinfoExample example);
 
-    SysCompanyinfo selectByPrimaryKey(String pk);
+    SysCompanyinfo selectByPrimaryKey(Long pk);
 
     int updateByExampleSelective(@Param("record") SysCompanyinfo record, @Param("example") SysCompanyinfoExample example);
 

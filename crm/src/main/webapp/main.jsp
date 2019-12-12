@@ -69,11 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">基本表单</a>
                             </li>
-                            
                             <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
+                                <a href="#">权限管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
                                     </li>
                                 </ul>
                             </li>
@@ -103,9 +102,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             
                             <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
+                                <a href="#">客户管理 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    <li><a class="J_menuItem" href="SalekhinfoController/list.do">客户信息</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SalekhlossController/list.do">客户流失</a>
                                     </li>
                                 </ul>
                             </li>
