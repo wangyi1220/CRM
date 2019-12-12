@@ -17,7 +17,7 @@ public class SysPostServiceImpl implements SysPostService {
 	SysPostMapper sysPostMapper;
 	@Override
 	public PageInfo<SysPost> select(Integer pageNum, Integer pageSize) {
-PageHelper.startPage(pageNum, pageSize);
+         PageHelper.startPage(pageNum, pageSize);
 		
 		List<SysPost> list = sysPostMapper.selectByExample(null);
 		
