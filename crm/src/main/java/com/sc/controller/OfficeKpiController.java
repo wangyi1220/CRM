@@ -75,5 +75,7 @@ public class OfficeKpiController {
 			mav.setViewName("show");// 路径是：/WEB-INF/show.jsp
 			return mav;
 		}
-	 //@RequestMapping("/add.do")
+	 //@RequestMapping("/delete.do")
+	 
+	 
 }
