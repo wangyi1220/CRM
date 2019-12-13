@@ -29,4 +29,13 @@ public class SysUsersServiceImpl implements SysUsersService {
 		return pageInfo;
 	}
 
+	@Override
+	public void update(SysUsers s) {
+		if (s != null && s.getUsersId()!= null) {
+			
+			this.sysUsersMapper.updateByPrimaryKey(s);
+		
+	}
+
+}
 }

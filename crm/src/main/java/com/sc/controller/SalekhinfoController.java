@@ -21,17 +21,15 @@ public class SalekhinfoController {
 	@RequestMapping("/list.do")
 	public ModelAndView list(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="10")Integer pageSize){
-		System.out.println("²éÑ¯¿Í»§ĞÅÏ¢±í");
+			@RequestParam(defaultValue="10")Integer pageSize,
+			SaleKhinfo s){
+		System.out.println("æŸ¥è¯¢å®¢æˆ·ä¿¡æ¯è¡¨");
 		
-		//²éÑ¯list¼¯ºÏ-·ÖÒ³     ${page.list}
-		mav.addObject("p", saleService.select(pageNum, pageSize));
-		
+		//æŸ¥è¯¢listé›†åˆ-åˆ†é¡µ     ${p.list}
+		mav.addObject("p", saleService.select(pageNum, pageSize, s));
 		mav.setViewName("wlq/Khinfo");
 		
 		return mav;
 	}
-	
-	
 
 }
