@@ -6,14 +6,14 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class KcCangku implements Serializable {
-    private String cangkuId;
+    private String cangkuId;//仓库编号
 
-    private String cangkuName;
+    private String cangkuName;//仓库名字
 
-    private String cangkuNote;
+    private String cangkuNote;//备注信息
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date cangkuLastModifyTime;
+    private Date cangkuLastModifyTime;//最后修改时间
 
     @Override
 	public String toString() {
