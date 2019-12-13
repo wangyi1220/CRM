@@ -23,15 +23,13 @@ public class SalekhinfoController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="10")Integer pageSize,
 			SaleKhinfo s){
-		System.out.println("²éÑ¯¿Í»§ĞÅÏ¢±í");
+		System.out.println("æŸ¥è¯¢å®¢æˆ·ä¿¡æ¯è¡¨");
 		
-		//²éÑ¯list¼¯ºÏ-·ÖÒ³     ${p.list}
+		//æŸ¥è¯¢listé›†åˆ-åˆ†é¡µ     ${p.list}
 		mav.addObject("p", saleService.select(pageNum, pageSize, s));
-		
 		mav.setViewName("wlq/Khinfo");
 		
 		return mav;
 	}
-	
 
 }

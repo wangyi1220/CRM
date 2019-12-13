@@ -6,7 +6,9 @@ import com.sc.entity.SaleKhinfo;
 
 public interface SaleService{
 	
-	//∑÷“≥≤È—Ø
+
+	public PageInfo<SaleKhinfo> select(Integer pageNum,Integer pageSize);
+
 	public PageInfo<SaleKhinfo> select(Integer pageNum,Integer pageSize,SaleKhinfo s);
 	
 }

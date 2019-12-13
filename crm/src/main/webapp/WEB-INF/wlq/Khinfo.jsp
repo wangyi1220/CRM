@@ -51,7 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          </a>
                         <br>
 
-                        
                         <div class="ibox-content">
 
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
@@ -71,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 <c:forEach items="${p.list}" var="info" >
                                 <tr>
                                     <td>${info.userId}</td>
