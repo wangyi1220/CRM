@@ -15,10 +15,11 @@ public interface JhGysxxService {
 		//修改
 		public void update(JhGysxx gys);
 		//删除
-		public void delete(String gysId);
+		public void delete(Long gysId);
 		//获取对象
-		public JhGysxx get(String gysId);
+		public JhGysxx get(Long gysId);
 		//分页查询
 		public PageInfo<JhGysxx> selectpage(Integer pageNum,Integer pageSize);
-
+		//搜索框模糊查询
+		public List<JhGysxx> searchByName(String textData);
 }

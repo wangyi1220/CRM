@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.JhGysxx;
+import com.sc.entity.JhGysxxExample;
+import com.sc.entity.JhGysxxExample.Criteria;
 import com.sc.mapper.JhGysxxMapper;
 import com.sc.service.JhGysxxService;
 
@@ -38,13 +40,13 @@ JhGysxxMapper jhGysxxMapper;
 	}
 
 	@Override
-	public void delete(String gysId) {
+	public void delete(Long gysId) {
 		// TODO Auto-generated method stub
 		jhGysxxMapper.deleteByPrimaryKey(gysId);
 	}
 
 	@Override
-	public JhGysxx get(String gysId) {
+	public JhGysxx get(Long gysId) {
 		// TODO Auto-generated method stub
 		return jhGysxxMapper.selectByPrimaryKey(gysId);
 	}
@@ -53,7 +55,9 @@ JhGysxxMapper jhGysxxMapper;
 	@Override
 	public PageInfo<JhGysxx> selectpage(Integer pageNum, Integer pageSize) {
 
+		
 		PageHelper.startPage(pageNum, pageSize);
+		
 
 		List<JhGysxx> list = this.jhGysxxMapper.selectByExample(null);
 
@@ -61,6 +65,18 @@ JhGysxxMapper jhGysxxMapper;
 		
 		return page;
 	}
+	
+	@Override
+	public List<JhGysxx> searchByName(String textData) {
+		         JhGysxxExample e = new JhGysxxExample();
+		        Criteria c = e.createCriteria();
+		       c.andGysNameEqualTo(textData+"%");
+		        List<JhGysxx> list = jhGysxxMapper.selectByExample(e);
+		return list;
+
+	}
+
+
 
 
 }
