@@ -2,6 +2,7 @@ package com.sc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,10 +16,21 @@ public class SysPowerColumns implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
+
+	private List<SysPowerinfo> sysPowerinfoes;
+    
     @Override
 	public String toString() {
 		return "SysPowerColumns [columnsId=" + columnsId + ", columnsName=" + columnsName + ", remarks=" + remarks
 				+ ", changeDate=" + changeDate + "]";
+	}
+
+	public List<SysPowerinfo> getSysPowerinfoes() {
+		return sysPowerinfoes;
+	}
+
+	public void setSysPowerinfoes(List<SysPowerinfo> sysPowerinfoes) {
+		this.sysPowerinfoes = sysPowerinfoes;
 	}
 
 	private static final long serialVersionUID = 1L;

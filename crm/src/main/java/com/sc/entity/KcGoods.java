@@ -6,32 +6,32 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class KcGoods implements Serializable {
-    private Long goodsId;
+    private Long goodsId;//商品编号
 
-    private String goodsName;
+    private String goodsName;//商品名称
 
-    private String goodsKinds;
+    private String goodsKinds;//商品类别
 
-    private String goodsSpecs;
+    private String goodsSpecs;//规格说明
 
-    private String unit;
+    private String unit;//单位
 
-    private Long cangkuId;
+    private Long cangkuId;//仓库编号
 
-    private String kcNum;
+    private String kcNum;//库存数量
 
-    private String goodsCost;
+    private String goodsCost;//成本价
 
-    private String goodsPrice;
+    private String goodsPrice;//零售价
 
-    private String goodsSellingPrice;
+    private String goodsSellingPrice;//经销价
 
-    private String note;
+    private String note;//备注信息
 
-    private Long companyId;
+    private Long companyId;//公司编号
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date lastModifyTime;
+    private Date lastModifyTime;//最后修改时间
 
     @Override
 	public String toString() {
