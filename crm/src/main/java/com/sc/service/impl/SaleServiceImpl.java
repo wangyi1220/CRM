@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SaleKhinfo;
+import com.sc.entity.SysUsers;
 import com.sc.entity.SaleKhinfoExample;
 import com.sc.entity.SysUsers;
-import com.sc.entity.SaleKhinfoExample.Criteria;
+import com.sc.entity.SaleKhinfoExample.Criteria
 import com.sc.mapper.SaleKhinfoMapper;
 import com.sc.service.SaleService;
 
@@ -42,6 +43,5 @@ public class SaleServiceImpl implements SaleService {
 		return null;
 		
 	}
-	
 
 }

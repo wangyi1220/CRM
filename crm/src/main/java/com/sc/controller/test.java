@@ -24,10 +24,10 @@ public class test {
 		for (SysUsers sysUsers : list) {
 			System.out.println(sysUsers.getUsersName()+":"+sysUsers.getUsersPassword());
 		}
-		SysUsers su=new SysUsers();
-		su.setUsersName("chengan");
-		su.setUsersPassword("123456");
-		sysUsersMapper.insert(su);
+//		SysUsers su=new SysUsers();
+//		su.setUsersName("chengan");
+//		su.setUsersPassword("123456");
+//		sysUsersMapper.insert(su);
 	}
 	
 }
