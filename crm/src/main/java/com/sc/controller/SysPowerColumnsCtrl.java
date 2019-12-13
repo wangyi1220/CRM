@@ -49,7 +49,7 @@ public class SysPowerColumnsCtrl {
 	@RequestMapping("/PowerinfoList.do")
 	public ModelAndView PowerinfoList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="5")Integer pageSize){
+			@RequestParam(defaultValue="100")Integer pageSize){
 		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize));
 		mav.setViewName("wangyi/powerinfolist");
 		return mav;

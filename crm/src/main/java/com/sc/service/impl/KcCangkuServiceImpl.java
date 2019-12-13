@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.KcCangku;
+import com.sc.entity.KcCangkuExample;
+import com.sc.entity.SaleKhinfoExample.Criteria;
 import com.sc.mapper.KcCangkuMapper;
 import com.sc.service.KcCangkuService;
 @Service
@@ -17,12 +19,19 @@ public class KcCangkuServiceImpl implements KcCangkuService {
 	@Autowired
 	KcCangkuMapper kcCangkuMapper;
 
+	
+
 	@Override
-	public PageInfo<KcCangku> select(Integer pageNum, Integer pageSize) {
+	public PageInfo<KcCangku> select(Integer pageNum, Integer pageSize, KcCangku kcck) {
+		
 		PageHelper.startPage(pageNum, pageSize);
-		List<KcCangku> list = kcCangkuMapper.selectByExample(null);//È«²é
-		PageInfo<KcCangku> pageInfo = new PageInfo<KcCangku>(list);
-		return pageInfo;
+		KcCangkuExample example = new KcCangkuExample();
+		//Criteria c = example.createCriteria();
+		//c.andUserNameLike("%"+kcck.getCangkuName()+"%");
+		return null;
+		
+		
+		
 	}
 	
 
