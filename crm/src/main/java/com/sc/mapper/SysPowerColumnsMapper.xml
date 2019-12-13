@@ -196,4 +196,18 @@
       CHANGE_DATE = #{changeDate,jdbcType=TIMESTAMP}
     where COLUMNS_ID = #{columnsId,jdbcType=DECIMAL}
   </update>
+  
+  <resultMap type="com.sc.entity.SysPowerColumns" id="SysPowerColumnsMap" autoMapping="true">
+  	<id column="COLUMNS_ID" property="columnsId"/>
+  	
+  	<collection property="sysPowerinfoes" ofType="com.sc.entity.SysPowerinfo" autoMapping="true">
+  		<id column="POWER_ID" property="powerId"/>
+  	</collection>
+  </resultMap>
+  
+  <select id="selectPowerinfo" resultMap="SysPowerColumnsMap">
+  	select * from SYS_POWERCOLUMNS spc 
+  	LEFT JOIN SYS_POWERINFO spi on SPC.COLUMNS_ID=SPI.POWER_COLUMNS_ID
+  </select>
+  
 </mapper>
