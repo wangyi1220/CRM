@@ -15,8 +15,18 @@ public class SysPowerinfo implements Serializable {
     private String powerColumnsId;
 
     private String remarks;
+    
+    private String isHasPower;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    public String getIsHasPower() {
+		return isHasPower;
+	}
+
+	public void setIsHasPower(String isHasPower) {
+		this.isHasPower = isHasPower;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
     @Override

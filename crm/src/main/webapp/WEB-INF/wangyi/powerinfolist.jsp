@@ -73,7 +73,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox-content" style="height: 150px">
                         <ul class="unstyled">
                           <c:forEach items="${pc.sysPowerinfoes}" var="pi">
-                            <li>${pi.powerName }</li>
+                            	<li>
+                            		<input id="checkbox2" type="checkbox" ${pi.isHasPower=='1' ? "checked":"" }>
+                            		${pi.powerName }
+                            	</li>
+                            
                           </c:forEach>
                         </ul>
                     </div>

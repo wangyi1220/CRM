@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysPowerColumns;
 import com.sc.service.SysPowerColumnsService;
+import com.sc.service.SysUsersService;
 import com.sc.service.impl.SysPowerColumnsServiceImpl;
 
 import oracle.sql.DATE;
@@ -23,6 +24,9 @@ public class SysPowerColumnsCtrl {
 	
 	@Autowired
 	SysPowerColumnsService sysPowerColumnsService;
+	
+	@Autowired
+	SysUsersService sysUsersService;
 	
 	@RequestMapping("/inAddPowerColumns.do")
 	public ModelAndView inAddPowerColumns(ModelAndView mav){
