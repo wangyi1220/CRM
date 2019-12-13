@@ -20,7 +20,7 @@ public class SaleServiceImpl implements SaleService {
     SaleKhinfoMapper saleKhinfoMapper ;
 	@Override
 	public PageInfo<SaleKhinfo> select(Integer pageNum,Integer pageSize, SaleKhinfo s) {
-		// TODO Auto-generated method stub
+		
 		PageHelper.startPage(pageNum, pageSize);
 		SaleKhinfoExample example = new SaleKhinfoExample();
 		Criteria c = example.createCriteria();
