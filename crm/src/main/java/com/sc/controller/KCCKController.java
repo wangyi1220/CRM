@@ -25,7 +25,7 @@ public class KCCKController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="3")Integer pageSize){
 		
-		mav.addObject("p", kcCangkuService.select(pageNum, pageSize));
+		mav.addObject("p", kcCangkuService.select(pageNum, pageSize,null));
 		//跳转到库存仓库信息表页面
 		mav.setViewName("yjs/selectKCCKPage");
 		
