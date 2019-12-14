@@ -6,7 +6,7 @@
       <idArg column="POWER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
       <arg column="POWER_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="POWER_URL" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="POWER_COLUMNS_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="POWER_COLUMNS_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
       <arg column="REMARKS" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="CHANGE_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="POWER_CODE" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -109,7 +109,7 @@
       POWER_COLUMNS_ID, REMARKS, CHANGE_DATE, 
       POWER_CODE)
     values (#{powerId,jdbcType=DECIMAL}, #{powerName,jdbcType=VARCHAR}, #{powerUrl,jdbcType=VARCHAR}, 
-      #{powerColumnsId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{changeDate,jdbcType=TIMESTAMP}, 
+      #{powerColumnsId,jdbcType=DECIMAL}, #{remarks,jdbcType=VARCHAR}, #{changeDate,jdbcType=TIMESTAMP}, 
       #{powerCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.entity.SysPowerinfo" >
@@ -148,7 +148,7 @@
         #{powerUrl,jdbcType=VARCHAR},
       </if>
       <if test="powerColumnsId != null" >
-        #{powerColumnsId,jdbcType=VARCHAR},
+        #{powerColumnsId,jdbcType=DECIMAL},
       </if>
       <if test="remarks != null" >
         #{remarks,jdbcType=VARCHAR},
@@ -180,7 +180,7 @@
         POWER_URL = #{record.powerUrl,jdbcType=VARCHAR},
       </if>
       <if test="record.powerColumnsId != null" >
-        POWER_COLUMNS_ID = #{record.powerColumnsId,jdbcType=VARCHAR},
+        POWER_COLUMNS_ID = #{record.powerColumnsId,jdbcType=DECIMAL},
       </if>
       <if test="record.remarks != null" >
         REMARKS = #{record.remarks,jdbcType=VARCHAR},
@@ -201,7 +201,7 @@
     set POWER_ID = #{record.powerId,jdbcType=DECIMAL},
       POWER_NAME = #{record.powerName,jdbcType=VARCHAR},
       POWER_URL = #{record.powerUrl,jdbcType=VARCHAR},
-      POWER_COLUMNS_ID = #{record.powerColumnsId,jdbcType=VARCHAR},
+      POWER_COLUMNS_ID = #{record.powerColumnsId,jdbcType=DECIMAL},
       REMARKS = #{record.remarks,jdbcType=VARCHAR},
       CHANGE_DATE = #{record.changeDate,jdbcType=TIMESTAMP},
       POWER_CODE = #{record.powerCode,jdbcType=VARCHAR}
@@ -219,7 +219,7 @@
         POWER_URL = #{powerUrl,jdbcType=VARCHAR},
       </if>
       <if test="powerColumnsId != null" >
-        POWER_COLUMNS_ID = #{powerColumnsId,jdbcType=VARCHAR},
+        POWER_COLUMNS_ID = #{powerColumnsId,jdbcType=DECIMAL},
       </if>
       <if test="remarks != null" >
         REMARKS = #{remarks,jdbcType=VARCHAR},
@@ -237,7 +237,7 @@
     update SYS_POWERINFO
     set POWER_NAME = #{powerName,jdbcType=VARCHAR},
       POWER_URL = #{powerUrl,jdbcType=VARCHAR},
-      POWER_COLUMNS_ID = #{powerColumnsId,jdbcType=VARCHAR},
+      POWER_COLUMNS_ID = #{powerColumnsId,jdbcType=DECIMAL},
       REMARKS = #{remarks,jdbcType=VARCHAR},
       CHANGE_DATE = #{changeDate,jdbcType=TIMESTAMP},
       POWER_CODE = #{powerCode,jdbcType=VARCHAR}

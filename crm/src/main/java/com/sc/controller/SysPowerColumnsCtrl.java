@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysPowerColumns;
+import com.sc.entity.SysUsers;
 import com.sc.service.SysPowerColumnsService;
+import com.sc.service.SysUsersService;
 import com.sc.service.impl.SysPowerColumnsServiceImpl;
 
 import oracle.sql.DATE;
@@ -23,6 +25,9 @@ public class SysPowerColumnsCtrl {
 	
 	@Autowired
 	SysPowerColumnsService sysPowerColumnsService;
+	
+	@Autowired
+	SysUsersService sysUsersService;
 	
 	@RequestMapping("/inAddPowerColumns.do")
 	public ModelAndView inAddPowerColumns(ModelAndView mav){
@@ -50,7 +55,9 @@ public class SysPowerColumnsCtrl {
 	public ModelAndView PowerinfoList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="100")Integer pageSize){
-		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize));
+		SysUsers sysUsers = new SysUsers();
+		sysUsers.setUsersId(61L);
+		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize,sysUsers));
 		mav.setViewName("wangyi/powerinfolist");
 		return mav;
 		
