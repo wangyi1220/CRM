@@ -7,18 +7,20 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.SaleKhcontacts;
 import com.sc.entity.SaleKhinfo;
-import com.sc.entity.SysUsers;
 import com.sc.entity.SaleKhinfoExample;
-import com.sc.entity.SysUsers;
 import com.sc.entity.SaleKhinfoExample.Criteria;
+import com.sc.mapper.SaleKhcontactsMapper;
 import com.sc.mapper.SaleKhinfoMapper;
 import com.sc.service.SaleService;
 
 @Service
 public class SaleServiceImpl implements SaleService {
     @Autowired
-    SaleKhinfoMapper saleKhinfoMapper ;
+    SaleKhinfoMapper saleKhinfoMapper;
+   
+    
 	@Override
 	public PageInfo<SaleKhinfo> select(Integer pageNum,Integer pageSize, SaleKhinfo s) {
 		// TODO Auto-generated method stub
@@ -44,10 +46,19 @@ public class SaleServiceImpl implements SaleService {
 		
 	}
 	
+	@Autowired
+	    SaleKhcontactsMapper saleKhcontactsMapper;
 	@Override
-	public PageInfo<SaleKhinfo> select(Integer pageNum, Integer pageSize) {
+	public PageInfo<SaleKhcontacts> lxselect(Integer pageNum, Integer pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		//设置分页数据，开始分页
+		PageHelper.startPage(pageNum, pageSize);
+		//查询当前页的集合数据
+		List<SaleKhcontacts> list = this.saleKhcontactsMapper.selectByExample(null);
+		//封装成pageinfo对象
+		PageInfo<SaleKhcontacts> page1=new PageInfo<SaleKhcontacts>(list);
+		
+		return page1;
 	}
 
 }
