@@ -2,6 +2,7 @@ package com.sc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,8 +18,18 @@ public class SysUsers implements Serializable {
     private Long companyId;
 
     private String usersState;
+    
+    private List<SysPowerinfo> SysPowerinfoes;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    public List<SysPowerinfo> getSysPowerinfoes() {
+		return SysPowerinfoes;
+	}
+
+	public void setSysPowerinfoes(List<SysPowerinfo> sysPowerinfoes) {
+		SysPowerinfoes = sysPowerinfoes;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
     @Override

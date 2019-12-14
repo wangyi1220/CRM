@@ -11,7 +11,7 @@ import com.sc.entity.SaleKhinfo;
 import com.sc.entity.SysUsers;
 import com.sc.entity.SaleKhinfoExample;
 import com.sc.entity.SysUsers;
-import com.sc.entity.SaleKhinfoExample.Criteria
+import com.sc.entity.SaleKhinfoExample.Criteria;
 import com.sc.mapper.SaleKhinfoMapper;
 import com.sc.service.SaleService;
 
@@ -42,6 +42,12 @@ public class SaleServiceImpl implements SaleService {
 		
 		return null;
 		
+	}
+	
+	@Override
+	public PageInfo<SaleKhinfo> select(Integer pageNum, Integer pageSize) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

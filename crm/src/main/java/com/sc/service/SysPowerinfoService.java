@@ -9,5 +9,7 @@ public interface SysPowerinfoService {
 
 	public PageInfo<SysPowerinfo> selectList(Integer pageNum,Integer pageSize);
 	
+	public void addPower(SysPowerinfo spi);
+	
 	
 }

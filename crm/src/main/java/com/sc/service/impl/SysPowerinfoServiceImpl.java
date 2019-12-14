@@ -27,5 +27,14 @@ public class SysPowerinfoServiceImpl implements SysPowerinfoService {
 		
 		return null;
 	}
+	
+	//添加基本权限
+	@Override
+	public void addPower(SysPowerinfo spi) {
+		if(spi!=null){
+			this.sysPowerinfoMapper.insert(spi);
+		}
+		
+	}
 
 }

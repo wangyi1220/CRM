@@ -60,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li><a href="login.html">安全退出</a>
                                 </li>
                             </ul>
+                   
                         </div>
                         <div class="logo-element">H+
                         </div>
@@ -74,11 +75,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <ul class="nav nav-third-level">
                                     <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
                                     </li>
+                                    <li><a class="J_menuItem" href="SysPowerinfoCtrl/goaddPower.do">添加基本权限</a>
+                                    </li>
                                     <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                        </ul>
+                    </li>
+                    <li>  
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">用户表单</a>

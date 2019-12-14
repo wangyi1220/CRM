@@ -38,4 +38,15 @@ public class SysUsersServiceImpl implements SysUsersService {
 	}
 
 }
+
+	@Override
+	public SysUsers selectPower() {
+		
+		
+			SysUsers sysUsers = new SysUsers();
+			sysUsers.setUsersId(61L);
+			SysUsers users = this.sysUsersMapper.selectPower(sysUsers);
+			return users;
+		
+	}
 }
