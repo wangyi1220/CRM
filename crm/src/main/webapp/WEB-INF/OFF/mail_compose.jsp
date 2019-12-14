@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </li>
                             </ul>
                       
-                            <div class="clearfix"></div>
+                            
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="放弃"><i class="fa fa-times"></i> 放弃</a>
                     </div>
                     <h2>
-                    写信
+                    	写信
                 </h2>
                 </div>
                 <div class="mail-box">
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">发送到：</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="i@zi-han.net">
+                                    <input type="text" class="form-control" value="">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -92,29 +92,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <input type="text" class="form-control" value=""  name="title">
                                 </div>
                             </div>
-                        
-
+            
                     </div>
 
+		<!-- 模板自带 消息发送框样式
                     <div class="mail-text h-200">
-
                         <div class="summernote">
                             <p>在此输入内容</p>
-                            
-                            
-
                         </div>
-                        
-                        
-                        <div class="clearfix"></div>
-                    </div>
+                    </div>-->
+                    <div style="padding-left: 100px ">
+                   <textarea rows="10" cols="120"  name="content"></textarea>
+                  </div>
+              
+                    
                     <div class="mail-body text-right tooltip-demo">
-                        <a href="" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i><input  class="btn btn-sm btn-primary" type="submit" value="发送"></a>
+                        <input  class="btn btn-sm btn-primary" type="submit" value="发送">
                         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
                         <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a>
-                        
                     </div>
-                    <div class="clearfix"></div>
+                    
                 </div>
             </div>
         </div>

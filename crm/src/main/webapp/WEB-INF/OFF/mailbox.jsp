@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -40,11 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-inbox "></i> 收件箱 <span class="label label-warning pull-right">16</span>
-                                    </a>
+                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 收件箱</a>
                                 </li>
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 发信</a>
+                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
                                 <li>
                                     <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
@@ -110,13 +110,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <td class="check-mail">
                                     <input type="checkbox" class="i-checks">
                                 </td>
-                                <td class="mail-ontact"><a href="mail_detail.html">发件人</a>
-                                </td>
-                                <td class="mail-subject"><a href="mail_detail.html">主题</a>
-                                </td>
-                                <td class=""><i class="fa fa-paperclip"></i>
-                                </td>
-                                <td class="text-right mail-date">昨天 10:20</td>
+                                <td class="mail-ontact">发件人</td>
+                                
+                                <td class="mail-subject">主题 </td>
+                               
+                                <td class=""><i class="fa fa-paperclip"></i></td>
+                                
+                                 <td class="mail-subject">状态 </td>
+                                
+                                <td class="text-right mail-date">发送时间</td>
                             </tr>
                              
                              <c:forEach items="${p.list }" var="m">
@@ -134,7 +136,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <td class=""><i class="fa fa-paperclip"></i>
                                 </td>
                                 
-                                <td class="text-right mail-date">${m.lasttime }</td>
+                                <td class="text-right mail-date"></td>
+                                
+                                <td class="text-right mail-date"><fmt:formatDate value="${m.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                </td>
                                 
                             </tr>
                             
