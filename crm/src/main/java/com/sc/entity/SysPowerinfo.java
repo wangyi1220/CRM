@@ -12,9 +12,14 @@ public class SysPowerinfo implements Serializable {
 
     private String powerUrl;
 
-    private String powerColumnsId;
+    private Long powerColumnsId;
 
     private String remarks;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date changeDate;
+
+    private String powerCode;
     
     private String isHasPower;
 
@@ -26,21 +31,9 @@ public class SysPowerinfo implements Serializable {
 		this.isHasPower = isHasPower;
 	}
 
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date changeDate;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-	public String toString() {
-		return "SysPowerinfo [powerId=" + powerId + ", powerName=" + powerName + ", powerUrl=" + powerUrl
-				+ ", powerColumnsId=" + powerColumnsId + ", remarks=" + remarks + ", changeDate=" + changeDate
-				+ ", powerCode=" + powerCode + "]";
-	}
-
-	private String powerCode;
-
-    private static final long serialVersionUID = 1L;
-
-    public SysPowerinfo(Long powerId, String powerName, String powerUrl, String powerColumnsId, String remarks, Date changeDate, String powerCode) {
+    public SysPowerinfo(Long powerId, String powerName, String powerUrl, Long powerColumnsId, String remarks, Date changeDate, String powerCode) {
         this.powerId = powerId;
         this.powerName = powerName;
         this.powerUrl = powerUrl;
@@ -78,12 +71,12 @@ public class SysPowerinfo implements Serializable {
         this.powerUrl = powerUrl == null ? null : powerUrl.trim();
     }
 
-    public String getPowerColumnsId() {
+    public Long getPowerColumnsId() {
         return powerColumnsId;
     }
 
-    public void setPowerColumnsId(String powerColumnsId) {
-        this.powerColumnsId = powerColumnsId == null ? null : powerColumnsId.trim();
+    public void setPowerColumnsId(Long powerColumnsId) {
+        this.powerColumnsId = powerColumnsId;
     }
 
     public String getRemarks() {

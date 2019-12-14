@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysPowerColumns;
+import com.sc.entity.SysPowerColumnsExample;
+import com.sc.entity.SysPowerColumnsExample.Criteria;
 import com.sc.entity.SysPowerinfo;
 import com.sc.entity.SysUsers;
 import com.sc.mapper.SysPowerColumnsMapper;
@@ -30,17 +32,12 @@ public class SysPowerColumnsServiceImpl implements SysPowerColumnsService {
 	}
 
 	@Override
-	public PageInfo<SysPowerColumns> selectList(Integer pageNum, Integer pageSize) {
+	public PageInfo<SysPowerColumns> selectList(Integer pageNum, Integer pageSize,SysUsers su) {
 		PageHelper.startPage(pageNum, pageSize);
 		
-		SysUsers sysUsers = new SysUsers();
-		sysUsers.setUsersId(61L);
-		SysUsers users = this.sysUsersMapper.selectPower(sysUsers);
-		
+		SysUsers users = this.sysUsersMapper.selectPower(su);
 		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
 		for (SysPowerColumns spc : list) {
-			
-			
 			for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
 				for (SysPowerinfo spi2 : users.getSysPowerinfoes()) {
 					if(spi1.getPowerId()==spi2.getPowerId()){
@@ -52,6 +49,15 @@ public class SysPowerColumnsServiceImpl implements SysPowerColumnsService {
 		PageInfo<SysPowerColumns> pageInfo = new PageInfo<SysPowerColumns>(list);
 		
 		return pageInfo;
+	}
+
+	@Override
+	public SysPowerColumns selectByCname(String columnsName) {
+		SysPowerColumnsExample example = new SysPowerColumnsExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andColumnsNameEqualTo(columnsName);
+		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectByExample(example);
+		return list.get(0);
 	}
 
 }

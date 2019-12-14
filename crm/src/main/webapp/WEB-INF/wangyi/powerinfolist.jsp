@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <div class="row">
           <c:forEach items="${p.list }" var="pc">
+          <c:if test="${not empty pc.sysPowerinfoes[0].powerName && pc.sysPowerinfoes[0].powerName!=''}">
             <div class="col-sm-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -83,8 +85,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
+            </c:if>
           </c:forEach>
-            
+          
             
          </div>  
     </div>
