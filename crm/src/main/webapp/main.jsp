@@ -81,6 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="#">角色管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SysRoleCtrl/goaddRole.do">添加角色</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysRoleCtrl/roleList.do">角色列表</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>  

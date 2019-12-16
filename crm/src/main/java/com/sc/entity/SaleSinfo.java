@@ -1,38 +1,29 @@
 package com.sc.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class SaleSinfo implements Serializable {
-    private String sorderInfoId;
+    private Long sorderInfoId;
 
-    private String sorderId;
+    private Long sorderId;
 
-    private String goodsId;
+    private Long goodsId;
 
     private String goodsQuantity;
 
-    private String goodsPrice;
+    private BigDecimal goodsPrice;
 
     private String note;
 
-    private String companyId;
+    private Long companyId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModifyTime;
 
-    @Override
-	public String toString() {
-		return "SaleSinfo [sorderInfoId=" + sorderInfoId + ", sorderId=" + sorderId + ", goodsId=" + goodsId
-				+ ", goodsQuantity=" + goodsQuantity + ", goodsPrice=" + goodsPrice + ", note=" + note + ", companyId="
-				+ companyId + ", lastModifyTime=" + lastModifyTime + "]";
-	}
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-    public SaleSinfo(String sorderInfoId, String sorderId, String goodsId, String goodsQuantity, String goodsPrice, String note, String companyId, Date lastModifyTime) {
+    public SaleSinfo(Long sorderInfoId, Long sorderId, Long goodsId, String goodsQuantity, BigDecimal goodsPrice, String note, Long companyId, Date lastModifyTime) {
         this.sorderInfoId = sorderInfoId;
         this.sorderId = sorderId;
         this.goodsId = goodsId;
@@ -47,28 +38,28 @@ public class SaleSinfo implements Serializable {
         super();
     }
 
-    public String getSorderInfoId() {
+    public Long getSorderInfoId() {
         return sorderInfoId;
     }
 
-    public void setSorderInfoId(String sorderInfoId) {
-        this.sorderInfoId = sorderInfoId == null ? null : sorderInfoId.trim();
+    public void setSorderInfoId(Long sorderInfoId) {
+        this.sorderInfoId = sorderInfoId;
     }
 
-    public String getSorderId() {
+    public Long getSorderId() {
         return sorderId;
     }
 
-    public void setSorderId(String sorderId) {
-        this.sorderId = sorderId == null ? null : sorderId.trim();
+    public void setSorderId(Long sorderId) {
+        this.sorderId = sorderId;
     }
 
-    public String getGoodsId() {
+    public Long getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId == null ? null : goodsId.trim();
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getGoodsQuantity() {
@@ -79,12 +70,12 @@ public class SaleSinfo implements Serializable {
         this.goodsQuantity = goodsQuantity == null ? null : goodsQuantity.trim();
     }
 
-    public String getGoodsPrice() {
+    public BigDecimal getGoodsPrice() {
         return goodsPrice;
     }
 
-    public void setGoodsPrice(String goodsPrice) {
-        this.goodsPrice = goodsPrice == null ? null : goodsPrice.trim();
+    public void setGoodsPrice(BigDecimal goodsPrice) {
+        this.goodsPrice = goodsPrice;
     }
 
     public String getNote() {
@@ -95,12 +86,12 @@ public class SaleSinfo implements Serializable {
         this.note = note == null ? null : note.trim();
     }
 
-    public String getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
     public Date getLastModifyTime() {
