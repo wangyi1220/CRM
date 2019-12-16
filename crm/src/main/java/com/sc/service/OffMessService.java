@@ -28,5 +28,7 @@ public interface OffMessService {
 	
 	//查询列表-分页
 	public PageInfo<OffMess> selectpage(Integer pageNum,Integer pageSize);
+	
+	public PageInfo<OffMess> selectdeta(Integer pageNum,Integer pageSize,String ser);
 
 }
