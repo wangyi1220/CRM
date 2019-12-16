@@ -1,16 +1,17 @@
 package com.sc.mapper;
 
-import com.sc.entity.SaleSinfo;
-import com.sc.entity.SaleSinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.sc.entity.SaleSinfo;
+import com.sc.entity.SaleSinfoExample;
 
 public interface SaleSinfoMapper {
     int countByExample(SaleSinfoExample example);
 
     int deleteByExample(SaleSinfoExample example);
 
-    int deleteByPrimaryKey(String sorderInfoId);
+    int deleteByPrimaryKey(Long sorderInfoId);
 
     int insert(SaleSinfo record);
 
@@ -18,7 +19,7 @@ public interface SaleSinfoMapper {
 
     List<SaleSinfo> selectByExample(SaleSinfoExample example);
 
-    SaleSinfo selectByPrimaryKey(String sorderInfoId);
+    SaleSinfo selectByPrimaryKey(Long sorderInfoId);
 
     int updateByExampleSelective(@Param("record") SaleSinfo record, @Param("example") SaleSinfoExample example);
 

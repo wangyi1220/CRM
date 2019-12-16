@@ -29,4 +29,36 @@ public class SysUsersServiceImpl implements SysUsersService {
 		return pageInfo;
 	}
 
+	@Override
+	public void update(SysUsers s) {
+		if (s != null && s.getUsersId()!= null) {
+			
+			this.sysUsersMapper.updateByPrimaryKey(s);
+		
+	}
+
+}
+
+	@Override
+	public SysUsers selectPower() {
+		
+		
+			SysUsers sysUsers = new SysUsers();
+			sysUsers.setUsersId(61L);
+			SysUsers users = this.sysUsersMapper.selectPower(sysUsers);
+			return users;
+		
+	}
+
+	@Override
+	public SysUsers selectRole(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectRole(uId);
+		return users;
+	}
+
+	@Override
+	public SysUsers selectUserinfo(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectUserinfo(uId);
+		return users;
+	}
 }

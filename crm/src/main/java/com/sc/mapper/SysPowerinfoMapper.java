@@ -1,9 +1,10 @@
 package com.sc.mapper;
 
-import com.sc.entity.SysPowerinfo;
-import com.sc.entity.SysPowerinfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.sc.entity.SysPowerinfo;
+import com.sc.entity.SysPowerinfoExample;
 
 public interface SysPowerinfoMapper {
     int countByExample(SysPowerinfoExample example);

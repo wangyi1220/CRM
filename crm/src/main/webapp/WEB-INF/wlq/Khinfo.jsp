@@ -51,7 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          </a>
                         <br>
 
-                        
                         <div class="ibox-content">
 
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
@@ -71,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 <c:forEach items="${p.list}" var="info" >
                                 <tr>
                                     <td>${info.userId}</td>
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>${info.nextContactTime}</td>
                                     <td><a>查看客户</a></td>
                                     <td>${info.userState}</td>
-                                    <td><a>修改</a> <a>联系人</a> <a>反馈</a></td>
+                                    <td><a>修改</a> <a href="SalekhinfoController/lxlist.do?name=${info.userName}" target="_self">联系人</a> <a>反馈</a></td>
                                     
                                 </tr>
                                 </c:forEach>
