@@ -60,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li><a href="login.html">安全退出</a>
                                 </li>
                             </ul>
+                   
                         </div>
                         <div class="logo-element">H+
                         </div>
@@ -74,11 +75,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <ul class="nav nav-third-level">
                                     <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
                                     </li>
+                                    <li><a class="J_menuItem" href="SysPowerinfoCtrl/goaddPower.do">添加基本权限</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">角色管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SysRoleCtrl/goaddRole.do">添加角色</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysRoleCtrl/roleList.do">角色列表</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>  
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">用户表单</a>
+                            </li>
+                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">部门表单</a>
+                            </li>
+                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">。。表单</a>
+                            </li>
+                            <li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">库存管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_仓库信息表</a>
+                            </li>
+                             <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_商品信息表</a>
+                            </li>
+                            <li>
+                                <a href="#">权限管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
+                                    </li>
                                 </ul>
                             </li>
                             
                         </ul>
                     </li>
+                    
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">办公管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -98,9 +144,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">销售管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_basic.html">基本表单</a>
+                            <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_仓库信息表</a>
                             </li>
-                            
+                             <li><a class="J_menuItem" href="#">库存_商品信息表</a>
+                            </li>
                             <li>
                                 <a href="#">客户管理 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
@@ -113,22 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             
                         </ul>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">库存管理</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_basic.html">基本表单</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                        </ul>
-                    </li>
+                    
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">进货管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

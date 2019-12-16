@@ -1,16 +1,18 @@
 package com.sc.mapper;
 
-import com.sc.entity.JhCgdxq;
-import com.sc.entity.JhCgdxqExample;
+import java.math.BigDecimal;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.sc.entity.JhCgdxq;
+import com.sc.entity.JhCgdxqExample;
 
 public interface JhCgdxqMapper {
     int countByExample(JhCgdxqExample example);
 
     int deleteByExample(JhCgdxqExample example);
 
-    int deleteByPrimaryKey(Long cgXqId);
+    int deleteByPrimaryKey(BigDecimal cgXqId);
 
     int insert(JhCgdxq record);
 
@@ -18,7 +20,7 @@ public interface JhCgdxqMapper {
 
     List<JhCgdxq> selectByExample(JhCgdxqExample example);
 
-    JhCgdxq selectByPrimaryKey(Long cgXqId);
+    JhCgdxq selectByPrimaryKey(BigDecimal cgXqId);
 
     int updateByExampleSelective(@Param("record") JhCgdxq record, @Param("example") JhCgdxqExample example);
 

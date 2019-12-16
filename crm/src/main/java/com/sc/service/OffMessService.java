@@ -9,24 +9,24 @@ import com.sc.entity.OffMess;
 public interface OffMessService {
 	
 	
-		//娣诲姞
+		//添加
 		public void add(OffMess m);
 		
-		//淇敼
+		//修改
 	    public void update(OffMess m);
 	    
-	    //鍒犻櫎
+	    //删除
 	    public void delete(OffMess m);
 	    
-	    //鑾峰彇瀵硅薄
+	    //获取
 	    public OffMess get(OffMess m);
 	    
-	 //鏌ヨ
+	 //查询
 	 public List<OffMess> select();
 
 	   
 	
-	//鍒嗛〉鏌ヨ
+	//查询列表-分页
 	public PageInfo<OffMess> selectpage(Integer pageNum,Integer pageSize);
 
 }

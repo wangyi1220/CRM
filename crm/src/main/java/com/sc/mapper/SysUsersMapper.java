@@ -27,4 +27,12 @@ public interface SysUsersMapper {
     int updateByPrimaryKeySelective(SysUsers record);
 
     int updateByPrimaryKey(SysUsers record);
+    
+    public SysUsers selectPower(SysUsers user);
+    
+    public SysUsers selectRole(Long uId);
+    
+    public SysUsers selectUserinfo(Long uId);
+    
+    public List<SysUsers> selectNoRoleUser();
 }

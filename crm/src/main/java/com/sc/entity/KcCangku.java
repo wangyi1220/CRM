@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class KcCangku implements Serializable {
-    private String cangkuId;
+    private Long cangkuId;
 
     private String cangkuName;
 
@@ -21,11 +21,11 @@ public class KcCangku implements Serializable {
 				+ ", cangkuLastModifyTime=" + cangkuLastModifyTime + ", companyId=" + companyId + "]";
 	}
 
-	private String companyId;
+	private Long companyId;
 
     private static final long serialVersionUID = 1L;
 
-    public KcCangku(String cangkuId, String cangkuName, String cangkuNote, Date cangkuLastModifyTime, String companyId) {
+    public KcCangku(Long cangkuId, String cangkuName, String cangkuNote, Date cangkuLastModifyTime, Long companyId) {
         this.cangkuId = cangkuId;
         this.cangkuName = cangkuName;
         this.cangkuNote = cangkuNote;
@@ -37,12 +37,12 @@ public class KcCangku implements Serializable {
         super();
     }
 
-    public String getCangkuId() {
+    public Long getCangkuId() {
         return cangkuId;
     }
 
-    public void setCangkuId(String cangkuId) {
-        this.cangkuId = cangkuId == null ? null : cangkuId.trim();
+    public void setCangkuId(Long cangkuId) {
+        this.cangkuId = cangkuId;
     }
 
     public String getCangkuName() {
@@ -69,11 +69,11 @@ public class KcCangku implements Serializable {
         this.cangkuLastModifyTime = cangkuLastModifyTime;
     }
 
-    public String getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

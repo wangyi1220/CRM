@@ -315,62 +315,52 @@ public class SysPowerinfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdEqualTo(String value) {
+        public Criteria andPowerColumnsIdEqualTo(Long value) {
             addCriterion("POWER_COLUMNS_ID =", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdNotEqualTo(String value) {
+        public Criteria andPowerColumnsIdNotEqualTo(Long value) {
             addCriterion("POWER_COLUMNS_ID <>", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdGreaterThan(String value) {
+        public Criteria andPowerColumnsIdGreaterThan(Long value) {
             addCriterion("POWER_COLUMNS_ID >", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdGreaterThanOrEqualTo(String value) {
+        public Criteria andPowerColumnsIdGreaterThanOrEqualTo(Long value) {
             addCriterion("POWER_COLUMNS_ID >=", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdLessThan(String value) {
+        public Criteria andPowerColumnsIdLessThan(Long value) {
             addCriterion("POWER_COLUMNS_ID <", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdLessThanOrEqualTo(String value) {
+        public Criteria andPowerColumnsIdLessThanOrEqualTo(Long value) {
             addCriterion("POWER_COLUMNS_ID <=", value, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdLike(String value) {
-            addCriterion("POWER_COLUMNS_ID like", value, "powerColumnsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPowerColumnsIdNotLike(String value) {
-            addCriterion("POWER_COLUMNS_ID not like", value, "powerColumnsId");
-            return (Criteria) this;
-        }
-
-        public Criteria andPowerColumnsIdIn(List<String> values) {
+        public Criteria andPowerColumnsIdIn(List<Long> values) {
             addCriterion("POWER_COLUMNS_ID in", values, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdNotIn(List<String> values) {
+        public Criteria andPowerColumnsIdNotIn(List<Long> values) {
             addCriterion("POWER_COLUMNS_ID not in", values, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdBetween(String value1, String value2) {
+        public Criteria andPowerColumnsIdBetween(Long value1, Long value2) {
             addCriterion("POWER_COLUMNS_ID between", value1, value2, "powerColumnsId");
             return (Criteria) this;
         }
 
-        public Criteria andPowerColumnsIdNotBetween(String value1, String value2) {
+        public Criteria andPowerColumnsIdNotBetween(Long value1, Long value2) {
             addCriterion("POWER_COLUMNS_ID not between", value1, value2, "powerColumnsId");
             return (Criteria) this;
         }
