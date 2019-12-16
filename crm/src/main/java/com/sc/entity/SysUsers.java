@@ -20,6 +20,16 @@ public class SysUsers implements Serializable {
     private String usersState;
     
     private List<SysPowerinfo> SysPowerinfoes;
+    
+    public SysRole getSysRole() {
+		return sysRole;
+	}
+
+	public void setSysRole(SysRole sysRole) {
+		this.sysRole = sysRole;
+	}
+
+	private SysRole sysRole;
 
     public List<SysPowerinfo> getSysPowerinfoes() {
 		return SysPowerinfoes;
@@ -32,7 +42,17 @@ public class SysUsers implements Serializable {
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
 
-    @Override
+	private SysUserinfo sysUserinfo;
+	
+    public SysUserinfo getSysUserinfo() {
+		return sysUserinfo;
+	}
+
+	public void setSysUserinfo(SysUserinfo sysUserinfo) {
+		this.sysUserinfo = sysUserinfo;
+	}
+
+	@Override
 	public String toString() {
 		return "SysUsers [usersId=" + usersId + ", usersName=" + usersName + ", usersPassword=" + usersPassword
 				+ ", empId=" + empId + ", companyId=" + companyId + ", usersState=" + usersState + ", changeDate="

@@ -46,6 +46,7 @@ public class SysPowerColumnsCtrl {
 		spc.setChangeDate(date);
 		this.sysPowerColumnsService.addSysPowerColumns(spc);
 		System.out.println("Ìí¼Ó³É¹¦");
+		mav.addObject("issuc", "yes");
 		mav.setViewName("wangyi/addpowercolumns");
 		return mav;
 		

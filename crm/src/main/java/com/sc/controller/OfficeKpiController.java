@@ -2,6 +2,8 @@ package com.sc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +27,10 @@ public class OfficeKpiController {
 	 OfficeKpiService OfficeKpiService ;
 	 @RequestMapping("/list.do")
 		public ModelAndView list(ModelAndView mav){
-			System.out.println("ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½Ğ±ï¿½");
 			
-			//ï¿½ï¿½Ñ¯listï¿½ï¿½ï¿½ï¿½
 			List<OfficeKpi> list = this.OfficeKpiService.select();
 			mav.addObject("list", list);
-			mav.setViewName("OA/OfficeKpilistpage");// Â·ï¿½ï¿½ï¿½Ç£ï¿½/WEB-INF/userslist.jsp
+			mav.setViewName("OA/OfficeKpilistpage");// /WEB-INF/userslist.jsp
 			return mav;
 		}
 	 //@RequestMapping("/delete.do")
@@ -42,8 +42,8 @@ public class OfficeKpiController {
 		System.out.println("----");
 		
 		mav.addObject("p",OfficeKpiService.selectpage(pageNum,pageSize));
-		//ï¿½ï¿½Ñ¯listï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½Ò³ï¿½ï¿½Ê½
-		mav.setViewName("OA/OfficeKpilistpage");// Â·ï¿½ï¿½ï¿½Ç£ï¿½/WEB-INF/userslist.jsp
+		
+		mav.setViewName("OA/OfficeKpilistpage");
 		return mav;
 		}
 	 
@@ -51,31 +51,63 @@ public class OfficeKpiController {
 		public ModelAndView upload(ModelAndView mav,
 				MultipartFile upload,
 				HttpServletRequest req) throws IllegalStateException, IOException{
-			System.out.println("å¼€å§‹ä¸Šä¼ æ–‡ä»¶");
+			System.out.println("¿ªÊ¼ÉÏ´«ÎÄ¼ş");
 			
-			//å¦‚æœç”¨æˆ·é€‰æ‹©æ–‡ä»¶ï¼Œé‚£ä¹ˆæ‰§è¡Œä¸Šä¼ ä»£ç 
+			//Èç¹ûÓÃ»§Ñ¡ÔñÎÄ¼ş£¬ÄÇÃ´Ö´ĞĞÉÏ´«´úÂë
 			if(upload!=null){
-				String filename=upload.getOriginalFilename();//æ–‡ä»¶å
+				String filename=upload.getOriginalFilename();//ÎÄ¼şÃû
 				if(filename!=null&&!filename.equals("")){
-					//è·å–uploadæ–‡ä»¶å¤¹æ‰€åœ¨è·¯å¾„
+					//»ñÈ¡uploadÎÄ¼ş¼ĞËùÔÚÂ·¾¶
 					String path=req.getSession().
 							getServletContext().getRealPath("upload");
-					//å½¢å¦‚ï¼š26456456435.jpg
+					//ĞÎÈç£º26456456435.jpg
 					filename=System.currentTimeMillis()
 							+filename.substring(filename.lastIndexOf("."));
-					//ç›®çš„åœ°æ–‡ä»¶å¯¹è±¡
+					//Ä¿µÄµØÎÄ¼ş¶ÔÏó
 					File file=new File(path+"/"+filename);
-					upload.transferTo(file);//è½¬æ¢å­˜å‚¨æ–‡ä»¶
+					upload.transferTo(file);//×ª»»´æ´¢ÎÄ¼ş
 					
-					//è®¾ç½®å›¾ç‰‡åç§°,é¡µé¢æ˜¾ç¤ºå›¾ç‰‡
+					//ÉèÖÃÍ¼Æ¬Ãû³Æ,Ò³ÃæÏÔÊ¾Í¼Æ¬
 					mav.addObject("pic", filename);
 				}
 			}
 			
-			mav.setViewName("show");// è·¯å¾„æ˜¯ï¼š/WEB-INF/show.jsp
+			mav.setViewName("show");// Â·¾¶ÊÇ£º/WEB-INF/show.jsp
 			return mav;
 		}
-	 //@RequestMapping("/delete.do")
-	 
-	 
+	 @RequestMapping("/delete.do")
+		public ModelAndView delete(ModelAndView mav,OfficeKpi k){
+			System.out.println("É¾³ı¿¼ºËÖ¸±ê£¡"+k);
+			this.OfficeKpiService.delete(k);
+			mav.setViewName("redirect:listpage.do");//ÖØ¶¨Ïòµ½list·½·¨
+			return mav;
+		}
+	 @RequestMapping("/goupdate.do")
+	 public ModelAndView goupdate(ModelAndView mav,BigDecimal kpiId){
+			System.out.println("ĞŞ¸ÄÖ®Ç°ÏÈ²é¿´");
+			mav.addObject("kpi", OfficeKpiService.get(kpiId));
+			mav.setViewName("OA/OfficeKpigoupdate");
+			return mav;
+		}
+	 @RequestMapping("OfficeKpiupdate.do")
+	 public ModelAndView OfficeKpiupdate(ModelAndView mav,OfficeKpi kpi){
+		 kpi.setFinalUpdataTime(new Date());
+		 System.out.println("ĞŞ¸Ã¿¼ºËÈÎÎñ"+kpi);
+		this.OfficeKpiService.update(kpi);
+		 mav.setViewName("redirect:listpage.do");
+		 return mav;
+	 }
+	 @RequestMapping("/addofficeKpi.do")
+	 public ModelAndView addofficeKpi(ModelAndView mav,OfficeKpi k){
+		k.setFinalUpdataTime(new Date());
+		 System.out.println("Ìí¼Ó¿¼ºËÈÎÎñ"+k);
+		 this.OfficeKpiService.add(k);
+		 mav.setViewName("redirect:listpage.do");
+		 return mav;
+		 }
+	 @RequestMapping("/inaddofficeKpi.do")
+		public ModelAndView inaddofficeKpi(ModelAndView mav){
+			mav.setViewName("OA/addofficeKpi");
+			return mav;
+			}
 }

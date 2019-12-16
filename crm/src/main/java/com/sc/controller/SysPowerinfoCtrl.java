@@ -1,5 +1,7 @@
 package com.sc.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +32,11 @@ public class SysPowerinfoCtrl {
 	@RequestMapping("/addPower.do")
 	public ModelAndView addPower(ModelAndView mav,SysPowerinfo spi,String columnsName){
 		SysPowerColumns columns = this.sysPowerColumnsService.selectByCname(columnsName);
+		spi.setPowerColumnsId(columns.getColumnsId());
+		spi.setChangeDate(new Date());
 		this.sysPowerinfoService.addPower(spi);
-		mav.setViewName("redirect:../SysPowerColumnsCtrl/PowerinfoList.do");
+		mav.addObject("issuc", "yes");
+		mav.setViewName("wangyi/addpower");
 		return mav;
 	}
 }

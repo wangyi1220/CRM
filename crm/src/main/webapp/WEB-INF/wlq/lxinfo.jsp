@@ -35,19 +35,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="ibox float-e-margins">
-                       <form action="SalekhinfoController/list.do" method="post" target="_self">
-                            <div class="input-group">
-                            <input type="text" placeholder="请输入客户名称" name="userName" class="input form-control">
-                            <span class="input-group-btn">
-                            <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
-                            </span>    
-                        </div>
-                        </form>
-                        </div>
+                        
                         <br>
+                        <button type="button" class="btn btn-w-m btn-primary">客户：${name}</button>
                          <a href="">
-                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加联系人</button>
                          </a>
                         <br>
 
@@ -57,50 +49,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <thead>
                                 <tr>
 
-                                    <th data-toggle="true">客户编号</th>
-                                    <th data-hide="all">客户名称</th>
-                                    <th data-hide="all">客户属性</th>
-                                    <th data-hide="all">客户类型</th>
-                                    <th data-hide="all">移动电话</th>
+                                    <th data-toggle="true">联系人姓名</th>
+                                    <th data-hide="all">英文名</th>
+                                    <th data-hide="all">职务</th>
+                                    <th data-hide="all">部门</th>
+                                    <th data-hide="all">手机</th>
+                                    <th data-hide="all">办公电话</th>
+                                    <th data-hide="all">电子邮箱</th>
+                                    <th data-hide="all">地址</th>
+                                    <th data-hide="all">备注信息</th>
                                     <th data-hide="all">公司编号</th>
-                                    <th data-hide="all">下次联系信息</th>
-                                    <th data-hide="all">详细信息</th>
-                                    <th data-hide="all">状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                <c:forEach items="${p.list}" var="info" >
+                                <c:forEach items="${q.list}" var="info" >
                                 <tr>
-                                    <td>${info.userId}</td>
-                                    <td>${info.userName}</td>
-                                    <td>${info.userAttribute}</td>
-                                    <td>${info.userType}</td>
+                                    <td>${info.contactName}</td>
+                                    <td>${info.englishName}</td>
+                                    <td>${info.post}</td>
+                                    <td>${info.department}</td>
                                     <td><span class="pie">${info.mphone}</span></td>
+                                    <td>${info.ophone}</td>
+                                    <td>${info.eMail}</td>
+                                    <td>${info.address}</td>
+                                    <td>${info.remarksInfo}</td>
                                     <td>${info.companyId}</td>
-                                    <td>${info.nextContactTime}</td>
-                                    <td><a>查看客户</a></td>
-                                    <td>${info.userState}</td>
-                                    <td><a>修改</a> <a href="SalekhinfoController/lxlist.do?name=${info.userName}" target="_self">联系人</a> <a>反馈</a></td>
+                                    <td><a>编辑</a> <a>删除</a> <a>联系记录</a></td>
                                     
                                 </tr>
                                 </c:forEach>
                                 
                                 <tr>
-                                    <td style="text-align: center;" colspan="10">
-                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.firstPage }">首页</a>
-                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.prePage }">上一页</a>
-                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.nextPage }">下一页</a>
-                                    <a target="_self" href="SalekhinfoController/list.do?pageNum=${p.lastPage }">尾页</a>
-                                                                             当前${p.pageNum }/${p.pages }页，共${p.total }条
+                                    <td style="text-align: center;" colspan="11">
+                                    <a target="_self" href="SalekhinfoController/lxlist.do?pageNum=${q.firstPage }">首页</a>
+                                    <a target="_self" href="SalekhinfoController/lxlist.do?pageNum=${q.prePage }">上一页</a>
+                                    <a target="_self" href="SalekhinfoController/lxlist.do?pageNum=${q.nextPage }">下一页</a>
+                                    <a target="_self" href="SalekhinfoController/lxlist.do?pageNum=${q.lastPage }">尾页</a>
+                                                                             当前${q.pageNum }/${q.pages }页，共${q.total }条
                                      </td>
                                 </tr>
 
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="10">
+                                    <td colspan="11">
                                         <ul class="pagination pull-right"></ul>
                                     </td>
                                 </tr>
