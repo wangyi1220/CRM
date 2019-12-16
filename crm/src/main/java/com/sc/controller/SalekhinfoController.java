@@ -23,13 +23,27 @@ public class SalekhinfoController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="10")Integer pageSize,
 			SaleKhinfo s){
-		System.out.println("查询客户信息表");
 		
-		//查询list集合-分页     ${p.list}
 		mav.addObject("p", saleService.select(pageNum, pageSize, s));
 		mav.setViewName("wlq/Khinfo");
 		
 		return mav;
 	}
+	
+	@RequestMapping("/lxlist.do")
+	public ModelAndView lxlist(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="10")Integer pageSize,
+			String name){
+		
+		System.out.println(name);
+		
+		mav.addObject("q", saleService.lxselect(pageNum, pageSize));
+		mav.addObject("name", name);
+		mav.setViewName("wlq/lxinfo");
+		
+		return mav;
+	}
+
 
 }

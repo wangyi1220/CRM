@@ -75,6 +75,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <ul class="nav nav-third-level">
                                     <li><a class="J_menuItem" href="SysPowerColumnsCtrl/inAddPowerColumns.do">添加权限分栏</a>
                                     </li>
+                                    <li><a class="J_menuItem" href="SysPowerinfoCtrl/goaddPower.do">添加基本权限</a>
+                                    </li>
                                     <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
                                     </li>
                                 </ul>

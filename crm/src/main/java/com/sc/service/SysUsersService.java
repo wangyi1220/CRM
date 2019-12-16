@@ -8,4 +8,6 @@ public interface SysUsersService {
 	public PageInfo<SysUsers> select(Integer pageNum,Integer pageSize);
 	//¸Ä
 	public void update(SysUsers s);
+	
+	public SysUsers selectPower();
 }

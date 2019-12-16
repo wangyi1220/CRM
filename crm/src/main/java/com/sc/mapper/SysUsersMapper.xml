@@ -243,4 +243,18 @@
       CHANGE_DATE = #{changeDate,jdbcType=TIMESTAMP}
     where USERS_ID = #{usersId,jdbcType=DECIMAL}
   </update>
+  <resultMap type="com.sc.entity.SysUsers" id="selectPowerMap" autoMapping="true">
+  	<id column="USERS_ID" property="usersId"/>
+  	
+  	<collection property="SysPowerinfoes" ofType="com.sc.entity.SysPowerinfo" autoMapping="true">
+  		<id column="POWER_ID" property="powerId"/>
+  	</collection>
+  </resultMap>
+  <select id="selectPower" parameterType="com.sc.entity.SysUsers" resultMap="selectPowerMap">
+  	SELECT * FROM SYS_USERS su LEFT JOIN 
+	SYS_USERS_ROLE sur on SU.USERS_ID=SUR.USERS_ID LEFT JOIN 
+	SYS_POWER_ROLE spr on sur.ROLE_ID=SPR.ROLE_ID LEFT JOIN 
+	SYS_POWERINFO spi on  spr.POWER_ID=spi.POWER_ID
+	WHERE SU.USERS_ID=#{usersId}
+  </select>
 </mapper>
