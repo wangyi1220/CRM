@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sc.mapper.SaleSinfoMapper">
-  <resultMap id="BaseResultMap" type="com.sc.entity.SaleSinfo">
-    <constructor>
-      <idArg column="SORDER_INFO_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="SORDER_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="GOODS_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="GOODS_QUANTITY" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="GOODS_PRICE" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="NOTE" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="COMPANY_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="LAST_MODIFY_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sc.mapper.SaleSinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sc.entity.SaleSinfo" >
+    <constructor >
+      <idArg column="SORDER_INFO_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="SORDER_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="GOODS_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="GOODS_QUANTITY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="GOODS_PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="NOTE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="COMPANY_ID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="LAST_MODIFY_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -42,25 +42,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,193 +71,192 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     SORDER_INFO_ID, SORDER_ID, GOODS_ID, GOODS_QUANTITY, GOODS_PRICE, NOTE, COMPANY_ID, 
     LAST_MODIFY_TIME
   </sql>
-  <select id="selectByExample" parameterType="com.sc.entity.SaleSinfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sc.entity.SaleSinfoExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from SALE_SINFO
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from SALE_SINFO
-    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=VARCHAR}
+    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from SALE_SINFO
-    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=VARCHAR}
+    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=DECIMAL}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sc.entity.SaleSinfoExample">
+  <delete id="deleteByExample" parameterType="com.sc.entity.SaleSinfoExample" >
     delete from SALE_SINFO
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sc.entity.SaleSinfo">
+  <insert id="insert" parameterType="com.sc.entity.SaleSinfo" >
     insert into SALE_SINFO (SORDER_INFO_ID, SORDER_ID, GOODS_ID, 
       GOODS_QUANTITY, GOODS_PRICE, NOTE, 
       COMPANY_ID, LAST_MODIFY_TIME)
-    values (#{sorderInfoId,jdbcType=VARCHAR}, #{sorderId,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, 
-      #{goodsQuantity,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
-      #{companyId,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP})
+    values (#{sorderInfoId,jdbcType=DECIMAL}, #{sorderId,jdbcType=DECIMAL}, #{goodsId,jdbcType=DECIMAL}, 
+      #{goodsQuantity,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, #{note,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=DECIMAL}, #{lastModifyTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.sc.entity.SaleSinfo">
+  <insert id="insertSelective" parameterType="com.sc.entity.SaleSinfo" >
     insert into SALE_SINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sorderInfoId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sorderInfoId != null" >
         SORDER_INFO_ID,
       </if>
-      <if test="sorderId != null">
+      <if test="sorderId != null" >
         SORDER_ID,
       </if>
-      <if test="goodsId != null">
+      <if test="goodsId != null" >
         GOODS_ID,
       </if>
-      <if test="goodsQuantity != null">
+      <if test="goodsQuantity != null" >
         GOODS_QUANTITY,
       </if>
-      <if test="goodsPrice != null">
+      <if test="goodsPrice != null" >
         GOODS_PRICE,
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         NOTE,
       </if>
-      <if test="companyId != null">
+      <if test="companyId != null" >
         COMPANY_ID,
       </if>
-      <if test="lastModifyTime != null">
+      <if test="lastModifyTime != null" >
         LAST_MODIFY_TIME,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sorderInfoId != null">
-        #{sorderInfoId,jdbcType=VARCHAR},
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sorderInfoId != null" >
+        #{sorderInfoId,jdbcType=DECIMAL},
       </if>
-      <if test="sorderId != null">
-        #{sorderId,jdbcType=VARCHAR},
+      <if test="sorderId != null" >
+        #{sorderId,jdbcType=DECIMAL},
       </if>
-      <if test="goodsId != null">
-        #{goodsId,jdbcType=VARCHAR},
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=DECIMAL},
       </if>
-      <if test="goodsQuantity != null">
+      <if test="goodsQuantity != null" >
         #{goodsQuantity,jdbcType=VARCHAR},
       </if>
-      <if test="goodsPrice != null">
-        #{goodsPrice,jdbcType=VARCHAR},
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         #{note,jdbcType=VARCHAR},
       </if>
-      <if test="companyId != null">
-        #{companyId,jdbcType=VARCHAR},
+      <if test="companyId != null" >
+        #{companyId,jdbcType=DECIMAL},
       </if>
-      <if test="lastModifyTime != null">
+      <if test="lastModifyTime != null" >
         #{lastModifyTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sc.entity.SaleSinfoExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.sc.entity.SaleSinfoExample" resultType="java.lang.Integer" >
     select count(*) from SALE_SINFO
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update SALE_SINFO
-    <set>
-      <if test="record.sorderInfoId != null">
-        SORDER_INFO_ID = #{record.sorderInfoId,jdbcType=VARCHAR},
+    <set >
+      <if test="record.sorderInfoId != null" >
+        SORDER_INFO_ID = #{record.sorderInfoId,jdbcType=DECIMAL},
       </if>
-      <if test="record.sorderId != null">
-        SORDER_ID = #{record.sorderId,jdbcType=VARCHAR},
+      <if test="record.sorderId != null" >
+        SORDER_ID = #{record.sorderId,jdbcType=DECIMAL},
       </if>
-      <if test="record.goodsId != null">
-        GOODS_ID = #{record.goodsId,jdbcType=VARCHAR},
+      <if test="record.goodsId != null" >
+        GOODS_ID = #{record.goodsId,jdbcType=DECIMAL},
       </if>
-      <if test="record.goodsQuantity != null">
+      <if test="record.goodsQuantity != null" >
         GOODS_QUANTITY = #{record.goodsQuantity,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodsPrice != null">
-        GOODS_PRICE = #{record.goodsPrice,jdbcType=VARCHAR},
+      <if test="record.goodsPrice != null" >
+        GOODS_PRICE = #{record.goodsPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.note != null">
+      <if test="record.note != null" >
         NOTE = #{record.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyId != null">
-        COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
       </if>
-      <if test="record.lastModifyTime != null">
+      <if test="record.lastModifyTime != null" >
         LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update SALE_SINFO
-    set SORDER_INFO_ID = #{record.sorderInfoId,jdbcType=VARCHAR},
-      SORDER_ID = #{record.sorderId,jdbcType=VARCHAR},
-      GOODS_ID = #{record.goodsId,jdbcType=VARCHAR},
+    set SORDER_INFO_ID = #{record.sorderInfoId,jdbcType=DECIMAL},
+      SORDER_ID = #{record.sorderId,jdbcType=DECIMAL},
+      GOODS_ID = #{record.goodsId,jdbcType=DECIMAL},
       GOODS_QUANTITY = #{record.goodsQuantity,jdbcType=VARCHAR},
-      GOODS_PRICE = #{record.goodsPrice,jdbcType=VARCHAR},
+      GOODS_PRICE = #{record.goodsPrice,jdbcType=DECIMAL},
       NOTE = #{record.note,jdbcType=VARCHAR},
-      COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=DECIMAL},
       LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SaleSinfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.entity.SaleSinfo" >
     update SALE_SINFO
-    <set>
-      <if test="sorderId != null">
-        SORDER_ID = #{sorderId,jdbcType=VARCHAR},
+    <set >
+      <if test="sorderId != null" >
+        SORDER_ID = #{sorderId,jdbcType=DECIMAL},
       </if>
-      <if test="goodsId != null">
-        GOODS_ID = #{goodsId,jdbcType=VARCHAR},
+      <if test="goodsId != null" >
+        GOODS_ID = #{goodsId,jdbcType=DECIMAL},
       </if>
-      <if test="goodsQuantity != null">
+      <if test="goodsQuantity != null" >
         GOODS_QUANTITY = #{goodsQuantity,jdbcType=VARCHAR},
       </if>
-      <if test="goodsPrice != null">
-        GOODS_PRICE = #{goodsPrice,jdbcType=VARCHAR},
+      <if test="goodsPrice != null" >
+        GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         NOTE = #{note,jdbcType=VARCHAR},
       </if>
-      <if test="companyId != null">
-        COMPANY_ID = #{companyId,jdbcType=VARCHAR},
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
       </if>
-      <if test="lastModifyTime != null">
+      <if test="lastModifyTime != null" >
         LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=VARCHAR}
+    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SaleSinfo">
+  <update id="updateByPrimaryKey" parameterType="com.sc.entity.SaleSinfo" >
     update SALE_SINFO
-    set SORDER_ID = #{sorderId,jdbcType=VARCHAR},
-      GOODS_ID = #{goodsId,jdbcType=VARCHAR},
+    set SORDER_ID = #{sorderId,jdbcType=DECIMAL},
+      GOODS_ID = #{goodsId,jdbcType=DECIMAL},
       GOODS_QUANTITY = #{goodsQuantity,jdbcType=VARCHAR},
-      GOODS_PRICE = #{goodsPrice,jdbcType=VARCHAR},
+      GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
       NOTE = #{note,jdbcType=VARCHAR},
-      COMPANY_ID = #{companyId,jdbcType=VARCHAR},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
       LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=TIMESTAMP}
-    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=VARCHAR}
+    where SORDER_INFO_ID = #{sorderInfoId,jdbcType=DECIMAL}
   </update>
- 
 </mapper>

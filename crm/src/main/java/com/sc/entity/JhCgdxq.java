@@ -1,16 +1,15 @@
 package com.sc.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class JhCgdxq implements Serializable {
-    private Long cgXqId;
+    private BigDecimal cgXqId;
 
     private Long cgdId;
 
-    private Long cpId;
+    private BigDecimal cpId;
 
     private Long cpNumber;
 
@@ -20,23 +19,15 @@ public class JhCgdxq implements Serializable {
 
     private String remark;
 
-    private Long gsId;
+    private BigDecimal gsId;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private String isrk;
+    private String cpPrice;
 
-    @Override
-	public String toString() {
-		return "JhCgdxq [cgXqId=" + cgXqId + ", cgdId=" + cgdId + ", cpId=" + cpId + ", cpNumber=" + cpNumber
-				+ ", isRk=" + isRk + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime="
-				+ ltime + ", isrk=" + isrk + "]";
-	}
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-    public JhCgdxq(Long cgXqId, Long cgdId, Long cpId, Long cpNumber, String isRk, String operator, String remark, Long gsId, Date ltime, String isrk) {
+    public JhCgdxq(BigDecimal cgXqId, Long cgdId, BigDecimal cpId, Long cpNumber, String isRk, String operator, String remark, BigDecimal gsId, Date ltime, String cpPrice) {
         this.cgXqId = cgXqId;
         this.cgdId = cgdId;
         this.cpId = cpId;
@@ -46,18 +37,18 @@ public class JhCgdxq implements Serializable {
         this.remark = remark;
         this.gsId = gsId;
         this.ltime = ltime;
-        this.isrk = isrk;
+        this.cpPrice = cpPrice;
     }
 
     public JhCgdxq() {
         super();
     }
 
-    public Long getCgXqId() {
+    public BigDecimal getCgXqId() {
         return cgXqId;
     }
 
-    public void setCgXqId(Long cgXqId) {
+    public void setCgXqId(BigDecimal cgXqId) {
         this.cgXqId = cgXqId;
     }
 
@@ -69,11 +60,11 @@ public class JhCgdxq implements Serializable {
         this.cgdId = cgdId;
     }
 
-    public Long getCpId() {
+    public BigDecimal getCpId() {
         return cpId;
     }
 
-    public void setCpId(Long cpId) {
+    public void setCpId(BigDecimal cpId) {
         this.cpId = cpId;
     }
 
@@ -109,11 +100,11 @@ public class JhCgdxq implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Long getGsId() {
+    public BigDecimal getGsId() {
         return gsId;
     }
 
-    public void setGsId(Long gsId) {
+    public void setGsId(BigDecimal gsId) {
         this.gsId = gsId;
     }
 
@@ -125,11 +116,11 @@ public class JhCgdxq implements Serializable {
         this.ltime = ltime;
     }
 
-    public String getIsrk() {
-        return isrk;
+    public String getCpPrice() {
+        return cpPrice;
     }
 
-    public void setIsrk(String isrk) {
-        this.isrk = isrk == null ? null : isrk.trim();
+    public void setCpPrice(String cpPrice) {
+        this.cpPrice = cpPrice == null ? null : cpPrice.trim();
     }
 }

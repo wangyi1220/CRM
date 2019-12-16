@@ -49,4 +49,16 @@ public class SysUsersServiceImpl implements SysUsersService {
 			return users;
 		
 	}
+
+	@Override
+	public SysUsers selectRole(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectRole(uId);
+		return users;
+	}
+
+	@Override
+	public SysUsers selectUserinfo(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectUserinfo(uId);
+		return users;
+	}
 }

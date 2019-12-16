@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
+                            <a class="close-link" href="../OfficeTaskAssessmentController/inaddofficeKpi.do">
                                                                                                                                              添加任务
                             </a>
                         </div>
@@ -62,38 +62,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>编号</th>
-                                    <th>考核指标</th>
-                                    <th>备注说明</th>
+                                    <th>任务编号</th>
+                                    <th>任务标题</th>
+                                    <th>任务具体内容</th>
+                                    <th>任务发布人</th>
+                                    <th>任务考核指标</th>
+                                    <th>任务开始时间</th>
+                                    <th>任务结束时间</th>
                                     <th>公司编号</th>
                                     <th>最后修改时间</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
         <tbody>
-         <c:forEach items="${p.list }" var="k">
+         <c:forEach items="${p.list }" var="T">
             <tr>
                <td>
-                 ${k.kpiId }
+                 ${T.taskId }
                </td>
                
                <td>
-                 ${k.kpiKpi}
+                 ${T.tsakTitle}
                </td>
                <td>
-                 ${k.kpiDetail }
+                 ${T.taskConcreteContent}
                </td>
                <td>
-                 ${k.companyId }
+                 ${T.taskIssuer }
                </td>
                <td>
-               <fmt:formatDate value="${k.finalUpdataTime }" pattern="yyyy-MM-dd"/>
+                 ${T.taskIssuer }
+               </td>
+                 <td>
+               <fmt:formatDate value="${T.taskStartTime }" pattern="yyyy-MM-dd"/>
+               </td>
+               
+                 <td>
+               <fmt:formatDate value="${T.taskStopTime }" pattern="yyyy-MM-dd"/>
                </td>
                
                <td>
-                 <a href="<%=basePath %>OfficeKpictrl/goupdate.do?kpiId=${k.kpiId }">修改</a>
+               <fmt:formatDate value="${T.finalUpdateTime }" pattern="yyyy-MM-dd"/>
+               </td>
+               <td>
+                 ${T.companyId}
+               </td>
+               <td>
+                 <a href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?kpiId=${k.kpiId }">查看回复信息</a>
                  /
-                 <a href="<%=basePath %>OfficeKpictrl/delete.do?kpiId=${k.kpiId }"
+                 <a href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId=${T.taskId }"
                    onclick="return confirm('是否确定删除？')">删除</a>
                </td>
             </tr>

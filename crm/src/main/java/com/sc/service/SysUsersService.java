@@ -10,4 +10,8 @@ public interface SysUsersService {
 	public void update(SysUsers s);
 	
 	public SysUsers selectPower();
+	
+	public SysUsers selectRole(Long uId);
+	
+	public SysUsers selectUserinfo(Long uId);
 }
