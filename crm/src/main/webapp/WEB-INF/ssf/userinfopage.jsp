@@ -70,7 +70,6 @@
 									<th data-hide="all">身份证号</th>
 									<th data-hide="all">员工状态</th>
 									<th data-hide="all">公司编号</th>
-									
 									<th>操作</th>
 								</tr>
 							
@@ -81,12 +80,16 @@
 										<td>${info.empId }</td>
 										<td>${info.empName }</td>
 										<td>${info.empSex }</td>
-										<td>${info.empPhoto}</td>
-										<td>${info.idNumber}</td>
+										
+										<td>
+						                 <img alt="暂无图片" src="upload/${info.empPhoto }" 
+						                    width="40px" height="40px">
+						               </td>
+						               	<td>${info.idNumber}</td>
 										<td>${info.checkState}</td>
 										<td>${info.companyId}</td>
 										
-										<td><a href="SysUsersInfoCtrl/goupdate.do?uid=${info.empId }">修改</a>/<a href>删除</a></td>
+										<td><a href="SysUsersInfoCtrl/goupdate.do?empId=${info.empId}">修改</a>/<a href="SysUsersInfoCtrl/delete.do?empId=${info.empId}" onclick="return confirm('是否确定删除？')">删除</a></td>
 
 
 									</tr>

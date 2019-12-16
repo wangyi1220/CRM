@@ -10,4 +10,8 @@ public interface SysUsersInfoService {
 	public void update(SysUserinfo info);
 	//获取对象
 	public SysUserinfo get(Long empId);
+	//删
+    public void delete(SysUserinfo s);
+    //增加
+    public void add(SysUserinfo s);
 }
