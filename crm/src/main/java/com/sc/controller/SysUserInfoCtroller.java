@@ -21,59 +21,96 @@ public class SysUserInfoCtroller {
 	@Autowired
 	SysUsersInfoService sysUsersInfoService;
 
-	
-	
 	@RequestMapping("/listPage.do")
-	public ModelAndView listPage(ModelAndView mav,
-			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="12")Integer pageSize){
-		
+	public ModelAndView listPage(ModelAndView mav, @RequestParam(defaultValue = "1") Integer pageNum,
+			@RequestParam(defaultValue = "10") Integer pageSize) {
+
 		mav.addObject("p", sysUsersInfoService.select(pageNum, pageSize));
 		mav.setViewName("ssf/userinfopage");
 		System.out.println(sysUsersInfoService.select(pageNum, pageSize));
-		
+
 		System.out.println("分页");
-		
+
 		return mav;
 	}
+
 	@RequestMapping("/goupdate.do")
-	public ModelAndView goupdate(ModelAndView mav,SysUserinfo u){
-		System.out.println("跳转到修改页面！"+u);
-		SysUserinfo users = this.sysUsersInfoService.get(u.getEmpId());
+	public ModelAndView goupdate(ModelAndView mav, SysUserinfo u) {
+		System.out.println("进入goupdate方法" + u.getEmpId());
+		SysUserinfo users = sysUsersInfoService.get(u.getEmpId());
+		System.out.println("调用按empid查询信息后" + users);
 		mav.addObject("u", users);
-		mav.setViewName("usersupdate");
+		mav.setViewName("ssf/updateINFO");
+
 		return mav;
 	}
+
 	@RequestMapping("/update.do")
-	public ModelAndView update(ModelAndView mav,
-			MultipartFile upload,
-			HttpServletRequest req,
-			SysUserinfo u) throws IllegalStateException, IOException{
-		System.out.println("开始上传文件"+u);
-		
-		//如果用户选择文件，那么执行上传代码
-		if(upload!=null){
-			String filename=upload.getOriginalFilename();//文件名
-			if(filename!=null&&!filename.equals("")){
-				//获取upload文件夹所在路径
-				String path=req.getSession().
-						getServletContext().getRealPath("upload");
-				//形如：26456456435.jpg
-				filename=System.currentTimeMillis()
-						+filename.substring(filename.lastIndexOf("."));
-				//目的地文件对象
-				File file=new File(path+"/"+filename);
-				upload.transferTo(file);//转换存储文件
-				
-				//设置图片名称
+	public ModelAndView update(ModelAndView mav, MultipartFile upload, HttpServletRequest req, SysUserinfo u)
+			throws IllegalStateException, IOException {
+		System.out.println("开始上传文件" + u);
+
+		// 如果用户选择文件，那么执行上传代码
+		if (upload != null) {
+			String filename = upload.getOriginalFilename();// 文件名
+			if (filename != null && !filename.equals("")) {
+				// 获取upload文件夹所在路径
+				String path = req.getSession().getServletContext().getRealPath("upload");
+				// 形如：26456456435.jpg
+				filename = System.currentTimeMillis() + filename.substring(filename.lastIndexOf("."));
+				// 目的地文件对象
+				File file = new File(path + "/" + filename);
+				upload.transferTo(file);// 转换存储文件
+
+				// 设置图片名称
 				u.setEmpPhoto(filename);
 			}
 		}
-		
+
 		this.sysUsersInfoService.update(u);
-		mav.setViewName("redirect:listPage.do");//重定向到list方法
+		System.out.println(u);
+		mav.setViewName("redirect:listPage.do");// 重定向到list方法
 		return mav;
 	}
 
+	@RequestMapping("/delete.do")
+	public ModelAndView delete(ModelAndView mav, SysUserinfo s) {
+		System.out.println("删除用户！" + s);
+		this.sysUsersInfoService.delete(s);
+		mav.setViewName("redirect:listPage.do");// 重定向到list方法
+		return mav;
+	}
 
+	@RequestMapping("/goadd.do")
+	public ModelAndView goadd(ModelAndView mav, SysUserinfo user) {
+
+		mav.setViewName("ssf/usersINFOadd");
+		return mav;
+	}
+
+	@RequestMapping("/add.do")
+	public ModelAndView add(ModelAndView mav, MultipartFile upload, HttpServletRequest req, SysUserinfo u)
+			throws IllegalStateException, IOException {
+		System.out.println("开始添加用户" + u);
+		if (upload != null) {
+			String filename = upload.getOriginalFilename();// 文件名
+			if (filename != null && !filename.equals("")) {
+				String path = req.getServletContext().getRealPath("upload");
+				// 原始文件名
+				String n = upload.getOriginalFilename();
+				// 获取原始文件后缀名
+				String suffix = n.substring(n.lastIndexOf("."));
+				// 构建新的文件名称，形如：系统毫秒数.扩展名
+				String name = System.currentTimeMillis() + suffix;
+				File file = new File(path + "/" + name);
+				System.out.println(path + "/" + name);
+				upload.transferTo(file);
+				u.setEmpPhoto(filename);
+			}
+			sysUsersInfoService.add(u);
+			mav.setViewName("redirect:listPage.do");
+
+		}
+		return mav;
+	}
 }
