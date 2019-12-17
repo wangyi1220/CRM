@@ -21,6 +21,7 @@ public class SysUsers implements Serializable {
     
     private List<SysPowerinfo> SysPowerinfoes;
     
+    
     public SysRole getSysRole() {
 		return sysRole;
 	}
