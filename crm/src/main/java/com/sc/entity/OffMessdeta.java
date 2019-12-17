@@ -18,8 +18,23 @@ public class OffMessdeta implements Serializable {
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lasttime;
+    
+    //一对一关联查询start
+    private OffMess offMess;
+    
+    public OffMess getOffMess() {
+		return offMess;
+	}
 
-    @Override
+	public void setOffMess(OffMess offMess) {
+		this.offMess = offMess;
+	}
+    
+    //一对一关联查询end
+
+   
+
+	@Override
 	public String toString() {
 		return "OffMessdeta [detailsid=" + detailsid + ", messid=" + messid + ", receiverid=" + receiverid
 				+ ", messstate=" + messstate + ", companyid=" + companyid + ", lasttime=" + lasttime + "]";

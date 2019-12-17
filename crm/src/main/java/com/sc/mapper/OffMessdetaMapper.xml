@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sc.mapper.OffMessdetaMapper" >
+
   <resultMap id="BaseResultMap" type="com.sc.entity.OffMessdeta" >
     <constructor >
       <idArg column="DETAILSID" jdbcType="DECIMAL" javaType="java.lang.Long" />
@@ -228,4 +229,22 @@
       LASTTIME = #{lasttime,jdbcType=TIMESTAMP}
     where DETAILSID = #{detailsid,jdbcType=DECIMAL}
   </update>
+  <!-- 结果映射 -->
+	<resultMap type="com.sc.entity.OffMessdeta" id="detailsidMap" autoMapping="true">
+		<id column="DETAILSID" property="detailsid"/>
+		
+	<!-- 一对一的配置start -->
+	<association property="offMess" javaType="com.sc.entity.OffMess" autoMapping="true">
+		<id column="MESSID" property="messid"/>
+		
+	</association>
+	
+	<!-- 一对一的配置end -->
+	</resultMap>
+	
+	<select id="detamess" resultMap="detailsidMap" parameterType="com.sc.entity.OffMessdetaExample" >
+   			select * from OFF_MESSDETA d
+	LEFT JOIN OFF_MESS m ON d.MESSID=m.MESSID
+	where d.RECEIVERID=#{sid}
+  </select>
 </mapper>

@@ -228,4 +228,32 @@
       LASTTIME = #{lasttime,jdbcType=TIMESTAMP}
     where MESSID = #{messid,jdbcType=DECIMAL}
   </update>
+  
+  <!-- 结果映射 -->
+	<resultMap type="com.sc.entity.OffMess" id="messidMap" autoMapping="true">
+		<id column="MESSID" property="messid"/>
+		
+	<!-- 一对多的配置start -->
+	<collection property="offMessdeta" ofType="com.sc.entity.OffMessdeta" autoMapping="true">
+			<id column="DETAILSID" property="detailsid"/>
+			</collection>
+			
+			
+	
+	
+	<!-- 一对多的配置end -->
+	</resultMap>
+	
+	<select id="messdeta" resultMap="messidMap" parameterType="com.sc.entity.OffMessExample" >
+   			select * from OFF_MESS m
+left join OFF_MESSDETA d on d.MESSID=m.MESSID
+where m.SENDER=#{ser}
+  </select>
+  
+  
+  
+  
+  
+  
+  
 </mapper>
