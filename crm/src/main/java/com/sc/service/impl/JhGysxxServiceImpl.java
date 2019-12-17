@@ -65,17 +65,19 @@ JhGysxxMapper jhGysxxMapper;
 		
 		return page;
 	}
-	
+	//模糊查询
 	@Override
 	public List<JhGysxx> searchByName(String textData) {
 		         JhGysxxExample e = new JhGysxxExample();
 		        Criteria c = e.createCriteria();
-		       c.andGysNameEqualTo(textData+"%");
+		       c.andGysNameLike(textData+'%');
 		        List<JhGysxx> list = jhGysxxMapper.selectByExample(e);
 		return list;
 
 	}
 
+
+	
 
 
 
