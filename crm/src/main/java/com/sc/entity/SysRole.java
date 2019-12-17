@@ -2,6 +2,7 @@ package com.sc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,11 +14,52 @@ public class SysRole implements Serializable {
     private String roleDescribe;
 
     private Long superRoleId;
+    
+    private SysRole sysRole;
 
-    private Long operaterId;
+	public SysRole getSysRole() {
+		return sysRole;
+	}
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	public void setSysRole(SysRole sysRole) {
+		this.sysRole = sysRole;
+	}
+
+	private Long operaterId;
+	
+	private String operaterName;
+
+	private List<SysUserinfo> sysUserinfoes;
+	
+	private List<SysUsers> sysUsers;
+	
+    public List<SysUsers> getSysUsers() {
+		return sysUsers;
+	}
+
+	public void setSysUsers(List<SysUsers> sysUsers) {
+		this.sysUsers = sysUsers;
+	}
+
+	public List<SysUserinfo> getSysUserinfoes() {
+		return sysUserinfoes;
+	}
+
+	public void setSysUserinfoes(List<SysUserinfo> sysUserinfoes) {
+		this.sysUserinfoes = sysUserinfoes;
+	}
+
+	public String getOperaterName() {
+		return operaterName;
+	}
+
+	public void setOperaterName(String operaterName) {
+		this.operaterName = operaterName;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date changeDate;
+	
 
     @Override
 	public String toString() {

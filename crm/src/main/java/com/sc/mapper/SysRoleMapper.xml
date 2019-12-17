@@ -228,4 +228,53 @@
       CHANGE_DATE = #{changeDate,jdbcType=TIMESTAMP}
     where ROLE_ID = #{roleId,jdbcType=DECIMAL}
   </update>
+  
+  <resultMap type="com.sc.entity.SysRole" id="selectMeAndSuperMap" autoMapping="true">
+  	<id column="ROLE_ID" property="roleId"/>
+  	<association property="sysRole" javaType="com.sc.entity.SysRole">
+  		<id column="RID2" property="roleId"/>
+  		<result column="RNAME" property="roleName"/>
+  		<result column="RDESCRIBE2" property="roleDescribe"/>
+  		<result column="SRID" property="superRoleId"/>
+  		<result column="OID" property="operaterId"/>
+  		<result column="CDATE" property="changeDate"/>
+  	</association>
+  </resultMap>
+  <select id="selectMeAndSuper" resultMap="selectMeAndSuperMap">
+	SELECT sr1.*,sr2.ROLE_ID RID2,sr2.ROLE_NAME RNAME,sr2.ROLE_DESCRIBE RDESCRIBE2,
+	sr2.SUPER_ROLE_ID SRID,sr2.OPERATER_ID OID,sr2.CHANGE_DATE CDATE
+	from SYS_ROLE sr1 LEFT JOIN 
+	SYS_ROLE sr2 on sr1.SUPER_ROLE_ID=sr2.ROLE_ID where sr1.ROLE_ID=#{rId}
+  </select>
+  
+  <resultMap type="com.sc.entity.SysRole" id="selectUsersMap" autoMapping="true">
+  	<id column="ROLE_ID" property="roleId"/>
+  	<collection property="sysUserinfoes" ofType="com.sc.entity.SysUserinfo" autoMapping="true">
+  		<id column="EMP_ID" property="empId"/>
+  	</collection>
+  </resultMap>
+  <select id="selectUsers" resultMap="selectUsersMap" parameterType="java.lang.Long" >
+  	select SR.*,SURI.* from SYS_ROLE SR 
+	LEFT JOIN SYS_USERS_ROLE SUR ON SR.ROLE_ID=SUR.ROLE_ID 
+	LEFT JOIN SYS_USERS SU ON SUR.USERS_ID=SU.USERS_ID  
+	LEFT JOIN SYS_USERINFO SURI ON SU.EMP_ID=SURI.EMP_ID
+	WHERE SR.ROLE_ID=#{rId}
+  </select>
+  
+  <resultMap type="com.sc.entity.SysRole" id="selectUsersAndInfosMap" autoMapping="true">
+  	<id column="ROLE_ID" property="roleId"/>
+  	<collection property="sysUsers" ofType="com.sc.entity.SysUsers" autoMapping="true">
+  		<id column="USERS_ID" property="usersId"/>
+  		<association property="sysUserinfo" javaType="com.sc.entity.SysUserinfo" autoMapping="true">
+  			<id column="EMP_ID" property="empId"/>
+  		</association>
+  	</collection>
+  </resultMap>
+  <select id="selectUsersAndInfos" resultMap="selectUsersAndInfosMap">
+  	select SR.*,SU.*,SURI.* from SYS_ROLE SR 
+	LEFT JOIN SYS_USERS_ROLE SUR ON SR.ROLE_ID=SUR.ROLE_ID 
+	LEFT JOIN SYS_USERS SU ON SUR.USERS_ID=SU.USERS_ID  
+	LEFT JOIN SYS_USERINFO SURI ON SU.EMP_ID=SURI.EMP_ID
+	WHERE SR.ROLE_ID=#{rId}
+  </select>
 </mapper>

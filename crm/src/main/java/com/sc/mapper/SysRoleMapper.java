@@ -27,4 +27,10 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+    
+    public SysRole selectMeAndSuper(Long rId);
+    
+    public List<SysRole> selectUsers(Long rId);
+    
+    public List<SysRole> selectUsersAndInfos(Long rId);
 }
