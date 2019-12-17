@@ -68,7 +68,12 @@ public class SysRoleServiceImpl implements SysRoleService {
 	public PageInfo<SysUsers> selectUsersAndNORoleUser(Integer pageNum, Integer pageSize, Long rId) {
 		PageHelper.startPage(pageNum, pageSize);
 		List<SysRole> list = this.sysRoleMapper.selectUsersAndInfos(22L);
-		
+		for (SysRole sysRole : list) {
+			for (SysUsers sysUsers : sysRole.getSysUsers()) {
+				System.out.println(sysRole.toString()+":"+sysUsers.toString()
+						+":"+sysUsers.getSysUserinfo().toString());
+			}
+		}
 		return null;
 	}
 

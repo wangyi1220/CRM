@@ -2,6 +2,7 @@ package com.sc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,8 +19,25 @@ public class OffMess implements Serializable {
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lasttime;//最后修改时间
+    
+    //一对多关联查询start
+    private List<OffMessdeta> offMessdeta;//在一的一方，配置另外多的集合
+    
+    
+	
+	
+	//一对一关联查询end
+	
 
-    @Override
+	public List<OffMessdeta> getOffMessdeta() {
+		return offMessdeta;
+	}
+
+	public void setOffMessdeta(List<OffMessdeta> offMessdeta) {
+		this.offMessdeta = offMessdeta;
+	}
+
+	@Override
 	public String toString() {
 		return "OffMess [messid=" + messid + ", title=" + title + ", content=" + content + ", sender=" + sender
 				+ ", companyid=" + companyid + ", lasttime=" + lasttime + "]";

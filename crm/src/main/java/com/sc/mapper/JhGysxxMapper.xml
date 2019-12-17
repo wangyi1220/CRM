@@ -116,6 +116,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  
+  
+ 
   <insert id="insert" parameterType="com.sc.entity.JhGysxx">
     insert into JH_GYSXX (GYS_ID, GYS_NAME, GYS_JC, 
       LXR, GD_PHONE, YD_PHONE, 
