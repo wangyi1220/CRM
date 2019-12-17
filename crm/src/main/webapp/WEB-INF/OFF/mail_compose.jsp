@@ -34,16 +34,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="ibox float-e-margins">
                     <div class="ibox-content mailbox-content">
                         <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">写信</a>
+                            
                             <div class="space-25"></div>
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-inbox "></i> 收件箱 <span class="label label-warning pull-right">16</span>
+                                    <a href="../offmessdetactrl/listpagedeta.do"  target="_self"> <i class="fa fa-inbox "></i> 收件箱 <span class="label label-warning pull-right">16</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 发信</a>
+                                    <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
                                 <li>
                                     <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
@@ -101,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <p>在此输入内容</p>
                         </div>
                     </div>-->
-                    <div style="padding-left: 100px ">
-                   <textarea rows="10" cols="120"  name="content"></textarea>
+                    <div style="padding-left: 75px ">
+                   <textarea rows="10" cols="100"  name="content"></textarea>
                   </div>
               
                     

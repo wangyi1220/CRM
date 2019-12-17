@@ -98,85 +98,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </td>
             </tr>
          </c:forEach>
+          <tr>
+             <td style="text-align: center;" colspan="3">
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
+               <td style="text-align: center;" colspan="3">当前${p.pageNum }/${p.pages }页，共${p.total }条
+             </td>
+          </tr>
         </table>
        </div>
       </div>
      </div>
+    
     </div>
-     <tr>
-             <td style="text-align: center;" colspan="2">
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
-                                       当前${p.pageNum }/${p.pages }页，共${p.total }条
-             </td>
-          </tr>
+     
     		
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>可编辑表格</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="table_data_tables.html#">选项1</a>
-                                </li>
-                                <li><a href="table_data_tables.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="">
-                            <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">添加行</a>
-                        </div>
-                        <table class="table table-striped table-bordered table-hover " id="editable">
-                            <thead>
-                                <tr>
-                                    <th>编号</th>
-                                    <th>考核指标</th>
-                                    <th>备注说明</th>
-                                    <th>公司编号</th>
-                                    <th>最后修改时间</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
-                                </tr>
-                                
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                   <th>编号</th>
-                                    <th>考核指标</th>
-                                    <th>备注说明</th>
-                                    <th>公司编号</th>
-                                    <th>最后修改时间</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>
     <script src="js/plugins/jeditable/jquery.jeditable.js"></script>

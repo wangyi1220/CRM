@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class JhCgdxq implements Serializable {
     private BigDecimal cgXqId;
 
@@ -21,9 +23,17 @@ public class JhCgdxq implements Serializable {
 
     private BigDecimal gsId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
-    private String cpPrice;
+    @Override
+	public String toString() {
+		return "JhCgdxq [cgXqId=" + cgXqId + ", cgdId=" + cgdId + ", cpId=" + cpId + ", cpNumber=" + cpNumber
+				+ ", isRk=" + isRk + ", operator=" + operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime="
+				+ ltime + ", cpPrice=" + cpPrice + "]";
+	}
+
+	private String cpPrice;
 
     private static final long serialVersionUID = 1L;
 
