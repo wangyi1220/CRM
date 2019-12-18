@@ -26,56 +26,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <center>
        <h1>用户修改</h1>
-       <form action="usersctrl/update.do" method="post"
+       <form action="SysUsersInfoCtrl/update.do" method="post"
             enctype="multipart/form-data">
             
             <table border="1" width="40%" cellpadding="0" cellspacing="0" 
                >
                 <tr>
-                  <td style="text-align: right;">用户名</td>
+                  <td style="text-align: right;">员工姓名</td>
                   <td>
-                      <input type="hidden" name="uid" value="${u.uid }">
-                      <input type="text" name="uname" value="${u.uname }">
+                      <input type="hidden" name="empId" value="${u.empId }">
+                      <input type="text" name="empName" value="${u.empName }">
                   </td>
                 </tr>
-                <tr>
-                  <td style="text-align: right;">密码</td>
-                  <td>
-                      <input type="password" name="upass" value="${u.upass }">
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align: right;">年龄</td>
-                  <td>
-                      <input type="text" name="age" value="${u.age }">
-                  </td>
-                </tr>
-                <tr>
+               <tr>
                   <td style="text-align: right;">性别</td>
                   <td>
-                      <input type="radio" name="sex" value="男" ${u.sex=="男" ? "checked":"" }>男
-                      <input type="radio" name="sex" value="女" ${u.sex=="女" ? "checked":"" }>女
+                      <input type="radio" name="empSex" value="男" ${u.empSex=="男" ? "checked":"" }>男
+                      <input type="radio" name="empSex" value="女" ${u.empSex=="女" ? "checked":"" }>女
                   </td>
-                </tr>
-                <tr>
+                </tr> 
+               <%--  <tr>
+                  <td style="text-align: right;">年龄</td>
+                  <td>
+                      <input type="text" name="age" value="${u.empPhoto }">
+                  </td>
+                </tr> --%>
+              <%--   <tr>
                   <td style="text-align: right;">生日</td>
                   <td>
-                      <input type="text" name="birthday" value="<fmt:formatDate value="${u.birthday }" pattern="yyyy-MM-dd"/>">
+                      <input type="text" name="idNumber" value="<fmt:formatDate value="${u.birthday }" pattern="yyyy-MM-dd"/>">
                   </td>
-                </tr>
-                <tr>
-                   <td style="text-align: right;">状态</td>
-                   <td>
-                      <select name="active">
-                          <option ${u.active=="0" ? "selected":"" } value="0">启用</option>
-                          <option ${u.active=="1" ? "selected":"" } value="1">禁用</option>
+                </tr> --%>
+              <!--   <tr>
+                   <td style="text-align: right;">状态</td> -->
+                   <td style="text-align: right;">用户状态</td>
+                  <td>
+                   		 <select name="checkState">
+                          <option ${u.checkState=="0" ? "selected":"" } value="0">禁用</option>
+                          <option ${u.checkState=="1" ? "selected":"" } value="1">启用</option>
                       </select>
                    </td>
-                </tr>
+               <!--  </tr> -->
                 <tr>
                    <td style="text-align: right;">照片</td>
                    <td>
-                      <input type="file" name="upload">
+                   <input type="hidden" name="empPhoto" value="${u.empPhoto }">
+                    <input type="file" name="upload">
                    </td>
                 </tr>
                  <tr>

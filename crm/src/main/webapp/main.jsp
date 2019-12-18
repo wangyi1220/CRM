@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </li>
                                     <li><a class="J_menuItem" href="SysRoleCtrl/roleList.do">角色列表</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="SysPowerColumnsCtrl/PowerinfoList.do">查看所有权限</a>
+                                    <li><a class="J_menuItem" href="SysRoleCtrl/selectUsersAndNORoleUser.do">查看所有权限</a>
                                     </li>
                                 </ul>
                             </li>
@@ -164,8 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">进货管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="GongYingShangctrl/list.do">供应商</a>
-                            </li>
+                            <li><a class="J_menuItem" href="GongYingShangctrl/list.do">供应商</a></li>
+                            <li><a class="J_menuItem" href="caiGouDanCtrl/cgdList.do">采购单</a></li>
                             
                             <li>
                                 <a href="#">文件上传 <span class="fa arrow"></span></a>

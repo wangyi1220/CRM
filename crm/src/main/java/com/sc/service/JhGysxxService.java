@@ -16,6 +16,8 @@ public interface JhGysxxService {
 		public void update(JhGysxx gys);
 		//删除
 		public void delete(Long gysId);
+		//删除选中
+		//public void deleteSelect(String ids);
 		//获取对象
 		public JhGysxx get(Long gysId);
 		//分页查询

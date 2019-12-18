@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysUserinfo;
+import com.sc.entity.SysUserinfoExample;
+import com.sc.entity.SysUserinfoExample.Criteria;
 import com.sc.mapper.SysUserinfoMapper;
 import com.sc.service.SysUsersInfoService;
 
@@ -21,7 +23,9 @@ public class SysuserInfoImpl implements SysUsersInfoService {
 
 		PageHelper.startPage(pageNum, pageSize);
 		
-		List<SysUserinfo> list = sysUserinfoMapper.selectByExample(null);
+		SysUserinfoExample e = new SysUserinfoExample();
+		e.setOrderByClause("EMP_ID DESC");
+		List<SysUserinfo> list = sysUserinfoMapper.selectByExample(e);
 		
 		PageInfo<SysUserinfo> pageInfo = new PageInfo<SysUserinfo>(list);
 		
@@ -41,4 +45,16 @@ public class SysuserInfoImpl implements SysUsersInfoService {
 		}
 		return null;
 	}
+	@Override
+	public void delete(SysUserinfo s) {
+		if (s != null) {
+			this.sysUserinfoMapper.deleteByPrimaryKey(s.getEmpId());
+		}
+	}
+	@Override
+	public void add(SysUserinfo s) {
+		if (s != null) {
+			this.sysUserinfoMapper.insert(s);
+	}
+}
 }

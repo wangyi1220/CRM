@@ -122,4 +122,16 @@ public class SysRoleCtrl {
 		return mav;
 	}
 	
+	@RequestMapping("/selectUsersAndNORoleUser.do")
+	public ModelAndView selectUsersAndNORoleUser(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="10")Integer pageSize,Long roleId){
+		
+		/*mav.addObject("ru", this.sysRoleService.selectUsers(pageNum, pageSize, roleId));
+		mav.setViewName("wangyi/roleuserlist");
+		return mav;*/
+		this.sysRoleService.selectUsersAndNORoleUser(pageNum, pageSize, roleId);
+		return null;
+	}
+	
 }
