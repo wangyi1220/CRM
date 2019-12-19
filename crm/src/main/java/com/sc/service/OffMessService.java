@@ -9,8 +9,9 @@ import com.sc.entity.SysUsers;
 
 public interface OffMessService {
 	
-		//获取除自己以外的其他用户
-		public List<SysUsers> selectuser();
+	public List<OffMess> mdetail(Long mid);
+	
+		
 	
 		//添加
 		public void add(OffMess m);

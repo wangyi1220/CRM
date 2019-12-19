@@ -13,8 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.OffMess;
+import com.sc.entity.OffMessdeta;
 import com.sc.entity.SysUsers;
 import com.sc.service.OffMessService;
+import com.sc.service.SysUsersService;
 
 @Controller
 @RequestMapping("/offmessctrl")
@@ -22,7 +24,8 @@ public class OffMessController {
 	
 	@Autowired
 	OffMessService offMessService;
-	
+	@Autowired
+	SysUsersService sysUsersService;
 	
 	
 	//回复邮件
@@ -33,6 +36,23 @@ public class OffMessController {
 		mav.setViewName("OFF/reply");
 		return mav;
 	}
+	
+	//查看消息详情
+		@RequestMapping("/details.do")
+		public ModelAndView details(ModelAndView mav,Long mid){
+			System.out.println("查看消息详情"+mid);
+			List<OffMess> list = offMessService.mdetail(mid);
+			for (OffMess m : list) {
+				System.out.println(m.getOffMessdeta());
+					
+
+			}
+			
+			mav.addObject("list", list);
+			mav.setViewName("OFF/m_detail");
+			
+			return mav;
+		}
 	
 	
 	
@@ -52,12 +72,13 @@ public class OffMessController {
 	@RequestMapping("/goadd.do")
 	public ModelAndView goadd(ModelAndView mav){
 		
+		List<SysUsers> users=this.sysUsersService.selectAllNOSelf(5L);
+		mav.addObject("users", users);
 		
-		 /*List<SysUsers> users=this.offMessService.selectuser();
-		 mav.addObject("users", users);
+		 
 		 for (SysUsers u : users) {
 					System.out.println(u);
-			}*/
+			}
 		 
 		 
 		

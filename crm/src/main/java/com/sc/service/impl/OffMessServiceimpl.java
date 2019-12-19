@@ -88,10 +88,12 @@ public class OffMessServiceimpl implements OffMessService {
 	}
 
 	@Override
-	public List<SysUsers> selectuser() {
-		 this.sysUsersMapper.selectNoRoleUser();
-		 return null;
+	public List<OffMess> mdetail(Long mid) {
+		return this.offMessMapper.mdetail(mid);
+		 
 	}
+
+	
 
 	
 
