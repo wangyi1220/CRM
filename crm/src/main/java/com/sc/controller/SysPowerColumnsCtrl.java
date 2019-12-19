@@ -55,7 +55,7 @@ public class SysPowerColumnsCtrl {
 	@RequestMapping("/PowerinfoList.do")
 	public ModelAndView PowerinfoList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="100")Integer pageSize){
+			@RequestParam(defaultValue="1000")Integer pageSize){
 		SysUsers sysUsers = new SysUsers();
 		sysUsers.setUsersId(61L);
 		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize,sysUsers));
