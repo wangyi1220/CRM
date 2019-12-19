@@ -81,8 +81,9 @@
 										<td>${k.companyId }</td>
 										<td><fmt:formatDate value="${k.cangkuLastModifyTime }"
 												pattern="yyyy-MM-dd HH:mm:ss" />
-										<td><a href="KCCKControllerCtrl/goupdate.do?cangkuId=${k.cangkuId }">修改</a>
-											/ <a href="usersctrl/delete.do?kcck=${k}"
+												
+										<td><a href="../KCCKControllerCtrl/goupdate.do?cangkuId=${k.cangkuId }">修改</a>
+											/ <a href="../KCCKControllerCtrl/delete.do?kcck=${k.cangkuId}"
 											onclick="return confirm('是否确定删除？')">删除</a></td>
 
 										<%-- <td>${k.cangkuLastModifyTime}</td> --%>
