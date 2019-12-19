@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>H+ 后台主题UI框架 - FooTable</title>
+<title>库存商品信息</title>
 <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
 <meta name="description"
 	content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
@@ -55,15 +55,23 @@
 						</div>
 					</div>
 					<div class="ibox-content">
-						<input type="text" id="" name="" placeholder="请输入仓库名，或仓库编号">
+						<input type="text" id="" name="" placeholder="请输入商品编号，或商品名称，或商品类别">
 						<button>搜索</button>
 
 						<table class="footable table table-stripped toggle-arrow-tiny"
 							data-page-size="8">
 							<thead>
 								<tr>
+									<th>商品编号</th>
+									<th>商品名称</th>
+									<th>商品类别</th>
+									<th>规格说明</th>
+									<th>单位</th>
 									<th>仓库编号</th>
-									<th>仓库名</th>
+									<th>库存数量</th>
+									<th>成本价</th>
+									<th>零售价</th>
+									<th>经销价</th>
 									<th>备注信息</th>
 									<th>公司编号</th>
 									<th>最后修改时间</th>
@@ -75,14 +83,22 @@
 
 								<c:forEach items="${p.list }" var="k">
 									<tr style="text-align: center;">
-										<td>${k.cangkuId }</td>
-										<td>${k.cangkuName}</td>
-										<td>${k.cangkuNote}</td>
-										<td>${k.companyId }</td>
-										<td><fmt:formatDate value="${k.cangkuLastModifyTime }"
+										<td>${k.goodsId }</td>
+										<td>${k.goodsName}</td>
+										<td>${k.goodsKinds}</td>
+										<td>${k.goodsSpecs }</td>
+										<td>${k.unit}</td>
+										<td>${k.cangkuId}</td>
+										<td>${k.kcNum}</td>
+										<td>${k.goodsCost}</td>
+										<td>${k.goodsSellingPrice}</td>
+										<td>${k.note}</td>
+										<td>${k.companyId}</td>
+										<td><fmt:formatDate value="${k.lastModifyTime}"
 												pattern="yyyy-MM-dd HH:mm:ss" />
-										<td><a href="KCCKControllerCtrl/goupdate.do?cangkuId=${k.cangkuId }">修改</a>
-											/ <a href="usersctrl/delete.do?kcck=${k}"
+										<td><a href="KCGSControllerCtrl/goupdate.do?gid=${k.goodsId }">修改</a>
+											/ <a href="usersctrl/delete.do?kcgs=${k}"
+											<!-- delete后的参数是怎样的 -->
 											onclick="return confirm('是否确定删除？')">删除</a></td>
 
 										<%-- <td>${k.cangkuLastModifyTime}</td> --%>
