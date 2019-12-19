@@ -44,15 +44,15 @@ public class KCCKController {
 		 }
 	 //删除
 	@RequestMapping("/delete.do")
-	public ModelAndView delete(ModelAndView mav, KcCangku kcck){
+	public ModelAndView delete(ModelAndView mav, Long kcck){
 		System.out.println("删除仓库！"+kcck);
-		this.kcCangkuService.delete(kcck.getCangkuId());
+		kcCangkuService.delete(kcck);
 		mav.setViewName("redirect:listpage.do");//重定向到list方法
 		return mav;
 	}
 	//修改
 	 @RequestMapping("/goupdate.do")
-	 public ModelAndView goupdate(ModelAndView mav,long cangkuId ){
+	 public ModelAndView goupdate(ModelAndView mav,Long cangkuId ){
 			System.out.println("进入了goupdate");
 			mav.addObject("kcck", kcCangkuService.getCkID(cangkuId));
 			mav.setViewName("yjs/updateKCCKPage");

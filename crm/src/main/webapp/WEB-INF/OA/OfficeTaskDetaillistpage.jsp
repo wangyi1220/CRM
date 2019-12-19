@@ -53,32 +53,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <i class="fa fa-times"></i>
                             </a>
                             <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
-                                                                                                                                            
+                                                                                                                                             添加任务
                             </a>
                         </div>
                     </div>
                     <div class="ibox-content">
 
-                      <center>
-    <form action="../OfficeKpictrl/addofficeKpi.do">
-    <table>
-           <tr><td>考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
-           <tr><td>考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>
-           <tr><td>所属公司：</td><td><input type="text" name="companyId" ></td></tr>
-           <%-- <input type="hidden" name="finalUpdataTime" value="<%=new Date().getTime() %>"> --%>
-          <tr><td><input type="submit" value="提交"></td><td>
-           <input type="reset" value="重置"></td></tr>
-    </table>
-    </form>
-    </center>
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>任务编号</th>
+                                    <th>接受用户</th>
+                                    <th>是否完成</th>
+                                    <th>状态</th>
+                                    <th>公司编号</th>
+                                    <th>最后修改时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+        <tbody>
+         <c:forEach items="${p.list }" var="d">
+            <tr>
+               <td>
+                 ${d.taskDetailId }
+               </td>
+               
+               <td>
+                 ${d.taskId}
+               </td>
+               <td>
+                 ${d.taskUserId }
+               </td>
+               <td>
+                 ${d.taskIsfinshed }
+               </td>
+               <td>
+                 ${d.status }
+               </td>
+               <td>
+                 ${d.companyId }
+               </td>
+               <td>
+               <fmt:formatDate value="${k.finalUpdataTime }" pattern="yyyy-MM-dd"/>
+               </td>
+               
+               <td>
+                 <a href="<%=basePath %>OfficeTaskDetailController/goupdate.do?taskDetailId=${d.taskDetailId }">修改</a>
+                 /
+                 <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
+                   onclick="return confirm('是否确定删除？')">删除</a>
+                   /
+                 <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
+                   onclick="return confirm('是否确定删除？')">修改</a>
+               </td>
+            </tr>
+         </c:forEach>
+          <tr>
+             <td style="text-align: center;" colspan="4">
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
+                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
+               <td style="text-align: center;" colspan="4">当前${p.pageNum }/${p.pages }页，共${p.total }条
+             </td>
+          </tr>
+        </table>
        </div>
       </div>
      </div>
-     
-    </div>
-     
-    		
-        
+    </div>   
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>
     <script src="js/plugins/jeditable/jquery.jeditable.js"></script>

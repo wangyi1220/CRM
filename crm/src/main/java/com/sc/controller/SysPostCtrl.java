@@ -29,16 +29,16 @@ public class SysPostCtrl {
 		mav.setViewName("ssf/POSTlistpage");
 		System.out.println(sysPostService.select(pageNum, pageSize));
 
-		System.out.println("·ÖÒ³");
+		System.out.println("åˆ†é¡µ");
 
 		return mav;
 	}
 
 	@RequestMapping("/goupdate.do")
 	public ModelAndView goupdate(ModelAndView mav, SysPost u) {
-		System.out.println("½øÈëgoupdate·½·¨" + u.getPostId());
+		System.out.println("è¿›å…¥goupdateæ–¹æ³•" + u.getPostId());
 		SysPost p = sysPostService.get(u.getPostId());
-		System.out.println("µ÷ÓÃPostId²éÑ¯ĞÅÏ¢ºó" + u);
+		System.out.println("è°ƒç”¨PostIdæŸ¥è¯¢ä¿¡æ¯å" + u);
 		mav.addObject("u", p);
 		mav.setViewName("ssf/updatePOST");
 
@@ -48,19 +48,19 @@ public class SysPostCtrl {
 	@RequestMapping("/update.do")
 	public ModelAndView update(ModelAndView mav, HttpServletRequest req, SysPost u)
 			throws IllegalStateException, IOException {
-		System.out.println("½øÈëĞŞ¸Ä·½·¨");
+		System.out.println("è¿›å…¥ä¿®æ”¹æ–¹æ³•");
 
 		this.sysPostService.update(u);
 		System.out.println(u);
-		mav.setViewName("redirect:listPage.do");// ÖØ¶¨Ïòµ½list·½·¨
+		mav.setViewName("redirect:listPage.do");// é‡å®šå‘åˆ°listæ–¹æ³•
 		return mav;
 	}
 
 	@RequestMapping("/delete.do")
 	public ModelAndView delete(ModelAndView mav, SysPost s) {
-		System.out.println("É¾³ıÓÃ»§£¡" + s);
+		System.out.println("åˆ é™¤ç”¨æˆ·ï¼" + s);
 		this.sysPostService.del(s);
-		mav.setViewName("redirect:listPage.do");// ÖØ¶¨Ïòµ½list·½·¨
+		mav.setViewName("redirect:listPage.do");// é‡å®šå‘åˆ°listæ–¹æ³•
 		return mav;
 	}
 
@@ -74,7 +74,7 @@ public class SysPostCtrl {
 	@RequestMapping("/add.do")
 	public ModelAndView add(ModelAndView mav, MultipartFile upload, HttpServletRequest req, SysPost u)
 			throws IllegalStateException, IOException {
-		System.out.println("¿ªÊ¼Ìí¼ÓÓÃ»§" + u);
+		System.out.println("å¼€å§‹æ·»åŠ ç”¨æˆ·" + u);
 
 		sysPostService.add(u);
 		mav.setViewName("redirect:listPage.do");

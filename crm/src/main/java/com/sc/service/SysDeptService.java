@@ -4,18 +4,18 @@ import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysDept;
 
 public interface SysDeptService {
-	// ·ÖÒ³²éÑ¯
+	// åˆ†é¡µæŸ¥è¯¢
 	public PageInfo<SysDept> select(Integer pageNum, Integer pageSize);
 
-	// Ôö
+	// å¢
 	public void add(SysDept s);
 
-	// É¾
+	// åˆ 
 	public void del(SysDept s);
 
-	// ¸Ä
+	// æ”¹
 	public void update(SysDept s);
 
-	// Í¨¹ıÖ÷¼ü»ñÈ¡ĞÅÏ¢
+	// é€šè¿‡ä¸»é”®è·å–ä¿¡æ¯
 	public SysDept get(Long deptId);
 }

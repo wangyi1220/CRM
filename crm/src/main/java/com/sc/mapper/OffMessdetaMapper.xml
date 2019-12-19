@@ -242,6 +242,14 @@
 	<!-- 一对一的配置end -->
 	</resultMap>
 	
+	
+	<select id="details" resultMap="detailsidMap" parameterType="com.sc.entity.OffMessdetaExample" >
+   			select * from OFF_MESSDETA d
+	LEFT JOIN OFF_MESS m ON d.MESSID=m.MESSID
+	where d.DETAILSID=#{did}
+  </select>
+	
+	
 	<select id="detamess" resultMap="detailsidMap" parameterType="com.sc.entity.OffMessdetaExample" >
    			select * from OFF_MESSDETA d
 	LEFT JOIN OFF_MESS m ON d.MESSID=m.MESSID

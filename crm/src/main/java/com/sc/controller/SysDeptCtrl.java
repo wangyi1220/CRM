@@ -28,23 +28,23 @@ public class SysDeptCtrl {
 		mav.setViewName("ssf/DEPTlistpage");
 		System.out.println(sysDeptService.select(pageNum, pageSize));
 		
-		System.out.println("·ÖÒ³");
+		System.out.println("åˆ†é¡µ");
 		
 		return mav;
 	}
 
 	@RequestMapping("/delete.do")
 	public ModelAndView delete(ModelAndView mav, SysDept s) {
-		System.out.println("É¾³ıÓÃ»§£¡" + s);
+		System.out.println("åˆ é™¤ç”¨æˆ·ï¼" + s);
 		this.sysDeptService.del(s);
-		mav.setViewName("redirect:listPage.do");// ÖØ¶¨Ïòµ½list·½·¨
+		mav.setViewName("redirect:listPage.do");// é‡å®šå‘åˆ°listæ–¹æ³•
 		return mav;
 	}
 	@RequestMapping("/goupdate.do")
 	public ModelAndView goupdate(ModelAndView mav, SysDept u) {
-		System.out.println("½øÈëgoupdate·½·¨" + u.getDeptId());
+		System.out.println("è¿›å…¥goupdateæ–¹æ³•" + u.getDeptId());
 		SysDept p = sysDeptService.get(u.getDeptId());
-		System.out.println("µ÷ÓÃdeptId²éÑ¯ĞÅÏ¢ºó" + p);
+		System.out.println("è°ƒç”¨deptIdæŸ¥è¯¢ä¿¡æ¯å" + p);
 		mav.addObject("u", p);
 		mav.setViewName("ssf/updateDEPT");
 
@@ -53,11 +53,11 @@ public class SysDeptCtrl {
 	@RequestMapping("/update.do")
 	public ModelAndView update(ModelAndView mav, HttpServletRequest req, SysDept u)
 			throws IllegalStateException, IOException {
-		System.out.println("½øÈëĞŞ¸Ä·½·¨");
+		System.out.println("è¿›å…¥ä¿®æ”¹æ–¹æ³•");
 
 		this.sysDeptService.update(u);
-		System.out.println("ĞŞ¸Ä³É¹¦£¡"+u);
-		mav.setViewName("redirect:listPage.do");// ÖØ¶¨Ïòµ½list·½·¨
+		System.out.println("ä¿®æ”¹æˆåŠŸï¼"+u);
+		mav.setViewName("redirect:listPage.do");// é‡å®šå‘åˆ°listæ–¹æ³•
 		return mav;
 	}
 
@@ -70,7 +70,7 @@ public class SysDeptCtrl {
 	@RequestMapping("/add.do")
 	public ModelAndView add(ModelAndView mav, MultipartFile upload, HttpServletRequest req, SysDept u)
 			throws IllegalStateException, IOException {
-		System.out.println("¿ªÊ¼Ìí¼ÓÓÃ»§" + u);
+		System.out.println("å¼€å§‹æ·»åŠ ç”¨æˆ·" + u);
 
 		sysDeptService.add(u);
 		mav.setViewName("redirect:listPage.do");

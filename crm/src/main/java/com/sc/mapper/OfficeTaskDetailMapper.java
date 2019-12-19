@@ -20,7 +20,7 @@ public interface OfficeTaskDetailMapper {
     List<OfficeTaskDetail> selectByExample(OfficeTaskDetailExample example);
 
     OfficeTaskDetail selectByPrimaryKey(BigDecimal taskDetailId);
-
+    OfficeTaskDetail selectByTaskId(BigDecimal taskId);
     int updateByExampleSelective(@Param("record") OfficeTaskDetail record, @Param("example") OfficeTaskDetailExample example);
 
     int updateByExample(@Param("record") OfficeTaskDetail record, @Param("example") OfficeTaskDetailExample example);

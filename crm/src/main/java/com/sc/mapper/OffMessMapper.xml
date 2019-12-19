@@ -251,6 +251,13 @@ where m.SENDER=#{ser}
   </select>
   
   
+  <select id="mdetail" resultMap="messidMap" parameterType="com.sc.entity.OffMessExample" >
+   			select * from OFF_MESS m
+left join OFF_MESSDETA d on d.MESSID=m.MESSID
+where m.messid=#{mid}
+  </select>
+  
+  
   
   
   

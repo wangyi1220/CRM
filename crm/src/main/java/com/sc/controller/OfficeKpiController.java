@@ -17,15 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.OfficeKpi;
-
+import com.sc.entity.OfficeTaskAssessment;
 import com.sc.service.OfficeKpiService;
+import com.sc.service.OfficeTaskAssessmentService;
 
 @Controller
 @RequestMapping("/OfficeKpictrl")
 public class OfficeKpiController {
-	 @Autowired 
-	 OfficeKpiService OfficeKpiService ;
-	 @RequestMapping("/list.do")
+	@Autowired 
+	OfficeKpiService OfficeKpiService ;
+	@Autowired 
+	OfficeTaskAssessmentService OfficeTaskAssessmentService;
+    @RequestMapping("/list.do")
 		public ModelAndView list(ModelAndView mav){
 			
 			List<OfficeKpi> list = this.OfficeKpiService.select();
@@ -47,34 +50,7 @@ public class OfficeKpiController {
 		return mav;
 		}
 	 
-	 @RequestMapping("/upload.do")
-		public ModelAndView upload(ModelAndView mav,
-				MultipartFile upload,
-				HttpServletRequest req) throws IllegalStateException, IOException{
-			System.out.println("开始上传文件");
-			
-			//如果用户选择文件，那么执行上传代码
-			if(upload!=null){
-				String filename=upload.getOriginalFilename();//文件名
-				if(filename!=null&&!filename.equals("")){
-					//获取upload文件夹所在路径
-					String path=req.getSession().
-							getServletContext().getRealPath("upload");
-					//形如：26456456435.jpg
-					filename=System.currentTimeMillis()
-							+filename.substring(filename.lastIndexOf("."));
-					//目的地文件对象
-					File file=new File(path+"/"+filename);
-					upload.transferTo(file);//转换存储文件
-					
-					//设置图片名称,页面显示图片
-					mav.addObject("pic", filename);
-				}
-			}
-			
-			mav.setViewName("show");// 路径是：/WEB-INF/show.jsp
-			return mav;
-		}
+	
 	 @RequestMapping("/delete.do")
 		public ModelAndView delete(ModelAndView mav,OfficeKpi k){
 			System.out.println("删除考核指标！"+k);
@@ -98,10 +74,14 @@ public class OfficeKpiController {
 		 return mav;
 	 }
 	 @RequestMapping("/addofficeKpi.do")
-	 public ModelAndView addofficeKpi(ModelAndView mav,OfficeKpi k){
-		k.setFinalUpdataTime(new Date());
-		 System.out.println("添加考核任务"+k);
-		 this.OfficeKpiService.add(k);
+	 public ModelAndView addofficeKpi(ModelAndView mav,OfficeKpi k,OfficeTaskAssessment t){
+		  k.setFinalUpdataTime(new Date());
+		  t.setFinalUpdateTime(k.getFinalUpdataTime());
+		 t.setCompanyId(k.getCompanyId());
+		 t.setTaskKpi(k.getKpiKpi());
+		  System.out.println("添加考核任务"+k);
+		  this.OfficeKpiService.add(k);
+		  this.OfficeTaskAssessmentService.add(t);
 		 mav.setViewName("redirect:listpage.do");
 		 return mav;
 		 }

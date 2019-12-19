@@ -54,7 +54,7 @@ public class SysRoleCtrl {
 	}
 	
 	@RequestMapping("/roleList.do")
-	public ModelAndView roleListe(ModelAndView mav,String addsuc){
+	public ModelAndView roleListe(ModelAndView mav,String addsuc,String updatesuc){
 		List<SysRole> list = new ArrayList<SysRole>();
 		List<Long> list1=new ArrayList<Long>();
 		long uId=61L;
@@ -85,6 +85,9 @@ public class SysRoleCtrl {
 		}
 		if(addsuc!=null){
 			mav.addObject("addsuc", "yes");
+		}
+		if(updatesuc!=null){
+			mav.addObject("updatesuc", "yes");
 		}
 		mav.addObject("r", list);
 		mav.setViewName("wangyi/roleList");
@@ -191,6 +194,7 @@ public class SysRoleCtrl {
 		List<SysPowerRole> list = this.sysPowerRoleService.selectByrId(rId);
 		SysPowerRole sysPowerRole=new SysPowerRole();
 		sysPowerRole.setRoleId(rId);
+		sysPowerRole.setChangeDate(new Date());
 		if(list!=null&&list.size()>0){
 			
 			for (SysPowerRole spr : list) {
@@ -214,11 +218,12 @@ public class SysRoleCtrl {
 					}
 				}
 				if(z==0){
-					/*this.sysPowerRoleService.insert(spr);*/
+					sysPowerRole.setPowerId(pIds[i]);
+					this.sysPowerRoleService.insert(sysPowerRole);
 				}
 			}
-			return null;
 		}
-		return null;
+		mav.setViewName("redirect:roleList.do?updatesuc=yes");
+		return mav;
 	}
 }
