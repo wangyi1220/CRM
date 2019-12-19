@@ -4,10 +4,13 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMess;
+import com.sc.entity.SysUsers;
 
 
 public interface OffMessService {
 	
+		//获取除自己以外的其他用户
+		public List<SysUsers> selectuser();
 	
 		//添加
 		public void add(OffMess m);

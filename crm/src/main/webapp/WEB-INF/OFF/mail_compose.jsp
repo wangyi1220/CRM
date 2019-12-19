@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,7 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath %>css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="<%=basePath %>css/animate.min.css" rel="stylesheet">
     <link href="<%=basePath %>css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
-
+		
+	 <link rel="stylesheet" type="text/css" href="https://raw.githack.com/hnzzmsf/layui-formSelects/master/dist/formSelects-v4.css" /> 
 </head>
 
 <body class="gray-bg">
@@ -79,11 +82,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                         <form  action="../offmessctrl/add.do" class="form-horizontal" method="post">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">发送到：</label>
-
-                                <div class="col-sm-10">
+                                <!-- <label class="col-sm-2 control-label">发送到：</label> -->
+				
+								<div  >
+								<div style="padding-left:149px;width: 790px" >
+            					发送到：<select name="city" xm-select="select1"  >
+            					 <c:forEach items="${users }" var="u">
+               						 <option value="${u.usersId }" >${u.usersName }</option>
+               					</c:forEach>
+              					  	 
+            					<select>
+            					</div>
+        						</div>
+				
+                                <!-- <div class="col-sm-10">
                                     <input type="text" class="form-control" value="">
-                                </div>
+                                </div> -->
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">主题：</label>
@@ -127,6 +141,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$(".click2edit").summernote({focus:true})};var save=function(){var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+	
+ 	<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://raw.githack.com/hnzzmsf/layui-formSelects/master/dist/formSelects-v4.min.js" type="text/javascript"
+         charset="utf-8"></script> 
 </body>
 
 </html>

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.OffMess;
+import com.sc.entity.SysUsers;
 import com.sc.service.OffMessService;
 
 @Controller
@@ -21,6 +22,17 @@ public class OffMessController {
 	
 	@Autowired
 	OffMessService offMessService;
+	
+	
+	
+	//回复邮件
+	@RequestMapping("/reply.do")
+	public ModelAndView reply(ModelAndView mav,String sender){
+		System.out.println("跳到回复页面！"+sender);
+		mav.addObject("sender", sender);
+		mav.setViewName("OFF/reply");
+		return mav;
+	}
 	
 	
 	
@@ -39,6 +51,16 @@ public class OffMessController {
 	
 	@RequestMapping("/goadd.do")
 	public ModelAndView goadd(ModelAndView mav){
+		
+		
+		 /*List<SysUsers> users=this.offMessService.selectuser();
+		 mav.addObject("users", users);
+		 for (SysUsers u : users) {
+					System.out.println(u);
+			}*/
+		 
+		 
+		
 		mav.setViewName("OFF/mail_compose");
 		return mav;
 	}

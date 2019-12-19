@@ -9,7 +9,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMess;
 import com.sc.entity.OffMessdeta;
+import com.sc.entity.SysUsers;
 import com.sc.mapper.OffMessMapper;
+import com.sc.mapper.SysUsersMapper;
 import com.sc.service.OffMessService;
 
 @Service
@@ -17,6 +19,9 @@ public class OffMessServiceimpl implements OffMessService {
 
 	@Autowired
 	OffMessMapper offMessMapper;
+	
+	@Autowired
+	SysUsersMapper sysUsersMapper;
 	
 	@Override
 	public void add(OffMess m) {
@@ -81,5 +86,13 @@ public class OffMessServiceimpl implements OffMessService {
 		
 		return page;
 	}
+
+	@Override
+	public List<SysUsers> selectuser() {
+		 this.sysUsersMapper.selectNoRoleUser();
+		 return null;
+	}
+
+	
 
 }
