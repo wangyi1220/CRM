@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SaleKhcontacts;
+import com.sc.entity.SaleKhcontactsExample;
 import com.sc.entity.SaleKhinfo;
 import com.sc.entity.SaleKhinfoExample;
 import com.sc.entity.SaleKhinfoExample.Criteria;
@@ -59,6 +60,38 @@ public class SaleServiceImpl implements SaleService {
 		PageInfo<SaleKhcontacts> page1=new PageInfo<SaleKhcontacts>(list);
 		
 		return page1;
+	}
+	
+
+	@Override
+	public void update(SaleKhinfo s) {
+		// TODO Auto-generated method stub
+		if(s!=null&&s.getUserId()!=null){
+			this.saleKhinfoMapper.updateByPrimaryKey(s);
+		}
+		
+	}
+
+
+	@Override
+	public void add(SaleKhinfo s) {
+		// TODO Auto-generated method stub
+		if(s!=null){
+			this.saleKhinfoMapper.insert(s);
+		}
+		
+	}
+    
+	@Override
+	public List<SaleKhcontacts>  lxcx(Long id) {
+		SaleKhcontactsExample example = new SaleKhcontactsExample();
+		com.sc.entity.SaleKhcontactsExample.Criteria c = example.createCriteria();
+		
+		if(id!=null){
+			   c.andUserIdEqualTo(id);
+			   return this.saleKhcontactsMapper.selectByExample(example);
+			}
+			return null;		
 	}
 
 }
