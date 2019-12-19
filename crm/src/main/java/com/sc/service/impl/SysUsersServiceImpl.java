@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysUsers;
+import com.sc.entity.SysUsersExample;
+import com.sc.entity.SysUsersExample.Criteria;
 import com.sc.mapper.SysUsersMapper;
 import com.sc.service.SysUsersService;
 
@@ -48,5 +50,32 @@ public class SysUsersServiceImpl implements SysUsersService {
 			SysUsers users = this.sysUsersMapper.selectPower(sysUsers);
 			return users;
 		
+	}
+
+	@Override
+	public SysUsers selectRole(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectRole(uId);
+		return users;
+	}
+
+	@Override
+	public SysUsers selectUserinfo(Long uId) {
+		SysUsers users = this.sysUsersMapper.selectUserinfo(uId);
+		return users;
+	}
+
+	@Override
+	public List<SysUsers> selectAllNOSelf(Long uId) {
+		SysUsersExample example = new SysUsersExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsersIdNotEqualTo(uId);
+		List<SysUsers> list = this.sysUsersMapper.selectByExample(example);
+		return list;
+	}
+
+	@Override
+	public List<SysUsers> selectNoRoleUser() {
+		List<SysUsers> list = this.sysUsersMapper.selectNoRoleUser();
+		return list;
 	}
 }

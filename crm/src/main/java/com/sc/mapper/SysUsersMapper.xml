@@ -257,4 +257,41 @@
 	SYS_POWERINFO spi on  spr.POWER_ID=spi.POWER_ID
 	WHERE SU.USERS_ID=#{usersId}
   </select>
+  
+  <resultMap type="com.sc.entity.SysUsers" id="selectRoleMap" autoMapping="true">
+  	<id column="USERS_ID" property="usersId"/>
+  	<association property="sysRole" javaType="com.sc.entity.SysRole" autoMapping="true">
+  		<id column="ROLE_ID" property="roleId"/>
+  	</association>
+  </resultMap>
+  <select id="selectRole" resultMap="selectRoleMap" parameterType="java.lang.Long">
+  	select * from SYS_USERS SU 
+	LEFT JOIN SYS_USERS_ROLE SUR ON SU.USERS_ID= SUR.USERS_ID 
+	LEFT JOIN SYS_ROLE SR ON SUR.ROLE_ID=SR.ROLE_ID 
+	WHERE SU.USERS_ID=#{uId}
+  </select>
+  
+  <resultMap type="com.sc.entity.SysUsers" id="selectUserinfoMap" autoMapping="true">
+  	<id column="USERS_ID" property="usersId"/>
+  	<association property="sysUserinfo" javaType="com.sc.entity.SysUserinfo" autoMapping="true">
+  		<id column="EMP_ID" property="empId"/>
+  	</association>
+  </resultMap>
+  <select id="selectUserinfo" resultMap="selectUserinfoMap" parameterType="java.lang.Long">
+  	SELECT * from SYS_USERS su LEFT JOIN SYS_USERINFO sui on SU.EMP_ID=sui.EMP_ID where SU.USERS_ID=#{uId}
+  </select>
+  
+  <resultMap type="com.sc.entity.SysUsers" id="selectNoRoleUserMap" autoMapping="true">
+  	<id column="USERS_ID" property="usersId"/>
+  	<association property="sysUserinfo" javaType="com.sc.entity.SysUserinfo" autoMapping="true">
+  		<id column="EMP_ID" property="empId"/>
+  	</association>
+  </resultMap>
+  <select id="selectNoRoleUser" resultMap="selectNoRoleUserMap">
+  	SELECT su.*,suri.* from SYS_USERS su
+	LEFT JOIN SYS_USERS_ROLE sur 
+	on su.USERS_ID=sur.USERS_ID 
+	LEFT JOIN SYS_USERINFO suri ON su.EMP_ID=suri.EMP_ID
+	where sur.ROLE_ID is null
+  </select>
 </mapper>

@@ -2,10 +2,15 @@ package com.sc.mapper;
 
 import com.sc.entity.OffMess;
 import com.sc.entity.OffMessExample;
+import com.sc.entity.OffMessdeta;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OffMessMapper {
+	
+	public List<OffMess> messdeta(String ser);
+	
     int countByExample(OffMessExample example);
 
     int deleteByExample(OffMessExample example);

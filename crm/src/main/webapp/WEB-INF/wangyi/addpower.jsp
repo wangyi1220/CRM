@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link rel="shortcut icon" href="<%=basePath%>favicon.ico"> <link href="<%=basePath%>css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="<%=basePath%>css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=basePath%>css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <link href="<%=basePath%>css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="<%=basePath%>css/animate.min.css" rel="stylesheet">
     <link href="<%=basePath%>css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
@@ -151,9 +152,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/jquery.min.js?v=2.1.4"></script>
     <script src="<%=basePath%>js/bootstrap.min.js?v=3.3.5"></script>
     <script src="<%=basePath%>js/content.min.js?v=1.0.0"></script>
+    <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     <script>
         $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    	if(${issuc=='yes'}){
+        		swal({title:"太帅了",text:"添加权限成功",type:"success"})
+        	}
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

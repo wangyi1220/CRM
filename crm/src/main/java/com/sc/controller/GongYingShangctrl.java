@@ -1,5 +1,8 @@
 package com.sc.controller;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +26,7 @@ public class GongYingShangctrl {
 	JhGysxxService  jhGysxxService;
 
 	
-	
+	//页面显示
 	@RequestMapping("/list.do")
 	public ModelAndView listpage(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
@@ -32,36 +35,135 @@ public class GongYingShangctrl {
 		
 		//查询list集合-分页     ${page.list}
 		PageInfo<JhGysxx> ii = jhGysxxService.selectpage(pageNum, pageSize);
-		for (JhGysxx xx :  ii.getList()){
+		/*for (JhGysxx xx :  ii.getList()){
 			System.out.println(xx);
-		}
+		}*/
 		
-		mav.addObject("pGsy",ii);
+		mav.addObject("pgys",ii);
 		
 		mav.setViewName("fhw/JH-gysListPage");// 路径是：/WEB-INF/userslistpage.jsp
 		return mav;
 	}
 	
+	//删除
+	@RequestMapping("/gysDelete.do")
+	public ModelAndView gysDelete(ModelAndView mav,
+									Long gysId){
+		
 	
+		System.out.println("------------------>供应商删除"+gysId);
+		jhGysxxService.delete(gysId);
+		
+		mav.setViewName("redirect:list.do");// 路径是：/WEB-INF/userslistpage.jsp
+		return mav;
+	}
+	
+	//删除选中
+		@RequestMapping("/gysDeleteSelect.do")
+		public ModelAndView gysDeleteSelect(ModelAndView mav,
+										HttpServletRequest req,
+										HttpServletResponse resp){
+			
+			String[] idsArr = req.getParameterValues("gysId");
+			System.out.println("------------------>供应商删除"+idsArr.length);
+			for (String gysIdStr : idsArr) {
+				long gysId = Long.parseLong(gysIdStr);
+				System.out.println("-------------->"+gysId);
+				jhGysxxService.delete(gysId);
+			}
+			
+			mav.setViewName("redirect:list.do");// 路径是：/WEB-INF/userslistpage.jsp
+			return mav;
+		}
+	
+	
+	
+	
+	
+	//to修改页面
+	@RequestMapping("/gysToUpdate.do")
+	public ModelAndView gysToUpdate(ModelAndView mav,
+									Long gysId){
+		
+	
+		System.out.println("------------------>供应商id"+gysId);
+		JhGysxx gys = jhGysxxService.get(gysId);
+		
+		
+		mav.addObject("gysUpdate",gys);
+		
+		mav.setViewName("fhw/JH-gysUpdate");// 路径是：/WEB-INF/userslistpage.jsp
+		return mav;
+	}
+	
+	
+	//to修改页面
+	@RequestMapping("/gysUpdate.do")
+	public ModelAndView gysUpdate(ModelAndView mav,
+									JhGysxx gys){
+		
+	
+		System.out.println("------------------>供应商id"+gys);
+		jhGysxxService.update(gys);
+		
+		
+	
+		
+		mav.setViewName("redirect:list.do");// 路径是：/WEB-INF/userslistpage.jsp
+		return mav;
+	}
+	
+	
+	//to添加供应商
+		@RequestMapping("/gysToAdd.do")
+		public ModelAndView gysToAdd(ModelAndView mav){
+			
+		
+			System.out.println("------------------>添加");
+			
+			
+			
+			//mav.addObject("gysUpdate",gys);
+			
+			mav.setViewName("fhw/JH-gysAdd");// 路径是：/WEB-INF/userslistpage.jsp
+			return mav;
+		}
+		
+		//添加供应商
+				@RequestMapping("/gysAdd.do")
+				public ModelAndView gysAdd(ModelAndView mav,
+											JhGysxx gys){
+					/*SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss");
+					Date date = dateFormat.parse(new Date());
+					System.out.println("---------------->"+dateFormat.format(new Date()));
+					//gys.setLtime(date);*/
+					System.out.println("------------------>添加"+gys);
+					jhGysxxService.add(gys);
+					
+					
+					//mav.addObject("gysUpdate",gys);
+					
+					mav.setViewName("redirect:list.do");// 路径是：/WEB-INF/userslistpage.jsp
+					return mav;
+		}
+	
+	//仿百度搜索
 	@RequestMapping("/gysSearch.do")
 	public ModelAndView gysSearch(ModelAndView mav,HttpServletRequest req,HttpServletResponse resp){
 		System.out.println("仿百度查询");
 		
 		String data = req.getParameter("data");
 		System.out.println("------>"+data);
-		List<JhGysxx> searchByName = jhGysxxService.searchByName(data);
+		List<JhGysxx> searchList = jhGysxxService.searchByName(data);
 		
-	/*	List<word> list = dao.getByWord(data);
-		for (word w : list) {
-			System.out.println("---------->"+w);
+		for (JhGysxx jhGysxx : searchList) {
+			System.out.println("----------------->模糊查询结果"+jhGysxx.getGysName());
 		}
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("list.jsp").forward(req, resp);
-		mav.addObject("pGsy",info);*/
 		
-
+		mav.addObject("searchList",searchList);
+		//转发
+		mav.setViewName("gysSearch");
 		
-		/*mav.setViewName("fhw/JH-gysListPage");// 路径是：/WEB-INF/userslistpage.jsp*/
 		return mav;
 	}
 	

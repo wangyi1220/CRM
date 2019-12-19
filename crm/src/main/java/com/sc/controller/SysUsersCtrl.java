@@ -37,7 +37,6 @@ public class SysUsersCtrl {
 		mav.addObject("p", sysUsersService.select(pageNum, pageSize));
 		mav.setViewName("ssf/userslistpage");
 		System.out.println(sysUsersService.select(pageNum, pageSize));
-		
 		System.out.println("·ÖÒ³");
 		
 		return mav;
