@@ -1,5 +1,6 @@
 package com.sc.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.SysPowerColumns;
+import com.sc.entity.SysPowerinfo;
 import com.sc.entity.SysRole;
 import com.sc.entity.SysRoleExample;
 import com.sc.entity.SysRoleExample.Criteria;
 import com.sc.entity.SysUsers;
+import com.sc.mapper.SysPowerColumnsMapper;
 import com.sc.mapper.SysRoleMapper;
+import com.sc.mapper.SysUsersMapper;
 import com.sc.service.SysRoleService;
 
 @Service
@@ -19,6 +24,12 @@ public class SysRoleServiceImpl implements SysRoleService {
 
 	@Autowired
 	SysRoleMapper sysRoleMapper;
+	
+	@Autowired
+	SysUsersMapper sysUsersMapper;
+	
+	@Autowired
+	SysPowerColumnsMapper  sysPowerColumnsMapper;
 	
 	@Override
 	public void addRole(SysRole sr) {
@@ -67,13 +78,75 @@ public class SysRoleServiceImpl implements SysRoleService {
 	@Override
 	public PageInfo<SysUsers> selectUsersAndNORoleUser(Integer pageNum, Integer pageSize, Long rId) {
 		PageHelper.startPage(pageNum, pageSize);
-		List<SysRole> list = this.sysRoleMapper.selectUsersAndInfos(22L);
+		/*List<SysRole> list = this.sysRoleMapper.selectUsersAndInfos(22L);
 		for (SysRole sysRole : list) {
 			for (SysUsers sysUsers : sysRole.getSysUsers()) {
 				System.out.println(sysRole.toString()+":"+sysUsers.toString()
 						+":"+sysUsers.getSysUserinfo().toString());
 			}
+		}*/
+		PageHelper.startPage(pageNum, pageSize);
+		ArrayList<SysUsers> list = new ArrayList<SysUsers>();
+		List<Long> list1=new ArrayList<Long>();
+		
+		SysUsers user = this.sysUsersMapper.selectRole(rId);
+		long sId=user.getSysRole().getRoleId();
+		list1.add(sId);
+		for (int i = 0; i < list1.size(); i++) {
+			List<SysRole> sonList = this.selectBySuperId(list1.get(i));
+			for (SysRole sysRole : sonList) {
+				list1.add(sysRole.getRoleId());
+			}
 		}
+		System.out.println(list1.size());
+		list1.remove(0);
+		/*往集合中加入子角色的成员*/
+		for (Long l : list1) {
+			List<SysRole> sr = this.sysRoleMapper.selectUsersAndInfos(l);
+			for (SysRole sysRole : sr) {
+				for (SysUsers sysUsers : sysRole.getSysUsers()) {
+					list.add(sysUsers);
+				}
+			}
+		}
+		/*往集合中加入无角色的成员*/
+		List<SysUsers> list2 = this.sysUsersMapper.selectNoRoleUser();
+		for (SysUsers sysUsers : list2) {
+			list.add(sysUsers);
+		}
+		System.out.println(list.size()+"个");
+		for (SysUsers sysUsers : list) {
+			System.out.println(sysUsers.toString()+":"+sysUsers.getSysUserinfo().toString());
+		}
+		PageInfo<SysUsers> info = new PageInfo<SysUsers>(list);
+		return info;
+	}
+
+	@Override
+	public List<SysPowerColumns> selectRolePower(Long rId) {
+		SysRole role = this.sysRoleMapper.selectRolePower(rId);
+		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
+		System.out.println(role.getSuperRoleId());
+		if(role.getSuperRoleId()==null){
+			
+			for (SysPowerColumns spc : list) {
+				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
+					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
+						if(spi1.getPowerId()==spi2.getPowerId()){
+							spi1.setIsHasPower("1");
+						}
+					}
+				}
+			}
+			return list;
+		}else{
+			SysRole superRolePower = this.sysRoleMapper.selectRolePower(role.getSuperRoleId());
+			for (SysPowerColumns spc : list) {
+				
+			}
+		}
+		
+		
 		return null;
 	}
 

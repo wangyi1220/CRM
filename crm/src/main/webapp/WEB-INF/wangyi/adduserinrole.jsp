@@ -32,47 +32,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <div class="row">
                 <div class="col-sm-12">
-                	<c:if test="${isson=='yes' }">
+                	
                     	<a href="../SysRoleCtrl/roleList.do" target="_self">
                          	<button type="button" class="btn btn-w-m btn-primary">返回</button>
                          </a>
-					</c:if>
+					
                         <div class="ibox-content">
-
+						  <form action="../SysRoleCtrl/addUserForRole.do" target="_self">
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
                                 <thead>
                                 <tr>
-
-                                    <th >角色</th>
-                                    <th >角色描述</th>
-                                    <th >父级组</th>
-                                    <th >最后修改人</th>
+                                	<th >选择</th>
+                                	<th >员工名</th>
+									<th >账号</th>
+                                    <th >密码</th>
+                                    <th >创建时间</th>
                                     
-                                    <th style="text-align: center">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                <c:forEach items="${r}" var="rs" >
+                                <c:forEach items="${uis.list}" var="ui" >
+                                  
 	                                <tr>
-	                                    <td><a href="../SysRoleCtrl/sonRoleList.do?rid=${rs.roleId }" target="_self">${rs.roleName}</a></td>
-	                                    <td>${rs.roleDescribe}</td>
-	                                    <td>${empty rs.sysRole ? "无":rs.sysRole.roleName}</td>
-	                                    <td>${rs.operaterName}</td>
-	                                    
-	                                    <td style="text-align: center">
-	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a target="_self">
-	                                    	<i>|</i> <a href="../SysRoleCtrl/selectUsersAndNORoleUser.do?rId=${rs.roleId }" target="_self">添加成员</a>
-	                                    	<i>|</i> <a href="../SysRoleCtrl/goUpdatePower.do?rId=${rs.roleId }" target="_self">权限设置</a>
-	                                    	<i>|</i> <a target="_self">删除</a></td>
-	                                    
-	                                </tr>
+	                                	<td><input type="checkbox" value="${ui.usersId}" name="uIds" class="c1" ></td>
+	                                	<td>${ui.sysUserinfo.empName}</td>
+	                                    <td>${ui.usersName}</td>
+	                                    <td>${ui.usersPassword}</td>
+	                                    <td>${ui.changeDate}</td>
+	                                </tr> 
                                 </c:forEach>
                                 
+                                <tr>
+                                    <td style="text-align: center;" colspan="10">
+                                    <a target="_self" href="../SysRoleCtrl/selectUsers.do?pageNum=${uis.firstPage }">首页</a>
+                                    <a target="_self" href="../SysRoleCtrl/selectUsers.do?pageNum=${uis.prePage }">上一页</a>
+                                    <a target="_self" href="../SysRoleCtrl/selectUsers.do?pageNum=${uis.nextPage }">下一页</a>
+                                    <a target="_self" href="../SysRoleCtrl/selectUsers.do?pageNum=${uis.lastPage }">尾页</a>
+                                                                             当前${uis.pageNum }/${uis.pages }页，共${uis.total }条
+                                     </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;" colspan="10">
+                                    	<input type="checkbox" id="c2">全选&emsp;
+                                    	<button>提交</button>
+                                     </td>
+                                </tr>
                                 </tbody>
-                                
+                                <input type="hidden" value="${rId}" name="rId">
                             </table>
-
+						  </form>
                         </div>
                     </div>
                 </div>
@@ -84,17 +93,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     <script>
         $(document).ready(function(){
-    		
-        	if(${isson=="yes"}){
-        		swal({title:"下面为您显示其子角色",text:"点击角色可看见其子角色"})
-        	}
-        	if(${addsuc=="yes"}){
-        		swal({title:"太帅了",text:"为用户添加成员成功",type:"success"})
-        	}
-        	if(${updatesuc=="yes"}){
-        		swal({title:"太帅了",text:"为用户设置权限成功",type:"success"})
-        	}
-        });
+        	$("#c2").click(function(){
+        		
+                if (this.checked) {
+                //所有的复选框都选中
+                    $('.c1').prop('checked', true);
+                }
+                else {
+                //复选框都不选中
+                    $('.c1').prop('checked', false);
+                }
+
+        	})
+        	
+     });
+    	
+        	
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
