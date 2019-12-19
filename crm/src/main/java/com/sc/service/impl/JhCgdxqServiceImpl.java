@@ -1,5 +1,6 @@
 package com.sc.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.JhCgd;
+import com.sc.entity.JhCgdExample;
 import com.sc.entity.JhCgdxq;
 import com.sc.entity.JhCgdxqExample;
 import com.sc.entity.JhCgdxqExample.Criteria;
@@ -40,5 +42,23 @@ public class JhCgdxqServiceImpl implements JhCgdxqService {
 		
 		return page;
 	}
+
+	@Override
+	public void delete(BigDecimal cgdxqId) {
+		jhCgdxqMapper.deleteByPrimaryKey(cgdxqId);
+	}
+
+	@Override
+	public void update(JhCgdxq cgdxq) {
+		jhCgdxqMapper.updateByPrimaryKey(cgdxq);
+	}
+
+	@Override
+	public JhCgdxq get(BigDecimal cgdxqId) {
+		return jhCgdxqMapper.selectByPrimaryKey(cgdxqId);
+	}
+
+	
+	
 
 }
