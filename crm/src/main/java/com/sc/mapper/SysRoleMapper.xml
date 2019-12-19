@@ -263,15 +263,44 @@
   
   <resultMap type="com.sc.entity.SysRole" id="selectUsersAndInfosMap" autoMapping="true">
   	<id column="ROLE_ID" property="roleId"/>
+  	<!-- <result column="ROLE_NAME" property="roleName"/>
+  	<result column="ROLE_DESCRIBE" property="roleDescribe"/>
+  	<result column="SUPER_ROLE_ID" property="superRoleId"/>
+  	<result column="OPERATER_ID" property="operaterId"/>
+  	<result column="CHANGE_DATE" property="changeDate"/> -->
   	<collection property="sysUsers" ofType="com.sc.entity.SysUsers" autoMapping="true">
   		<id column="USERS_ID" property="usersId"/>
+  		<!-- <result column="USERS_NAME" property="usersName"/>
+  		<result column="USERS_PASSWORD" property="usersPassword"/>
+  		<result column="EMP_ID" property="empId"/>
+  		<result column="COMPANY_ID" property="companyId"/>
+  		<result column="USERS_STATE" property="usersState"/>
+  		<result column="CHANGE_DATE" property="changeDate"/> -->	
   		<association property="sysUserinfo" javaType="com.sc.entity.SysUserinfo" autoMapping="true">
   			<id column="EMP_ID" property="empId"/>
+  			<!-- <result column="EMP_NAME" property="empName"/>
+  			<result column="EMP_SEX" property="empSex"/>
+  			<result column="EMP_PHOTO" property="empPhoto"/>
+  			<result column="ID_NUMBER" property="idNumber"/>
+  			<result column="JIAXIANG" property="jiaxiang"/>
+  			<result column="XIANZAI" property="xianzai"/>
+  			<result column="EMP_EDU" property="empEdu"/>
+  			<result column="ZHENGZHI" property="zhengzhi"/>
+  			<result column="GRADUATE" property="graduate"/>
+  			<result column="PHONE_NUMBER" property="phoneNumber"/>
+  			<result column="ONLINE_CONTACT" property="onlineContact"/>
+  			<result column="ONLINE_DETAIL" property="onlineDetail"/>
+  			<result column="CHECK_STATE" property="checkState"/>
+  			<result column="POST_ID" property="postId"/>
+  			<result column="EMP_STATE" property="empState"/>
+  			<result column="BEIZHU" property="beizhu"/>
+  			<result column="COMPANY_ID" property="companyId"/>
+  			<result column="CHANG_DATE" property="changDate"/> -->
   		</association>
   	</collection>
   </resultMap>
   <select id="selectUsersAndInfos" resultMap="selectUsersAndInfosMap">
-  	select SR.*,SU.*,SURI.* from SYS_ROLE SR 
+  	select * from SYS_ROLE SR 
 	LEFT JOIN SYS_USERS_ROLE SUR ON SR.ROLE_ID=SUR.ROLE_ID 
 	LEFT JOIN SYS_USERS SU ON SUR.USERS_ID=SU.USERS_ID  
 	LEFT JOIN SYS_USERINFO SURI ON SU.EMP_ID=SURI.EMP_ID
