@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.SysRole;
 import com.sc.entity.SysUsers;
+import com.sc.entity.SysUsersRole;
 import com.sc.service.SysRoleService;
+import com.sc.service.SysUsersRoleService;
 import com.sc.service.SysUsersService;
 
 @Controller
@@ -23,6 +25,9 @@ public class SysRoleCtrl {
 	SysRoleService sysRoleService;
 	@Autowired
 	SysUsersService sysUsersService;
+	
+	@Autowired
+	SysUsersRoleService sysUsersRoleService;
 	
 	@RequestMapping("/goaddRole.do")
 	public ModelAndView goaddRole(ModelAndView mav){
@@ -125,13 +130,36 @@ public class SysRoleCtrl {
 	@RequestMapping("/selectUsersAndNORoleUser.do")
 	public ModelAndView selectUsersAndNORoleUser(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="10")Integer pageSize,Long roleId){
+			@RequestParam(defaultValue="10")Integer pageSize,Long rId){
+		Long roleId=61l;
+		mav.addObject("rId", rId);
+		mav.addObject("uis", this.sysRoleService.selectUsersAndNORoleUser(pageNum, pageSize, roleId));
+		mav.setViewName("wangyi/adduserinrole");
+		return mav;
 		
-		/*mav.addObject("ru", this.sysRoleService.selectUsers(pageNum, pageSize, roleId));
-		mav.setViewName("wangyi/roleuserlist");
-		return mav;*/
-		this.sysRoleService.selectUsersAndNORoleUser(pageNum, pageSize, roleId);
-		return null;
 	}
 	
+	@RequestMapping("/addUserForRole.do")
+	public ModelAndView addUserForRole(ModelAndView mav,Long[] uIds,Long rId){
+		List<SysUsers> list = this.sysUsersService.selectNoRoleUser();
+		SysUsersRole sur = new SysUsersRole();
+		sur.setRoleId(rId);
+		sur.setChangeDate(new Date());
+		for (int i = 0; i < uIds.length; i++) {
+			int j=0;
+			for (SysUsers sysUsers : list) {
+				if(uIds[i]==sysUsers.getUsersId()){
+					j=j+1;
+				}
+			}
+			if(j==0){
+				sur.setUsersId(uIds[i]);
+				this.sysUsersRoleService.update(sur);
+			}else{
+				sur.setUsersId(uIds[i]);
+				this.sysUsersRoleService.insert(sur);
+			}
+		}
+		return null;
+	}
 }

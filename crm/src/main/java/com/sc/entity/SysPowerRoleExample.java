@@ -1,6 +1,5 @@
 package com.sc.entity;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -116,113 +115,113 @@ public class SysPowerRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(BigDecimal value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(BigDecimal value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(BigDecimal value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(BigDecimal value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<BigDecimal> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<BigDecimal> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdIsNull() {
-            addCriterion("PCOLUMN_ID is null");
+        public Criteria andPowerIdIsNull() {
+            addCriterion("POWER_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdIsNotNull() {
-            addCriterion("PCOLUMN_ID is not null");
+        public Criteria andPowerIdIsNotNull() {
+            addCriterion("POWER_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdEqualTo(BigDecimal value) {
-            addCriterion("PCOLUMN_ID =", value, "pcolumnId");
+        public Criteria andPowerIdEqualTo(Long value) {
+            addCriterion("POWER_ID =", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdNotEqualTo(BigDecimal value) {
-            addCriterion("PCOLUMN_ID <>", value, "pcolumnId");
+        public Criteria andPowerIdNotEqualTo(Long value) {
+            addCriterion("POWER_ID <>", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdGreaterThan(BigDecimal value) {
-            addCriterion("PCOLUMN_ID >", value, "pcolumnId");
+        public Criteria andPowerIdGreaterThan(Long value) {
+            addCriterion("POWER_ID >", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("PCOLUMN_ID >=", value, "pcolumnId");
+        public Criteria andPowerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("POWER_ID >=", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdLessThan(BigDecimal value) {
-            addCriterion("PCOLUMN_ID <", value, "pcolumnId");
+        public Criteria andPowerIdLessThan(Long value) {
+            addCriterion("POWER_ID <", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("PCOLUMN_ID <=", value, "pcolumnId");
+        public Criteria andPowerIdLessThanOrEqualTo(Long value) {
+            addCriterion("POWER_ID <=", value, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdIn(List<BigDecimal> values) {
-            addCriterion("PCOLUMN_ID in", values, "pcolumnId");
+        public Criteria andPowerIdIn(List<Long> values) {
+            addCriterion("POWER_ID in", values, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdNotIn(List<BigDecimal> values) {
-            addCriterion("PCOLUMN_ID not in", values, "pcolumnId");
+        public Criteria andPowerIdNotIn(List<Long> values) {
+            addCriterion("POWER_ID not in", values, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PCOLUMN_ID between", value1, value2, "pcolumnId");
+        public Criteria andPowerIdBetween(Long value1, Long value2) {
+            addCriterion("POWER_ID between", value1, value2, "powerId");
             return (Criteria) this;
         }
 
-        public Criteria andPcolumnIdNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PCOLUMN_ID not between", value1, value2, "pcolumnId");
+        public Criteria andPowerIdNotBetween(Long value1, Long value2) {
+            addCriterion("POWER_ID not between", value1, value2, "powerId");
             return (Criteria) this;
         }
 
@@ -236,173 +235,173 @@ public class SysPowerRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualTo(BigDecimal value) {
+        public Criteria andRoleIdEqualTo(Long value) {
             addCriterion("ROLE_ID =", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualTo(BigDecimal value) {
+        public Criteria andRoleIdNotEqualTo(Long value) {
             addCriterion("ROLE_ID <>", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThan(BigDecimal value) {
+        public Criteria andRoleIdGreaterThan(Long value) {
             addCriterion("ROLE_ID >", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andRoleIdGreaterThanOrEqualTo(Long value) {
             addCriterion("ROLE_ID >=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThan(BigDecimal value) {
+        public Criteria andRoleIdLessThan(Long value) {
             addCriterion("ROLE_ID <", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andRoleIdLessThanOrEqualTo(Long value) {
             addCriterion("ROLE_ID <=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIn(List<BigDecimal> values) {
+        public Criteria andRoleIdIn(List<Long> values) {
             addCriterion("ROLE_ID in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotIn(List<BigDecimal> values) {
+        public Criteria andRoleIdNotIn(List<Long> values) {
             addCriterion("ROLE_ID not in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andRoleIdBetween(Long value1, Long value2) {
             addCriterion("ROLE_ID between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andRoleIdNotBetween(Long value1, Long value2) {
             addCriterion("ROLE_ID not between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdIsNull() {
-            addCriterion("CAOZUOPERSON_ID is null");
+        public Criteria andOperaterIdIsNull() {
+            addCriterion("OPERATER_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdIsNotNull() {
-            addCriterion("CAOZUOPERSON_ID is not null");
+        public Criteria andOperaterIdIsNotNull() {
+            addCriterion("OPERATER_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdEqualTo(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID =", value, "caozuopersonId");
+        public Criteria andOperaterIdEqualTo(Long value) {
+            addCriterion("OPERATER_ID =", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdNotEqualTo(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID <>", value, "caozuopersonId");
+        public Criteria andOperaterIdNotEqualTo(Long value) {
+            addCriterion("OPERATER_ID <>", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdGreaterThan(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID >", value, "caozuopersonId");
+        public Criteria andOperaterIdGreaterThan(Long value) {
+            addCriterion("OPERATER_ID >", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID >=", value, "caozuopersonId");
+        public Criteria andOperaterIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("OPERATER_ID >=", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdLessThan(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID <", value, "caozuopersonId");
+        public Criteria andOperaterIdLessThan(Long value) {
+            addCriterion("OPERATER_ID <", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("CAOZUOPERSON_ID <=", value, "caozuopersonId");
+        public Criteria andOperaterIdLessThanOrEqualTo(Long value) {
+            addCriterion("OPERATER_ID <=", value, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdIn(List<BigDecimal> values) {
-            addCriterion("CAOZUOPERSON_ID in", values, "caozuopersonId");
+        public Criteria andOperaterIdIn(List<Long> values) {
+            addCriterion("OPERATER_ID in", values, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdNotIn(List<BigDecimal> values) {
-            addCriterion("CAOZUOPERSON_ID not in", values, "caozuopersonId");
+        public Criteria andOperaterIdNotIn(List<Long> values) {
+            addCriterion("OPERATER_ID not in", values, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("CAOZUOPERSON_ID between", value1, value2, "caozuopersonId");
+        public Criteria andOperaterIdBetween(Long value1, Long value2) {
+            addCriterion("OPERATER_ID between", value1, value2, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andCaozuopersonIdNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("CAOZUOPERSON_ID not between", value1, value2, "caozuopersonId");
+        public Criteria andOperaterIdNotBetween(Long value1, Long value2) {
+            addCriterion("OPERATER_ID not between", value1, value2, "operaterId");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeIsNull() {
-            addCriterion("LASTTIME is null");
+        public Criteria andChangeDateIsNull() {
+            addCriterion("CHANGE_DATE is null");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeIsNotNull() {
-            addCriterion("LASTTIME is not null");
+        public Criteria andChangeDateIsNotNull() {
+            addCriterion("CHANGE_DATE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeEqualTo(Date value) {
-            addCriterion("LASTTIME =", value, "lasttime");
+        public Criteria andChangeDateEqualTo(Date value) {
+            addCriterion("CHANGE_DATE =", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeNotEqualTo(Date value) {
-            addCriterion("LASTTIME <>", value, "lasttime");
+        public Criteria andChangeDateNotEqualTo(Date value) {
+            addCriterion("CHANGE_DATE <>", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeGreaterThan(Date value) {
-            addCriterion("LASTTIME >", value, "lasttime");
+        public Criteria andChangeDateGreaterThan(Date value) {
+            addCriterion("CHANGE_DATE >", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("LASTTIME >=", value, "lasttime");
+        public Criteria andChangeDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("CHANGE_DATE >=", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeLessThan(Date value) {
-            addCriterion("LASTTIME <", value, "lasttime");
+        public Criteria andChangeDateLessThan(Date value) {
+            addCriterion("CHANGE_DATE <", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeLessThanOrEqualTo(Date value) {
-            addCriterion("LASTTIME <=", value, "lasttime");
+        public Criteria andChangeDateLessThanOrEqualTo(Date value) {
+            addCriterion("CHANGE_DATE <=", value, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeIn(List<Date> values) {
-            addCriterion("LASTTIME in", values, "lasttime");
+        public Criteria andChangeDateIn(List<Date> values) {
+            addCriterion("CHANGE_DATE in", values, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeNotIn(List<Date> values) {
-            addCriterion("LASTTIME not in", values, "lasttime");
+        public Criteria andChangeDateNotIn(List<Date> values) {
+            addCriterion("CHANGE_DATE not in", values, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeBetween(Date value1, Date value2) {
-            addCriterion("LASTTIME between", value1, value2, "lasttime");
+        public Criteria andChangeDateBetween(Date value1, Date value2) {
+            addCriterion("CHANGE_DATE between", value1, value2, "changeDate");
             return (Criteria) this;
         }
 
-        public Criteria andLasttimeNotBetween(Date value1, Date value2) {
-            addCriterion("LASTTIME not between", value1, value2, "lasttime");
+        public Criteria andChangeDateNotBetween(Date value1, Date value2) {
+            addCriterion("CHANGE_DATE not between", value1, value2, "changeDate");
             return (Criteria) this;
         }
     }

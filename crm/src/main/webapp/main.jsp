@@ -110,7 +110,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">库存管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_仓库信息表</a>
+                            <li>
+                                <a href="#">添加仓库信息<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="KCCKControllerCtrl/add.do">添加仓库信息</a>
+                                    </li>
+                                </ul>
                             </li>
                              <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">库存_商品信息表</a>
                             </li>
