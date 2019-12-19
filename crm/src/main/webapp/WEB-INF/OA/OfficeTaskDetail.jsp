@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!--日期格式化  -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!--日期格式化  -->
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -53,32 +53,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <i class="fa fa-times"></i>
                             </a>
                             <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
-                                                                                                                                            
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content">
-
-                      <center>
-    <form action="../OfficeKpictrl/addofficeKpi.do">
-    <table>
-           <tr><td>考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
-           <tr><td>考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>
-           <tr><td>所属公司：</td><td><input type="text" name="companyId" ></td></tr>
-           <%-- <input type="hidden" name="finalUpdataTime" value="<%=new Date().getTime() %>"> --%>
-          <tr><td><input type="submit" value="提交"></td><td>
-           <input type="reset" value="重置"></td></tr>
-    </table>
-    </form>
-    </center>
+                          <center>
+         
+               <table>
+                     <h1>任务安排详情</h1>
+               <tr>
+              <input type="hidden" name="taskDetailId" value="${d.taskDetailId }">
+              <td>任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
+              <td><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
+           </tr>
+           <tr>
+              <td>接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
+              <td><input type="text" name="taskUserId" value="${d.taskUserId }" readonly="readonly"></td>
+           </tr>
+           <tr>
+              <td>任务是否完成:</td>
+              <td><input type="text" name="taskIsfinshed" value="${d.taskIsfinshed }" readonly="readonly"></td>
+           </tr>
+            <tr>
+              <td>当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
+              <td><input type="text" name="status1" value="${d.status}" readonly="readonly"></td>
+            </td>
+             <tr>
+              <td>公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
+              <td><input type="text" name="companyId" value="${d.companyId }" readonly="readonly"></td>
+            </td>
+            </tr>
+            </table>
+        
+         </center>
+        </table>
        </div>
       </div>
      </div>
-     
-    </div>
-     
-    		
-        
+    </div>   
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>
     <script src="js/plugins/jeditable/jquery.jeditable.js"></script>

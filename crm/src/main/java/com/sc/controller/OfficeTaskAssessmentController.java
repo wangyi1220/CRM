@@ -1,5 +1,6 @@
 package com.sc.controller;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -52,24 +53,26 @@ public class OfficeTaskAssessmentController {
     @RequestMapping("/add.do")
     public ModelAndView add(ModelAndView mav,OfficeTaskAssessment t){
     	System.out.println("添加新的任务"+t);
-    	 Date d1=t.getTaskStartTime();
-    	 SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    	 String format = format1.format(d1);
-
-    	 
-    	 Date d2=t.getTaskStopTime();
-    	 SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
-    	 format2.format(d2);
-    	 
     	t.setFinalUpdateTime(new Date());
     	this.OfficeTaskAssessmentService.add(t);
     	mav.setViewName("redirect:listpage.do");//重定向到list方法
     	return mav;
     }
     
+    @RequestMapping("/goupdate.do")
+	 public ModelAndView goupdate(ModelAndView mav,BigDecimal taskId){
+			System.out.println("修改之前先查看");
+			mav.addObject("t", OfficeTaskAssessmentService.get(taskId));
+			mav.setViewName("OA/OfficeTaskAssessmentgoupdate");
+			return mav;
+		}
+    
+    
+    
     @RequestMapping("/update.do")
     public ModelAndView update(ModelAndView mav,OfficeTaskAssessment t){
     	System.out.println("添加新的任务"+t);
+    	t.setFinalUpdateTime(new Date());
     	this.OfficeTaskAssessmentService.update(t);
     	mav.setViewName("redirect:listpage.do");//重定向到list方法
     	return mav;

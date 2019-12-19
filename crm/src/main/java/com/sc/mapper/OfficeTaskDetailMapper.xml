@@ -94,6 +94,14 @@
     from OFFICE_TASK_DETAIL
     where TASK_DETAIL_ID = #{taskDetailId,jdbcType=DECIMAL}
   </select>
+  <select id="selectByTaskId" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from OFFICE_TASK_DETAIL
+    where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
     delete from OFFICE_TASK_DETAIL
     where TASK_DETAIL_ID = #{taskDetailId,jdbcType=DECIMAL}
