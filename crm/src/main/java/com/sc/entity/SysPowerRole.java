@@ -1,71 +1,79 @@
 package com.sc.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysPowerRole implements Serializable {
-    private BigDecimal id;
+    private Long id;
 
-    private BigDecimal pcolumnId;
+    private Long powerId;
 
-    private BigDecimal roleId;
+    private Long roleId;
 
-    private BigDecimal caozuopersonId;
+    private Long operaterId;
 
-    private Date lasttime;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date changeDate;
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "SysPowerRole [id=" + id + ", powerId=" + powerId + ", roleId=" + roleId + ", operaterId=" + operaterId
+				+ ", changeDate=" + changeDate + "]";
+	}
 
-    public SysPowerRole(BigDecimal id, BigDecimal pcolumnId, BigDecimal roleId, BigDecimal caozuopersonId, Date lasttime) {
+	private static final long serialVersionUID = 1L;
+
+    public SysPowerRole(Long id, Long powerId, Long roleId, Long operaterId, Date changeDate) {
         this.id = id;
-        this.pcolumnId = pcolumnId;
+        this.powerId = powerId;
         this.roleId = roleId;
-        this.caozuopersonId = caozuopersonId;
-        this.lasttime = lasttime;
+        this.operaterId = operaterId;
+        this.changeDate = changeDate;
     }
 
     public SysPowerRole() {
         super();
     }
 
-    public BigDecimal getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public BigDecimal getPcolumnId() {
-        return pcolumnId;
+    public Long getPowerId() {
+        return powerId;
     }
 
-    public void setPcolumnId(BigDecimal pcolumnId) {
-        this.pcolumnId = pcolumnId;
+    public void setPowerId(Long powerId) {
+        this.powerId = powerId;
     }
 
-    public BigDecimal getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(BigDecimal roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
-    public BigDecimal getCaozuopersonId() {
-        return caozuopersonId;
+    public Long getOperaterId() {
+        return operaterId;
     }
 
-    public void setCaozuopersonId(BigDecimal caozuopersonId) {
-        this.caozuopersonId = caozuopersonId;
+    public void setOperaterId(Long operaterId) {
+        this.operaterId = operaterId;
     }
 
-    public Date getLasttime() {
-        return lasttime;
+    public Date getChangeDate() {
+        return changeDate;
     }
 
-    public void setLasttime(Date lasttime) {
-        this.lasttime = lasttime;
+    public void setChangeDate(Date changeDate) {
+        this.changeDate = changeDate;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SysDept implements Serializable {
-    private Long deptId;
+	private Long deptId;
 
     private String deptName;
 

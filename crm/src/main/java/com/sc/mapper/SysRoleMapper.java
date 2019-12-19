@@ -33,4 +33,6 @@ public interface SysRoleMapper {
     public List<SysRole> selectUsers(Long rId);
     
     public List<SysRole> selectUsersAndInfos(Long rId);
+    
+    public SysRole selectRolePower(Long rId);
 }

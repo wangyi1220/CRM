@@ -60,38 +60,60 @@
 					<div class="ibox-content">
 
 						<table class="footable table table-stripped toggle-arrow-tiny"
-							data-page-size="8">
+							data-page-size="8" target="_self">
 
 							<tr>
 
-								<th data-toggle="true">职务编号</th>
-								<th>职务名称</th>
-								<th>部门编号</th>
-								<th data-hide="all">备注</th>
-								<th data-hide="all">公司编号</th>
-								<th data-hide="all">最后修改日期</th>
+								<th data-toggle="true">主键</th>
+								<th>公司名称</th>
+								<th>公司代码</th>
+								<th data-hide="all">邮箱</th>
+								<th data-hide="all">联系人</th>
+								<th data-hide="all">公司地址</th>
+								<th data-hide="all">固定电话</th>
+								<th data-hide="all">移动电话</th>
+								<th data-hide="all">传真</th>
+								<th data-hide="all">开户银行</th>
+								<th data-hide="all">银行账户</th>
+								<th data-hide="all">是否有效</th>
+								<th data-hide="all">备注信息</th>
+								<th data-hide="all">最后修改时间</th>
 								<th>操作</th>
 							</tr>
 							<c:forEach items="${p.list }" var="post">
 								<tr>
 
-									<td>${post.postId }</td>
-									<td>${post.postName }</td>
-									<td>${post.deptId }</td>
+									<td>${post.pk }</td>
+									<td>${post.companyName }</td>
+									<td>${post.companyCode }</td>
+									<td>${post.email}</td>
+									<td>${post.contacts}</td>
+									<td>${post.companyAddress }</td>
+									<td>${post.fixedphone }</td>
+									<td>${post.mobilephone }</td>
+									<td>${post.fax}</td>
+									<td>${post.bankDeposit}</td>
+									<td>${post.bankAccount }</td>
+									<td>${post.effective }</td>
 									<td>${post.beizhu }</td>
-									<td>${post.companyId}</td>
 									<td>${post.changDate}</td>
-									<td><a href>修改</a>/<a href>删除</a></td>
+									<td><a href="SysCompanyInfoCtrl/goupdate.do?pk=${post.pk }">修改</a>/<a
+										href="SysCompanyInfoCtrl/delete.do?pk=${post.pk }"
+										onclick="return confirm('是否确定删除？')">删除</a></td>
 
 
 								</tr>
 							</c:forEach>
 							<tr>
-								<td style="text-align: center;" colspan="6"><a
-									target="_self" href="SysPostCtrl/listPage.do?pageNum=${p.firstPage }">首页</a> <a
-									target="_self" href="SysPostCtrl/listPage.do?pageNum=${p.prePage }">上一页</a> <a
-									target="_self" href="SysPostCtrl/listPage.do?pageNum=${p.nextPage }">下一页</a> <a
-									target="_self" href="SysPostCtrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
+								<td style="text-align: center;" colspan="15"><a
+									target="_self"
+									href="SysCompanyInfoCtrl/listPage.do?pageNum=${p.firstPage }">首页</a> <a
+									target="_self"
+									href="SysCompanyInfoCtrl/listPage.do?pageNum=${p.prePage }">上一页</a> <a
+									target="_self"
+									href="SysCompanyInfoCtrl/listPage.do?pageNum=${p.nextPage }">下一页</a> <a
+									target="_self"
+									href="SysCompanyInfoCtrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
 									当前${p.pageNum }/${p.pages }页，共${p.total }条</td>
 							</tr>
 

@@ -1,17 +1,17 @@
 package com.sc.mapper;
 
-import com.sc.entity.SysPowerRole;
-import com.sc.entity.SysPowerRoleExample;
-import java.math.BigDecimal;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.sc.entity.SysPowerRole;
+import com.sc.entity.SysPowerRoleExample;
 
 public interface SysPowerRoleMapper {
     int countByExample(SysPowerRoleExample example);
 
     int deleteByExample(SysPowerRoleExample example);
 
-    int deleteByPrimaryKey(BigDecimal id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(SysPowerRole record);
 
@@ -19,7 +19,7 @@ public interface SysPowerRoleMapper {
 
     List<SysPowerRole> selectByExample(SysPowerRoleExample example);
 
-    SysPowerRole selectByPrimaryKey(BigDecimal id);
+    SysPowerRole selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") SysPowerRole record, @Param("example") SysPowerRoleExample example);
 
