@@ -11,6 +11,8 @@ public interface OffMessMapper {
 	
 	public List<OffMess> messdeta(String ser);
 	
+	public List<OffMess> mdetail(Long mid);
+	
     int countByExample(OffMessExample example);
 
     int deleteByExample(OffMessExample example);
