@@ -47,7 +47,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			border: 1px solid red;position:absolute;
    			left: 60px;top:87px;display: none"></div>
    		  <br>  <br> 
-   		<h3 style="display: inline-block;"><a href="GongYingShangctrl/gysToAdd.do" target="_self">添加供应商</a></h3>
+   		<h3 style="display: inline-block;"><a href="cgdXqCtrl/cgdxqToAdd.do?cgdId=${cgdId}" target="_self">添加采购商品</a></h3>
+       	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">添加商品</button>
+         
+                	<!-- 弹窗---查看详情 -->
+    <div class="modal inmodal fade" id="add" tabindex="-1" role="dialog"  aria-hidden="true">
+       <div class="modal-dialog modal-sm">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                   <h4 class="modal-title">添加采购商品</h4>
+               </div>
+               <div class="modal-body">
+                   				<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
+                                <thead>
+	                                <tr>
+											 <th>产品编号</th>
+	                                      	 <th>产品名称</th>
+		                                     <th>单价</th>
+		                                     <th>数量</th>
+		                                     <th>总价</th>
+		                                     <th>备注信息</th>
+	                                </tr>
+                                </thead>
+                                <tbody>
+                                	<tr>
+                                		<td>
+                                			<select id="s1">
+                                				<option>1</option>
+                                				<option>2</option>
+                                				<option>3</option>
+                                			</select>
+                                		</td>
+                                		<td></td>
+                                		<td></td>
+                                		<td></td>
+                                		<td></td>
+                                		<td ></td>
+                                	</tr>
+                                </tbody>
+                               </table>
+                        </div>
+                       <div class="modal-footer">
+                       
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+			       
+         
+         
+                                                         	 
         &emsp;
       	<h3 style="display: inline-block;"><a id="deleteSelect"  target="_self">删除选中</a></h3>
        
@@ -67,12 +118,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th>公司编号</th>
                                     <th>修改时间</th>
                                     <th>操作</th>
-                                    
-                                <!-- 	 <th data-hide="all">固定电话</th>
-                                	 <th data-hide="all">公司主页</th>
-                                    <th data-hide="all">联系地址</th>
-                                    <th data-hide="all">操作人员</th>
-                                    <th data-hide="all">公司编号</th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -80,30 +125,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             					 <tr>
                    					 <td><input type="checkbox" name="c1" class="c1" value="${pcgdxq.cgXqId}"></td>
                     
-                                 	<td> ${pcgdxq.cgXqId}</td>
-									<td>${pcgdxq.cgdId} </td>
+                                 	<td>${pcgdxq.cgXqId}</td>
+									<td id="cgdId">${pcgdxq.cgdId}</td>
 				                    <td>${pcgdxq.cpId}</td>
 				                    <td>${pcgdxq.cpNumber} </td>
-				                    <td>${pcgdxq.khbank} </td>
-				                    <td>${pcgdxq.yhzh} </td>
+				                    <td>${pcgdxq.cpPrice} </td>
+				                    <td>${pcgdxq.isRk} </td>
+				                    <td>${pcgdxq.operator} </td>
 				                    <td>${pcgdxq.remark} </td>
-				                    <td>${pcgdxq.isYx} </td>
+				                    <td>${pcgdxq.gsId} </td>
+				                    <td>${pcgdxq.ltime} </td>
 				                    
 				              
 				                    
 								           
 				                    <td>
-				                 		    <a href="GongYingShangctrl/gysToUpdate.do?gysId=${pcgdxq.gysId}" target="_self">添加</a>
-				                    		<a href="GongYingShangctrl/cgdDelete.do?gysId=${pcgdxq.gysId}" target="_self" >删除</a>
-				                    		
-				                    </td>
-				                    
-				                          
-				             <%--        <td>${pcgdxq.gdPhone} </td>
-				                    <td>${pcgdxq.gszy} </td>
-				                    <td>${pcgdxq.lxdz} </td>
-				                    <td>${pcgdxq.operator} </td>
-				                    <td>${pcgdxq.gsId} </td> --%>
+				                   		<c:choose>
+				                   			<c:when test="${pcgdxq.isRk=='已入库'}">
+				                   				入库成功
+				                   			</c:when>
+				                   			<c:otherwise>
+				                   				<a href="cgdXqCtrl/cgdxqRk.do?cgdxqId=${pcgdxq.cgXqId}&cgdId=${pcgdxq.cgdId}" target="_self" >入库</a>
+				                 		 		<a href="cgdXqCtrl/cgdxqDelete.do?cgdId=${pcgdxq.cgdId}&cgdxqId=${pcgdxq.cgXqId}" target="_self" >删除</a>		
+				                   			</c:otherwise>
+				                   		</c:choose>
+				                   </td>
                		 </tr>
 			       
             </c:forEach>
@@ -145,11 +191,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var i
 		for(i=0;i<myArr.length;i++){
 			if(myArr[i].checked==true){
-				a+="gysId="+myArr[i].value+"&";
+				a+="cgdxqId="+myArr[i].value+"&";
 			}
 		}
+		
+		/* $("#cgdxqId").html()
+		$("#cgdId").html() */
 	
-			location.href="GongYingShangctrl/gysDeleteSelect.do?"+a;
+			location.href="cgdXqCtrl/cgdDeleteSelect.do?"+a;
 			
 	})
 			//仿百度提示搜索
