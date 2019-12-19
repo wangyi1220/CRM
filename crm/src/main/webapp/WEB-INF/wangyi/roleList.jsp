@@ -91,6 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	if(${addsuc=="yes"}){
         		swal({title:"太帅了",text:"为用户添加成员成功",type:"success"})
         	}
+        	if(${updatesuc=="yes"}){
+        		swal({title:"太帅了",text:"为用户设置权限成功",type:"success"})
+        	}
         });
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>

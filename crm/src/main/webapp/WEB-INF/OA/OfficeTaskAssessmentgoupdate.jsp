@@ -26,7 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link href="<%=basePath%>css/animate.min.css" rel="stylesheet">
     <link href="<%=basePath%>css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
-
+     <script src="<%=basePath%>My97DatePicker/WdatePicker.js" type="text/javascript" defer="defer"  charset="UTF-8"></script>
+    
 </head>
 
 <body class="gray-bg">
@@ -52,33 +53,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
-                                                                                                                                            
+                            <a class="close-link" href="../OfficeTaskAssessmentController/inaddOfficeTaskAssessment.do">
+                                                                                                                                             添加任务
                             </a>
                         </div>
                     </div>
                     <div class="ibox-content">
-
-                      <center>
-    <form action="../OfficeKpictrl/addofficeKpi.do">
-    <table>
-           <tr><td>考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
-           <tr><td>考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>
-           <tr><td>所属公司：</td><td><input type="text" name="companyId" ></td></tr>
-           <%-- <input type="hidden" name="finalUpdataTime" value="<%=new Date().getTime() %>"> --%>
-          <tr><td><input type="submit" value="提交"></td><td>
-           <input type="reset" value="重置"></td></tr>
-    </table>
-    </form>
-    </center>
+               
+                 <form action="../OfficeTaskAssessmentController/update.do" method="post">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                     <tr><td>任务编号</td><td><input type="text" name="taskId" value="${t.taskId} " style="width:100%;height: 60%"></td></tr>
+                                     <tr><td>任务标题</td><td><input type="text" name="tsakTitle" value="${t.tsakTitle} " style="width:100%;height: 60%"></td></tr>
+                                     <tr><td>任务具体内容</td><td><textarea name="taskConcreteContent" style="width:100%"> </textarea></td></tr>
+                                   <tr><td>任务发布人</td><td><input type="text" name="taskIssuer" value="${t.taskIssuer}" style="width:100%;height: 60%"></td></tr>
+                                     <tr><td>任务考核指标</td><td><input type="text" name="taskKpi" value="${t.taskKpi}" style="width:100%;height: 60%"></td></tr>
+                                     <tr><td>任务开始时间</td><td><input name="taskStartTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
+                                    <tr><td>任务结束时间</td><td><input name="taskStopTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
+                                     <tr><td>公司编号</td><td><input type="text" name="companyId" value="${t.companyId}" style="width:100%;height: 60%"></td></tr>
+                                     <tr><td><input type="submit" name="submit" value="提交"></td><td><input type="reset" value="重置"></td></tr>
+                               <tbody>
+        </table>
+        </form>
        </div>
       </div>
      </div>
-     
     </div>
      
     		
-        
+       
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>
     <script src="js/plugins/jeditable/jquery.jeditable.js"></script>

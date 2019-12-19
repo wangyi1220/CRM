@@ -4,10 +4,14 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMess;
+import com.sc.entity.SysUsers;
 
 
 public interface OffMessService {
 	
+	public List<OffMess> mdetail(Long mid);
+	
+		
 	
 		//Ìí¼Ó
 		public void add(OffMess m);

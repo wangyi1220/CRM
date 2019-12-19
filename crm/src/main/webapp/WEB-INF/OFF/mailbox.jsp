@@ -46,13 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li>
                                     <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-file-text-o"></i> 草稿 <span class="label label-danger pull-right">2</span>
-                                    </a>
-                                </li>
+                                
                                 <li>
                                     <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
@@ -91,14 +85,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              </a>
 
                         </div>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="
-邮件列表"><i class="fa fa-refresh"></i> 刷新</button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为已读"><i class="fa fa-eye"></i>
-                        </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为重要"><i class="fa fa-exclamation"></i>
-                        </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件"><i class="fa fa-trash-o"></i>
-                        </button>
+                        
+   <a target="_self" href="../offmessctrl/listpage.do"> <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="邮件列表">
+    <i class="fa fa-refresh"></i> 刷新</button></a>
+                       
 
                     </div>
                 </div>
@@ -108,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <tbody>
                             <tr class="unread">
                                 <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
+                                   
                                 </td>
                                 <td class="mail-ontact">发件人</td>
                                 
@@ -124,13 +114,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              <c:forEach items="${p.list }" var="m">
                             <tr class="read">
                                 <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
+                                    
                                 </td>
                                 
                                 <td class="mail-ontact"><a href="mail_detail.html">${m.sender }</a> 
                                 </td>
                                 
-                                <td class="mail-subject"><a href="mail_detail.html">${m.title }</a>
+                                <td class="mail-subject"><a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">${m.title }</a>
                                 </td>
                                 
                                 <td class=""><i class="fa fa-paperclip"> </i>
