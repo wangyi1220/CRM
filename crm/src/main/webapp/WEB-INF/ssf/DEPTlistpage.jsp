@@ -79,17 +79,23 @@
 									<td>${post.beizhu }</td>
 									<td>${post.companyId}</td>
 									<td>${post.changDate}</td>
-									<td><a href="">修改</a>/<a href="SyDeptCtrl/delete.do?deptId=${post.deptId }" onclick="return confirm('是否确定删除？')" >删除</a></td>
+									<td><a href="SyDeptCtrl/goupdate.do?deptId=${post.deptId }">修改</a>/<a
+										href="SyDeptCtrl/delete.do?deptId=${post.deptId }"
+										onclick="return confirm('是否确定删除？')">删除</a></td>
 
 
 								</tr>
 							</c:forEach>
 							<tr>
 								<td style="text-align: center;" colspan="6"><a
-									target="_self" href="SyDeptCtrl/listPage.do?pageNum=${p.firstPage }">首页</a> <a
-									target="_self" href="SyDeptCtrl/listPage.do?pageNum=${p.prePage }">上一页</a> <a
-									target="_self" href="SyDeptCtrl/listPage.do?pageNum=${p.nextPage }">下一页</a> <a
-									target="_self" href="SyDeptCtrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
+									target="_self"
+									href="SyDeptCtrl/listPage.do?pageNum=${p.firstPage }">首页</a> <a
+									target="_self"
+									href="SyDeptCtrl/listPage.do?pageNum=${p.prePage }">上一页</a> <a
+									target="_self"
+									href="SyDeptCtrl/listPage.do?pageNum=${p.nextPage }">下一页</a> <a
+									target="_self"
+									href="SyDeptCtrl/listPage.do?pageNum=${p.lastPage }">尾页</a>
 									当前${p.pageNum }/${p.pages }页，共${p.total }条</td>
 							</tr>
 
