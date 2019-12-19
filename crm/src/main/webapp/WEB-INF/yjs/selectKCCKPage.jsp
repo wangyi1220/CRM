@@ -86,7 +86,7 @@
 											/ <a
 											href="../KCCKControllerCtrl/delete.do?kcck=${k.cangkuId}"
 											onclick="return confirm('是否确定删除？')">删除</a></td>
-		<!-- zhushi -->
+		<!-- zhushi111 -->
 										<%-- <td>${k.cangkuLastModifyTime}</td> --%>
 										<%--  <td>
                        <a href="GoodsDel?gid=${g.gid }" onclick="return confirm('是否确定删除此商品？')">删除</a>
