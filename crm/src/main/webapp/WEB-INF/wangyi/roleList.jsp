@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                    
 	                                    <td style="text-align: center">
 	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a target="_self">
-	                                    	<i>|</i> <a target="_self">添加成员</a>
+	                                    	<i>|</i> <a href="../SysRoleCtrl/selectUsersAndNORoleUser.do?rId=${rs.roleId }" target="_self">添加成员</a>
 	                                    	<i>|</i> <a target="_self">权限设置</a>
 	                                    	<i>|</i> <a target="_self">删除</a></td>
 	                                    

@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>H+ 后台主题UI框架 - 收件箱</title>
+    <title>H+ 后台主题UI框架 - 发件箱</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -34,17 +34,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="ibox float-e-margins">
                     <div class="ibox-content mailbox-content">
                         <div class="file-manager">
-                           <a class="btn btn-block btn-primary compose-mail" href="../offmessctrl/goadd.do">写信</a>
+                           <a target="_self" class="btn btn-block btn-primary compose-mail" href="../offmessctrl/goadd.do">写信</a>
                             
                             
                             <div class="space-25"></div>
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 收件箱</a>
+                                    <a href="../offmessdetactrl/listpagedeta.do"  target="_self"> <i class="fa fa-envelope-o"></i> 收件箱</a>
                                 </li>
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-envelope-o"></i> 已发送</a>
+                                    <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
                                 <li>
                                     <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
@@ -79,14 +79,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </form>
                     <h2>
-                    收件箱 (16)
+                    已发送(${p.total })
                 </h2>
                     <div class="mail-tools tooltip-demo m-t-md">
                         <div class="btn-group pull-right">
-                         <a href="../offmessctrl/listpage.do?pageNum=${p.prePage }">
+                         <a  target="_self"  href="../offmessctrl/listpage.do?pageNum=${p.prePage }"  >
                             <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
                             </button></a>
-                            <a href="../offmessctrl/listpage.do?pageNum=${p.nextPage }"><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
+                            <a  target="_self" href="../offmessctrl/listpage.do?pageNum=${p.nextPage }"  ><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
                             </button>
                              </a>
 
@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 <td class=""><i class="fa fa-paperclip"></i></td>
                                 
-                                 <td class="mail-subject">状态 </td>
+                                 <td class="mail-subject">收件人 </td>
                                 
                                 <td class="text-right mail-date">发送时间</td>
                             </tr>
@@ -133,10 +133,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <td class="mail-subject"><a href="mail_detail.html">${m.title }</a>
                                 </td>
                                 
-                                <td class=""><i class="fa fa-paperclip"></i>
+                                <td class=""><i class="fa fa-paperclip"> </i>
+                               
                                 </td>
                                 
-                                <td class="text-right mail-date"></td>
+                                <td class="text-right mail-date">
+                                 <c:forEach items="${m.offMessdeta }" var="d">
+                                 ${d.receiverid}
+                                 </c:forEach>
+                                 </td>
                                 
                                 <td class="text-right mail-date"><fmt:formatDate value="${m.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </td>

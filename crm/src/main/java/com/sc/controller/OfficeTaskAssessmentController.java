@@ -1,5 +1,7 @@
 package com.sc.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,16 @@ public class OfficeTaskAssessmentController {
     @RequestMapping("/add.do")
     public ModelAndView add(ModelAndView mav,OfficeTaskAssessment t){
     	System.out.println("添加新的任务"+t);
+    	 Date d1=t.getTaskStartTime();
+    	 SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    	 String format = format1.format(d1);
+
+    	 
+    	 Date d2=t.getTaskStopTime();
+    	 SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
+    	 format2.format(d2);
+    	 
+    	t.setFinalUpdateTime(new Date());
     	this.OfficeTaskAssessmentService.add(t);
     	mav.setViewName("redirect:listpage.do");//重定向到list方法
     	return mav;
