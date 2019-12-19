@@ -140,9 +140,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             
                             <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
+                                <a href="#">办公考核 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    <li><a class="J_menuItem" href="OfficeTaskAssessmentController/listpage.do">办公考核任务 </a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="OfficeKpictrl/listpage.do">办公考核指标 </a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="OfficeTaskDetailController/listpage.do">办公任务详情</a>
                                     </li>
                                 </ul>
                             </li>

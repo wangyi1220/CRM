@@ -125,18 +125,29 @@ public class SysRoleServiceImpl implements SysRoleService {
 	@Override
 	public List<SysPowerColumns> selectRolePower(Long rId) {
 		SysRole role = this.sysRoleMapper.selectRolePower(rId);
-		
 		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
-		for (SysPowerColumns spc : list) {
-			for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
-				for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
-					if(spi1.getPowerId()==spi2.getPowerId()){
-						spi1.setIsHasPower("1");
+		System.out.println(role.getSuperRoleId());
+		if(role.getSuperRoleId()==null){
+			
+			for (SysPowerColumns spc : list) {
+				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
+					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
+						if(spi1.getPowerId()==spi2.getPowerId()){
+							spi1.setIsHasPower("1");
+						}
 					}
 				}
 			}
+			return list;
+		}else{
+			SysRole superRolePower = this.sysRoleMapper.selectRolePower(role.getSuperRoleId());
+			for (SysPowerColumns spc : list) {
+				
+			}
 		}
-		return list;
+		
+		
+		return null;
 	}
 
 }
