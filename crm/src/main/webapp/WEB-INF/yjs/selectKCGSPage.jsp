@@ -96,9 +96,9 @@
 										<td>${k.companyId}</td>
 										<td><fmt:formatDate value="${k.lastModifyTime}"
 												pattern="yyyy-MM-dd HH:mm:ss" />
-										<td><a href="KCGSControllerCtrl/goupdate.do?gid=${k.goodsId }">修改</a>
-											/ <a href="usersctrl/delete.do?kcgs=${k}"
-											<!-- delete后的参数是怎样的 -->
+										<td><a href="../KCGSControllerCtrl/goupdate.do?gid=${k.goodsId }">修改</a>
+											/ <a
+											href="../KCGSControllerCtrl/delete.do?kcck=${k.cangkuId}"
 											onclick="return confirm('是否确定删除？')">删除</a></td>
 
 										<%-- <td>${k.cangkuLastModifyTime}</td> --%>
