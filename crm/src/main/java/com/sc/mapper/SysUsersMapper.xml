@@ -265,7 +265,7 @@
   	</association>
   </resultMap>
   <select id="selectRole" resultMap="selectRoleMap" parameterType="java.lang.Long">
-  	select SU.*,SR.* from SYS_USERS SU 
+  	select * from SYS_USERS SU 
 	LEFT JOIN SYS_USERS_ROLE SUR ON SU.USERS_ID= SUR.USERS_ID 
 	LEFT JOIN SYS_ROLE SR ON SUR.ROLE_ID=SR.ROLE_ID 
 	WHERE SU.USERS_ID=#{uId}
@@ -291,7 +291,7 @@
   	SELECT su.*,suri.* from SYS_USERS su
 	LEFT JOIN SYS_USERS_ROLE sur 
 	on su.USERS_ID=sur.USERS_ID 
-	LEFT JOIN SYS_USERINFO suri ON SU.EMP_ID=suri.EMP_ID
-	where sur.ROLE_ID is null;
+	LEFT JOIN SYS_USERINFO suri ON su.EMP_ID=suri.EMP_ID
+	where sur.ROLE_ID is null
   </select>
 </mapper>

@@ -1,71 +1,79 @@
 package com.sc.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SysUsersRole implements Serializable {
-    private BigDecimal id;
+    private Long surId;
 
-    private BigDecimal uid;
+    private Long usersId;
 
-    private BigDecimal rid;
+    private Long roleId;
 
-    private BigDecimal operatorid;
+    private Long opetaterId;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date changeDate;
 
-    private Date lasttime;
+    @Override
+	public String toString() {
+		return "SysUsersRole [surId=" + surId + ", usersId=" + usersId + ", roleId=" + roleId + ", opetaterId="
+				+ opetaterId + ", changeDate=" + changeDate + "]";
+	}
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public SysUsersRole(BigDecimal id, BigDecimal uid, BigDecimal rid, BigDecimal operatorid, Date lasttime) {
-        this.id = id;
-        this.uid = uid;
-        this.rid = rid;
-        this.operatorid = operatorid;
-        this.lasttime = lasttime;
+    public SysUsersRole(Long surId, Long usersId, Long roleId, Long opetaterId, Date changeDate) {
+        this.surId = surId;
+        this.usersId = usersId;
+        this.roleId = roleId;
+        this.opetaterId = opetaterId;
+        this.changeDate = changeDate;
     }
 
     public SysUsersRole() {
         super();
     }
 
-    public BigDecimal getId() {
-        return id;
+    public Long getSurId() {
+        return surId;
     }
 
-    public void setId(BigDecimal id) {
-        this.id = id;
+    public void setSurId(Long surId) {
+        this.surId = surId;
     }
 
-    public BigDecimal getUid() {
-        return uid;
+    public Long getUsersId() {
+        return usersId;
     }
 
-    public void setUid(BigDecimal uid) {
-        this.uid = uid;
+    public void setUsersId(Long usersId) {
+        this.usersId = usersId;
     }
 
-    public BigDecimal getRid() {
-        return rid;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRid(BigDecimal rid) {
-        this.rid = rid;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public BigDecimal getOperatorid() {
-        return operatorid;
+    public Long getOpetaterId() {
+        return opetaterId;
     }
 
-    public void setOperatorid(BigDecimal operatorid) {
-        this.operatorid = operatorid;
+    public void setOpetaterId(Long opetaterId) {
+        this.opetaterId = opetaterId;
     }
 
-    public Date getLasttime() {
-        return lasttime;
+    public Date getChangeDate() {
+        return changeDate;
     }
 
-    public void setLasttime(Date lasttime) {
-        this.lasttime = lasttime;
+    public void setChangeDate(Date changeDate) {
+        this.changeDate = changeDate;
     }
 }
