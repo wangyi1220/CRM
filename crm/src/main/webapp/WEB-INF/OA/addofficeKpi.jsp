@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox-content">
 
                       <center>
-    <form action="OfficeKpictrl/addofficeKpi.do">
+    <form action="../OfficeKpictrl/addofficeKpi.do">
     <table>
            <tr><td>考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
            <tr><td>考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>

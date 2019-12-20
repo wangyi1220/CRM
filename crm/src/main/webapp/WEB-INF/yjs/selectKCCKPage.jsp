@@ -55,22 +55,23 @@
 						</div>
 					</div>
 					<div class="ibox-content">
-					<input type="text" id="" name="" placeholder="请输入仓库名，或仓库编号"><button>搜索</button>
+						<input type="text" id="" name="" placeholder="请输入仓库名，或仓库编号">
+						<button>搜索</button>
 
 						<table class="footable table table-stripped toggle-arrow-tiny"
 							data-page-size="8">
 							<thead>
 								<tr>
 									<th>仓库编号</th>
-								<th>仓库名</th>
+									<th>仓库名</th>
 									<th>备注信息</th>
 									<th>公司编号</th>
 									<th>最后修改时间</th>
-									<!-- <th>操作</th> -->
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								
+
 
 								<c:forEach items="${p.list }" var="k">
 									<tr style="text-align: center;">
@@ -78,7 +79,15 @@
 										<td>${k.cangkuName}</td>
 										<td>${k.cangkuNote}</td>
 										<td>${k.companyId }</td>
-										<td>${k.cangkuLastModifyTime}</td>
+										<td><fmt:formatDate value="${k.cangkuLastModifyTime }"
+												pattern="yyyy-MM-dd HH:mm:ss" />
+										<td><a
+											href="../KCCKControllerCtrl/goupdate.do?cangkuId=${k.cangkuId }">修改</a>
+											/ <a
+											href="../KCCKControllerCtrl/delete.do?kcck=${k.cangkuId}"
+											onclick="return confirm('是否确定删除？')">删除</a></td>
+		<!-- zhushi111 -->
+										<%-- <td>${k.cangkuLastModifyTime}</td> --%>
 										<%--  <td>
                        <a href="GoodsDel?gid=${g.gid }" onclick="return confirm('是否确定删除此商品？')">删除</a>
                        /

@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                    <td style="text-align: center">
 	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a target="_self">
 	                                    	<i>|</i> <a href="../SysRoleCtrl/selectUsersAndNORoleUser.do?rId=${rs.roleId }" target="_self">添加成员</a>
-	                                    	<i>|</i> <a target="_self">权限设置</a>
+	                                    	<i>|</i> <a href="../SysRoleCtrl/goUpdatePower.do?rId=${rs.roleId }" target="_self">权限设置</a>
 	                                    	<i>|</i> <a target="_self">删除</a></td>
 	                                    
 	                                </tr>
@@ -83,11 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     <script>
-        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
-    	
+        $(document).ready(function(){
+    		
         	if(${isson=="yes"}){
         		swal({title:"下面为您显示其子角色",text:"点击角色可看见其子角色"})
         	}
+        	if(${addsuc=="yes"}){
+        		swal({title:"太帅了",text:"为用户添加成员成功",type:"success"})
+        	}
+        	if(${updatesuc=="yes"}){
+        		swal({title:"太帅了",text:"为用户设置权限成功",type:"success"})
+        	}
+        });
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

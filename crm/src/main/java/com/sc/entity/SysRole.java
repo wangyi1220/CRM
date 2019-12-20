@@ -33,7 +33,17 @@ public class SysRole implements Serializable {
 	
 	private List<SysUsers> sysUsers;
 	
-    public List<SysUsers> getSysUsers() {
+	private List<SysPowerinfo> sysPowerinfoes;
+	
+    public List<SysPowerinfo> getSysPowerinfoes() {
+		return sysPowerinfoes;
+	}
+
+	public void setSysPowerinfoes(List<SysPowerinfo> sysPowerinfoes) {
+		this.sysPowerinfoes = sysPowerinfoes;
+	}
+
+	public List<SysUsers> getSysUsers() {
 		return sysUsers;
 	}
 

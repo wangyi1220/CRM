@@ -1,10 +1,12 @@
 package com.sc.controller;
 
+import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,17 +32,18 @@ public class GongYingShangctrl {
 	@RequestMapping("/list.do")
 	public ModelAndView listpage(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="5")Integer pageSize){
-		System.out.println("查询用户列表-分页！");
-		
-		//查询list集合-分页     ${page.list}
-		PageInfo<JhGysxx> ii = jhGysxxService.selectpage(pageNum, pageSize);
-		/*for (JhGysxx xx :  ii.getList()){
-			System.out.println(xx);
-		}*/
-		
-		mav.addObject("pgys",ii);
-		
+			@RequestParam(defaultValue="5")Integer pageSize,
+			String gysName){
+		System.out.println("查询gys列表-分页！"+gysName);
+		if(gysName==null){//查询全部
+			//查询list集合-分页     ${page.list}
+			System.out.println("123");
+			PageInfo<JhGysxx> ii = jhGysxxService.selectpage(pageNum, pageSize);
+			mav.addObject("pgys",ii);
+		}else {//模糊查询
+			PageInfo<JhGysxx> moHu = jhGysxxService.searchByLikeName(gysName, pageNum, pageSize);
+			mav.addObject("pgys",moHu);
+		}
 		mav.setViewName("fhw/JH-gysListPage");// 路径是：/WEB-INF/userslistpage.jsp
 		return mav;
 	}
@@ -97,7 +100,7 @@ public class GongYingShangctrl {
 	}
 	
 	
-	//to修改页面
+	//修改页面
 	@RequestMapping("/gysUpdate.do")
 	public ModelAndView gysUpdate(ModelAndView mav,
 									JhGysxx gys){
@@ -149,7 +152,7 @@ public class GongYingShangctrl {
 	
 	//仿百度搜索
 	@RequestMapping("/gysSearch.do")
-	public ModelAndView gysSearch(ModelAndView mav,HttpServletRequest req,HttpServletResponse resp){
+	protected ModelAndView doPost(ModelAndView mav,HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		System.out.println("仿百度查询");
 		
 		String data = req.getParameter("data");
@@ -160,12 +163,14 @@ public class GongYingShangctrl {
 			System.out.println("----------------->模糊查询结果"+jhGysxx.getGysName());
 		}
 		
-		mav.addObject("searchList",searchList);
-		//转发
-		mav.setViewName("gysSearch");
 		
+		mav.addObject("searchList", searchList);
+		mav.setViewName("fhw/gysSearch");
+		/*req.setAttribute("searchList", searchList);
+		req.getRequestDispatcher("../fhw/gysSearch.jsp").forward(req, resp);*/
 		return mav;
 	}
+	
 	
 	
 }

@@ -9,6 +9,10 @@ import com.sc.entity.OffMessdetaExample;
 
 public interface OffMessdetaMapper {
 	
+	
+	
+	public OffMessdeta details(Long did);
+	
 	public List<OffMessdeta> detamess(Long sid);
 	
     int countByExample(OffMessdetaExample example);

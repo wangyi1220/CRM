@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.SysPowerColumns;
+import com.sc.entity.SysPowerinfo;
 import com.sc.entity.SysRole;
 import com.sc.entity.SysRoleExample;
 import com.sc.entity.SysRoleExample.Criteria;
 import com.sc.entity.SysUsers;
+import com.sc.mapper.SysPowerColumnsMapper;
 import com.sc.mapper.SysRoleMapper;
 import com.sc.mapper.SysUsersMapper;
 import com.sc.service.SysRoleService;
@@ -24,6 +27,9 @@ public class SysRoleServiceImpl implements SysRoleService {
 	
 	@Autowired
 	SysUsersMapper sysUsersMapper;
+	
+	@Autowired
+	SysPowerColumnsMapper  sysPowerColumnsMapper;
 	
 	@Override
 	public void addRole(SysRole sr) {
@@ -114,6 +120,34 @@ public class SysRoleServiceImpl implements SysRoleService {
 		}
 		PageInfo<SysUsers> info = new PageInfo<SysUsers>(list);
 		return info;
+	}
+
+	@Override
+	public List<SysPowerColumns> selectRolePower(Long rId) {
+		SysRole role = this.sysRoleMapper.selectRolePower(rId);
+		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
+		System.out.println(role.getSuperRoleId());
+		if(role.getSuperRoleId()==null){
+			
+			for (SysPowerColumns spc : list) {
+				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
+					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
+						if(spi1.getPowerId()==spi2.getPowerId()){
+							spi1.setIsHasPower("1");
+						}
+					}
+				}
+			}
+			return list;
+		}else{
+			SysRole superRolePower = this.sysRoleMapper.selectRolePower(role.getSuperRoleId());
+			for (SysPowerColumns spc : list) {
+				
+			}
+		}
+		
+		
+		return null;
 	}
 
 }
