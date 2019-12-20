@@ -47,6 +47,7 @@ public class SysRoleCtrl {
 	@RequestMapping("/addRole.do")
 	public ModelAndView addRole(ModelAndView mav,SysRole sr){
 		sr.setChangeDate(new Date());
+		sr.setOperaterId(61L);
 		this.sysRoleService.addRole(sr);
 		mav.addObject("issuc", "yes");
 		mav.setViewName("wangyi/addrole");
@@ -54,7 +55,7 @@ public class SysRoleCtrl {
 	}
 	
 	@RequestMapping("/roleList.do")
-	public ModelAndView roleListe(ModelAndView mav,String addsuc,String updatesuc){
+	public ModelAndView roleListe(ModelAndView mav,String addsuc,String updatesuc,String delsuc){
 		List<SysRole> list = new ArrayList<SysRole>();
 		List<Long> list1=new ArrayList<Long>();
 		long uId=61L;
@@ -67,7 +68,7 @@ public class SysRoleCtrl {
 				list1.add(sysRole.getRoleId());
 			}
 		}
-		System.out.println(list1.size());
+		System.out.println("自己及子角色个数："+list1.size());
 		for (int i = 0; i < list1.size(); i++) {
 			SysRole role = this.sysRoleService.selectMeAndSuper(list1.get(i));
 			
@@ -88,6 +89,9 @@ public class SysRoleCtrl {
 		}
 		if(updatesuc!=null){
 			mav.addObject("updatesuc", "yes");
+		}
+		if(delsuc!=null){
+			mav.addObject("delsuc", "yes");
 		}
 		mav.addObject("r", list);
 		mav.setViewName("wangyi/roleList");
@@ -192,6 +196,7 @@ public class SysRoleCtrl {
 	@RequestMapping("/updatePower.do")
 	public ModelAndView updatePower(ModelAndView mav,Long[] pIds,Long rId){
 		List<SysPowerRole> list = this.sysPowerRoleService.selectByrId(rId);
+		System.out.println(list.size());
 		SysPowerRole sysPowerRole=new SysPowerRole();
 		sysPowerRole.setRoleId(rId);
 		sysPowerRole.setChangeDate(new Date());
@@ -222,8 +227,45 @@ public class SysRoleCtrl {
 					this.sysPowerRoleService.insert(sysPowerRole);
 				}
 			}
+		}else{
+			for (Long pId : pIds) {
+				sysPowerRole.setPowerId(pId);
+				this.sysPowerRoleService.insert(sysPowerRole);
+			}
 		}
 		mav.setViewName("redirect:roleList.do?updatesuc=yes");
+		return mav;
+	}
+	
+	@RequestMapping("/goDeleteRole.do")
+	public ModelAndView goDeleteRole(ModelAndView mav,Long rId){
+		SysRole role = this.sysRoleService.selectByPK(rId);
+		List<SysRole> list=null;
+		if(role.getSuperRoleId()!=null){
+			list = this.sysRoleService.selectBySuperId(role.getSuperRoleId());
+			for (int i = 0; i < list.size(); i++) {
+				if(role.getRoleId()==list.get(i).getRoleId()){
+					list.remove(i);
+				}
+			}
+		}
+		mav.addObject("tj", list);
+		mav.addObject("r", role);
+		mav.setViewName("wangyi/deleterole");
+		return mav;
+	}
+	@RequestMapping("/deleteRole.do")
+	public ModelAndView deleteRole(ModelAndView mav,String radio2,Long tjrid,Long delrid){
+		System.out.println("选项："+radio2);
+		System.out.println("同级角色id："+tjrid);
+		System.out.println("删除角色id："+delrid);
+		if(radio2.equals("0")){
+			this.sysPowerRoleService.deleteByrId(delrid);
+			this.sysUsersRoleService.deleteByrId(delrid);
+			this.sysRoleService.deleteBypk(delrid);
+		}
+		
+		mav.setViewName("redirect:roleList.do?delsuc=yes");
 		return mav;
 	}
 }
