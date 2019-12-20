@@ -30,4 +30,6 @@ public interface SysPowerColumnsMapper {
     
     public List<SysPowerColumns> selectPowerinfo();
     
+    public List<SysPowerColumns> selectPowerinfoBypIds(SysPowerColumns spc);
+    
 }

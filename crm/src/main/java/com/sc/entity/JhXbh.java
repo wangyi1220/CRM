@@ -1,14 +1,15 @@
 package com.sc.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class JhXbh implements Serializable {
-    private Long id;
+    private BigDecimal xbhId;
 
-    private Long cpId;
+    private BigDecimal cpId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date jhTime;
@@ -19,21 +20,21 @@ public class JhXbh implements Serializable {
 
     private String remark;
 
-    private Long gsId;
+    private BigDecimal gsId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ltime;
 
     @Override
 	public String toString() {
-		return "JhXbh [id=" + id + ", cpId=" + cpId + ", jhTime=" + jhTime + ", state=" + state + ", operator="
+		return "JhXbh [xbhId=" + xbhId + ", cpId=" + cpId + ", jhTime=" + jhTime + ", state=" + state + ", operator="
 				+ operator + ", remark=" + remark + ", gsId=" + gsId + ", ltime=" + ltime + "]";
 	}
 
 	private static final long serialVersionUID = 1L;
 
-    public JhXbh(Long id, Long cpId, Date jhTime, String state, String operator, String remark, Long gsId, Date ltime) {
-        this.id = id;
+    public JhXbh(BigDecimal xbhId, BigDecimal cpId, Date jhTime, String state, String operator, String remark, BigDecimal gsId, Date ltime) {
+        this.xbhId = xbhId;
         this.cpId = cpId;
         this.jhTime = jhTime;
         this.state = state;
@@ -47,19 +48,19 @@ public class JhXbh implements Serializable {
         super();
     }
 
-    public Long getId() {
-        return id;
+    public BigDecimal getXbhId() {
+        return xbhId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setXbhId(BigDecimal xbhId) {
+        this.xbhId = xbhId;
     }
 
-    public Long getCpId() {
+    public BigDecimal getCpId() {
         return cpId;
     }
 
-    public void setCpId(Long cpId) {
+    public void setCpId(BigDecimal cpId) {
         this.cpId = cpId;
     }
 
@@ -95,11 +96,11 @@ public class JhXbh implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Long getGsId() {
+    public BigDecimal getGsId() {
         return gsId;
     }
 
-    public void setGsId(Long gsId) {
+    public void setGsId(BigDecimal gsId) {
         this.gsId = gsId;
     }
 
