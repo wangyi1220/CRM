@@ -29,7 +29,9 @@ public class SysDeptServiceImpl implements SysDeptService {
 
 	@Override
 	public void add(SysDept s) {
-		// TODO Auto-generated method stub
+		if (s != null){
+			this.sysDeptMapper.insert(s);
+		}
 
 	}
 
@@ -43,13 +45,17 @@ public class SysDeptServiceImpl implements SysDeptService {
 
 	@Override
 	public void update(SysDept s) {
-		// TODO Auto-generated method stub
+		if (s != null&& s.getDeptId()!=null){
+			this.sysDeptMapper.updateByPrimaryKey(s);
+		}
 
 	}
 
 	@Override
-	public SysDept get(Long postId) {
-		// TODO Auto-generated method stub
+	public SysDept get(Long deptId) {
+		if(deptId!=null){
+			return this.sysDeptMapper.selectByPrimaryKey(deptId);
+		}
 		return null;
 	}
 

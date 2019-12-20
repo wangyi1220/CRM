@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  ${T.taskIssuer }
                </td>
                <td>
-                 ${T.taskIssuer }
+                 ${T.taskKpi }
                </td>
                  <td>
                <fmt:formatDate value="${T.taskStartTime }" pattern="yyyy-MM-dd"/>
@@ -109,10 +109,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  ${T.companyId}
                </td>
                <td>
-                 <a href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?kpiId=${k.kpiId }">查看回复信息</a>
-                 /
+                 <a href="<%=basePath %>OfficeTaskDetailController/select.do?taskId=${T.taskId }">详情</a>
+                 ||
                  <a href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId=${T.taskId }"
                    onclick="return confirm('是否确定删除？')">删除</a>
+                 ||
+                 <a href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?taskId=${T.taskId }"
+                   onclick="return confirm('是否确定修改？')">修改</a>
                </td>
             </tr>
          </c:forEach>

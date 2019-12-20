@@ -210,4 +210,14 @@
   	LEFT JOIN SYS_POWERINFO spi on SPC.COLUMNS_ID=SPI.POWER_COLUMNS_ID
   </select>
   
+  
+  <select id="selectPowerinfoBypIds" resultMap="SysPowerColumnsMap" 
+  parameterType="com.sc.entity.SysPowerColumns">
+  	select * from SYS_POWERCOLUMNS spc LEFT JOIN 
+	SYS_POWERINFO spi on SPC.COLUMNS_ID=SPI.POWER_COLUMNS_ID 
+	where spi.POWER_ID in 
+	<foreach collection="powerIds" item="powerId" open="(" separator="," close=")">
+		#{powerId}
+	</foreach>
+  </select>
 </mapper>

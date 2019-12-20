@@ -3,6 +3,7 @@ package com.sc.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.SysPowerColumns;
 import com.sc.entity.SysRole;
 import com.sc.entity.SysUsers;
 
@@ -14,5 +15,6 @@ public interface SysRoleService {
 	public SysRole selectMeAndSuper(Long rId);
 	public PageInfo<SysRole> selectUsers(Integer pageNum,Integer pageSize,Long rId);
 	public PageInfo<SysUsers> selectUsersAndNORoleUser(Integer pageNum,Integer pageSize,Long rId);
-	
+	public List<SysPowerColumns> selectRolePower(Long rId);
+	public void deleteBypk(Long rId);
 }

@@ -36,6 +36,7 @@ public class SysPowerColumnsServiceImpl implements SysPowerColumnsService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		SysUsers users = this.sysUsersMapper.selectPower(su);
+		System.out.println(users.toString());
 		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
 		for (SysPowerColumns spc : list) {
 			for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
