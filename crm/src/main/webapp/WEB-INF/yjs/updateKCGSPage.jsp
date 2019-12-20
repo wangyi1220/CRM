@@ -54,7 +54,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="../KCGSControllerCtrl/update.do" target="_self">
+                        <form method="post" class="form-horizontal" action="update.do" target="_self">
+                            
+                             <div class="form-group">
+                               
+
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" value="${kcgs.goodsId}" name="goodsId">
+                                </div>
+                            </div>
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">商品名称</label>
@@ -141,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">备注信息</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="${kcgs.cangkuNote}" name="note">
+                                    <input type="text" class="form-control" value="${kcgs.note}" name="note">
                                 </div>
                             </div>
                             

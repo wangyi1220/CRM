@@ -33,39 +33,48 @@ public class KCGSController {//KCGS--库存商品
 		return mav;
 	}
 	
-	//添加
-		 @RequestMapping("/add.do")
-		 public ModelAndView addofficeKpi(ModelAndView mav,KcGoods kcgs){
+	    //去添加
+		 @RequestMapping("/add.do")//去页面转一圈
+		 public ModelAndView addofficeKpi(ModelAndView mav){
+			 mav.setViewName("yjs/addKCGSPage");
+			 return mav;
+		 }
+		 
+		 @RequestMapping("/addKCGS.do")//真正添加的
+		 public ModelAndView addKCGS(ModelAndView mav,KcGoods kcgs){
 			 kcgs.setLastModifyTime(new Date());
 			 System.out.println("添加库存商品信息"+kcgs);
 			this.kcGoodsService.add(kcgs);
-			 mav.setViewName("yjs/addKCGSPage");
+			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 			 }
+		 
 		 //删除
 		@RequestMapping("/delete.do")
-		public ModelAndView delete(ModelAndView mav, KcGoods kcgs){
+		public ModelAndView delete(ModelAndView mav, Long kcgs){
 			System.out.println("删除库存商品信息！"+kcgs);
-			this.kcGoodsService.delete(kcgs.getGoodsId());
-			mav.setViewName("redirect:listpage.do");//重定向到list方法
+			this.kcGoodsService.delete(kcgs);
+			mav.setViewName("redirect:listPage.do");//重定向到list方法
 			return mav;
 		}
 		//修改
 		 @RequestMapping("/goupdate.do")
-		 public ModelAndView goupdate(ModelAndView mav,long gid ){
+		 public ModelAndView goupdate(ModelAndView mav,Long gid ){
 				System.out.println("进入了goupdate");
-				mav.addObject("kcgs", kcGoodsService.getGsID(gid));//？=我从页面获取的参数在这里起什么作用
+				mav.addObject("kcgs", kcGoodsService.getGsID(gid));
 				mav.setViewName("yjs/updateKCGSPage");
 				return mav;
 			}
-		 @RequestMapping("update.do")
+		 @RequestMapping("/update.do")
 		 public ModelAndView OfficeKpiupdate(ModelAndView mav,KcGoods kcgs){
+			/* kcck.setCangkuLastModifyTime(new Date());*/
 			 kcgs.setLastModifyTime(new Date());
-			 System.out.println("修改库存商品信息"+kcgs);
+			 System.out.println("修改KCGS信息"+kcgs);
 			this.kcGoodsService.update(kcgs);
-			 mav.setViewName("redirect:listpage.do");
+			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 		 }
+		
 		
 	
 }
