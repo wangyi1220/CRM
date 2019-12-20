@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </td>
                                 
                                 <td class="text-right mail-date">
-                                 <c:forEach items="${m.offMessdeta }" var="d">
+                                 <c:forEach items="${m.offMessdeta}" var="d">
                                  ${d.receiverid}
                                  </c:forEach>
                                  </td>
