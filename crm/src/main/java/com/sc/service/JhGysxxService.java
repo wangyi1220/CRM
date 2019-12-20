@@ -22,6 +22,8 @@ public interface JhGysxxService {
 		public JhGysxx get(Long gysId);
 		//分页查询
 		public PageInfo<JhGysxx> selectpage(Integer pageNum,Integer pageSize);
-		//搜索框模糊查询
+		//搜索框模糊查询（模糊）
 		public List<JhGysxx> searchByName(String textData);
+		//模糊查询（具体）
+		public PageInfo<JhGysxx> searchByLikeName(String gysName,Integer pageNum, Integer pageSize);
 }

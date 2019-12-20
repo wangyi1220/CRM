@@ -47,8 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			border: 1px solid red;position:absolute;
    			left: 60px;top:87px;display: none"></div>
    		  <br>  <br> 
-   		<h3 style="display: inline-block;"><a href="caiGouDanCtrl/gysToAdd.do" target="_self">添加采购单</a></h3>
-        &emsp;
+   		
       	<h3 style="display: inline-block;"><a id="deleteSelect"  target="_self">删除选中</a></h3>
        
              <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
@@ -75,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tbody>
              <c:forEach items="${pCgd.list}"  var="cgd">                   
             					 <tr>
-                   					 <td><input type="checkbox" name="c1" class="c1" value="${cgd.gysId}"></td>
+                   					 <td><input type="checkbox" name="c1" class="c1" value="${cgd.cgdId}"></td>
                     
                                  	<td> ${cgd.cgdId}</td>
 									<td>${cgd.cgTheme} </td>
@@ -91,8 +90,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                    <td>${cgd.remark} </td>
 								           
 				                    <td>
-				                    		<a href="caiGouDanCtrl/cgdxqList.do?cgdId=${cgd.cgdId}" target="_self" >查看</a>
-				                    		<a href="caiGouDanCtrl/cgdGoodsAdd.do?cgdId=${cgd.cgdId}" target="_self">添加</a>
+				                    	<a href="cgdXqCtrl/cgdxqList.do?cgdId=${cgd.cgdId}" target="_self" >查看</a>
+				                    	<!-- 如果已经付款，那么操作显示已付款,不可再进行任何操作 -->
+				                    	<c:choose>
+				                    		<c:when test="${cgd.cgJz=='已入库'}"></c:when>
+				                    		<c:otherwise>
+				                    			<a href="caiGouDanCtrl/cgdDelete.do?cgdId=${cgd.cgdId}" target="_self" >删除</a>
+				                    		</c:otherwise>
+				                    	</c:choose>
+				                    	
+				                    	<c:choose>
+				                    		<c:when test="${cgd.fkqk=='已付款'}"></c:when>
+				                    		<c:otherwise>
+				                    			<a href="caiGouDanCtrl/cgdFuKuan.do?cgdId=${cgd.cgdId}" target="_self" >付款</a>
+				                    		</c:otherwise>
+				                    	</c:choose>
+				                    		<%-- <c:when test="${cgd.cgJz=='已入库'&&cgd.fkqk=='未付款'}">
+				                    			<a href="caiGouDanCtrl/cgdFuKuan.do?cgdId=${cgd.cgdId}" target="_self" >付款</a>
+				                    		</c:when>
+				                    			<a href="caiGouDanCtrl/cgdDelete.do?cgdId=${cgd.cgdId}" target="_self" >删除</a> --%>
 				                    </td>
                		 </tr>
 			       
@@ -102,10 +118,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           			  <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
 	                	  <tr>
 				             <td style="text-align: center;" colspan="8">
-				                <a href="caiGouDanCtrl/list.do?pageNum=${pCgd.firstPage }" target="_self">首页</a>
-				                <a href="caiGouDanCtrl/list.do?pageNum=${pCgd.prePage }" target="_self">上一页</a>
-				                <a href="caiGouDanCtrl/list.do?pageNum=${pCgd.nextPage }" target="_self">下一页</a>
-				                <a href="caiGouDanCtrl/list.do?pageNum=${pCgd.lastPage }" target="_self">尾页</a>
+				                <a href="caiGouDanCtrl/cgdList.do?pageNum=${pCgd.firstPage }" target="_self">首页</a>
+				                <a href="caiGouDanCtrl/cgdList.do?pageNum=${pCgd.prePage }" target="_self">上一页</a>
+				                <a href="caiGouDanCtrl/cgdList.do?pageNum=${pCgd.nextPage }" target="_self">下一页</a>
+				                <a href="caiGouDanCtrl/cgdList.do?pageNum=${pCgd.lastPage }" target="_self">尾页</a>
 				                                       当前${pCgd.pageNum }/${pCgd.pages }页，共${pCgd.total }条
 				             </td>
 				          </tr> 
@@ -142,15 +158,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var i
 		for(i=0;i<myArr.length;i++){
 			if(myArr[i].checked==true){
-				a+="gysId="+myArr[i].value+"&";
+				a+="cgdId="+myArr[i].value+"&";
 			}
 		}
-	
-		
+			
+			alert(a)
 			/* a="caiGouDanCtrl/gysDeleteSelect.do?"+a
 			$("#deleteSelect").attr("href", a)
 			alert($("#deleteSelect").attr("href")) */
-			location.href="caiGouDanCtrl/gysDeleteSelect.do?"+a;
+			location.href="caiGouDanCtrl/cgdDeleteSelect.do?"+a;
 			
 	})
 			//仿百度提示搜索

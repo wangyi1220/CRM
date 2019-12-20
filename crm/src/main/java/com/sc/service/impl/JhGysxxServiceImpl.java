@@ -1,5 +1,6 @@
 package com.sc.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,17 @@ JhGysxxMapper jhGysxxMapper;
 		        List<JhGysxx> list = jhGysxxMapper.selectByExample(e);
 		return list;
 
+	}
+
+	//模糊查询（具体）
+	@Override
+	public PageInfo<JhGysxx> searchByLikeName(String gysName,Integer pageNum, Integer pageSize) {
+		JhGysxxExample e = new JhGysxxExample();
+        Criteria c = e.createCriteria();
+        c.andGysNameEqualTo(gysName);
+        List<JhGysxx> seledtByLikeGysNamelist = jhGysxxMapper.selectByExample(e);
+    	PageInfo<JhGysxx> page=new PageInfo<JhGysxx>(seledtByLikeGysNamelist);
+		return page;
 	}
 
 
