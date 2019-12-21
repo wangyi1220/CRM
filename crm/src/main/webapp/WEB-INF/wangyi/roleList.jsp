@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                    <td>${rs.operaterName}</td>
 	                                    
 	                                    <td style="text-align: center">
-	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a target="_self">
+	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a>
 	                                    	<i>|</i> <a href="../SysRoleCtrl/selectUsersAndNORoleUser.do?rId=${rs.roleId }" target="_self">添加成员</a>
 	                                    	<i>|</i> <a href="../SysRoleCtrl/goUpdatePower.do?rId=${rs.roleId }" target="_self">权限设置</a>
 	                                    	<i>|</i> <a href="../SysRoleCtrl/goDeleteRole.do?rId=${rs.roleId }" target="_self">删除</a></td>

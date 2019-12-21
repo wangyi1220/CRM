@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysUsers;
+import com.sc.service.SysUsersRoleService;
 import com.sc.service.SysUsersService;
 
 @Controller
@@ -19,6 +21,8 @@ public class SysUsersCtrl {
 	
 	@Autowired
 	SysUsersService sysUsersService;
+	@Autowired
+	SysUsersRoleService sysUsersRoleService;
 	
 //	@RequestMapping("/goupdate.do")
 //	public ModelAndView goupdate(ModelAndView mav,SysUsers user){
@@ -51,4 +55,37 @@ public class SysUsersCtrl {
 		return mav;
 	}
 
+	@RequestMapping("/userList.do")
+	public ModelAndView userList(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="7")Integer pageSize,SysUsers users,String isdel){
+		
+		System.out.println(users.getUsersId());
+		System.out.println(users.getUsersName());
+		PageInfo<SysUsers> info = this.sysUsersService.selectUserinfo2(pageNum, pageSize, users);
+		if(isdel!=null){
+			mav.addObject("isdel", "yes");
+		}
+		mav.addObject("u", info);
+		mav.setViewName("wangyi/userlist");
+		return mav;
+	}
+	
+	@RequestMapping("/deleteUser.do")
+	public ModelAndView deleteUser(ModelAndView mav,SysUsers user,Long[] delid){
+		System.out.println("要删除的用户id为"+user.getUsersId());
+		this.sysUsersService.deleteUser(user);
+		this.sysUsersRoleService.deleteByuId(user.getUsersId());
+		if(delid!=null&&delid.length>0){
+			for (Long long1 : delid) {
+				user.setUsersId(long1);
+				System.out.println(long1);
+				System.out.println("要删除的用户id为"+user.getUsersId());
+				this.sysUsersService.deleteUser(user);
+				this.sysUsersRoleService.deleteByuId(user.getUsersId());
+			}
+		}
+		mav.setViewName("redirect:userList.do?isdel=yes");
+		return mav;
+	}
 }

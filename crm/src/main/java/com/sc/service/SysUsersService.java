@@ -20,4 +20,8 @@ public interface SysUsersService {
 	public List<SysUsers> selectAllNOSelf(Long uId);
 	
 	public List<SysUsers> selectNoRoleUser();
+	
+	public PageInfo<SysUsers> selectUserinfo2(Integer pageNum,Integer pageSize,SysUsers user);
+	
+	public void deleteUser(SysUsers user);
 }

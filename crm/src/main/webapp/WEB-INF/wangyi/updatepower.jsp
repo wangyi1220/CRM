@@ -54,7 +54,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                         <input type="checkbox" id="${pc.columnsName }">
+                         <c:set var="allsum" value="${pc.sysPowerinfoes.size()}"></c:set>
+                         <c:set var="allcount" value="0"></c:set>
+                         <c:forEach items="${pc.sysPowerinfoes}" var="pi">
+                            <c:if test="${pi.isHasPower=='1'}">
+                               <c:set var="allcount" value="${allcount+1 }"></c:set>
+                            </c:if>
+                         </c:forEach>
+                       
+                         <input type="checkbox" id="${pc.columnsName }" onclick="checkall(this,'${pc.columnsName }')"
+                                  ${allsum==allcount ? "checked":"" } >
                          <label for="checkbox2">
                              ${pc.columnsName }
                          </label>
@@ -79,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <c:forEach items="${pc.sysPowerinfoes}" var="pi">
                             	<li>
                             		<input id="checkbox2" type="checkbox" ${pi.isHasPower=='1' ? "checked":"" } 
-                            		class="${pc.columnsName }" value="${pi.powerId }" name="pIds">
+                            		class="${pc.columnsName }" value="${pi.powerId }" name="pIds" onclick="checkall1(this,'${pc.columnsName }')">
                             		${pi.powerName }
                             	</li>
                             
@@ -134,6 +143,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		})
         	}
      	});
+     	
+     	
+     	function checkall(obj,clsname){
+     	    
+     	     if (obj.checked) {
+               //所有的复选框都选中
+                   $("."+clsname).prop('checked', true);
+               }
+               else {
+               //复选框都不选中
+                   $("."+clsname).prop('checked', false);
+               }
+     	    
+     	}
+     	
+     	
+     	function checkall1(obj,clsname){
+     	     var alllength=$("."+clsname).length;
+     	     var allobj=$("."+clsname);
+     	     var ischecked=0;
+     	     for(var i=0;i<alllength;i++){
+     	       if(allobj.get(i).checked){
+     	          ischecked=ischecked+1;
+     	       }
+     	     }
+     	     //alert(alllength+"===="+ischecked);
+     	     if (alllength==ischecked) {
+               //所有的复选框都选中
+                   $("#"+clsname).prop('checked', true);
+               }
+               else {
+               //复选框都不选中
+                   $("#"+clsname).prop('checked', false);
+               }
+     	    
+     	}
      </script>
     <script type="<%=basePath%>text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
