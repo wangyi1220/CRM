@@ -58,31 +58,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                           <center>
          <form action="../OfficeTaskDetailController/update.do" method="post">
-         <table>
-                     <h1>任务安排修改</h1>
-           <tr>
+         <table style="font-family:宋体; font-size: 8px;">
+                     
+           <tr style="font-family:宋体; font-size: 8px;">
            <input type="hidden" name="taskDetailId" value="${d.taskDetailId }">
-              <td>任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
-              <td><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
+              <td style="font-family:宋体; font-size: 8px;">任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
            </tr>
-           <tr>
-              <td>接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
-              <td><input type="text" name="taskUserId" value="${d.taskUserId }"></td>
+           <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskUserId" value="${d.taskUserId }"></td>
            </tr>
-           <tr>
-              <td>任务是否完成:</td>
-              <td><input type="text" name="taskIsfinshed" value="${d.taskIsfinshed }"></td>
+           <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">任务是否完成:</td>
+              <td style="font-family:宋体; font-size: 8px;">
+               <select name="taskIsfinshed" style="width:100%">
+               <option value="finshed">finshed</option>
+               <option value="finshing">finshing</option>
+               </select>
+             </td>
            </tr>
-            <tr>
-              <td>当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
-              <td><input type="text" name="status1" value="${d.status}"></td>
+            <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
+              <td style="font-family:宋体; font-size: 8px;">
+              <select name="status1"style="width:100%">
+              <option value="合作中">合作中</option>
+               <option value="已完成合作">已完成合作</option>
+              </select>
             </td>
-             <tr>
-              <td>公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
-              <td><input type="text" name="companyId" value="${d.companyId }"></td>
+             <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="companyId" value="${d.companyId }"></td>
             </td>
             </tr>
-            <tr><td><input type="submit" value="提交"></td><td><input type="reset" value="重置"></td></tr>
+            <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;"><input type="submit" value="提交"></td><td><input type="reset" value="重置"></td></tr>
          </table>
          </form> 
          </center>

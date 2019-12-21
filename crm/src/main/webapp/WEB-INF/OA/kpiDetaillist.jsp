@@ -52,14 +52,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeTaskAssessmentController/inaddOfficeTaskAssessment.do" target="_self">
-                                                                                                                                             添加任务
-                            </a>
+                           
                         </div>
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example" target="_self">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr >
                                      <th style="font-family:宋体; font-size: 8px;">任务编号</th>
@@ -75,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                             </thead>
         <tbody>
-         <c:forEach items="${p.list }" var="T">
+         <c:forEach items="${kl}" var="T">
             <tr>
                <td style="font-family:宋体; font-size: 8px;">
                  ${T.taskId }

@@ -20,6 +20,7 @@ public interface OfficeTaskAssessmentMapper {
     List<OfficeTaskAssessment> selectByExample(OfficeTaskAssessmentExample example);
 
     OfficeTaskAssessment selectByPrimaryKey(BigDecimal taskId);
+    List<OfficeTaskAssessment> selectByKpiKpi(String taskKpi);
 
     int updateByExampleSelective(@Param("record") OfficeTaskAssessment record, @Param("example") OfficeTaskAssessmentExample example);
 
@@ -28,4 +29,6 @@ public interface OfficeTaskAssessmentMapper {
     int updateByPrimaryKeySelective(OfficeTaskAssessment record);
 
     int updateByPrimaryKey(OfficeTaskAssessment record);
+    int  updateByCompanyId(OfficeTaskAssessment record);
+    int  deleteByCompanyId(OfficeTaskAssessment record);
 }
