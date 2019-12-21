@@ -26,7 +26,7 @@ public class SysUserInfoCtroller {
 			@RequestParam(defaultValue = "10") Integer pageSize) {
 
 		mav.addObject("p", sysUsersInfoService.select(pageNum, pageSize));
-		mav.setViewName("ssf/userinfopage");
+		mav.setViewName("ssf/UserINFOlist");
 		System.out.println(sysUsersInfoService.select(pageNum, pageSize));
 
 		System.out.println("分页");
@@ -85,6 +85,7 @@ public class SysUserInfoCtroller {
 	public ModelAndView goadd(ModelAndView mav, SysUserinfo user) {
 
 		mav.setViewName("ssf/usersINFOadd");
+		System.out.println("准备添加用户");
 		return mav;
 	}
 
