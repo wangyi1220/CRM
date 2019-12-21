@@ -91,6 +91,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 		
 		SysUsers user = this.sysUsersMapper.selectRole(rId);
 		long sId=user.getSysRole().getRoleId();
+		System.out.println("此角色id"+sId);
 		list1.add(sId);
 		for (int i = 0; i < list1.size(); i++) {
 			List<SysRole> sonList = this.selectBySuperId(list1.get(i));
@@ -100,12 +101,18 @@ public class SysRoleServiceImpl implements SysRoleService {
 		}
 		System.out.println(list1.size());
 		list1.remove(0);
+		for (Long l : list1) {
+			System.out.println("子角色的id"+l);
+		}
 		/*往集合中加入子角色的成员*/
 		for (Long l : list1) {
 			List<SysRole> sr = this.sysRoleMapper.selectUsersAndInfos(l);
 			for (SysRole sysRole : sr) {
 				for (SysUsers sysUsers : sysRole.getSysUsers()) {
-					list.add(sysUsers);
+					if(sysUsers!=null&&sysUsers.getUsersName()!=null){
+						list.add(sysUsers);
+					}
+					
 				}
 			}
 		}

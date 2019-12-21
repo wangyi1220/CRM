@@ -35,4 +35,6 @@ public interface SysUsersMapper {
     public SysUsers selectUserinfo(Long uId);
     
     public List<SysUsers> selectNoRoleUser();
+    
+    public List<SysUsers> selectUserinfo2(SysUsers user);
 }

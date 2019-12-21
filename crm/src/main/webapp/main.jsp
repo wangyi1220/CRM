@@ -68,8 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">系统管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">基本表单</a>
-                            </li>
+                       
                             <li>
                                 <a href="#">权限管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
@@ -88,7 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </li>
                                     <li><a class="J_menuItem" href="SysRoleCtrl/roleList.do">角色列表</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="SysRoleCtrl/selectUsersAndNORoleUser.do">查看所有权限</a>
+                                    
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">用户管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do">用户列表</a>
                                     </li>
                                 </ul>
                             </li>
