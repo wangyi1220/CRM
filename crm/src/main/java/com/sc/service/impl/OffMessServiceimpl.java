@@ -12,7 +12,6 @@ import com.sc.entity.OffMessExample;
 import com.sc.entity.OffMessExample.Criteria;
 import com.sc.entity.OffMessdeta;
 import com.sc.entity.OffMessdetaExample;
-import com.sc.entity.SysUsers;
 import com.sc.mapper.OffMessMapper;
 import com.sc.mapper.OffMessdetaMapper;
 import com.sc.mapper.SysUsersMapper;
@@ -112,6 +111,40 @@ public class OffMessServiceimpl implements OffMessService {
 		 this.offMessMapper.write(m);
 		 
 	}
+
+	@Override
+	public PageInfo<OffMess> sousuo(Integer pageNum, Integer pageSize, String starch) {
+		//设置分页数据，开始分页
+				System.out.println("进入服务器接口");
+				PageHelper.startPage(pageNum, pageSize);
+				/*//查询当前页的集合数据
+				                OffMessExample e = new OffMessExample();
+				                Criteria c = e.createCriteria();
+				                if(starch!=null){
+				                	c.andSenderEqualTo(starch);
+				                }*/
+			    List<OffMess> list = offMessMapper.sousuo(starch);
+				//封装成pageinfo对象
+				PageInfo<OffMess> page=new PageInfo<OffMess>(list);
+				return page;
+	}
+
+	@Override
+	public List<OffMessdeta> sousuod(Long mid) {
+		//设置分页数据，开始分页
+				System.out.println("进入服务器接口");
+				//查询当前页的集合数据
+				OffMessdetaExample e = new OffMessdetaExample();
+				com.sc.entity.OffMessdetaExample.Criteria c = e.createCriteria();
+				c.andMessidEqualTo(mid);
+			    List<OffMessdeta> list = offMessdetaMapper.selectByExample(e);
+				//封装成pageinfo对象
+				return list;
+	}
+
+	
+
+	
 
 	
 
