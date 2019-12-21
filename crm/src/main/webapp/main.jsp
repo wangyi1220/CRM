@@ -135,6 +135,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </ul>
                             </li>
                             
+                              
+                            <li>
+                                <a href="#">销售详情信息<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="sinfoctrl/add.do">添加销售详情信息</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="sinfoctrl/listPage.do">查询销售详情</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                              
+                            <li>
+                                <a href="#">销售出库管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SOUTControllerCtrl/add.do">添加仓库商品信息</a>
+                                    </li>
+                                    <li><a class="J_menuItem" href="SOUTControllerCtrl/listPage.do">查寻仓库商品信息</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
                         </ul>
                     </li>
                     
