@@ -97,10 +97,22 @@
     from OFFICE_TASK_ASSESSMENT
     where TASK_ID = #{taskId,jdbcType=DECIMAL}
   </select>
+  <select id="selectByKpiKpi" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from OFFICE_TASK_ASSESSMENT
+    where TASK_KPI = #{TASK_KPI,jdbcType=VARCHAR}
+  </select>
+    
   <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
     delete from OFFICE_TASK_ASSESSMENT
     where TASK_ID = #{taskId,jdbcType=DECIMAL}
   </delete>
+  <delete id="deleteByCompanyId" parameterType="java.math.BigDecimal" >
+    delete from OFFICE_TASK_ASSESSMENT
+    where COMPANY_ID = #{companyId,jdbcType=DECIMAL}
+  </delete>
+  
   <delete id="deleteByExample" parameterType="com.sc.entity.OfficeTaskAssessmentExample" >
     delete from OFFICE_TASK_ASSESSMENT
     <if test="_parameter != null" >
@@ -275,5 +287,17 @@
       COMPANY_ID = #{companyId,jdbcType=DECIMAL},
       FINAL_UPDATE_TIME = #{finalUpdateTime,jdbcType=TIMESTAMP}
     where TASK_ID = #{taskId,jdbcType=DECIMAL}
+  </update>
+   <update id="updateByCompanyId" parameterType="com.sc.entity.OfficeTaskAssessment" >
+    update OFFICE_TASK_ASSESSMENT
+    set TSAK_TITLE = #{tsakTitle,jdbcType=VARCHAR},
+      TASK_CONCRETE_CONTENT = #{taskConcreteContent,jdbcType=VARCHAR},
+      TASK_ISSUER = #{taskIssuer,jdbcType=VARCHAR},
+      TASK_KPI = #{taskKpi,jdbcType=VARCHAR},
+      TASK_START_TIME = #{taskStartTime,jdbcType=TIMESTAMP},
+      TASK_STOP_TIME = #{taskStopTime,jdbcType=TIMESTAMP},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      FINAL_UPDATE_TIME = #{finalUpdateTime,jdbcType=TIMESTAMP}
+    where COMPANY_ID = #{companyId,jdbcType=DECIMAL}
   </update>
 </mapper>

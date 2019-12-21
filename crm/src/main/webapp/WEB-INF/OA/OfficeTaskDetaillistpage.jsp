@@ -52,64 +52,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
-                                                                                                                                             添加任务
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="ibox-content">
 
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
-                                <tr>
-                                    <th>编号</th>
-                                    <th>任务编号</th>
-                                    <th>接受用户</th>
-                                    <th>是否完成</th>
-                                    <th>状态</th>
-                                    <th>公司编号</th>
-                                    <th>最后修改时间</th>
-                                    <th>操作</th>
+                                <tr style="font-family:宋体; font-size: 8px;">
+                                    <th style="font-family:宋体; font-size: 8px;">编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">接受用户</th>
+                                    <th style="font-family:宋体; font-size: 8px;">是否完成</th>
+                                    <th style="font-family:宋体; font-size: 8px;">状态</th>
+                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
+                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${p.list }" var="d">
-            <tr>
-               <td>
+            <tr style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.taskDetailId }
                </td>
                
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.taskId}
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.taskUserId }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.taskIsfinshed }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.status }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${d.companyId }
                </td>
-               <td>
-               <fmt:formatDate value="${k.finalUpdataTime }" pattern="yyyy-MM-dd"/>
+               <td style="font-family:宋体; font-size: 8px;">
+               <fmt:formatDate value="${d.finalUpdataTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td>
-                 <a href="<%=basePath %>OfficeTaskDetailController/goupdate.do?taskDetailId=${d.taskDetailId }">修改</a>
+               <td style="font-family:宋体; font-size: 8px;">
+                 <a href="<%=basePath %>OfficeTaskDetailController/goupdate.do?taskDetailId=${d.taskDetailId }" target="_self">修改</a>
                  /
                  <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
-                   onclick="return confirm('是否确定删除？')">删除</a>
-                   /
-                 <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
-                   onclick="return confirm('是否确定删除？')">修改</a>
-               </td>
+                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
+                   
             </tr>
          </c:forEach>
-          <tr>
+          <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="4">
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
