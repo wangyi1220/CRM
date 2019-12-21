@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Param;
 
 public interface OffMessMapper {
 	
+	public void write(OffMess m);
+	
 	public List<OffMess> messdeta(String ser);
 	
 	public List<OffMess> mdetail(Long mid);

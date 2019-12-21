@@ -4,14 +4,15 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMess;
-import com.sc.entity.SysUsers;
+import com.sc.entity.OffMessdeta;
 
 
 public interface OffMessService {
 	
 	public List<OffMess> mdetail(Long mid);
 	
-		
+		//发送消息
+		public void write (OffMess m);
 	
 		//添加
 		public void add(OffMess m);
@@ -34,5 +35,6 @@ public interface OffMessService {
 	public PageInfo<OffMess> selectpage(Integer pageNum,Integer pageSize);
 	
 	public PageInfo<OffMess> selectdeta(Integer pageNum,Integer pageSize,String ser);
+	public List<OffMessdeta> selectdeta1(Long did);
 
 }

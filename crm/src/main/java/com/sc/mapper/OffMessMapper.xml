@@ -258,6 +258,20 @@ where m.messid=#{mid}
   </select>
   
   
+
+  
+  <insert id="write" parameterType="com.sc.entity.OffMess">
+  	 <selectKey keyProperty="messid" resultType="java.lang.Long" order="AFTER">
+     SELECT SEQ_OFF_MESS.CURRVAL FROM DUAL
+     </selectKey>
+  insert into OFF_MESS (MESSID, TITLE, CONTENT, 
+      SENDER, COMPANYID, LASTTIME
+)
+    values (#{messid,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{sender,jdbcType=VARCHAR}, #{companyid,jdbcType=DECIMAL}, #{lasttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
   
   
   
