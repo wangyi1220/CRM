@@ -18,8 +18,18 @@ public class SysPowerColumns implements Serializable {
 
 
 	private List<SysPowerinfo> sysPowerinfoes;
+	
+	private List<Long> powerIds;
     
-    @Override
+    public List<Long> getPowerIds() {
+		return powerIds;
+	}
+
+	public void setPowerIds(List<Long> powerIds) {
+		this.powerIds = powerIds;
+	}
+
+	@Override
 	public String toString() {
 		return "SysPowerColumns [columnsId=" + columnsId + ", columnsName=" + columnsName + ", remarks=" + remarks
 				+ ", changeDate=" + changeDate + "]";

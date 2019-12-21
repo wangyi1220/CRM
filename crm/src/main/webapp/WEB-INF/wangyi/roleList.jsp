@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                    	<a href="../SysRoleCtrl/selectUsers.do?roleId=${rs.roleId }"  target="_self">查看成员</a target="_self">
 	                                    	<i>|</i> <a href="../SysRoleCtrl/selectUsersAndNORoleUser.do?rId=${rs.roleId }" target="_self">添加成员</a>
 	                                    	<i>|</i> <a href="../SysRoleCtrl/goUpdatePower.do?rId=${rs.roleId }" target="_self">权限设置</a>
-	                                    	<i>|</i> <a target="_self">删除</a></td>
+	                                    	<i>|</i> <a href="../SysRoleCtrl/goDeleteRole.do?rId=${rs.roleId }" target="_self">删除</a></td>
 	                                    
 	                                </tr>
                                 </c:forEach>
@@ -94,7 +94,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	if(${updatesuc=="yes"}){
         		swal({title:"太帅了",text:"为用户设置权限成功",type:"success"})
         	}
+        	if(${delsuc=="yes"}){
+        		swal({title:"太帅了",text:"删除角色成功",type:"success"})
+        	}
         });
+        function sc(a){
+        	alert(a);
+        	
+        }
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

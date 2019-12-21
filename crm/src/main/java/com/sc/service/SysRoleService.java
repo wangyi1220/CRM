@@ -16,4 +16,5 @@ public interface SysRoleService {
 	public PageInfo<SysRole> selectUsers(Integer pageNum,Integer pageSize,Long rId);
 	public PageInfo<SysUsers> selectUsersAndNORoleUser(Integer pageNum,Integer pageSize,Long rId);
 	public List<SysPowerColumns> selectRolePower(Long rId);
+	public void deleteBypk(Long rId);
 }
