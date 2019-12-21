@@ -7,22 +7,22 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleSinfo implements Serializable {
-    private Long sorderInfoId;
+    private Long sorderInfoId;//销售单详情编号，代号：sid
 
-    private Long sorderId;
+    private Long sorderId;//销售单编号
 
-    private Long goodsId;
+    private Long goodsId;//商品编号
 
-    private String goodsQuantity;
+    private String goodsQuantity;//商品数量
 
-    private BigDecimal goodsPrice;
+    private BigDecimal goodsPrice;//商品价格
 
-    private String note;
+    private String note;//备注信息
 
-    private Long companyId;
+    private Long companyId;//公司编号
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date lastModifyTime;
+    private Date lastModifyTime;//最后修改时间
 
     @Override
 	public String toString() {

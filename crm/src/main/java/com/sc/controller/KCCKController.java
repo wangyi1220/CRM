@@ -3,6 +3,9 @@ package com.sc.controller;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +36,7 @@ public class KCCKController {
 		
 		return mav;
 	}
+	
 	//添加
 	 @RequestMapping("/add.do")//去添加
 	 public ModelAndView addofficeKpi(ModelAndView mav){
@@ -55,6 +59,26 @@ public class KCCKController {
 		System.out.println("删除仓库！"+kcck);
 		kcCangkuService.delete(kcck);
 		mav.setViewName("redirect:listPage.do");//重定向到list方法
+		return mav;
+	}
+	
+	//选中删除
+	@RequestMapping("/kcckDeleteSelect.do")
+	public ModelAndView kcgsDeleteSelect(ModelAndView mav,
+									HttpServletRequest req,
+									HttpServletResponse resp){
+		
+		String[] idsArr = req.getParameterValues("ckid");
+		System.out.println("------进入删除选中1:>"+idsArr.length);
+		for (String gidStr : idsArr) {
+			System.out.println("--------进入删除选中2：>"+gidStr);
+			Long gid = Long.parseLong(gidStr);
+			
+			System.out.println("--------进入删除选中3：>"+gid);
+			kcCangkuService.delete(gid);
+		}
+		
+		mav.setViewName("redirect:listPage.do");
 		return mav;
 	}
 	//修改
