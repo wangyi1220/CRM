@@ -33,6 +33,33 @@ public class OffMessController {
 	OffMessdetaService offMessdetaService;
 	
 	
+	//搜索
+	@RequestMapping("/sousuo.do")
+	public ModelAndView sousuo(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="5")Integer pageSize,
+			HttpServletRequest req){
+		String starch = req.getParameter("search");
+		System.out.println("进入搜索方法！"+starch);
+		PageInfo<OffMess> dd = offMessService.sousuo(pageNum, pageSize, starch);
+		
+		for (OffMess x : dd.getList()) {
+			System.out.println("主"+x+"\n");
+			System.out.println("jian"+x.getMessid());
+			System.out.println("副"+offMessService.selectdeta1(x.getMessid())+"\n");
+			x.setOffMessdeta(offMessService.sousuod(x.getMessid()));
+			
+		}
+		//查询list集合分页
+		mav.addObject("p", dd);
+		
+		
+		mav.setViewName("OFF/mailbox");// 路径/WEB-INF/userslistpage.jsp
+		return mav;
+	}
+	
+	
+	
 	//回复邮件
 	@RequestMapping("/reply.do")
 	public ModelAndView reply(ModelAndView mav,String sender){

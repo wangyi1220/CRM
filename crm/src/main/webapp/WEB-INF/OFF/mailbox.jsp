@@ -62,13 +62,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-9 animated fadeInRight">
                 <div class="mail-box-header">
 
-                    <form method="get" action="index.html" class="pull-right mail-search">
+                    <form target="_self" method="get" action="../offmessctrl/sousuo.do" class="pull-right mail-search">
                         <div class="input-group">
-                            <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题，正文等">
+                            <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题">
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-sm btn-primary">
-                                    搜索
-                                </button>
+                                    	搜索
+                                </button>   
                             </div>
                         </div>
                     </form>

@@ -28,6 +28,10 @@ public interface OffMessService {
 	    
 	 //²éÑ¯¯¢
 	 public List<OffMess> select();
+	 
+	 //ËÑË÷
+	 public PageInfo<OffMess> sousuo(Integer pageNum,Integer pageSize,String  starch);
+	 public List<OffMessdeta> sousuod(Long mid);
 
 	   
 	
