@@ -7,35 +7,34 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <html>
+
 <head>
-<%-- <base href="<%=basePath%>"> --%>
 
-<title>My JSP 'userslist.jsp' starting page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
-<link rel="<%=basePath%>shortcut icon" href="favicon.ico">
+<title>销售出库单信息</title>
+<meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+<meta name="description"
+	content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+<link rel="shortcut icon" href="<%=basePath%>favicon.ico">
 <link href="<%=basePath%>css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
-<link href="<%=basePath%>css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-<link href="<%=basePath%>css/plugins/footable/footable.core.css" rel="stylesheet">
-
- 	<script src="<%=basePath%>js/jquery.min.js"></script>
+<link href="<%=basePath%>css/font-awesome.min.css?v=4.4.0"
+	rel="stylesheet">
+<link href="<%=basePath%>css/plugins/footable/footable.core.css"
+	rel="stylesheet">
+  	<script src="<%=basePath%>js/jquery.min.js"></script>
     <script src="<%=basePath%>js/bootstrap.min.js"></script>
 <link href="<%=basePath%>css/animate.min.css" rel="stylesheet">
 <link href="<%=basePath%>css/style.min.css?v=4.0.0" rel="stylesheet">
 <base target="_blank">
+
 </head>
 
-<body>
 <body class="gray-bg">
 	<div class="wrapper wrapper-content animated fadeInRight">
 
@@ -43,9 +42,7 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>库存仓库信息</h5>
-						
-						<h5><a href="KCCKControllerCtrl/add.do">添加仓库信息</a></h5>
+
 						<div class="ibox-tools">
 							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 							</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -61,48 +58,63 @@
 					</div>
 					<div class="ibox-content">
 					<form action="listPage.do" method="post" target="_self">
-					<input type="text" name="cangkuName" id="t1" placeholder="请输入仓库名" style=" width: 200px;height: 30px;font-size: 16pt; ">
+					<input type="text" id="t1" name="invoiceNum" placeholder="请输入发票号码" style=" width: 300px;height: 30px;font-size: 16pt; ">
    					&nbsp;
-		   			<button  id="b1"  type="submit"  class="btn btn-primary btn-lg" 
+		   			<button  id="b1"  type="sumbit"  class="btn btn-primary btn-lg" 
 		   			 style="width: 100px;height: 30px;
 		   			border: 1px solid blue;position: absolute;top: 63px;line-height: 10px" >搜索</button>
 		   			</form>
+		   			
 		   			<br>
 		   			<h2><a href="add.do" target="_self">添加</a></h2>
 		   			<br>
-						<h2><a id="deleteSelect" target="_self">删除选中</a></h2>
+		   			<h2><a id="deleteSelect" target="_self">删除选中</a></h2> 
+
 						<table class="footable table table-stripped toggle-arrow-tiny"
 							data-page-size="8">
-							<thead> 
-							<tr>
+							<thead>
+								<tr>
 									<th data-toggle="true"><input type="checkbox" id="selectAll" ></th>
-									<th>仓库编号</th>
-									<th>仓库名</th>
+									<th>销售单编号</th>
+									<th>制单日期</th>
+									<th>用户编号</th>
+									<th>客户编号</th>
+									<th>销售金额</th>
+									<th>销售出库状态</th>
+									<th>是否返利</th>
+									<th>订单状态</th>									
 									<th>备注信息</th>
 									<th>公司编号</th>
 									<th>最后修改时间</th>
 									<th>操作</th>
 								</tr>
-							</thead>							
-							
-								<tbody>
-								<c:forEach items="${p.list }" var="k">
+							</thead>
+							<tbody>
+				                   <c:forEach items="${p.list}" var="k">
 									<tr style="text-align: center;">
-										<td><input type="checkbox" name="c1" class="c1" value="${k.cangkuId}"></td>
-										<td>${k.cangkuId }</td>
-										<td>${k.cangkuName}</td>
-										<td>${k.cangkuNote}</td>
-										<td>${k.companyId }</td>
-										<td><fmt:formatDate value="${k.cangkuLastModifyTime }"
+									<td><input type="checkbox" name="c1" class="c1" value="${k.sorderId}"></td>
+										<td>${k.sorderId }</td>
+										<td><fmt:formatDate value="${k.sorderDate}"
 												pattern="yyyy-MM-dd HH:mm:ss" />
-										<td><a
-											href="goupdate.do?cangkuId=${k.cangkuId }" target="_self">修改</a>
+										</td>
+										<td>${k.invoiceNum}</td>
+										<td>${k.uid }</td>
+										<td>${k.cid}</td>
+										<td>${k.samount}</td>
+										<td>${k.sstatus}</td>
+										<td>${k.isRebate}</td>
+										<td>${k.orderStatus}</td>										
+										<td>${k.note}</td>
+										<td>${k.companyId}</td>
+										<td><fmt:formatDate value="${k.lastModifyTime}"
+												pattern="yyyy-MM-dd HH:mm:ss" />
+										</td>
+										<td><a href="goupdate.do?soid=${k.sorderId }">修改</a>
 											/ <a
-											href="delete.do?kcck=${k.cangkuId}"
-											onclick="return confirm('是否确定删除？')" target="_self">删除</a></td>
-		
-									</tr>
-								</c:forEach>								
+											href="delete.do?soid=${k.sorderId}"onclick="return confirm('是否确定删除？')">删除</a>
+											</td>
+											</tr>
+								</c:forEach>
 							</tbody>
 							<tfoot>
 								<tr>
@@ -115,16 +127,12 @@
 										当前${p.pageNum }/${p.pages }页，共${p.total }条</td>
 								</tr>
 						 </tfoot>
-							
 						</table>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 </body>
-
 </html>
 
 <script type="text/javascript">
@@ -149,20 +157,16 @@
 			var i
 			for(i=0;i<myArr.length;i++){
 				if(myArr[i].checked==true){
-					a+="ckid="+myArr[i].value+"&";
+					a+="soid="+myArr[i].value+"&";
 				}
 			}
 				var isdelete=confirm("是否确定删除？" );
 				if(isdelete){
-					location.href="kcckDeleteSelect.do?"+a;
+					location.href="soutDeleteSelect.do?"+a;
 				}
-				/* else{
-					location.href="listPage.do";
-				} */
-				
+			
 		})
 			
 				
 	})
 </script>
-
