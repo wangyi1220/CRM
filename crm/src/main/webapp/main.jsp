@@ -212,6 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="GongYingShangctrl/list.do">供应商</a></li>
                             <li><a class="J_menuItem" href="caiGouDanCtrl/cgdList.do">采购单</a></li>
+                            <li><a class="J_menuItem" href="xuBuHuoCtrl/xbhList.do">需补货</a></li>
                             
                             <li>
                                 <a href="#">文件上传 <span class="fa arrow"></span></a>

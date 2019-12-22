@@ -3,6 +3,7 @@ package com.sc.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,7 +16,7 @@ import com.sc.mapper.SaleSoutOrderMapper;
 import com.sc.service.SOutOrderService;
 
 
-
+@Service
 public class SOutOrderServiceImpl implements SOutOrderService {
 	@Autowired
 	SaleSoutOrderMapper saleSoutOrderMapper;
