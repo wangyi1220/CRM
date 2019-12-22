@@ -97,6 +97,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="#">日志管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="SysLogCtrl/selectLog.do?isall=yes">日志信息</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>  

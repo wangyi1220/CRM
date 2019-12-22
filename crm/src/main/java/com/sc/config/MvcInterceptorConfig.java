@@ -37,7 +37,7 @@ public class MvcInterceptorConfig extends WebMvcConfigurerAdapter  {
 	        .excludePathPatterns("/css/**","/fonts/**"
 	        		,"/html/**","/images/**","/js/**",
 	        		"/My97DatePicker/**","/plugins/**",
-	        		"/upload/**","/error**","/sql/**");  
+	        		"/upload/**","/error**","/sql/**","/img/**");  
 	    	super.addInterceptors(registry);
 	    }
 	    

@@ -41,14 +41,15 @@ public class SysPowerinfoServiceImpl implements SysPowerinfoService {
 
 	@Override
 	public SysPowerinfo selectBypUrl(String purl) {
-		if(purl!=null){
 			SysPowerinfoExample example = new SysPowerinfoExample();
 			Criteria criteria = example.createCriteria();
 			criteria.andPowerUrlEqualTo(purl);
 			List<SysPowerinfo> list = this.sysPowerinfoMapper.selectByExample(example);
-			return list.get(0);
-		}
-		return null;
+			if(list!=null&&list.size()>0){
+				return list.get(0);
+			}
+			return null;
+		
 	}
 
 }
