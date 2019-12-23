@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>
                                 <a href="#">用户管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do">用户列表</a>
+                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do?isall=yes">用户列表</a>
                                     </li>
                                 </ul>
                             </li>

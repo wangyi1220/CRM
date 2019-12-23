@@ -93,4 +93,18 @@ public class SysUsersServiceImpl implements SysUsersService {
 			this.sysUsersMapper.deleteByPrimaryKey(user.getUsersId());
 		}
 	}
+
+	@Override
+	public SysUsers login(SysUsers user) {
+		if(user!=null){
+			SysUsersExample example = new SysUsersExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andUsersNameEqualTo(user.getUsersName());
+			List<SysUsers> list = this.sysUsersMapper.selectByExample(example);
+			return list.get(0);
+		}else{
+			return null;
+		}
+		
+	}
 }
