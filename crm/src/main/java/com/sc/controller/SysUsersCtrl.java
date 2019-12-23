@@ -126,7 +126,7 @@ public class SysUsersCtrl {
 			cell.setCellValue(textString);
 		}
 		//遍历每一个用户信息
-		SimpleDateFormat sdf = new SimpleDateFormat();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (int i = 0; i < print.length; i++) {
 			HSSFRow row = sheet.createRow(i+1);
 			SysUsers sysUsers = this.sysUsersService.selectUserinfo(print[i]);
