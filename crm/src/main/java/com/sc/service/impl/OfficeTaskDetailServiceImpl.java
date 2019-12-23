@@ -10,11 +10,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OfficeTaskDetail;
 import com.sc.service.OfficeTaskDetailService;
+import com.sc.mapper.OfficeTaskAssessmentMapper;
 import com.sc.mapper.OfficeTaskDetailMapper;
 @Service
 public class OfficeTaskDetailServiceImpl implements OfficeTaskDetailService {
      @Autowired 
    OfficeTaskDetailMapper OfficeTaskDetailMapper;
+     @Autowired 
+     OfficeTaskAssessmentMapper officeTaskAssessmentMapper;
+     
 	@Override
 	public void add(OfficeTaskDetail d) {
 		if(d!=null){
@@ -61,6 +65,10 @@ public class OfficeTaskDetailServiceImpl implements OfficeTaskDetailService {
 	public PageInfo<OfficeTaskDetail> selectpage(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		List<OfficeTaskDetail> list = this.OfficeTaskDetailMapper.selectByExample(null);
+		for (OfficeTaskDetail officeTaskDetail : list) {
+			BigDecimal taskId=officeTaskDetail.getTaskId();
+			officeTaskDetail.setTask(officeTaskAssessmentMapper.selectByPrimaryKey(taskId));
+		}
 		PageInfo<OfficeTaskDetail> page=new PageInfo<OfficeTaskDetail>(list);
 		return page;
 	}
