@@ -15,16 +15,17 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sc.entity.SysUsers;
+import com.sc.service.SysUsersService;
+
 
 
 
 public class CustomRealmMD5 extends AuthorizingRealm {
 	
 	//依赖注入
-	/*@Autowired
-	SysUserService sysUserService;
 	@Autowired
-	SysPermissionService sysPermissionService;*/
+	SysUsersService sysUsersService;
 	
 	//用户授权
 	@Override
@@ -53,23 +54,21 @@ public class CustomRealmMD5 extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
 
-		/*String 	username = (String)arg0.getPrincipal();
-		System.out.println("认证的用户名是："+username);
+		String 	usersName = (String)arg0.getPrincipal();
+		System.out.println("认证的用户名是："+usersName);
+		SysUsers user = new SysUsers();
+		user.setUsersName(usersName);
+		SysUsers users = this.sysUsersService.login(user);
 		
-		SysUser sysUser = sysUserService.login(username);
-		
-		if(sysUser==null){
+		if(users==null){
 			System.out.println("用户不存在！");
 			return null;
 		}
-		String password=sysUser.getPassword();
-		String salt=sysUser.getSalt();
-		SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(sysUser, password,
-				ByteSource.Util.bytes(salt),
+		String password=users.getUsersPassword();
+		SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(usersName, password,
 				this.getName());
 		System.out.println("到底");
-		return info;*/
-		return null;
+		return info;
 	}
 
 }

@@ -18,8 +18,20 @@ public class OfficeTaskDetail implements Serializable {
     private String status;
 
     private BigDecimal companyId;
+    
+    private OfficeTaskAssessment  task;
+    
+    
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    public OfficeTaskAssessment getTask() {
+		return task;
+	}
+
+	public void setTask(OfficeTaskAssessment task) {
+		this.task = task;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date finalUpdataTime;
 
     @Override

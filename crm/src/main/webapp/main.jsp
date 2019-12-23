@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>
                                 <a href="#">用户管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do">用户列表</a>
+                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do?isall=yes">用户列表</a>
                                     </li>
                                 </ul>
                             </li>
@@ -109,14 +109,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>  
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">用户表单</a>
+                            <li><a class="J_menuItem" href="SysUsersInfoCtrl/goadd.do">用户表单</a>
                             </li>
-                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">部门表单</a>
+                            <li><a class="J_menuItem" href="SyDeptCtrl/listPage.do">部门表单</a>
                             </li>
-                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">。。表单</a>
+                            <li><a class="J_menuItem" href="SysPostCtrl/listPage.do">职务信息表单</a>
                             </li>
-                            <li>
-                            
+                            <li><a class="J_menuItem" href="SysCompanyInfoCtrl/listPage.do">公司信息表</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -172,7 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="offmessctrl/listpage.do">短消息</a>
                             </li>
-                            
+                            <li><a class="J_menuItem" href="offmessdetactrl/richeng.do">个人日程</a>
+                            </li>
                             <li>
                                 <a href="#">办公考核 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">

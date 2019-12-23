@@ -29,10 +29,10 @@ public class ShiroConfig {
 	@Bean
 	public CustomRealmMD5 customRealmMD5(){
 		CustomRealmMD5 realm=new CustomRealmMD5();
-		HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
+		/*HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
 		matcher.setHashAlgorithmName("md5");
 		matcher.setHashIterations(3);
-		realm.setCredentialsMatcher(matcher);
+		realm.setCredentialsMatcher(matcher);*/
 		return realm;
 		
 	}
@@ -49,8 +49,8 @@ public class ShiroConfig {
 	public  ShiroFilterFactoryBean ShiroFilterFactoryBean(){
 		CustomFormAuthenticationFilter form=new CustomFormAuthenticationFilter();
 		form.setLoginUrl("/loginctrl/login.do");
-		form.setUsernameParam("uname");
-		form.setPasswordParam("upass");
+		form.setUsernameParam("usersName");
+		form.setPasswordParam("usersPassword");
 		
 		ShiroFilterFactoryBean shiroFilter=new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(this.securityManager());
@@ -69,6 +69,13 @@ public class ShiroConfig {
 		LinkedHashMap<String, String> filterMap=new LinkedHashMap<String, String>();
 		filterMap.put("/logout.do", "logout");
 		filterMap.put("/images/**", "anon");
+		
+		filterMap.put("/img/**", "anon");
+		filterMap.put("/html/**", "anon");
+		filterMap.put("/fonts/**", "anon");
+		filterMap.put("/plugins/**", "anon");
+		filterMap.put("/My97DatePicker/**", "anon");
+		
 		filterMap.put("/css/**", "anon");
 		filterMap.put("/js/**", "anon");
 		filterMap.put("/upload/**", "anon");
