@@ -85,6 +85,20 @@
     		<artifactId>ojdbc6</artifactId>
     		<version>12.1.0.1-atlassian-hosted</version>
 		</dependency>
+		<!-- 配置springAOP依赖 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-aop</artifactId>
+		    <version>2.2.1.RELEASE</version>
+		</dependency>
+		
+		<!-- 配置导出excel依赖 -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.17</version>
+		</dependency>
+		
 		
 	</dependencies>
 

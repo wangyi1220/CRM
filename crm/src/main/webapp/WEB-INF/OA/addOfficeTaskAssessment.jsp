@@ -59,22 +59,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                      <form action="../OfficeTaskAssessmentController/add.do" method="post">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                                     <tr><td>任务标题</td><td><input type="text" name="tsakTitle" style="width:100%"></td></tr>
-                                    <tr><td>任务具体内容</td><td><textarea name="taskConcreteContent" style="width:100%"> </textarea></td></tr>
-                                   <tr><td>任务发布人</td><td><input type="text" name="taskIssuer" style="width:100%"></td></tr>
-                                    <tr><td>任务考核指标</td><td><input type="text" name="taskKpi" style="width:100%"></td></tr>
-                                    <tr><td>任务开始时间</td><td><input name="taskStartTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
+                      <form action="../OfficeTaskAssessmentController/add.do" method="post" target="_self">
+                        <table class="table table-striped table-bordered table-hover dataTables-example" style="font-family:宋体; font-size: 8px;">
+                                     <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务标题</td><td><input type="text" name="tsakTitle" style="width:100%"></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务具体内容</td><td><textarea name="taskConcreteContent" style="width:100%"> </textarea></td></tr>
+                                   <tr style="font-family:宋体; font-size: 8px;"><td  style="font-family:宋体; font-size: 8px;">任务发布人</td><td><input type="text" name="taskIssuer" style="width:100%"></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务考核指标</td><td><input type="text" name="taskKpi" style="width:100%"></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务开始时间</td><td><input name="taskStartTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
                                     
                                     
                                     
-                                    <tr><td>任务结束时间</td><td><input name="taskStopTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务结束时间</td><td><input name="taskStopTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
                                     
 <%--                                     修改：<input name="birthday" class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"
                      value="<fmt:formatDate value="${user.birthday }"pattern="yyyy-MM-dd" />" /> --%>
                                     
-                                    <tr><td>公司编号</td><td><input type="text" name="companyId" style="width:100%"></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">公司编号</td><td><input type="text" name="companyId" style="width:100%"></td></tr>
                                    <tr> <td style="text-align: center;" colspan="1"><input type="submit" value="提交"></td>
                                        <td style="text-align: center;" colspan="1"><input type="reset" value="重置"></td>
                                     </tr>

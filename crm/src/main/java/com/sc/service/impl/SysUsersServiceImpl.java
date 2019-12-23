@@ -78,4 +78,19 @@ public class SysUsersServiceImpl implements SysUsersService {
 		List<SysUsers> list = this.sysUsersMapper.selectNoRoleUser();
 		return list;
 	}
+
+	@Override
+	public PageInfo<SysUsers> selectUserinfo2(Integer pageNum,Integer pageSize,SysUsers user) {
+		PageHelper.startPage(pageNum, pageSize);
+		List<SysUsers> list = this.sysUsersMapper.selectUserinfo2(user);
+		PageInfo<SysUsers> info = new PageInfo<SysUsers>(list);
+		return info;
+	}
+
+	@Override
+	public void deleteUser(SysUsers user) {
+		if(user!=null){
+			this.sysUsersMapper.deleteByPrimaryKey(user.getUsersId());
+		}
+	}
 }

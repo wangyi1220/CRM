@@ -263,6 +263,34 @@ public class SysRoleCtrl {
 			this.sysPowerRoleService.deleteByrId(delrid);
 			this.sysUsersRoleService.deleteByrId(delrid);
 			this.sysRoleService.deleteBypk(delrid);
+		}else{
+			List<SysUsersRole> list = this.sysUsersRoleService.selectByrId(delrid);
+			for (SysUsersRole sysUsersRole : list) {
+				sysUsersRole.setRoleId(tjrid);
+				sysUsersRole.setChangeDate(new Date());
+				this.sysUsersRoleService.update(sysUsersRole);
+			}
+			List<SysPowerRole> list2 = this.sysPowerRoleService.selectByrId(delrid);
+			List<SysPowerRole> list3 = this.sysPowerRoleService.selectByrId(tjrid);
+			this.sysPowerRoleService.deleteByrId(delrid);
+			SysPowerRole role = new SysPowerRole();
+			role.setChangeDate(new Date());
+			for (SysPowerRole sysPowerRole : list2) {
+				int j=0;
+				for (SysPowerRole sysPowerRole2 : list3) {
+					if(sysPowerRole.getPowerId()==sysPowerRole2.getPowerId()){
+						j=j+1;
+						break;
+					}
+				}
+				if(j==0){
+					role.setRoleId(tjrid);
+					role.setPowerId(sysPowerRole.getPowerId());
+					this.sysPowerRoleService.insert(role);
+				}
+			}
+			this.sysRoleService.deleteBypk(delrid);
+			
 		}
 		
 		mav.setViewName("redirect:roleList.do?delsuc=yes");

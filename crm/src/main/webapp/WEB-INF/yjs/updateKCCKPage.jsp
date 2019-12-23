@@ -55,7 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="ibox-content">
                         <form method="post" class="form-horizontal" action="../KCCKControllerCtrl/update.do" target="_self">
-                            
+                            div class="form-group">
+                                
+
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" value="${kcck.cangkuId}" name="cangkuId">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">仓库名称</label>
 

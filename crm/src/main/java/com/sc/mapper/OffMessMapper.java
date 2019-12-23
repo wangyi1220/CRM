@@ -9,6 +9,12 @@ import org.apache.ibatis.annotations.Param;
 
 public interface OffMessMapper {
 	
+	
+	public List<OffMess> sousuo(String starch);
+	
+	
+	public void write(OffMess m);
+	
 	public List<OffMess> messdeta(String ser);
 	
 	public List<OffMess> mdetail(Long mid);

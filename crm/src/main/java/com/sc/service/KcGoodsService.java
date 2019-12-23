@@ -1,23 +1,27 @@
 package com.sc.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.KcCangku;
 import com.sc.entity.KcGoods;
 import com.sc.entity.SysUsers;
 
 public interface KcGoodsService {
-	       //·ÖÒ³ÉÌÆ·Ãû×Ö²éÑ¯
+	       //åˆ†é¡µæŸ¥è¯¢
 			public PageInfo<KcGoods> select(Integer pageNum,Integer pageSize,  KcGoods kcgs);//kcgs--KcCangku
 
-			//Ìí¼Ó
+			//æ·»åŠ 
 			public void add(KcGoods kcgs);
 			
-			//ĞŞ¸Ä
+			//ä¿®æ”¹
 		    public void update(KcGoods kcgs);
 		    
-		    //É¾³ı
+		    //åˆ é™¤
 		    public void delete(long gId);//gId--goodsId
 		    
-		    //Í¨¹ıÖ÷¼ü²Ö¿â±àºÅ»ñÈ¡¶ÔÏó
+		    //Í¨é€šè¿‡å•†å“ç¼–å·æŸ¥è¯¢å¯¹è±¡
 		    public KcGoods  getGsID(long  gId);
+		    //æŸ¥è¯¢æ‰€æœ‰
+		    public List<KcGoods> getAll();
 }

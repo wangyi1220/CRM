@@ -60,26 +60,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
                <table>
                      <h1>任务安排详情</h1>
-               <tr>
+               <tr style="font-family:宋体; font-size: 8px;">
               <input type="hidden" name="taskDetailId" value="${d.taskDetailId }">
-              <td>任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
-              <td><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
+              <td style="font-family:宋体; font-size: 8px;">任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
            </tr>
            <tr>
               <td>接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
               <td><input type="text" name="taskUserId" value="${d.taskUserId }" readonly="readonly"></td>
            </tr>
-           <tr>
-              <td>任务是否完成:</td>
-              <td><input type="text" name="taskIsfinshed" value="${d.taskIsfinshed }" readonly="readonly"></td>
+           <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">任务是否完成:</td>
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskIsfinshed" value="${d.taskIsfinshed }" readonly="readonly"></td>
            </tr>
-            <tr>
-              <td>当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
-              <td><input type="text" name="status1" value="${d.status}" readonly="readonly"></td>
+            <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="status1" value="${d.status}" readonly="readonly"></td>
             </td>
-             <tr>
-              <td>公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
-              <td><input type="text" name="companyId" value="${d.companyId }" readonly="readonly"></td>
+             <tr style="font-family:宋体; font-size: 8px;">
+              <td style="font-family:宋体; font-size: 8px;">公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
+              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="companyId" value="${d.companyId }" readonly="readonly"></td>
             </td>
             </tr>
             </table>

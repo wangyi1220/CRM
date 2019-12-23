@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
           <c:forEach items="${p.list }" var="pc">
           <c:if test="${not empty pc.sysPowerinfoes[0].powerName && pc.sysPowerinfoes[0].powerName!=''}">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                          <input id="checkbox2" type="checkbox">
@@ -72,10 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content" style="height: 150px">
+                    <div class="ibox-content">
                         <ul class="unstyled">
                           <c:forEach items="${pc.sysPowerinfoes}" var="pi">
-                            	<li>
+                            	<li  style="margin-left: -20px;">
                             		<input id="checkbox2" type="checkbox" ${pi.isHasPower=='1' ? "checked":"" }>
                             		${pi.powerName }
                             	</li>
