@@ -60,8 +60,9 @@ public class LoginCtrl {
 		System.out.println("用户认证成功");
 		//获取主体
 		Subject sub = SecurityUtils.getSubject();
-		SysUsers sysUsers=(SysUsers)sub.getPrincipal();
-		session.setAttribute("nowuser", sysUsers);
+		String usersName=(String) sub.getPrincipal();
+		System.out.println("主题是"+usersName);
+		/*session.setAttribute("nowuser", sysUsers);*/
 		mav.setViewName("redirect:../main.jsp");
 		
 		return mav;
@@ -71,14 +72,14 @@ public class LoginCtrl {
 	
 	@RequestMapping("/checkcId.do")
 	@ResponseBody
-	public Message checkcId(SysCompanyinfo sci){
+	public Message checkcId(SysCompanyinfo sci,HttpServletRequest req){
 		
 		System.out.println("验证公司代码");
-		
+		HttpSession session = req.getSession();
 		Message msg=null;
 		SysCompanyinfo companyinfo = this.sysCompanyInfoService.get(sci.getPk());
 		if(companyinfo!=null){
-			
+			session.setAttribute("cid", companyinfo.getPk());
 			msg=new Message("200", "no", "公司代码存在");
 		}else{
 			msg=new Message("100", "yes", "公司代码不存在");

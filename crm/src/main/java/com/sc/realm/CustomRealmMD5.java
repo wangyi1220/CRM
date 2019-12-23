@@ -64,6 +64,7 @@ public class CustomRealmMD5 extends AuthorizingRealm {
 			System.out.println("用户不存在！");
 			return null;
 		}
+		System.out.println("用户存在！");
 		String password=users.getUsersPassword();
 		SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(usersName, password,
 				this.getName());

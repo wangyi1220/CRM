@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  	<p id="sp" style="color: red"></p>
                     <input type="text" class="form-control uname" placeholder="用户名" style="margin-top: 40px" name="usersName"/>
                     <input type="password" class="form-control pword m-b" placeholder="密码" name="usersPassword"/>
-                    <input type="text" class="form-control pword" placeholder="验证码" style="width: 100px"/>
+                    <input type="text" class="form-control pword" placeholder="验证码" style="width: 100px" name="randomcode"/>
                     <img alt="" src="${basePath }validatecode.jsp" id="img" 
 						width="56px" height="20px" onclick="lala(this)" style="margin-left: 120px;margin-top: -27px">
                     <button class="btn btn-success btn-block" type="submit" id="sub">登录</button>

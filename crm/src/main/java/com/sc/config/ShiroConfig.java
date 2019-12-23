@@ -20,7 +20,7 @@ import com.sc.realm.CustomFormAuthenticationFilter;
 import com.sc.realm.CustomRealmMD5;
 
 
-//@Configuration	//shiro≈‰÷√¿‡
+@Configuration	//shiro≈‰÷√¿‡
 public class ShiroConfig {
 	
 	@Autowired
@@ -29,8 +29,8 @@ public class ShiroConfig {
 	@Bean
 	public CustomRealmMD5 customRealmMD5(){
 		CustomRealmMD5 realm=new CustomRealmMD5();
-		/*HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
-		matcher.setHashAlgorithmName("md5");
+		HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
+		/*matcher.setHashAlgorithmName("md5");
 		matcher.setHashIterations(3);
 		realm.setCredentialsMatcher(matcher);*/
 		return realm;
@@ -48,14 +48,14 @@ public class ShiroConfig {
 	@Bean("shiroFilter")
 	public  ShiroFilterFactoryBean ShiroFilterFactoryBean(){
 		CustomFormAuthenticationFilter form=new CustomFormAuthenticationFilter();
-		form.setLoginUrl("/loginctrl/login.do");
+		form.setLoginUrl("/LoginCtrl/login.do");
 		form.setUsernameParam("usersName");
 		form.setPasswordParam("usersPassword");
 		
 		ShiroFilterFactoryBean shiroFilter=new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(this.securityManager());
 		shiroFilter.setLoginUrl("/login.jsp");
-		shiroFilter.setSuccessUrl("/loginctrl/main.do");
+		shiroFilter.setSuccessUrl("/LoginCtrl/main.do");
 		shiroFilter.setUnauthorizedUrl("/nopermission.jsp");
 		
 		Map<String, Filter> filters=new HashMap<String, Filter>();
@@ -84,7 +84,7 @@ public class ShiroConfig {
 		filterMap.put("/validatecode.jsp", "anon");
 		
 		filterMap.put("/zhuce.jsp", "anon");
-		filterMap.put("/loginctrl/checkuname.do", "anon");
+		filterMap.put("/LoginCtrl/checkcId.do", "anon");
 		
 		filterMap.put("/datagrid.jsp", "anon");
 		filterMap.put("/usersctrl/listjson.do", "anon");
