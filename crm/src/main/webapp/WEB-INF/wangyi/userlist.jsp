@@ -43,7 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			
    			<button   type="submit" class="btn btn-primary btn-lg" 
    			 style="width: 100px;height: 30px;
-   			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px" >楞头一下</button>
+   			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px;margin-left: 25px" >楞头一下</button>
+   			<a id="printExcel"  target="_self">
+	           	<button   type="button" class="btn btn-primary btn-lg" 
+   			 	style="width: 100px;height: 30px;
+   				border: 1px solid blue;position: absolute;top: 56px;line-height: 10px;margin-left: 150px" >导出excel</button>
+	        </a>
    		</form>	
    			<div id="div1" style="width: 200px;height: 160px;
    			border: 1px solid red;position:absolute;
@@ -147,6 +152,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("#deleteSelect").attr("href", a)
 				alert($("#deleteSelect").attr("href")) */
 				location.href="SysUsersCtrl/deleteUser.do?"+a;
+				
+		});
+		
+		//打印excel
+		$("#printExcel").click(function(){
+		
+			 var myArr=new Array();
+			 var a=""
+			myArr=$("input[name='c1']")
+			var i
+			for(i=0;i<myArr.length;i++){
+					a+="print="+myArr[i].value+"&";
+			}
+				
+				//alert(a)
+				/* a="caiGouDanCtrl/gysDeleteSelect.do?"+a
+				$("#deleteSelect").attr("href", a)
+				alert($("#deleteSelect").attr("href")) */
+				location.href="SysUsersCtrl/printExcel.do?"+a;
 				
 		})
 				
