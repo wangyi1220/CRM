@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>H+ 后台主题UI框架 - 发件箱</title>
+    <title>H+ 后台主题UI框架 - 收件箱</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -41,12 +41,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
                                 <li>
-                                    <a href="../offmessdetactrl/listpagedeta.do"  target="_self"> <i class="fa fa-envelope-o"></i> 收件箱</a>
+                                    <a  target="_self" href="../offmessdetactrl/listpagedeta.do"> <i class="fa fa-envelope-o"></i> 收件箱</a>
                                 </li>
                                 <li>
-                                    <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
+                                    <a target="_self" href="../offmessctrl/listpage.do"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
-                                
+                                <li>
+                                    <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
+                                </li>
+                                <li>
+                                    <a href="mailbox.html"> <i class="fa fa-file-text-o"></i> 草稿 <span class="label label-danger pull-right">2</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
@@ -62,33 +68,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-9 animated fadeInRight">
                 <div class="mail-box-header">
 
-                    <form target="_self" method="get" action="../offmessctrl/sousuo.do" class="pull-right mail-search">
+                    <form target="_self" method="get" action="../offmessdetactrl/sousuod.do" class="pull-right mail-search">
                         <div class="input-group">
                             <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题">
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     	搜索
-                                </button>   
+                                </button>
                             </div>
                         </div>
                     </form>
                     <h2>
-                    已发送(${p.total })
+                    收件箱 (${p.total })
                 </h2>
                     <div class="mail-tools tooltip-demo m-t-md">
                         <div class="btn-group pull-right">
-                         <a  target="_self"  href="../offmessctrl/listpage.do?pageNum=${p.prePage }"  >
+                         <a target="_self"  href="../offmessdetactrl/listpagedeta.do?pageNum=${p.prePage }">
                             <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
                             </button></a>
-                            <a  target="_self" href="../offmessctrl/listpage.do?pageNum=${p.nextPage }"  ><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
+                            <a  target="_self" href="../offmessdetactrl/listpagedeta.do?pageNum=${p.nextPage }"><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
                             </button>
                              </a>
 
                         </div>
+                        <a target="_self" href="../offmessdetactrl/listpagedeta.do">
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="
+邮件列表"><i class="fa fa-refresh"></i> 刷新</button></a>
                         
-   <a target="_self" href="../offmessctrl/listpage.do"> <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="邮件列表">
-    <i class="fa fa-refresh"></i> 刷新</button></a>
-                       
+
 
                     </div>
                 </div>
@@ -98,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <tbody>
                             <tr class="unread">
                                 <td class="check-mail">
-                                   
+                                    删除
                                 </td>
                                 <td class="mail-ontact">发件人</td>
                                 
@@ -106,38 +113,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 <td class=""><i class="fa fa-paperclip"></i></td>
                                 
-                                 <td class="mail-subject">收件人 </td>
+                                 <td class="mail-subject">状态 </td>
                                 
                                 <td class="text-right mail-date">发送时间</td>
                             </tr>
                              
-                             <c:forEach items="${p.list }" var="m">
+                             <c:forEach items="${p.list }" var="d">
                             <tr class="read">
                                 <td class="check-mail">
-                                    
+                                     
+                                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件">
+                                     <a target="_self" href="../offmessdetactrl/delete.do?did=${d.detailsid }" >
+                                     <i class="fa fa-trash-o"></i></a>
+                        			</button>
                                 </td>
                                 
-                                <td class="mail-ontact"><a href="mail_detail.html">${m.sender }</a> 
+                                <td class="mail-ontact"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.offMess.sender }</a> 
                                 </td>
                                 
-                                <td class="mail-subject"><a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">${m.title }</a>
+                                <td class="mail-subject"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.offMess.title }</a>
                                 </td>
                                 
-                                <td class=""><i class="fa fa-paperclip"> </i>
-                               
+                                <td class=""><i class="fa fa-paperclip"></i><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">
                                 </td>
                                 
-                                <td class="text-right mail-date">
-                                  <c:forEach items="${m.offMessdeta}" var="d">
-                                 ${d.uanme}
-                                 </c:forEach> 
-                                 
-                                 <%-- <c:forEach items="${u}" var="u">
-                                 ${u.usersName}
-                                 </c:forEach> --%>
-                                 </td>
+                                <td class="text-right mail-date"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.messstate }</a></td>
                                 
-                                <td class="text-right mail-date"><fmt:formatDate value="${m.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <td class="text-right mail-date"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }"><fmt:formatDate value="${d.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </td>
                                 
                             </tr>
