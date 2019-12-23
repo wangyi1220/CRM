@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysPowerinfo;
+import com.sc.entity.SysPowerinfoExample;
+import com.sc.entity.SysPowerinfoExample.Criteria;
 import com.sc.mapper.SysPowerinfoMapper;
 import com.sc.service.SysPowerinfoService;
 
@@ -34,6 +36,19 @@ public class SysPowerinfoServiceImpl implements SysPowerinfoService {
 		if(spi!=null){
 			this.sysPowerinfoMapper.insert(spi);
 		}
+		
+	}
+
+	@Override
+	public SysPowerinfo selectBypUrl(String purl) {
+			SysPowerinfoExample example = new SysPowerinfoExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andPowerUrlEqualTo(purl);
+			List<SysPowerinfo> list = this.sysPowerinfoMapper.selectByExample(example);
+			if(list!=null&&list.size()>0){
+				return list.get(0);
+			}
+			return null;
 		
 	}
 

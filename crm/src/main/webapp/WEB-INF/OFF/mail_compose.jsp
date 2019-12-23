@@ -80,25 +80,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="mail-body">
 
-                        <form  action="../offmessctrl/add.do" class="form-horizontal" method="post">
+                        <form target="_self" action="../offmessctrl/add.do" class="form-horizontal" method="post" onsubmit="cs(this)">
                             <div class="form-group">
                                 <!-- <label class="col-sm-2 control-label">发送到：</label> -->
 				
 								<div  >
 								<div style="padding-left:149px;width: 790px" >
-            					发送到：<select name="city" xm-select="select1"  >
-            					 <c:forEach items="${users }" var="u">
+            					发送到：<select name="city" xm-select="select1">
+            					 <c:forEach items="${users}" var="u">
                						 <option value="${u.usersId }" >${u.usersName }</option>
                					</c:forEach>
-              					  	 
+              					  
             					<select>
             					</div>
-        						</div>
-				
-                                <!-- <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="">
-                                </div> -->
+        						</div>                             
                             </div>
+                            <script type="text/javascript">
+                            
+                            function cs(x){
+                           /*  alert("进入js了"); */
+		                         var sid="";
+		                          $(".xm-select-this").each(function(i,e) {	
+		                    	
+			                         sid += "sid=" + $(this).attr("lay-value")+"&";
+			                         
+		                                   });
+		                                   
+		                                  x.action=x.action+"?"+sid;
+		                                          /* alert(x.action); */
+                            }
+              
+                            </script>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">主题：</label>
 

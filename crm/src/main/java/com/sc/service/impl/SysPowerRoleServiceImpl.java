@@ -39,4 +39,14 @@ public class SysPowerRoleServiceImpl implements SysPowerRoleService {
 		
 	}
 
+	@Override
+	public void deleteByrId(Long rId) {
+		if(rId!=null){
+			SysPowerRoleExample example = new SysPowerRoleExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andRoleIdEqualTo(rId);
+			this.sysPowerRoleMapper.deleteByExample(example);
+		}
+	}
+
 }

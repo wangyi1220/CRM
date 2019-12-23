@@ -2,6 +2,9 @@ package com.sc.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,59 +16,89 @@ import com.sc.entity.KcGoods;
 import com.sc.service.KcGoodsService;
 
 @Controller
-@RequestMapping("/KCGSControllerCtrl")//ÀàµÄÂ·¾¶
-public class KCGSController {//KCGS--¿â´æÉÌÆ·
+@RequestMapping("/KCGSControllerCtrl")//ç±»çš„è·¯å¾„
+public class KCGSController {//KCGS--åº“å­˜å•†å“
 	
 	@Autowired
 	KcGoodsService kcGoodsService;
-	//·ÖÒ³²éÑ¯--ÉÌÆ·Ãû×Ö
+	//åˆ†é¡µæŸ¥è¯¢--æ‰€æœ‰
 	@RequestMapping("/listPage.do")
 	public ModelAndView listPage(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="5")Integer pageSize,KcGoods kcgs){
 		
 		mav.addObject("p", kcGoodsService.select(pageNum, pageSize,kcgs));
-		//Ìø×ªµ½¿â´æÉÌÆ·ĞÅÏ¢±íÒ³Ãæ
+		//è·³è½¬åˆ°åº“å­˜å•†å“ä¿¡æ¯è¡¨é¡µé¢
 		mav.setViewName("yjs/selectKCGSPage");
 		
-		System.out.println("·ÖÒ³--KCGS");
+		System.out.println("åˆ†é¡µ--KCGS");
 		
 		return mav;
 	}
 	
-	//Ìí¼Ó
-		 @RequestMapping("/add.do")
-		 public ModelAndView addofficeKpi(ModelAndView mav,KcGoods kcgs){
-			 kcgs.setLastModifyTime(new Date());
-			 System.out.println("Ìí¼Ó¿â´æÉÌÆ·ĞÅÏ¢"+kcgs);
-			this.kcGoodsService.add(kcgs);
+	    //å»æ·»åŠ 
+		 @RequestMapping("/add.do")//å»é¡µé¢è½¬ä¸€åœˆ
+		 public ModelAndView addofficeKpi(ModelAndView mav){
 			 mav.setViewName("yjs/addKCGSPage");
 			 return mav;
+		 }
+		//çœŸæ­£æ·»åŠ çš„
+		 @RequestMapping("/addKCGS.do")
+		 public ModelAndView addKCGS(ModelAndView mav,KcGoods kcgs){
+			 kcgs.setLastModifyTime(new Date());
+			 System.out.println("æ·»åŠ åº“å­˜å•†å“ä¿¡æ¯"+kcgs);
+			this.kcGoodsService.add(kcgs);
+			 mav.setViewName("redirect:listPage.do");
+			 return mav;
 			 }
-		 //É¾³ı
+		 
+		 //åˆ é™¤
 		@RequestMapping("/delete.do")
-		public ModelAndView delete(ModelAndView mav, KcGoods kcgs){
-			System.out.println("É¾³ı¿â´æÉÌÆ·ĞÅÏ¢£¡"+kcgs);
-			this.kcGoodsService.delete(kcgs.getGoodsId());
-			mav.setViewName("redirect:listpage.do");//ÖØ¶¨Ïòµ½list·½·¨
+		public ModelAndView delete(ModelAndView mav, Long kcgs){
+			System.out.println("åˆ é™¤åº“å­˜å•†å“ä¿¡æ¯ï¼"+kcgs);
+			this.kcGoodsService.delete(kcgs);
+			mav.setViewName("redirect:listPage.do");//é‡å®šå‘åˆ°listæ–¹æ³•
 			return mav;
 		}
-		//ĞŞ¸Ä
+		
+		//é€‰ä¸­åˆ é™¤
+				@RequestMapping("/kcgsDeleteSelect.do")
+				public ModelAndView kcgsDeleteSelect(ModelAndView mav,
+												HttpServletRequest req,
+												HttpServletResponse resp){
+					
+					String[] idsArr = req.getParameterValues("gid");
+					System.out.println("------è¿›å…¥åˆ é™¤é€‰ä¸­1:>"+idsArr.length);
+					for (String gidStr : idsArr) {
+						System.out.println("--------è¿›å…¥åˆ é™¤é€‰ä¸­2ï¼š>"+gidStr);
+						Long gid = Long.parseLong(gidStr);
+						
+						System.out.println("--------è¿›å…¥åˆ é™¤é€‰ä¸­3ï¼š>"+gid);
+						kcGoodsService.delete(gid);
+					}
+					
+					mav.setViewName("redirect:listPage.do");
+					return mav;
+				}
+				
+		//ä¿®æ”¹
 		 @RequestMapping("/goupdate.do")
-		 public ModelAndView goupdate(ModelAndView mav,long gid ){
-				System.out.println("½øÈëÁËgoupdate");
-				mav.addObject("kcgs", kcGoodsService.getGsID(gid));//£¿=ÎÒ´ÓÒ³Ãæ»ñÈ¡µÄ²ÎÊıÔÚÕâÀïÆğÊ²Ã´×÷ÓÃ
+		 public ModelAndView goupdate(ModelAndView mav,Long gid ){
+				System.out.println("è¿›å…¥äº†goupdate");
+				mav.addObject("kcgs", kcGoodsService.getGsID(gid));
 				mav.setViewName("yjs/updateKCGSPage");
 				return mav;
 			}
-		 @RequestMapping("update.do")
+		 @RequestMapping("/update.do")
 		 public ModelAndView OfficeKpiupdate(ModelAndView mav,KcGoods kcgs){
+			/* kcck.setCangkuLastModifyTime(new Date());*/
 			 kcgs.setLastModifyTime(new Date());
-			 System.out.println("ĞŞ¸Ä¿â´æÉÌÆ·ĞÅÏ¢"+kcgs);
+			 System.out.println("ä¿®æ”¹KCGSä¿¡æ¯"+kcgs);
 			this.kcGoodsService.update(kcgs);
-			 mav.setViewName("redirect:listpage.do");
+			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 		 }
+		
 		
 	
 }

@@ -52,79 +52,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeTaskAssessmentController/inaddOfficeTaskAssessment.do">
+                            <a class="close-link" href="../OfficeTaskAssessmentController/inaddOfficeTaskAssessment.do" target="_self">
                                                                                                                                              添加任务
                             </a>
                         </div>
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTables-example" target="_self">
                             <thead>
-                                <tr>
-                                    <th>任务编号</th>
-                                    <th>任务标题</th>
-                                    <th>任务具体内容</th>
-                                    <th>任务发布人</th>
-                                    <th>任务考核指标</th>
-                                    <th>任务开始时间</th>
-                                    <th>任务结束时间</th>
-                                    
-                                    <th>最后修改时间</th>
-                                    <th>公司编号</th>
-                                    <th>操作</th>
+                                <tr >
+                                     <th style="font-family:宋体; font-size: 8px;">任务编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务标题</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务具体内容</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务发布人</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务考核指标</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务开始时间</th>
+                                    <th style="font-family:宋体; font-size: 8px;">任务结束时间</th>
+                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
+                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${p.list }" var="T">
             <tr>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.taskId }
-               </td>
+               </td style="font-family:宋体; font-size: 8px;">
                
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.tsakTitle}
-               </td>
-               <td>
+               </td >
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.taskConcreteContent}
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.taskIssuer }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.taskKpi }
                </td>
-                 <td>
+                 <td style="font-family:宋体; font-size: 8px;">
                <fmt:formatDate value="${T.taskStartTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-                 <td>
+                 <td style="font-family:宋体; font-size: 8px;">
                <fmt:formatDate value="${T.taskStopTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                <fmt:formatDate value="${T.finalUpdateTime }" pattern="yyyy-MM-dd"/>
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${T.companyId}
                </td>
-               <td>
-                 <a href="<%=basePath %>OfficeTaskDetailController/select.do?taskId=${T.taskId }">详情</a>
+               <td style="font-family:宋体; font-size: 8px;">
+                 <a href="<%=basePath %>OfficeTaskDetailController/select.do?taskId=23" target="_self">详情</a>
                  ||
                  <a href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId=${T.taskId }"
-                   onclick="return confirm('是否确定删除？')">删除</a>
+                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
                  ||
                  <a href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?taskId=${T.taskId }"
-                   onclick="return confirm('是否确定修改？')">修改</a>
+                   onclick="return confirm('是否确定修改？')" target="_self">修改</a>
                </td>
             </tr>
          </c:forEach>
-         <tr>
+         <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="5">
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
+                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
                  <td style="text-align: center;" colspan="5">
                                        当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>

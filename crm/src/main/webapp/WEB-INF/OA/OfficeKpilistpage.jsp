@@ -52,59 +52,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do">
-                                                                                                                                             添加任务
+                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do"  target="_self">
+                                                                                                                                             添加指标
                             </a>
                         </div>
                     </div>
                     <div class="ibox-content">
 
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTables-example" target="_self">
                             <thead>
-                                <tr>
-                                    <th>编号</th>
-                                    <th>考核指标</th>
-                                    <th>备注说明</th>
-                                    <th>公司编号</th>
-                                    <th>最后修改时间</th>
-                                    <th>操作</th>
+                                <tr style="font-family:宋体; font-size: 8px;">
+                                    <th style="font-family:宋体; font-size: 8px;">编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">考核指标</th>
+                                    <th style="font-family:宋体; font-size: 8px;">备注说明</th>
+                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
+                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
+                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${p.list }" var="k">
-            <tr>
-               <td>
+            <tr style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; font-size: 8px;">
                  ${k.kpiId }
-               </td>
+               </td >
                
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${k.kpiKpi}
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${k.kpiDetail }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                  ${k.companyId }
                </td>
-               <td>
+               <td style="font-family:宋体; font-size: 8px;">
                <fmt:formatDate value="${k.finalUpdataTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td>
-                 <a href="<%=basePath %>OfficeKpictrl/goupdate.do?kpiId=${k.kpiId }">修改</a>
+               <td style="font-family:宋体; font-size: 8px;">
+                 <a href="<%=basePath %>OfficeKpictrl/goupdate.do?kpiId=${k.kpiId }" target="_self">修改</a>
                  /
-                 <a href="<%=basePath %>OfficeKpictrl/delete.do?kpiId=${k.kpiId }"
-                   onclick="return confirm('是否确定删除？')">删除</a>
+                 <a href="<%=basePath %>OfficeKpictrl/delete.do?kpiId=${k.kpiId }&companyId=${k.companyId }"
+                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
+                 <%--  /
+                 <a href="<%=basePath %>OfficeTaskAssessmentController/selectKpi.do?kpiKpi=${k.kpiKpi}"
+                   onclick="return confirm('是否确定查看详情？')" target="_self">指标详情</a> --%>
                </td>
             </tr>
          </c:forEach>
-          <tr>
+          <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="3">
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
                 <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
-               <td style="text-align: center;" colspan="3">当前${p.pageNum }/${p.pages }页，共${p.total }条
+               <td style="text-align: center;" colspan="3" style="font-family:宋体; font-size: 8px;">当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>
         </table>

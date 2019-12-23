@@ -11,5 +11,6 @@ public interface SysPowerinfoService {
 	
 	public void addPower(SysPowerinfo spi);
 	
+	public SysPowerinfo selectBypUrl(String purl);
 	
 }

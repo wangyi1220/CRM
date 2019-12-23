@@ -255,4 +255,14 @@
 	LEFT JOIN OFF_MESS m ON d.MESSID=m.MESSID
 	where d.RECEIVERID=#{sid}
   </select>
+  
+  <select id="sousuod" resultMap="detailsidMap" parameterType="com.sc.entity.OffMessdetaExample">
+  		select * from OFF_MESSDETA d
+	LEFT JOIN OFF_MESS m ON d.MESSID=m.MESSID
+	where d.receiverid=#{reid} and m.title like concat(concat('%',#{starch}),'%')
+  </select>
+  
+  
+  
+  
 </mapper>

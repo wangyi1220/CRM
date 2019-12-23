@@ -60,11 +60,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox-content">
 
                       <center>
-    <form action="../OfficeKpictrl/addofficeKpi.do">
-    <table>
-           <tr><td>考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
-           <tr><td>考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>
-           <tr><td>所属公司：</td><td><input type="text" name="companyId" ></td></tr>
+    <form action="../OfficeKpictrl/addofficeKpi.do" target="_self">
+    <table style="font-family:宋体; font-size: 8px;" target="_self">
+           <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">考核任务指标：</td><td><input type="text" name="kpiKpi"  ></td></tr>
+           <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">考核任务详情：</td><td><input type="text" name="kpiDetail"></td></tr>
+           <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">所属公司：</td><td><input type="text" name="companyId" ></td></tr>
            <%-- <input type="hidden" name="finalUpdataTime" value="<%=new Date().getTime() %>"> --%>
           <tr><td><input type="submit" value="提交"></td><td>
            <input type="reset" value="重置"></td></tr>
