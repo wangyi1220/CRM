@@ -91,6 +91,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 		
 		SysUsers user = this.sysUsersMapper.selectRole(rId);
 		long sId=user.getSysRole().getRoleId();
+		System.out.println("此角色id"+sId);
 		list1.add(sId);
 		for (int i = 0; i < list1.size(); i++) {
 			List<SysRole> sonList = this.selectBySuperId(list1.get(i));
@@ -100,15 +101,22 @@ public class SysRoleServiceImpl implements SysRoleService {
 		}
 		System.out.println(list1.size());
 		list1.remove(0);
+		for (Long l : list1) {
+			System.out.println("子角色的id"+l);
+		}
 		/*往集合中加入子角色的成员*/
 		for (Long l : list1) {
 			List<SysRole> sr = this.sysRoleMapper.selectUsersAndInfos(l);
 			for (SysRole sysRole : sr) {
 				for (SysUsers sysUsers : sysRole.getSysUsers()) {
-					list.add(sysUsers);
+					if(sysUsers!=null&&sysUsers.getUsersName()!=null){
+						list.add(sysUsers);
+					}
+					
 				}
 			}
 		}
+		System.out.println(list.size()+"个");
 		/*往集合中加入无角色的成员*/
 		List<SysUsers> list2 = this.sysUsersMapper.selectNoRoleUser();
 		for (SysUsers sysUsers : list2) {
@@ -116,7 +124,10 @@ public class SysRoleServiceImpl implements SysRoleService {
 		}
 		System.out.println(list.size()+"个");
 		for (SysUsers sysUsers : list) {
-			System.out.println(sysUsers.toString()+":"+sysUsers.getSysUserinfo().toString());
+			System.out.println(sysUsers.toString());
+			if(sysUsers.getSysUserinfo()!=null){
+				System.out.println(sysUsers.getSysUserinfo().toString());
+			}
 		}
 		PageInfo<SysUsers> info = new PageInfo<SysUsers>(list);
 		return info;
@@ -124,11 +135,13 @@ public class SysRoleServiceImpl implements SysRoleService {
 
 	@Override
 	public List<SysPowerColumns> selectRolePower(Long rId) {
+		System.out.println("角色id"+rId);
 		SysRole role = this.sysRoleMapper.selectRolePower(rId);
-		List<SysPowerColumns> list = this.sysPowerColumnsMapper.selectPowerinfo();
+		List<SysPowerColumns> list=null;
 		System.out.println(role.getSuperRoleId());
 		if(role.getSuperRoleId()==null){
-			
+			list = this.sysPowerColumnsMapper.selectPowerinfo();
+			System.out.println("list:"+list.size());
 			for (SysPowerColumns spc : list) {
 				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
 					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
@@ -138,16 +151,38 @@ public class SysRoleServiceImpl implements SysRoleService {
 					}
 				}
 			}
-			return list;
+			
 		}else{
 			SysRole superRolePower = this.sysRoleMapper.selectRolePower(role.getSuperRoleId());
-			for (SysPowerColumns spc : list) {
-				
+			List<Long> powerIds=new ArrayList<Long>();
+			for (SysPowerinfo spi : superRolePower.getSysPowerinfoes()) {
+				powerIds.add(spi.getPowerId());
 			}
+			SysPowerColumns sysPowerColumns = new SysPowerColumns();
+			sysPowerColumns.setPowerIds(powerIds);
+			System.out.println("父角色拥有的权限个数："+sysPowerColumns.getPowerIds().size());
+			list = this.sysPowerColumnsMapper.selectPowerinfoBypIds(sysPowerColumns);
+			System.out.println("list2:"+list.size());
+			for (SysPowerColumns spc : list) {
+				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
+					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
+						
+						if(spi1.getPowerId()==spi2.getPowerId()){
+							spi1.setIsHasPower("1");
+						}
+					}
+				}
+			}
+			
 		}
 		
 		
-		return null;
+		return list;
+	}
+
+	@Override
+	public void deleteBypk(Long rId) {
+		this.sysRoleMapper.deleteByPrimaryKey(rId);
 	}
 
 }

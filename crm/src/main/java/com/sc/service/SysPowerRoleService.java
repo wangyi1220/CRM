@@ -8,4 +8,5 @@ public interface SysPowerRoleService {
 	public List<SysPowerRole> selectByrId(Long rId);
 	public void delete(SysPowerRole spr);
 	public void insert(SysPowerRole spr);
+	public void deleteByrId(Long rId);
 }

@@ -9,7 +9,8 @@ import com.sc.entity.OffMessdetaExample;
 
 public interface OffMessdetaMapper {
 	
-	
+	//模糊查询收件箱
+	public List<OffMessdeta> sousuod(@Param("reid")Long reid,@Param("starch")String starch);
 	
 	public OffMessdeta details(Long did);
 	

@@ -14,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.OfficeKpi;
 import com.sc.entity.OfficeTaskAssessment;
+import com.sc.service.OfficeKpiService;
 import com.sc.service.OfficeTaskAssessmentService;
 @Controller
 @RequestMapping("/OfficeTaskAssessmentController")
 public class OfficeTaskAssessmentController {
 	  @Autowired 
 	OfficeTaskAssessmentService OfficeTaskAssessmentService;
+	  @Autowired
+	  OfficeKpiService  officeKpiService;
     @RequestMapping("/list.do")
     public ModelAndView list(ModelAndView mav){
     	List<OfficeTaskAssessment> list = this.OfficeTaskAssessmentService.select();
@@ -77,4 +80,16 @@ public class OfficeTaskAssessmentController {
     	mav.setViewName("redirect:listpage.do");//重定向到list方法
     	return mav;
     }
+    
+    @RequestMapping("selectKpi.do")
+    public ModelAndView selectKpi(ModelAndView mav,OfficeTaskAssessment t,OfficeKpi k){
+    	System.out.println("---------"+k.getKpiKpi());
+    	t.setTaskKpi(k.getKpiKpi());
+    	System.out.println("-----"+t.getTaskKpi());
+    	List<OfficeTaskAssessment> list1=this.OfficeTaskAssessmentService.selectKpi(k.getKpiKpi());
+    	mav.addObject("kl", list1);
+    	mav.setViewName("OA/kpiDetaillist");
+    	return mav;
+    }
+    
 }

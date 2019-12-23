@@ -294,4 +294,21 @@
 	LEFT JOIN SYS_USERINFO suri ON su.EMP_ID=suri.EMP_ID
 	where sur.ROLE_ID is null
   </select>
+  
+  <select id="selectUserinfo2" resultMap="selectUserinfoMap" parameterType="com.sc.entity.SysUsers">
+  	SELECT * FROM SYS_USERS SU 
+  	LEFT JOIN SYS_USERINFO SUI ON SU.EMP_ID=SUI.EMP_ID
+  	<where>
+  		<if test="usersId==0">
+	  		<if test="usersName!=null">
+	  			AND SU.USERS_NAME LIKE concat(concat('%',#{usersName}),'%')
+	  		</if>
+	  	</if>
+	  	<if test="usersId==1">
+	  		<if test="usersName!=null">
+	  			AND SUI.EMP_NAME LIKE concat(concat('%',#{usersName}),'%')
+	  		</if>
+	  	</if>
+  	</where>
+  </select>
 </mapper>

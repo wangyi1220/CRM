@@ -39,4 +39,33 @@ public class SysUsersRoleServiceImpl implements SysUsersRoleService {
 		return list.get(0);
 	}
 
+	@Override
+	public void deleteByrId(Long rId) {
+		if(rId!=null){
+			SysUsersRoleExample example = new SysUsersRoleExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andRoleIdEqualTo(rId);
+			this.sysUsersRoleMapper.deleteByExample(example);
+		}
+	}
+
+	@Override
+	public List<SysUsersRole> selectByrId(Long rId) {
+		SysUsersRoleExample example = new SysUsersRoleExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andRoleIdEqualTo(rId);
+		List<SysUsersRole> list = this.sysUsersRoleMapper.selectByExample(example);
+		return list;
+	}
+
+	@Override
+	public void deleteByuId(Long uId) {
+		if(uId!=null){
+			SysUsersRoleExample example = new SysUsersRoleExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andUsersIdEqualTo(uId);
+			this.sysUsersRoleMapper.deleteByExample(example);
+		}
+	}
+
 }
