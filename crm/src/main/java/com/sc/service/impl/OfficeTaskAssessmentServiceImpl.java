@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.OfficeKpi;
 import com.sc.entity.OfficeTaskAssessment;
 import com.sc.mapper.OfficeTaskAssessmentMapper;
 import com.sc.service.OfficeTaskAssessmentService;
@@ -68,4 +69,34 @@ public class OfficeTaskAssessmentServiceImpl implements OfficeTaskAssessmentServ
 		
 	}
 
+	@Override
+	public List<OfficeTaskAssessment> selectKpi(String taskKpi) {
+		List<OfficeTaskAssessment> listKpi =this.OfficeTaskAssessmentMapper.selectByKpiKpi(taskKpi);
+		return listKpi;
+	}
+
+	@Override
+	public void updateByCompanyId(OfficeTaskAssessment t) {
+		if(t!=null&&t.getCompanyId()!=null){
+			this.OfficeTaskAssessmentMapper.updateByCompanyId(t);
+		}
+		
+	}
+
+	@Override
+	public void  deleteByCompanyId(BigDecimal CompanyId){
+		if(CompanyId!=null){
+			OfficeTaskAssessment officeKpi = new OfficeTaskAssessment();
+			officeKpi.setCompanyId(CompanyId);
+			System.out.println(CompanyId);
+			this.OfficeTaskAssessmentMapper.deleteByCompanyId(officeKpi);
+		}
+		
+	}
+
+	
+
+	
+	
+	
 }

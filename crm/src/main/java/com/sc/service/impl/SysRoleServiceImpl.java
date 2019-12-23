@@ -166,7 +166,7 @@ public class SysRoleServiceImpl implements SysRoleService {
 			for (SysPowerColumns spc : list) {
 				for (SysPowerinfo spi1 : spc.getSysPowerinfoes()) {
 					for (SysPowerinfo spi2 : role.getSysPowerinfoes()) {
-						System.out.println("此角色的权限id:"+spi2.getPowerId());
+						
 						if(spi1.getPowerId()==spi2.getPowerId()){
 							spi1.setIsHasPower("1");
 						}

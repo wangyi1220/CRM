@@ -49,9 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<button type="button" class="btn btn-w-m btn-primary">返回</button>
             </a>
             <button type="submit" class="btn btn-w-m btn-primary" id="b1">确认添加</button>
+            <br>    <br>
           <c:forEach items="${p }" var="pc">
           <c:if test="${not empty pc.sysPowerinfoes[0].powerName && pc.sysPowerinfoes[0].powerName!=''}">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                          <c:set var="allsum" value="${pc.sysPowerinfoes.size()}"></c:set>
@@ -83,10 +84,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content" style="height: 150px">
+                    <div class="ibox-content">
                         <ul class="unstyled">
                           <c:forEach items="${pc.sysPowerinfoes}" var="pi">
-                            	<li>
+                            	<li   style="margin-left: -20px;">
                             		<input id="checkbox2" type="checkbox" ${pi.isHasPower=='1' ? "checked":"" } 
                             		class="${pc.columnsName }" value="${pi.powerId }" name="pIds" onclick="checkall1(this,'${pc.columnsName }')">
                             		${pi.powerName }

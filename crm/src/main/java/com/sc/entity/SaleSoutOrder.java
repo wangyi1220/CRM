@@ -6,31 +6,31 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleSoutOrder implements Serializable {
-    private Long sorderId;
+    private Long sorderId;//销售单编号
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date sorderDate;
+    private Date sorderDate;//制单日期
 
-    private String invoiceNum;
+    private String invoiceNum;//发票号码
 
-    private Long uid;
+    private Long uid;//用户编号
 
-    private Long cid;
+    private Long cid;//客户编号
 
-    private String samount;
+    private String samount;//销售金额
 
-    private String sstatus;
+    private String sstatus;//销售出库状态
 
-    private String isRebate;
+    private String isRebate;//是否返利
 
-    private String orderStatus;
+    private String orderStatus;//订单状态
 
-    private String note;
+    private String note;//备注信息
 
-    private Long companyId;
+    private Long companyId;//公司编号
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date lastModifyTime;
+    private Date lastModifyTime;//最后修改时间
 
     @Override
 	public String toString() {

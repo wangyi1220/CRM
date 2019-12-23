@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>添加KCGS</title>
+    <title>修改库存仓库信息</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>添加KCGS</h5>
+                        <h5>修改销售详情信息</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -54,106 +54,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="addKCGS.do" target="_self">
-                            
+                        <form method="post" class="form-horizontal" action="update.do" target="_self">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">商品名称</label>
+                                
 
                                 <div class="col-sm-10">
-                                	<!-- /*？=name的属性名字有要求吗 -->
-                                    <input type="text" class="form-control" placeholder="请输入商品名称" name="goodsName">
+                                	<!--可不可以不要隐藏域  -->
+                                    <input type="hidden" class="form-control" value="${sinfo.sorderInfoId}" name="sorderInfoId">
                                 </div>
                             </div>
-                            
-                            <div class="hr-line-dashed"></div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">商品类别</label>
-                                <div class="col-sm-10">                                	
-                                    <input type="text" class="form-control" placeholder="请输入商品类别" name="goodsKinds">
-                                </div>
-                            </div>
-                            
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">规格说明</label>
+                                <label class="col-sm-2 control-label">销售单编号</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入规格说明" name="goodsSpecs">
+                                    <input type="text" class="form-control" value="${sinfo.sorderId}" name="sorderId">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品编号</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="${sinfo.goodsId}" name="goodsId">
                                 </div>
                             </div>
                             
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">单位</label>
+                                <label class="col-sm-2 control-label">商品数量</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入单位" name="unit">
+                                    <input type="text" class="form-control" value="${sinfo.goodsQuantity}" name="goodsQuantity">
                                 </div>
                             </div>
                             
-                            
-                            
-                            <div class="hr-line-dashed"></div>
+                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">仓库编号</label>
+                                <label class="col-sm-2 control-label">商品价格</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入仓库编号" name="cangkuId">
+                                    <input type="text" class="form-control" value="${sinfo.goodsPrice}" name="goodsPrice">
                                 </div>
                             </div>
                             
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">库存数量</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入库存数量" name="kcNum">
-                                </div>
-                            </div>
-                            
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">成本价</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入成本价" name="goodsCost">
-                                </div>
-                            </div>
-                            
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">零售价</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入零售价" name="goodsPrice">
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">经销价</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入经销价" name="goodsSellingPrice">
-                                </div>
-                            </div>
-                            
-                            <div class="hr-line-dashed"></div>
+                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">备注信息</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入备注信息" name="note">
+                                    <input type="text" class="form-control" value="${sinfo.note}" name="note">
                                 </div>
                             </div>
                             
-                            <div class="hr-line-dashed"></div>
+                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">公司编号</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入公司编号" name="companyId">
+                                    <input type="text" class="form-control" value="${sinfo.companyId}" name="companyId">
                                 </div>
                             </div>
                             

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -30,25 +31,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		    
   <div class="container">
         
-        <form action="SysUsersCtrl/userList.do" method="post" target="_self">
+        <form action="SysLogCtrl/selectLog.do" method="post" target="_self">
    		
    			<h2 id="h1" style="font-weight: bolder;">楞头一下</h2>
    			
-   			<select class="chosen-select" style="width:200px;" name="usersId">
-                  <option value="0" hassubinfo="true">按账号搜索</option>
-                  <option value="1" hassubinfo="true">按姓名搜索</option>
-             </select>
+   			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="visitDate" placeholder="按日期搜索">
    			
-   			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="usersName">
+   			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="userId" placeholder="按用户id搜索">
    			
    			<button   type="submit" class="btn btn-primary btn-lg" 
    			 style="width: 100px;height: 30px;
-   			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px;margin-left: 25px" >楞头一下</button>
-   			<a id="printExcel"  target="_self">
-	           	<button   type="button" class="btn btn-primary btn-lg" 
-   			 	style="width: 100px;height: 30px;
-   				border: 1px solid blue;position: absolute;top: 56px;line-height: 10px;margin-left: 150px" >导出excel</button>
-	        </a>
+   			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px" >楞头一下</button>
    		</form>	
    			<div id="div1" style="width: 200px;height: 160px;
    			border: 1px solid red;position:absolute;
@@ -62,29 +55,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr>
 
                                     <th data-toggle="true"><input type="checkbox" id="selectAll" ></th>
-                                    <th>用户序号</th>
-                                    <th>用户账号</th>
-                                    <th>用户姓名</th>
-                                    <th>用户状态</th>
-                                    <th>密码重置</th>
+                                    <th>日志序号</th>
+                                    <th>用户id</th>
+                                    <th>用户登陆ip</th>
+                                    <th>用户操作</th>
+                                    <th>用户操作时间</th>
                                     <th style="text-align: center;">操作</th>
                                     
                                   <!--   <th data-hide="all">日期</th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
-             			<c:forEach items="${u.list}"  var="user">                   
+             			<c:forEach items="${l.list}"  var="log">                   
             					 <tr>
-                   					 <td><input type="checkbox" name="c1" class="c1" value="${user.usersId}"></td>
+                   					 <td><input type="checkbox" name="c1" class="c1" value="${log.logId}"></td>
                     
-                                 	<td> ${user.usersId}</td>
-									<td>${user.usersName} </td>
-				                    <td>${user.sysUserinfo.empName}</td>
-				                    <td>${user.usersState=='0' ? '可用':'禁用'} </td>
-				                    <td><a>重置密码</a></td>
+                                 	<td> ${log.logId}</td>
+									<td>${log.userId} </td>
+				                    <td>${log.visitIp}</td>
+				                    <td>${log.power} </td>
+				                    <td><fmt:formatDate value="${log.visitDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				                    <td style="text-align: center;">
-				                    	<a>编辑</a><i>|</i>
-				                    	<a href="SysUsersCtrl/deleteUser.do?usersId=${user.usersId}" target="_self">删除</a>
+				                    	<a href="SysLogCtrl/deleteLog.do?logId=${log.logId}" target="_self">删除</a>
 				                    </td>
 				                 
                		 </tr>
@@ -95,11 +87,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           			  <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
 	                	  <tr>
 				             <td style="text-align: center;" colspan="8">
-				                <a href="SysUsersCtrl/userList.do?pageNum=${u.firstPage }" target="_self">首页</a>
-				                <a href="SysUsersCtrl/userList.do?pageNum=${u.prePage }" target="_self">上一页</a>
-				                <a href="SysUsersCtrl/userList.do?pageNum=${u.nextPage }" target="_self">下一页</a>
-				                <a href="SysUsersCtrl/userList.do?pageNum=${u.lastPage }" target="_self">尾页</a>
-				                                       当前${u.pageNum }/${u.pages }页，共${u.total }条
+				                <a href="SysLogCtrl/selectLog.do?pageNum=${l.firstPage }" target="_self">首页</a>
+				                <a href="SysLogCtrl/selectLog.do?pageNum=${l.prePage }" target="_self">上一页</a>
+				                <a href="SysLogCtrl/selectLog.do?pageNum=${l.nextPage }" target="_self">下一页</a>
+				                <a href="SysLogCtrl/selectLog.do?pageNum=${l.lastPage }" target="_self">尾页</a>
+				                                       当前${l.pageNum }/${l.pages }页，共${l.total }条
 				             </td>
 				          </tr> 
 			          </table>
@@ -122,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(document).ready(function(){
 		
 		if(${isdel=='yes'}){
-			swal({title:"太帅了",text:"删除用户成功",type:"success"})
+			swal({title:"太帅了",text:"删除日志成功",type:"success"})
 		}
 
 	 //全选
@@ -151,26 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				/* a="caiGouDanCtrl/gysDeleteSelect.do?"+a
 				$("#deleteSelect").attr("href", a)
 				alert($("#deleteSelect").attr("href")) */
-				location.href="SysUsersCtrl/deleteUser.do?"+a;
-				
-		});
-		
-		//打印excel
-		$("#printExcel").click(function(){
-		
-			 var myArr=new Array();
-			 var a=""
-			myArr=$("input[name='c1']")
-			var i
-			for(i=0;i<myArr.length;i++){
-					a+="print="+myArr[i].value+"&";
-			}
-				
-				//alert(a)
-				/* a="caiGouDanCtrl/gysDeleteSelect.do?"+a
-				$("#deleteSelect").attr("href", a)
-				alert($("#deleteSelect").attr("href")) */
-				location.href="SysUsersCtrl/printExcel.do?"+a;
+				location.href="SysLogCtrl/deleteLog.do?"+a;
 				
 		})
 				

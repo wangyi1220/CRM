@@ -3,6 +3,9 @@ package com.sc.controller;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +36,21 @@ public class KCCKController {
 		
 		return mav;
 	}
+	
 	//添加
-	 @RequestMapping("/add.do")
+	 @RequestMapping("/add.do")//去添加
+	 public ModelAndView addofficeKpi(ModelAndView mav){
+		
+		 mav.setViewName("yjs/addKCCKPage");
+		 return mav;
+		 }
+	 
+	 @RequestMapping("/addKCCK.do")//执行添加
 	 public ModelAndView addofficeKpi(ModelAndView mav,KcCangku kcck){
 		kcck.setCangkuLastModifyTime(new Date());
 		 System.out.println("添加考仓库"+kcck);
 		this.kcCangkuService.add(kcck);
-		 mav.setViewName("yjs/addKCCKPage");
+		 mav.setViewName("redirect:listPage.do");
 		 return mav;
 		 }
 	 //删除
@@ -47,7 +58,27 @@ public class KCCKController {
 	public ModelAndView delete(ModelAndView mav, Long kcck){
 		System.out.println("删除仓库！"+kcck);
 		kcCangkuService.delete(kcck);
-		mav.setViewName("redirect:listpage.do");//重定向到list方法
+		mav.setViewName("redirect:listPage.do");//重定向到list方法
+		return mav;
+	}
+	
+	//选中删除
+	@RequestMapping("/kcckDeleteSelect.do")
+	public ModelAndView kcgsDeleteSelect(ModelAndView mav,
+									HttpServletRequest req,
+									HttpServletResponse resp){
+		
+		String[] idsArr = req.getParameterValues("ckid");
+		System.out.println("------进入删除选中1:>"+idsArr.length);
+		for (String gidStr : idsArr) {
+			System.out.println("--------进入删除选中2：>"+gidStr);
+			Long gid = Long.parseLong(gidStr);
+			
+			System.out.println("--------进入删除选中3：>"+gid);
+			kcCangkuService.delete(gid);
+		}
+		
+		mav.setViewName("redirect:listPage.do");
 		return mav;
 	}
 	//修改
@@ -58,12 +89,12 @@ public class KCCKController {
 			mav.setViewName("yjs/updateKCCKPage");
 			return mav;
 		}
-	 @RequestMapping("update.do")
+	 @RequestMapping("/update.do")
 	 public ModelAndView OfficeKpiupdate(ModelAndView mav,KcCangku kcck){
 		 kcck.setCangkuLastModifyTime(new Date());
 		 System.out.println("修改仓库信息"+kcck);
 		this.kcCangkuService.update(kcck);
-		 mav.setViewName("redirect:listpage.do");
+		 mav.setViewName("redirect:listPage.do");
 		 return mav;
 	 }
 	

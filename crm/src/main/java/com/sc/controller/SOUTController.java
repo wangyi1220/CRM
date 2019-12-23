@@ -13,25 +13,26 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.KcCangku;
 import com.sc.entity.KcGoods;
+import com.sc.entity.SaleSoutOrder;
 import com.sc.service.KcGoodsService;
+import com.sc.service.SOutOrderService;
 
 @Controller
-@RequestMapping("/KCGSControllerCtrl")//类的路径
-public class KCGSController {//KCGS--库存商品
-	
+@RequestMapping("/SOUTControllerCtrl")//类的路径
+public class SOUTController {
 	@Autowired
-	KcGoodsService kcGoodsService;
+	SOutOrderService  sOutOrderService;
 	//分页查询--所有
 	@RequestMapping("/listPage.do")
 	public ModelAndView listPage(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="5")Integer pageSize,KcGoods kcgs){
+			@RequestParam(defaultValue="5")Integer pageSize,SaleSoutOrder sout){
 		
-		mav.addObject("p", kcGoodsService.select(pageNum, pageSize,kcgs));
-		//跳转到库存商品信息表页面
-		mav.setViewName("yjs/selectKCGSPage");
+		mav.addObject("p", sOutOrderService.select(pageNum, pageSize,sout));
+		//跳转到销售出库单页面
+		mav.setViewName("yjs/selectSOUTPage");
 		
-		System.out.println("分页--KCGS");
+		System.out.println("分页--SOUT");
 		
 		return mav;
 	}
@@ -39,42 +40,43 @@ public class KCGSController {//KCGS--库存商品
 	    //去添加
 		 @RequestMapping("/add.do")//去页面转一圈
 		 public ModelAndView addofficeKpi(ModelAndView mav){
-			 mav.setViewName("yjs/addKCGSPage");
+			 mav.setViewName("yjs/addSOUTPage");
 			 return mav;
 		 }
 		//真正添加的
-		 @RequestMapping("/addKCGS.do")
-		 public ModelAndView addKCGS(ModelAndView mav,KcGoods kcgs){
-			 kcgs.setLastModifyTime(new Date());
-			 System.out.println("添加库存商品信息"+kcgs);
-			this.kcGoodsService.add(kcgs);
+		 @RequestMapping("/addSOUT.do")
+		 public ModelAndView addKCGS(ModelAndView mav,SaleSoutOrder sout){
+			/* kcgs.setLastModifyTime(new Date());*/
+			 sout.setLastModifyTime(new Date());
+			 System.out.println("添加出库单信息"+sout);
+			this.sOutOrderService.add(sout);
 			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 			 }
 		 
 		 //删除
 		@RequestMapping("/delete.do")
-		public ModelAndView delete(ModelAndView mav, Long kcgs){
-			System.out.println("删除库存商品信息！"+kcgs);
-			this.kcGoodsService.delete(kcgs);
+		public ModelAndView delete(ModelAndView mav, Long soid){//soid--sorderId
+			System.out.println("删除库存商品信息！"+soid);
+			this.sOutOrderService.delete(soid);
 			mav.setViewName("redirect:listPage.do");//重定向到list方法
 			return mav;
 		}
 		
 		//选中删除
-				@RequestMapping("/kcgsDeleteSelect.do")
+				@RequestMapping("/soutDeleteSelect.do")
 				public ModelAndView kcgsDeleteSelect(ModelAndView mav,
 												HttpServletRequest req,
 												HttpServletResponse resp){
 					
-					String[] idsArr = req.getParameterValues("gid");
+					String[] idsArr = req.getParameterValues("soid");
 					System.out.println("------进入删除选中1:>"+idsArr.length);
 					for (String gidStr : idsArr) {
 						System.out.println("--------进入删除选中2：>"+gidStr);
 						Long gid = Long.parseLong(gidStr);
 						
 						System.out.println("--------进入删除选中3：>"+gid);
-						kcGoodsService.delete(gid);
+						sOutOrderService.delete(gid);
 					}
 					
 					mav.setViewName("redirect:listPage.do");
@@ -83,18 +85,18 @@ public class KCGSController {//KCGS--库存商品
 				
 		//修改
 		 @RequestMapping("/goupdate.do")
-		 public ModelAndView goupdate(ModelAndView mav,Long gid ){
+		 public ModelAndView goupdate(ModelAndView mav,Long soid ){
 				System.out.println("进入了goupdate");
-				mav.addObject("kcgs", kcGoodsService.getGsID(gid));
-				mav.setViewName("yjs/updateKCGSPage");
+				mav.addObject("kcgs", sOutOrderService.getSordeID(soid));
+				mav.setViewName("yjs/updateSOUTPage");
 				return mav;
 			}
 		 @RequestMapping("/update.do")
-		 public ModelAndView OfficeKpiupdate(ModelAndView mav,KcGoods kcgs){
+		 public ModelAndView OfficeKpiupdate(ModelAndView mav,SaleSoutOrder sout){
 			/* kcck.setCangkuLastModifyTime(new Date());*/
-			 kcgs.setLastModifyTime(new Date());
-			 System.out.println("修改KCGS信息"+kcgs);
-			this.kcGoodsService.update(kcgs);
+			 sout.setLastModifyTime(new Date());
+			 System.out.println("修改KCGS信息"+sout);
+			this.sOutOrderService.update(sout);
 			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 		 }

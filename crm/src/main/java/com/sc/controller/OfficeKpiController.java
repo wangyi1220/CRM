@@ -41,7 +41,7 @@ public class OfficeKpiController {
 	
 	 @RequestMapping("/listpage.do")
 	   public ModelAndView listpage(ModelAndView mav,@RequestParam(defaultValue="1") Integer pageNum,
-			@RequestParam(defaultValue="5") Integer pageSize){
+			@RequestParam(defaultValue="10") Integer pageSize){
 		System.out.println("----");
 		
 		mav.addObject("p",OfficeKpiService.selectpage(pageNum,pageSize));
@@ -53,8 +53,10 @@ public class OfficeKpiController {
 	
 	 @RequestMapping("/delete.do")
 		public ModelAndView delete(ModelAndView mav,OfficeKpi k){
-			System.out.println("删除考核指标！"+k);
+			System.out.println("删除考核指标！"+k.toString());
 			this.OfficeKpiService.delete(k);
+			
+			this.OfficeTaskAssessmentService.deleteByCompanyId(k.getCompanyId());
 			mav.setViewName("redirect:listpage.do");//重定向到list方法
 			return mav;
 		}
@@ -66,10 +68,14 @@ public class OfficeKpiController {
 			return mav;
 		}
 	 @RequestMapping("OfficeKpiupdate.do")
-	 public ModelAndView OfficeKpiupdate(ModelAndView mav,OfficeKpi kpi){
+	 public ModelAndView OfficeKpiupdate(ModelAndView mav,OfficeKpi kpi,OfficeTaskAssessment t){
 		 kpi.setFinalUpdataTime(new Date());
+		 t.setFinalUpdateTime(kpi.getFinalUpdataTime());
+		 t.setCompanyId(kpi.getCompanyId());
+		 t.setTaskKpi(kpi.getKpiKpi());
 		 System.out.println("修该考核任务"+kpi);
 		this.OfficeKpiService.update(kpi);
+		this.OfficeTaskAssessmentService.updateByCompanyId(t);
 		 mav.setViewName("redirect:listpage.do");
 		 return mav;
 	 }

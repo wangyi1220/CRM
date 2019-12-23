@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="../KCCKControllerCtrl/add.do" target="_self">
+                        <form method="post" class="form-horizontal" action="addKCCK.do" target="_self">
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">仓库名称</label>

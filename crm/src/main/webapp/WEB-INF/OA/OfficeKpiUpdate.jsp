@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal m-t" id="commentForm" action="/">
+                        <form class="form-horizontal m-t" id="commentForm" action="/" target="_self">
                           <c:forEach items="${p.list }" var="k">
                              <div class="form-group">
                                  <label class="col-sm-3 control-label">任务编号：</label>
