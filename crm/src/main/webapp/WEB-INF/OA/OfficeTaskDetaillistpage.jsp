@@ -101,7 +101,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  /
                  <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
                    onclick="return confirm('是否确定删除？')" target="_self">删除</a>
-                   
+                   /
+                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${d.taskDetailId }">
+                                                                             查看详情 
+                    </button>
+                    <div class="modal inmodal fade" id="${d.taskDetailId }" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">详细信息</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           
+                                           <span><ul><li>任务编号：${d.task.taskId} </li></ul></span> 
+                                           <span><ul><li>任务标题： ${d.task.tsakTitle }</li></ul></span>
+                                           <span><ul><li>任务具体内容：${d.task.taskConcreteContent}</li></ul></span>
+                                           <span><ul><li>任务发布人： ${d.task.taskIssuer }</li></ul></span>
+                                           <span><ul><li>考核指标： ${d.task.taskKpi }</li></ul></span>
+                                           <span><ul><li>任务开始时间：${d.task.taskStartTime} </li></ul></span>
+                                           <span><ul><li>任务结束时间：${d.task.taskStopTime} </li></ul></span>
+                                           <span><ul><li>最后修改时间:${d.task.finalUpdateTime}</li></ul></span>
+                                           <span><ul><li>公司编号：${d.task.companyId}</li></ul></span>
+                                           
+                                        </div>
+                                        <div class="modal-footer">
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
             </tr>
          </c:forEach>
           <tr style="font-family:宋体; font-size: 8px;">
@@ -118,14 +147,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
      </div>
     </div>   
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.5"></script>
-    <script src="js/plugins/jeditable/jquery.jeditable.js"></script>
-    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="js/content.min.js?v=1.0.0"></script>
+    </div>
+    <script src="<%=basePath%>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=basePath%>js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="<%=basePath%>js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="<%=basePath%>js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="<%=basePath%>js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="<%=basePath%>js/content.min.js?v=1.0.0"></script>
     <script>
-        $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+        //$(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 
