@@ -312,7 +312,7 @@
     update SALE_SOUT_ORDER
     set SORDER_DATE = #{sorderDate,jdbcType=TIMESTAMP},
       INVOICE_NUM = #{invoiceNum,jdbcType=VARCHAR},
-      UID = #{uid,jdbcType=DECIMAL},
+      "UID" = #{uid,jdbcType=DECIMAL},
       CID = #{cid,jdbcType=DECIMAL},
       SAMOUNT = #{samount,jdbcType=VARCHAR},
       SSTATUS = #{sstatus,jdbcType=VARCHAR},

@@ -109,8 +109,8 @@
 										<td><fmt:formatDate value="${k.lastModifyTime}"
 												pattern="yyyy-MM-dd HH:mm:ss" />
 										</td>
-										<td>
-										<a href="cukugoupdate.do?soid=${k.sorderId }">出库</a>
+										<td><%-- <%=basePath%>sinfoctrl/ --%>
+										<a href="<%=basePath%>SOUTControllerCtrl/cuku.do?soid=${k.sorderId }">出库</a>
 										<a href="<%=basePath%>sinfoctrl/listPage1.do?soid=${k.sorderId }" target="_self">查看详情</a>
 											<a href="delete.do?soid=${k.sorderId}"onclick="return confirm('是否确定删除？')" target="_self">删除</a>
 											</td>

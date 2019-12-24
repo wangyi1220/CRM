@@ -1,6 +1,7 @@
 package com.sc.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.KcCangku;
 import com.sc.entity.KcGoods;
+import com.sc.entity.SaleSinfo;
 import com.sc.entity.SaleSoutOrder;
 import com.sc.service.KcGoodsService;
 import com.sc.service.SInfoService;
@@ -25,6 +27,8 @@ import com.sc.service.SaleService;
 public class SOUTController {
 	@Autowired
 	SOutOrderService  sOutOrderService;
+	@Autowired
+	KcGoodsService  kcGoodsService;
 	@Autowired
 	SInfoService sInfoService;
 	//分页查询--所有
@@ -45,20 +49,36 @@ public class SOUTController {
 	
 	
 	//出库--有问题待解决--还未写完
-	@RequestMapping("/cukugoupdate.do")
-	public ModelAndView cukulistPage(ModelAndView mav,
-			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="5")Integer pageSize,Long soid){
-		
-			PageInfo<SaleSoutOrder> plist = this.sOutOrderService.select2(pageNum, pageSize, soid);
+	@RequestMapping("/cuku.do")
+	public ModelAndView cukulistPage(ModelAndView mav,Long soid){
+		SaleSoutOrder sout = this.sOutOrderService.getSordeID(soid);
+		sout.setOrderStatus("0");//0--已发货
+		sout.setSstatus("0");//0--已发货
+		sOutOrderService.update(sout);
+		List<SaleSinfo> glist = this.sInfoService.getsoidlist(soid);//通过销售编号查询的商品编号小集合
+		System.out.println("sssssssssssssss");
+			for (SaleSinfo g : glist) {
 			
-		//跳转到销售出库单页面
-		mav.setViewName("yjs/selectSOUTPage");
+			KcGoods kc = kcGoodsService.getGsID(g.getGoodsId());//得到对应商品编号的商品对象
+			String kcslstr = kc.getKcNum();//得到库存数量-字符串
+			int kcsl =Integer.parseInt(kcslstr);//转化
+			System.out.println("仓库库存"+kcsl);
+			String cukslstr = g.getGoodsQuantity();//得到出库数量
+			int cuksl = Integer.parseInt(cukslstr);
+			System.out.println("出库数量"+cuksl);
+			System.out.println("得到差值"+(kcsl-cuksl));
+			String cz=Integer.toString(kcsl-cuksl);
+			kc.setKcNum(cz);
+			kcGoodsService.update(kc);
+			
+			
+			}			
+			mav.setViewName("yjs/selectSOUTPage");
+			return mav;
+		}
 		
-		System.out.println("分页--SOUT");
-		
-		return mav;
-	}
+
+
 	
 	 //去添加
 		 @RequestMapping("/add.do")//去页面转一圈
