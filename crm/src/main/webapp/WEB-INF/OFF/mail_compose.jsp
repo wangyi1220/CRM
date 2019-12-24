@@ -42,21 +42,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <h5>文件夹</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
                                 <li>
-                                    <a href="../offmessdetactrl/listpagedeta.do"  target="_self"> <i class="fa fa-inbox "></i> 收件箱 <span class="label label-warning pull-right">16</span>
+                                    <a href="../offmessdetactrl/listpagedeta.do"  target="_self"> <i class="fa fa-inbox "></i> 收件箱 
                                     </a>
                                 </li>
                                 <li>
                                     <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
+                               
+
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-file-text-o"></i> 草稿 <span class="label label-danger pull-right">2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
+                                    <a target="_self" href=""> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
                             </ul>
                       
@@ -68,8 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-9 animated fadeInRight">
                 <div class="mail-box-header">
                     <div class="pull-right tooltip-demo">
-                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="存为草稿"><i class="fa fa-pencil"></i> 存为草稿</a>
-                        <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="放弃"><i class="fa fa-times"></i> 放弃</a>
+                        
                     </div>
                     <h2>
                     	写信
@@ -134,8 +128,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     
                     <div class="mail-body text-right tooltip-demo">
                         <input  class="btn btn-sm btn-primary" type="submit" value="发送">
-                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
-                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a>
+                        <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
+                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a> -->
                     </div>
                     
                 </div>
