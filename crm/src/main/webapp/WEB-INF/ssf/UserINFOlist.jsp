@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                            
                                            <span><ul><li>员工姓名：${info.empName} </li></ul></span> 
                                            <span><ul><li>员工性别：${info.empSex}</li></ul></span>
-                                           <span><ul><li>员工照片<img alt="暂无图片" src="upload/${info.empPhoto }" 
+                                           <span><ul><li>员工照片：<img alt="暂无图片" src="upload/${info.empPhoto }" 
 						                    width="40px" height="40px"></li></ul></span>
                                            <span><ul><li>身份证号：${info.idNumber}</li></ul></span>
                                            <span><ul><li>家乡地址：${info.jiaxiang}</li></ul></span>
@@ -147,8 +147,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </div>
                                               <div>
                                               <input type="hidden" name="empPhoto" value="${info.empPhoto }">
-                                              &emsp;&emsp;&emsp;&emsp;<span>员工照片：<input type="file" name="upload"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                               </div>
+                                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="file" name="upload"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                              </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>身份证号：<input type="text" name="idNumber"  value="${info.idNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
                                               </div>
@@ -199,6 +199,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                                 </c:forEach>
                                 
+                                
+                                
                                 <tr>
                                     <td style="text-align: center;" colspan="10">
                                     <a target="_self" href="SysUsersInfoCtrl/listPage.do?pageNum=${p.firstPage }">首页</a>
@@ -218,7 +220,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                                 </tfoot>
                             </table>
-
+                      <%-- <select name="compID" style="width: 1065.83px;height: 34px;border-radius: 5px;outline: none;">
+                      <c:forEach items="${p.list}" var="info" >
+                      <option value="${info.companyId}">${info.companyId}</option>
+                      </c:forEach>
+                      </select>  --%>
                         </div>
                     </div>
                 </div>
