@@ -120,6 +120,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sc.entity.OfficeTaskAssessment" >
+     <selectKey keyProperty="taskId" resultType="java.math.BigDecimal" order="AFTER">
+      select seq.CURRVAL from dual
+     </selectKey>
     insert into OFFICE_TASK_ASSESSMENT (TASK_ID, TSAK_TITLE, TASK_CONCRETE_CONTENT, 
       TASK_ISSUER, TASK_KPI, TASK_START_TIME, 
       TASK_STOP_TIME, COMPANY_ID, FINAL_UPDATE_TIME
@@ -190,6 +193,16 @@
       </if>
     </trim>
   </insert>
+   <insert id="write" parameterType="com.sc.entity.OfficeTaskAssessment">
+  	
+  insert into OFFICE_TASK_DETAIL (TASK_DETAIL_ID, TASK_ID, TASK_USER_ID, 
+      TASK_ISFINSHED, STATUS, COMPANY_ID, 
+      FINAL_UPDATA_TIME)
+    values (#{taskDetailId,jdbcType=DECIMAL}, #{taskId,jdbcType=DECIMAL}, #{taskUserId,jdbcType=DECIMAL}, 
+      #{taskIsfinshed,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{companyId,jdbcType=DECIMAL}, 
+      #{finalUpdataTime,jdbcType=TIMESTAMP})
+  </insert>
+  
   <select id="countByExample" parameterType="com.sc.entity.OfficeTaskAssessmentExample" resultType="java.lang.Integer" >
     select count(*) from OFFICE_TASK_ASSESSMENT
     <if test="_parameter != null" >
