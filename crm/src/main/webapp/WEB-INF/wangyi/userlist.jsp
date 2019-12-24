@@ -83,8 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                    <td>${user.usersState=='0' ? '可用':'禁用'} </td>
 				                    <td><a>重置密码</a></td>
 				                    <td style="text-align: center;">
-				                    	<a>编辑</a><i>|</i>
-				                    	<a href="SysUsersCtrl/deleteUser.do?usersId=${user.usersId}" target="_self">删除</a>
+				                    	
+				                    	<a href="SysUsersCtrl/deleteUser.do?usersId=${user.usersId}"  target="_self" onclick="return confirm('是否确认删除？')">删除</a>
 				                    </td>
 				                 
                		 </tr>

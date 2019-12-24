@@ -31,9 +31,10 @@ public class SysLogServiceImpl implements SysLogService {
 		PageHelper.startPage(pageNum, pageSize);
 		List<SysLog> list=null;
 		SysLogExample example = new SysLogExample();
+		example.setOrderByClause("VISIT_DATE DESC");
 		Criteria criteria = example.createCriteria();
 		if(log.getUserId()==null&&log.getVisitDate()==null){
-			list=this.sysLogMapper.selectByExample(null);
+			list=this.sysLogMapper.selectByExample(example);
 		}else{
 			if(log.getUserId()!=null){
 				criteria.andUserIdEqualTo(log.getUserId());
@@ -54,6 +55,11 @@ public class SysLogServiceImpl implements SysLogService {
 			this.sysLogMapper.deleteByPrimaryKey(lId);
 		}
 		
+	}
+
+	@Override
+	public void deleteAll() {
+		this.sysLogMapper.deleteByExample(null);
 	}
 
 }

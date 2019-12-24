@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <html lang="en">
 
 <head>
@@ -31,14 +32,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body class="signin">
     <div class="signinpanel">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="signin-info">
                     <div class="logopanel m-b">
-                        <h1 style="color:red">[ 用户无此权限，请联系管理员！  ]</h1>
+                        <h1>[ CRM ]</h1>
                     </div>
                     <div class="m-b"></div>
                     <h4>欢迎使用 <strong>客户关系管理系统</strong></h4>
-                    
+                    <ul class="m-b">
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 本系统包括：用户管理、客户管理、人事管理、事务管理、知识库管理、服务管理、统计报表七个功能模块。另包括权限管理模块用于系统的用户、角色和相关权限，收发邮件功能用于获得客户的详细需求。</li>
+                        
+                    </ul>
                     
                 </div>
             </div>

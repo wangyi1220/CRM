@@ -61,4 +61,11 @@ public class SysLogCtrl {
 		mav.setViewName("redirect:selectLog.do?isdel=yes");
 		return mav;
 	}
+	
+	@RequestMapping("/deleteAll.do")
+	public ModelAndView deleteAll(ModelAndView mav){
+		this.sysLogService.deleteAll();
+		mav.setViewName("redirect:selectLog.do?isdel=yes");
+		return mav;
+	}
 }

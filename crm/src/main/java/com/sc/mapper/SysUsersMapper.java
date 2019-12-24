@@ -37,4 +37,6 @@ public interface SysUsersMapper {
     public List<SysUsers> selectNoRoleUser();
     
     public List<SysUsers> selectUserinfo2(SysUsers user);
+    
+    public SysUsers login(SysUsers su);
 }
