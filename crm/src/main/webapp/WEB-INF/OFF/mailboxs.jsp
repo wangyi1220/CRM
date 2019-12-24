@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath %>css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="<%=basePath %>css/animate.min.css" rel="stylesheet">
     <link href="<%=basePath %>css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <link href="<%=basePath %>css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
 </head>
 
@@ -87,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <a target="_self" href="../offmessdetactrl/listpagedeta.do">
                         <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="
-邮件列表"><i class="fa fa-refresh"></i> 刷新</button></a>
+邮件列表" id="btn1"><i class="fa fa-refresh"></i> 刷新</button></a>
                         
 
 
@@ -116,9 +117,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <tr class="read">
                                 <td class="check-mail">
                                      <button   class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="放入垃圾箱">
-                                     <a target="_self" href="../offmessdetactrl/delete.do?did=${d.detailsid }" οnClick="comfirm('是否删除')" >
+                                     <a id="a1" target="_self" onclick="del(${d.detailsid })"
+                                     href="javascript:;"  >
+                                     <%-- ../offmessdetactrl/delete.do?did=${d.detailsid } --%>
                                      <i class="fa fa-trash-o"></i></a>
                         			</button>
+                        			
+                        			 
+                            
                                 </td>
                                 
                                 <td class="mail-ontact"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.offMess.sender }</a> 
@@ -149,19 +155,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 
 
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.5"></script>
-    <script src="js/content.min.js?v=1.0.0"></script>
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="<%=basePath %>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=basePath %>js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="<%=basePath %>js/content.min.js?v=1.0.0"></script>
+    <script src="<%=basePath %>js/plugins/iCheck/icheck.min.js"></script>
+     <script src="<%=basePath %>js/plugins/sweetalert/sweetalert.min.js"></script>
+   
     <script>
-       
-        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+       //swal({title:"欢迎使用SweetAlert",text:"Sweet Alert 是一个替代传统的 JavaScript Alert 的漂亮提示效果。"})
+      
         
-        /* function delcfm() {
-        if (confirm("确认要删除？")==true) {
-            window.event.returnValue = false;
+        
+        $(document).ready(function(){
+      
+           $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})
+        
+           
+        });
+        
+        function del(did){
+        
+               swal({title:"您确定要删除这条信息吗",
+               		text:"删除后将无法恢复，请谨慎操作！",
+               		type:"warning",
+               		showCancelButton:true,
+               		confirmButtonColor:"#DD6B55",
+               		confirmButtonText:"删除",
+               		closeOnConfirm:false},
+               		function(){
+               		
+			  			$.ajax({
+			  				type: "post",
+			  				url: "../offmessdetactrl/delete.do?did="+did,
+			  				dataType:"json",
+			  				success:function(d){
+			  				    console.log(11111)
+			  					swal({title:"删除成功！",text:"您已经永久删除了这条信息。",type:"success"},function(){
+			  					    $("#btn1").click();
+			  					});
+			  					
+			  				}
+			  			});
+               		    
+               		 }
+               	)
+        
         }
-    } */
+        
+        
         
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>

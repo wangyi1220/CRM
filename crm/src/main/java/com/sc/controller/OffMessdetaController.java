@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,11 +54,20 @@ public class OffMessdetaController {
 	
 	
 	@RequestMapping("/delete.do")
-	public ModelAndView delete(ModelAndView mav,Long did){
+	@ResponseBody
+	public OffMessdeta delete(ModelAndView mav,Long did){
 		System.out.println("删除");
-		this.offMessdetaService.delete(did);
-		mav.setViewName("redirect:listpagedeta.do");//重定向到listpage方法
-		return mav;
+		
+		OffMessdeta vv = offMessdetaService.getbyid(did);
+		System.out.println(vv);
+		vv.setMessstate("垃圾箱");
+		offMessdetaService.update(vv);
+		
+		
+		//this.offMessdetaService.delete(did);
+		//mav.setViewName("redirect:listpagedeta.do");//重定向到listpage方法
+		//return mav;
+		return new OffMessdeta();
      }
 	
 	
@@ -130,5 +140,7 @@ public class OffMessdetaController {
 		mav.setViewName("OFF/mailboxs");// 路径/WEB-INF/OFF/mailbox.jsp
 		return mav;
 	}
+	
+	
 
 }
