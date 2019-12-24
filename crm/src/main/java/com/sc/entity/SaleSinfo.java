@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class SaleSinfo implements Serializable {
     private Long sorderInfoId;//销售单详情编号，代号：sid
 
-    private Long sorderId;//销售单编号
+    private Long sorderId;//销售单编号--soid
 
     private Long goodsId;//商品编号
 

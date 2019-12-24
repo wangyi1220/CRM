@@ -11,17 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.entity.KcCangku;
 import com.sc.entity.KcGoods;
 import com.sc.entity.SaleSoutOrder;
 import com.sc.service.KcGoodsService;
+import com.sc.service.SInfoService;
 import com.sc.service.SOutOrderService;
+import com.sc.service.SaleService;
 
 @Controller
 @RequestMapping("/SOUTControllerCtrl")//类的路径
 public class SOUTController {
 	@Autowired
 	SOutOrderService  sOutOrderService;
+	@Autowired
+	SInfoService sInfoService;
 	//分页查询--所有
 	@RequestMapping("/listPage.do")
 	public ModelAndView listPage(ModelAndView mav,
@@ -37,7 +42,25 @@ public class SOUTController {
 		return mav;
 	}
 	
-	    //去添加
+	
+	
+	//出库--有问题待解决--还未写完
+	@RequestMapping("/cukugoupdate.do")
+	public ModelAndView cukulistPage(ModelAndView mav,
+			@RequestParam(defaultValue="1")Integer pageNum,
+			@RequestParam(defaultValue="5")Integer pageSize,Long soid){
+		
+			PageInfo<SaleSoutOrder> plist = this.sOutOrderService.select2(pageNum, pageSize, soid);
+			
+		//跳转到销售出库单页面
+		mav.setViewName("yjs/selectSOUTPage");
+		
+		System.out.println("分页--SOUT");
+		
+		return mav;
+	}
+	
+	 //去添加
 		 @RequestMapping("/add.do")//去页面转一圈
 		 public ModelAndView addofficeKpi(ModelAndView mav){
 			 mav.setViewName("yjs/addSOUTPage");
@@ -100,7 +123,4 @@ public class SOUTController {
 			 mav.setViewName("redirect:listPage.do");
 			 return mav;
 		 }
-		
-		
-	
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.KcCangku;
-import com.sc.entity.OfficeKpi;
+import com.sc.service.JhCgdxqService;
 import com.sc.service.KcCangkuService;
 
 @Controller
@@ -22,6 +22,8 @@ public class KCCKController {
 	
 	@Autowired
 	KcCangkuService kcCangkuService;
+	@Autowired
+	JhCgdxqService jhCgdxqService;
 	//分页查询
 	@RequestMapping("/listPage.do")
 	public ModelAndView listPage(ModelAndView mav,
@@ -36,6 +38,22 @@ public class KCCKController {
 		
 		return mav;
 	}
+	
+	//采购入库
+		@RequestMapping("/rukulistPage.do")
+		public ModelAndView rukulistPage(ModelAndView mav,
+				@RequestParam(defaultValue="1")Integer pageNum,
+				@RequestParam(defaultValue="10")Integer pageSize,Long cgdId){
+			
+			mav.addObject("p", jhCgdxqService.selectpage(cgdId, pageNum, pageSize));
+					
+			//跳转页面
+			mav.setViewName("yjs/selectRukuPage");
+			
+			System.out.println("分页");
+			
+			return mav;
+		}
 	
 	//添加
 	 @RequestMapping("/add.do")//去添加
@@ -53,7 +71,7 @@ public class KCCKController {
 		 mav.setViewName("redirect:listPage.do");
 		 return mav;
 		 }
-	 //删除
+	 //删除-仓库
 	@RequestMapping("/delete.do")
 	public ModelAndView delete(ModelAndView mav, Long kcck){
 		System.out.println("删除仓库！"+kcck);
@@ -62,7 +80,7 @@ public class KCCKController {
 		return mav;
 	}
 	
-	//选中删除
+	//选中删除--仓库
 	@RequestMapping("/kcckDeleteSelect.do")
 	public ModelAndView kcgsDeleteSelect(ModelAndView mav,
 									HttpServletRequest req,
@@ -81,6 +99,39 @@ public class KCCKController {
 		mav.setViewName("redirect:listPage.do");
 		return mav;
 	}
+	
+	//删除--采购单
+		@RequestMapping("/cgdxqDelete.do")
+		public ModelAndView cgdxqDelete(ModelAndView mav,
+									BigDecimal cgdxqId,
+									Long cgdId){
+			
+			jhCgdxqService.delete(cgdxqId);
+			System.out.println("------------------>采购单详情删除"+cgdxqId);
+			mav.addObject("cgdId", cgdId);
+			mav.setViewName("redirect:cgdxqList.do?");// 路径是：/WEB-INF/userslistpage.jsp
+			return mav;
+		}
+		
+		//删除选中--采购单
+			@RequestMapping("/cgdxqDeleteSelect.do")
+			public ModelAndView cgdxqDeleteSelect(ModelAndView mav,
+												HttpServletRequest req,
+												Long cgdId){
+				
+				String[] idsArr = req.getParameterValues("cgdxqId");
+				System.out.println("------------------>采购单详情选择删除"+idsArr.length);
+				for (String cgdxqIdStr : idsArr) {
+					BigDecimal cgdxqId = new BigDecimal(cgdxqIdStr);
+					System.out.println("-------------->"+cgdxqId);
+					jhCgdxqService.delete(cgdxqId);
+				}
+				System.out.println("cgdid-----------------------"+cgdId);
+				
+				mav.addObject("cgdId", cgdId);
+				mav.setViewName("redirect:cgdxqList.do");// 路径是：/WEB-INF/userslistpage.jsp
+				return mav;
+			}	
 	//修改
 	 @RequestMapping("/goupdate.do")
 	 public ModelAndView goupdate(ModelAndView mav,Long cangkuId ){
