@@ -311,4 +311,9 @@
 	  	</if>
   	</where>
   </select>
+  
+  <select id="login" parameterType="com.sc.entity.SysUsers" resultMap="selectNoRoleUserMap">
+  	SELECT * FROM SYS_USERS SU LEFT JOIN SYS_USERINFO SUI 
+	ON SU.EMP_ID=SUI.EMP_ID WHERE SU.USERS_NAME=#{usersName}
+  </select>
 </mapper>

@@ -13,4 +13,6 @@ public interface SysPowerinfoService {
 	
 	public SysPowerinfo selectBypUrl(String purl);
 	
+	public List<SysPowerinfo> selectAll();
+	
 }

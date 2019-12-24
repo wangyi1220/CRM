@@ -31,6 +31,16 @@ public class OffMessdeta implements Serializable {
 	}
     
     //一对一关联查询end
+	
+	private String  uanme;
+    
+    public String getUanme() {
+		return uanme;
+	}
+
+	public void setUanme(String uanme) {
+		this.uanme = uanme;
+	}
 
    
 

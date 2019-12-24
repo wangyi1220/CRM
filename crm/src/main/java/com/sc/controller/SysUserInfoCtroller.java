@@ -2,6 +2,8 @@ package com.sc.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sc.entity.SysCompanyinfo;
 import com.sc.entity.SysUserinfo;
+import com.sc.service.SysCompanyInfoService;
 import com.sc.service.SysUsersInfoService;
 
 @Controller
@@ -20,12 +24,17 @@ import com.sc.service.SysUsersInfoService;
 public class SysUserInfoCtroller {
 	@Autowired
 	SysUsersInfoService sysUsersInfoService;
+	@Autowired
+	SysCompanyInfoService sysCompanyInfoService;
 
 	@RequestMapping("/listPage.do")
 	public ModelAndView listPage(ModelAndView mav, @RequestParam(defaultValue = "1") Integer pageNum,
-			@RequestParam(defaultValue = "10") Integer pageSize) {
+			@RequestParam(defaultValue = "10") Integer pageSize,String iscg) {
 
 		mav.addObject("p", sysUsersInfoService.select(pageNum, pageSize));
+		if(iscg!=null){
+			mav.addObject("iscg", "yes");
+		}
 		mav.setViewName("ssf/UserINFOlist");
 		System.out.println(sysUsersInfoService.select(pageNum, pageSize));
 
@@ -66,7 +75,7 @@ public class SysUserInfoCtroller {
 				u.setEmpPhoto(filename);
 			}
 		}
-
+		u.setChangDate(new Date());
 		this.sysUsersInfoService.update(u);
 		System.out.println(u);
 		mav.setViewName("redirect:listPage.do");// 重定向到list方法
@@ -83,7 +92,10 @@ public class SysUserInfoCtroller {
 
 	@RequestMapping("/goadd.do")
 	public ModelAndView goadd(ModelAndView mav, SysUserinfo user) {
-
+		System.out.println("开始查询");
+		List<SysCompanyinfo> p = this.sysCompanyInfoService.selectlist();
+		System.out.println("55555555555"+p);
+		mav.addObject("p", p);
 		mav.setViewName("ssf/usersINFOadd");
 		System.out.println("准备添加用户");
 		return mav;
@@ -93,22 +105,25 @@ public class SysUserInfoCtroller {
 	public ModelAndView add(ModelAndView mav, MultipartFile upload, HttpServletRequest req, SysUserinfo u)
 			throws IllegalStateException, IOException {
 		System.out.println("开始添加用户" + u);
+
+		// 如果用户选择文件，那么执行上传代码
 		if (upload != null) {
 			String filename = upload.getOriginalFilename();// 文件名
 			if (filename != null && !filename.equals("")) {
-				String path = req.getServletContext().getRealPath("upload");
-				// 原始文件名
-				String n = upload.getOriginalFilename();
-				// 获取原始文件后缀名
-				String suffix = n.substring(n.lastIndexOf("."));
-				// 构建新的文件名称，形如：系统毫秒数.扩展名
-				String name = System.currentTimeMillis() + suffix;
-				File file = new File(path + "/" + name);
-				System.out.println(path + "/" + name);
-				upload.transferTo(file);
+				// 获取upload文件夹所在路径
+				String path = req.getSession().getServletContext().getRealPath("upload");
+				// 形如：26456456435.jpg
+				filename = System.currentTimeMillis() + filename.substring(filename.lastIndexOf("."));
+				// 目的地文件对象
+				File file = new File(path + "/" + filename);
+				upload.transferTo(file);// 转换存储文件
+
+				// 设置图片名称
 				u.setEmpPhoto(filename);
 			}
+		    u.setChangDate(new Date());
 			sysUsersInfoService.add(u);
+			mav.addObject("iscg", "yes");
 			mav.setViewName("redirect:listPage.do");
 
 		}

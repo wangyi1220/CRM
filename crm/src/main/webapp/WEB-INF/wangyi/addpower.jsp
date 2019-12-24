@@ -54,13 +54,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="../SysPowerinfoCtrl/addPower.do" target="_self">
+                        <form id="form1" method="post" class="form-horizontal" action="../SysPowerinfoCtrl/addPower.do" target="_self">
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">权限名称</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入权限名称" name="powerName">
+                                    <input type="text" class="form-control" placeholder="请输入权限名称" name="powerName" id="i1">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">权限URL</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入权限URL地址" name="powerUrl">
+                                    <input type="text" class="form-control" placeholder="请输入权限URL地址" name="powerUrl"  id="i2">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">权限分栏名</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入权限分栏名" name="columnsName">
+                                    <input type="text" class="form-control" placeholder="请输入权限分栏名" name="columnsName"  id="i3">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">权限资源名</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="请输入权限资源名称" name="powerCode">
+                                    <input type="text" class="form-control" placeholder="请输入权限资源名称" name="powerCode"  id="i4">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -155,7 +155,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     <script>
-        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+        $(document).ready(function(){
+        	$("#form1").submit(function(){
+        		if($("#i1").val()==''){
+        			swal({title:"提交失败",text:"权限名称不能为空"});
+        			return false;
+        		}
+        		if($("#i2").val()==''){
+        			swal({title:"提交失败",text:"权限url不能为空"});
+        			return false;
+        		}
+        		if($("#i3").val()==''){
+        			swal({title:"提交失败",text:"权限分栏名不能为空"});
+        			return false;
+        		}
+        		if($("#i4").val()==''){
+        			swal({title:"提交失败",text:"权限资源名不能为空"});
+        			return false;
+        		}
+        		
+        	})
+        });
     	if(${issuc=='yes'}){
         		swal({title:"太帅了",text:"添加权限成功",type:"success"})
         	}

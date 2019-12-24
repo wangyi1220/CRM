@@ -24,9 +24,23 @@ public class OffMess implements Serializable {
     private List<OffMessdeta> offMessdeta;//在一的一方，配置另外多的集合
     
     
+    private String  uanme;
+    
+    public String getUanme() {
+		return uanme;
+	}
+
+	public void setUanme(String uanme) {
+		this.uanme = uanme;
+	}
+    
 	
 	
 	//一对一关联查询end
+	
+
+	
+
 	
 
 	public List<OffMessdeta> getOffMessdeta() {
