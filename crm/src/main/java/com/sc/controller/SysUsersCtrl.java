@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
@@ -67,11 +68,22 @@ public class SysUsersCtrl {
 	@RequestMapping("/userList.do")
 	public ModelAndView userList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="7")Integer pageSize,SysUsers users,String isdel){
-		
+			@RequestParam(defaultValue="2")Integer pageSize,SysUsers users,String isdel,
+			String isall,HttpServletRequest req){
+		System.out.println("ÊÇ·ñ"+isall);
 		System.out.println(users.getUsersId());
 		System.out.println(users.getUsersName());
-		PageInfo<SysUsers> info = this.sysUsersService.selectUserinfo2(pageNum, pageSize, users);
+		HttpSession session = req.getSession();
+		if(users.getUsersName()!=null||users.getSysUserinfo()!=null){
+			session.setAttribute("seluser", users);
+		}
+		if(isall!=null&&isall.equals("yes?v=4.0")){
+			users.setUsersName(null);
+			users.setSysUserinfo(null);
+			session.setAttribute("seluser", users);
+		}
+		
+		PageInfo<SysUsers> info = this.sysUsersService.selectUserinfo2(pageNum, pageSize,(SysUsers)session.getAttribute("seluser") );
 		if(isdel!=null){
 			mav.addObject("isdel", "yes");
 		}

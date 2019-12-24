@@ -57,4 +57,10 @@ public class SysuserInfoImpl implements SysUsersInfoService {
 			this.sysUserinfoMapper.insert(s);
 	}
 }
+	@Override
+	public List<SysUserinfo> selectlist() {
+		SysUserinfoExample example=new SysUserinfoExample();
+		List<SysUserinfo> list=sysUserinfoMapper.selectByExample(null);
+		return list;
+	}
 }
