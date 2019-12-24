@@ -68,7 +68,7 @@ public class SysUsersCtrl {
 	@RequestMapping("/userList.do")
 	public ModelAndView userList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
-			@RequestParam(defaultValue="2")Integer pageSize,SysUsers users,String isdel,
+			@RequestParam(defaultValue="7")Integer pageSize,SysUsers users,String isdel,
 			String isall,HttpServletRequest req){
 		System.out.println("ÊÇ·ñ"+isall);
 		System.out.println(users.getUsersId());

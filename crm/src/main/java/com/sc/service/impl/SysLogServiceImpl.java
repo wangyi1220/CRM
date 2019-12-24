@@ -2,6 +2,8 @@ package com.sc.service.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysLog;
 import com.sc.entity.SysLogExample;
 import com.sc.entity.SysLogExample.Criteria;
+import com.sc.entity.SysUsers;
 import com.sc.mapper.SysLogMapper;
 import com.sc.service.SysLogService;
 
@@ -18,6 +21,8 @@ public class SysLogServiceImpl implements SysLogService {
 
 	@Autowired
 	SysLogMapper sysLogMapper;
+	@Autowired
+	HttpSession session;
 	
 	@Override
 	public void insert(SysLog log) {
@@ -51,6 +56,8 @@ public class SysLogServiceImpl implements SysLogService {
 
 	@Override
 	public void deleteLog(Long lId) {
+		SysUsers user = (SysUsers)this.session.getAttribute("nowuser");
+		System.out.println("µÇÂ½ÕßÐÅÏ¢£º"+user.toString());
 		if(lId!=null){
 			this.sysLogMapper.deleteByPrimaryKey(lId);
 		}

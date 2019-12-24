@@ -46,19 +46,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="mail-body">
 
-                        <form target="_self" class="form-horizontal" method="get" action="../SysPowerColumnsCtrl/addPowerColumns.do">
+                        <form id="form1" target="_self" class="form-horizontal" method="get" action="../SysPowerColumnsCtrl/addPowerColumns.do">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">权限分栏名：</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="columnsName">
+                                    <input type="text" class="form-control" name="columnsName" id="i1">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">备注信息：</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="remarks">
+                                    <input type="text" class="form-control" name="remarks" id="i2">
                                 </div>
                             </div>
                     </div>
@@ -83,7 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/plugins/summernote/summernote.min.js"></script>
     <script src="<%=basePath%>js/plugins/summernote/summernote-zh-CN.js"></script>
     <script>
-        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$(".click2edit").summernote({focus:true})};var save=function(){var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+        $(document).ready(function(){
+        	$("#form1").submit(function(){
+        		if($("#i1").val()==''){
+        			swal({title:"提交失败",text:"权限分栏名不能为空"});
+        			return false;
+        		}
+        		if($("#i2").val()==''){
+        			swal({title:"提交失败",text:"备注信息不能为空"});
+        			return false;
+        		}
+        	})
+        });
     	if(${issuc=='yes'}){
         		swal({title:"太帅了",text:"添加权限分栏成功",type:"success"})
         	}

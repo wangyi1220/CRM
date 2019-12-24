@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sc.entity.Message;
 import com.sc.entity.SysCompanyinfo;
 import com.sc.entity.SysUsers;
+import com.sc.realm.NotCompanyAuthenticationException;
 import com.sc.service.SysCompanyInfoService;
 
 @Controller
@@ -44,6 +45,8 @@ public class LoginCtrl {
 				fail="error";//密码错误
 			}else if(msg.equals("randomCodeError")){
 				fail="code";//验证码错误
+			}else if(msg.equals(NotCompanyAuthenticationException.class.getName())){
+				fail="notcompany";//验证码错误
 			}else{
 				fail="other";//其他错误
 			}

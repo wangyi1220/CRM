@@ -9,12 +9,10 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sc.entity.SysCompanyinfo;
@@ -66,14 +64,18 @@ public class CustomRealmMD5 extends AuthorizingRealm {
 		SysUsers users = this.sysUsersService.login(user);
 		SysCompanyinfo cinfo = (SysCompanyinfo)session.getAttribute("cinfo");
 		System.out.println("公司主键为："+cinfo.toString());
+		
+		
+		
 		if(users==null){
 			System.out.println("用户不存在！");
 		 	return null;
 			  
 		}
+		
 		if(users.getCompanyId()!=cinfo.getPk()){
 	 		System.out.println("用户非此公司员工");
-	 		return null;
+	 		throw new NotCompanyAuthenticationException("notcompany");
 	 	}
 		
 		System.out.println("用户存在！");
