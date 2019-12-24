@@ -12,6 +12,7 @@ import com.sc.entity.SaleKhcontactsExample;
 import com.sc.entity.SaleKhinfo;
 import com.sc.entity.SaleKhinfoExample;
 import com.sc.entity.SaleKhinfoExample.Criteria;
+import com.sc.entity.SaleKhloss;
 import com.sc.mapper.SaleKhcontactsMapper;
 import com.sc.mapper.SaleKhinfoMapper;
 import com.sc.service.SaleService;
@@ -21,7 +22,7 @@ public class SaleServiceImpl implements SaleService {
     @Autowired
     SaleKhinfoMapper saleKhinfoMapper;
    
-    
+    //客户信息
 	@Override
 	public PageInfo<SaleKhinfo> select(Integer pageNum,Integer pageSize, SaleKhinfo s) {
 		// TODO Auto-generated method stub
@@ -82,6 +83,8 @@ public class SaleServiceImpl implements SaleService {
 		
 	}
     
+	//联系人
+	//
 	@Override
 	public List<SaleKhcontacts>  lxcx(Long id) {
 		SaleKhcontactsExample example = new SaleKhcontactsExample();
@@ -92,6 +95,48 @@ public class SaleServiceImpl implements SaleService {
 			   return this.saleKhcontactsMapper.selectByExample(example);
 			}
 			return null;		
+	}
+
+    //修改
+	@Override
+	public void lxupdate(SaleKhcontacts c) {
+		if(c!=null&&c.getContactId()!=null){
+			this.saleKhcontactsMapper.updateByPrimaryKey(c);
+		}
+	}
+
+
+	@Override
+	public void lxadd(SaleKhcontacts c) {
+		if(c!=null){
+			this.saleKhcontactsMapper.insert(c);
+		}
+	}
+
+
+	@Override
+	public void lxdelete(Long cid) {
+		if(cid!=null){
+			this.saleKhcontactsMapper.deleteByPrimaryKey(cid);
+		}
+		
+	}
+
+
+	@Override
+	public PageInfo<SaleKhinfo> lossselect1(Integer pageNum, Integer pageSize, SaleKhinfo s) {
+		PageHelper.startPage(pageNum, pageSize);
+		SaleKhinfoExample example = new SaleKhinfoExample();
+		Criteria c = example.createCriteria();
+		c.andUserStateEqualTo("暂缓流失");
+		
+		
+		
+			List<SaleKhinfo> list = saleKhinfoMapper.selectByExample(example);
+			PageInfo<SaleKhinfo> pageInfo = new PageInfo<SaleKhinfo>(list);
+			return pageInfo;
+		
+	
 	}
 
 }

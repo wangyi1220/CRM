@@ -51,6 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <a href="Khinfoadd.jsp" target="_self">
                          <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
                          </a>
+                         <button type="button" class="btn btn-w-m btn-primary">总条数：${p.total}</button>
                         <br>
 
                         <div class="ibox-content">
@@ -81,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>${info.userType}</td>
                                     <td><span class="pie">${info.mphone}</span></td>
                                     <td>${info.companyId}</td>
-                                    <td>${info.nextContactTime}</td>
+                                    <td><fmt:formatDate value="${info.nextContactTime}" pattern="yyyy-MM-dd"/></td>
                                     <td>                                    
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${info.userName}">
                                                                              查看详情 
@@ -136,6 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     
                                 <div class="modal inmodal fade" id="${info.userId}" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
+                                
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -145,7 +147,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <div class="modal-body">
                                               <div>
                                               <input type="hidden" name="userId" value="${info.userId}">
-                                              &emsp;&emsp;&emsp;&emsp;<span>客户名称：<input type="text" name="userName"  value="${info.userName}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>客户属性：<input type="text" name="userAttribute"  value="${info.userAttribute}"></span>
+                                              
+                                              &emsp;&emsp;&emsp;&emsp;<span>客户名称：<input type="text" name="userName"  value="${info.userName}" ></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>客户属性：<input type="text" name="userAttribute"  value="${info.userAttribute}"></span>
                                               </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>网&emsp;&emsp;站：<input type="text" name="web"  value="${info.web}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>股票代号：<input type="text" name="stockCode"  value="${info.stockCode}"></span>
@@ -157,7 +160,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               &emsp;&emsp;&emsp;&emsp;<span>员工数：&emsp;<input type="text" name="employeesNumber"  value="${info.employeesNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>行业编码：<input type="text" name="industryId"  value="${info.industryId}"></span>
                                               </div>
                                               <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>客户类型：<input type="text" name="userType"  value="${info.userType}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>客户状态：<input type="text" name="userState"  value="${info.userState}"></span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>客户类型：<input type="text" name="userType"  value="${info.userType}"></span>
+                                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>
+                                                                               客户状态：<select style="width:180px;height:22px" name="userState">
+                                                  <option  value="正在合作">正在合作</option>
+                                                  <option  value="合作终止">合作终止</option>
+                                              </select></span>
                                               </div>
                                                                                             <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>客户来源：<input type="text" name="userSource"  value="${info.userSource}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>固定电话：<input type="text" name="gdphone"  value="${info.gdphone}"></span>
@@ -180,12 +188,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                                             <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>备注信息：<input type="text" name="remarksInfo"  value="${info.remarksInfo}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span>公司编号：<input type="text" name="companyId"  value="${info.companyId}"></span>
                                               </div>
-                                                                                            <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>最后修改时间：<input type="text" name="lastModified"  value="${info.lastModified}"></span>
-                                              </div>
+                                                       
                                         </div>
 
-                                        <div class="modal-footer">
+                                      <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
                                             <button type="submit" class="btn btn-primary">保存</button>
                                         </div>
@@ -195,7 +201,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
 
                                     
-                                    <a href="SalekhinfoController/lxcx.do?name=${info.userName}&id=${info.userId}" target="_self">联系人</a> <a>反馈</a></td>
+                                    <a href="SalekhinfoController/lxcx.do?name=${info.userName}&id=${info.userId}" target="_self">联系人</a> 
+                                    <a href="SalekhlxjlController/fkcx.do?name=${info.userName}&id=${info.userId}" target="_self">反馈</a></td>
                                     
                                 </tr>
                                 </c:forEach>
