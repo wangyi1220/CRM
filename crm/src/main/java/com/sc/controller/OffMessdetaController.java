@@ -26,6 +26,15 @@ public class OffMessdetaController {
 	
 	
 	//模糊查询收件箱
+		@RequestMapping("/richeng.do")
+		public ModelAndView aaa(ModelAndView mav){
+			
+			mav.setViewName("OFF/schedule");// 路径/WEB-INF/userslistpage.jsp
+			return mav;
+		}
+	
+	
+	//模糊查询收件箱
 	@RequestMapping("/sousuod.do")
 	public ModelAndView sousuo(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
@@ -69,7 +78,7 @@ public class OffMessdetaController {
 		return mav;
 	}
 	
-	@RequestMapping("/messlist.do")
+	/*@RequestMapping("/messlist.do")
 	public ModelAndView list(ModelAndView mav){
 		System.out.println("查看用户列表");
 		
@@ -78,7 +87,7 @@ public class OffMessdetaController {
 		mav.addObject("list", list);
 		mav.setViewName("messlist");//路径/WEB-INF/messlist.jsp
 		return mav;
-	}
+	}*/
 	
 	@RequestMapping("/listpage.do")
 	public ModelAndView listpage(ModelAndView mav,

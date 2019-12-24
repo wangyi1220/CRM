@@ -46,15 +46,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li>
                                     <a target="_self" href="../offmessctrl/listpage.do"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
+                                
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-file-text-o"></i> 草稿 <span class="label label-danger pull-right">2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
+                                    <a target="_self" href=""> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
                             </ul>
                            
@@ -121,9 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              <c:forEach items="${p.list }" var="d">
                             <tr class="read">
                                 <td class="check-mail">
-                                     
-                                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件">
-                                     <a target="_self" href="../offmessdetactrl/delete.do?did=${d.detailsid }" >
+                                     <button   class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="放入垃圾箱">
+                                     <a target="_self" href="../offmessdetactrl/delete.do?did=${d.detailsid }" οnClick="comfirm('是否删除')" >
                                      <i class="fa fa-trash-o"></i></a>
                         			</button>
                                 </td>
@@ -151,12 +144,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </div>
+    <script language="javascript">
+    
+</script>
+
+
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>
     <script src="js/content.min.js?v=1.0.0"></script>
     <script src="js/plugins/iCheck/icheck.min.js"></script>
     <script>
+       
         $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+        
+        /* function delcfm() {
+        if (confirm("确认要删除？")==true) {
+            window.event.returnValue = false;
+        }
+    } */
+        
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </li>
                                 
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
+                                    <a target="_self" href="../offmessdetactrl/richeng.do"> <i class="fa fa-trash-o"></i> 个人日程</a>
                                 </li>
                             </ul>
                            
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     
                                 </td>
                                 
-                                <td class="mail-ontact"><a href="mail_detail.html">${m.sender }</a> 
+                                <td class="mail-ontact"><a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">${m.sender }</a> 
                                 </td>
                                 
                                 <td class="mail-subject"><a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">${m.title }</a>
@@ -131,13 +131,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                   <c:forEach items="${m.offMessdeta}" var="d">
                                  ${d.uanme}
                                  </c:forEach> 
-                                 
+                                 <a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">
                                  <%-- <c:forEach items="${u}" var="u">
                                  ${u.usersName}
                                  </c:forEach> --%>
                                  </td>
                                 
                                 <td class="text-right mail-date"><fmt:formatDate value="${m.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <a target="_self" href="../offmessctrl/details.do?mid=${m.messid }">
                                 </td>
                                 
                             </tr>

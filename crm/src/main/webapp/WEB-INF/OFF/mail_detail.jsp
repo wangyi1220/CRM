@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>H+ 后台主题UI框架 - 查看邮件</title>
+    <title>H+ 后台主题UI框架 - 查看收件箱详情</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -44,15 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li>
                                      <a href="../offmessctrl/listpage.do"  target="_self"> <i class="fa fa-envelope-o"></i> 已发送</a>
                                 </li>
+                               
                                 <li>
-                                    <a href="mailbox.html"> <i class="fa fa-certificate"></i> 重要</a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-file-text-o"></i> 草稿 <span class="label label-danger pull-right">2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailbox.html"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
+                                    <a target="_self" href=""> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
                             </ul>
                       
@@ -96,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="mail-body text-right tooltip-demo">
                         <a target="_self" class="btn btn-sm btn-white" href="../offmessdetactrl/listpagedeta.do"><i class="fa fa-reply"></i> 返回</a>
                         
-                        <button title="" data-placement="top" data-toggle="tooltip" data-original-title="删除邮件" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> 删除</button>
+                        
                     </div>
                     <div class="clearfix"></div>
                 </div>
