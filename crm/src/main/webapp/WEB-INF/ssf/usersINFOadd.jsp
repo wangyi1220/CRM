@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </center>
     
          <div class="ibox-content">
-             <form class="form-horizontal m-t" id="commentForm" action="SysUsersInfoCtrl/add.do" method="post" target="_self" enctype="multipart/form-data">                 
+             <form class="form-horizontal m-t" id="commentForm" action="SysUsersInfoCtrl/add.do" method="post" target="_self" enctype="multipart/form-data" onsubmit="return checksize()">                 
                    <div class="form-group">
                         <label class="col-sm-3 control-label">员工姓名：</label>
                         <div class="col-sm-8">
@@ -110,4 +110,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
 </html>
+<script>
+function checksize(){
+var number =document.getElementById("idNumber").value;
+if(number.length!=18){
+    alert("编辑失败！身份证号为十八位，当前位数为："+number.length);
+    return false;
+
+}
+}
+</script>
 

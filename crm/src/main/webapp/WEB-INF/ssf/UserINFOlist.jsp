@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>${info.empSex}</td>
                                     <td>${info.phoneNumber}</td>
                                     <td><span class="pie">${info.postId}</span></td>
-                                    <td>${info.checkState}</td>
+                                    <td>${info.empState}</td>
                                     <td>${info.companyId}</td>
                                     <td>                                    
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${info.empName}">
@@ -136,21 +136,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">编辑界面</h4>
                                         </div>
-                                        <form action="SysUsersInfoCtrl/update.do" method="post" target="_self" enctype="multipart/form-data">
+                                        <center>
+                                        <form action="SysUsersInfoCtrl/update.do" method="post" target="_self" enctype="multipart/form-data" onsubmit="return checksize()">
                                          <div class="modal-body">
                                               <div>
                                               <input type="hidden" name="empId" value="${info.empId}">
-                                              &emsp;&emsp;&emsp;&emsp;<span>员工姓名：<input type="text" name="empName"  value="${info.empName}"></span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>员工姓名：<input type="text" name="empName"  value="${info.empName}">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>性&emsp;&emsp;别：<input type="text" name="empSex"  value="${info.empSex}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
+                                              <br>
                                               <div>
                                               <input type="hidden" name="empPhoto" value="${info.empPhoto }">
-                                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="file" name="upload"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                              <span><input type="file" name="upload"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                               <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>身份证号：<input type="text" name="idNumber"  value="${info.idNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>身份证号：<input type="text" name="idNumber"  id="idNumber" value="${info.idNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
                                               </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>家乡地址：<input type="text" name="jiaxiang"  value="${info.jiaxiang}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
@@ -168,19 +170,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               &emsp;&emsp;&emsp;&emsp;<span>毕业学校：<input type="text" name="graduate"  value="${info.graduate}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
                                               </div>
                                                                                             <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>联系电话：<input type="text" name="phoneNumber" value="${info.phoneNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>联系电话：<input type="text" name="phoneNumber" value="${info.phoneNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span></span>
                                               </div>
                                                                                             <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>网上联系方式：<input type="text" name="onlineContact"  value="${info.onlineContact}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                              </div>
+                                              &emsp;&emsp;<span>网上联系方式：<input type="text" name="onlineContact"  value="${info.onlineContact}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                              
                                               <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>网上联系详情：<input type="text" name="onlineDetail"  value="${info.onlineDetail}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                              &emsp;&emsp;<span>网上联系详情：<input type="text" name="onlineDetail"  value="${info.onlineDetail}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                                                                             <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>审核状态：<input type="text" name="checkState"  value="${info.checkState}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>审核状态：<select type="text" name="checkState"  style="width: 178px;height: 24px;border-radius: 5px;outline: none;}"><option>审核通过</option><option>审核失败</option><option>待审核</option></select></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                                                                             <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span>
+                                             <%--  &emsp;&emsp;&emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span> --%>
                                               </div>
                                         </div>
 
@@ -189,12 +191,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <button type="submit" class="btn btn-primary">保存</button>
                                         </div>
                                         </form>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
 
                                     
-                                    <a target="_self" href="SysUsersInfoCtrl/delete.do?empId=${info.empId}" onclick="return confirm('是否确定删除？')">删除</a> <a>反馈</a></td>
+                                    <a target="_self" href="SysUsersInfoCtrl/delete.do?empId=${info.empId}" onclick="return confirm('是否确定删除？')">删除</a></td>
                                     
                                 </tr>
                                 </c:forEach>
@@ -239,6 +242,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 </html>
 <script>
+function checksize(){
+/* var t=document.getElementById("idNumber");
+document.getElementById("count").innerText=t.value.length+""; */
+var number =document.getElementById("idNumber").value;
+if(number.length!=18){
+    alert("编辑失败！身份证号为十八位，当前位数为："+number.length);
+    return false;
+
+}
+}
+
 $(document).ready(function(){
    if(${iscg=="yes"}){
    swal({title:"太帅了",text:"添加成功",type:"success"})

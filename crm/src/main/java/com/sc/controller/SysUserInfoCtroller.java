@@ -92,7 +92,7 @@ public class SysUserInfoCtroller {
 
 	@RequestMapping("/goadd.do")
 	public ModelAndView goadd(ModelAndView mav, SysUserinfo user) {
-		System.out.println("开始查询！");
+		System.out.println("开始查询");
 		List<SysCompanyinfo> p = this.sysCompanyInfoService.selectlist();
 		System.out.println("55555555555"+p);
 		mav.addObject("p", p);
