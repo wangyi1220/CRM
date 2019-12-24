@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OfficeKpi;
+import com.sc.entity.OfficeTaskAssessment;
 import com.sc.mapper.OfficeKpiMapper;
 import com.sc.service.OfficeKpiService;
 @Service
@@ -65,6 +66,12 @@ public class OfficeKpiServiceImpl implements OfficeKpiService {
 		PageInfo<OfficeKpi> page=new PageInfo<OfficeKpi>(list);
 		return page;
 		
+	}
+
+	@Override
+	public List<OfficeTaskAssessment> toadd() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		
    			<h2 id="h1" style="font-weight: bolder;">楞头一下</h2>
    			
-   			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="visitDate" placeholder="按日期搜索">
+   			
    			
    			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="userId" placeholder="按用户id搜索">
    			

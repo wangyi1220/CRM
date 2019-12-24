@@ -1,19 +1,13 @@
 package com.sc.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sc.entity.OfficeKpi;
@@ -42,7 +36,7 @@ public class OfficeKpiController {
 	 @RequestMapping("/listpage.do")
 	   public ModelAndView listpage(ModelAndView mav,@RequestParam(defaultValue="1") Integer pageNum,
 			@RequestParam(defaultValue="10") Integer pageSize){
-		System.out.println("----");
+		System.out.println("----进入分页");
 		
 		mav.addObject("p",OfficeKpiService.selectpage(pageNum,pageSize));
 		
@@ -86,8 +80,10 @@ public class OfficeKpiController {
 		 t.setCompanyId(k.getCompanyId());
 		 t.setTaskKpi(k.getKpiKpi());
 		  System.out.println("添加考核任务"+k);
+		  System.out.println(t);
 		  this.OfficeKpiService.add(k);
 		  this.OfficeTaskAssessmentService.add(t);
+		  //this.OfficeTaskAssessmentService.toadd();
 		 mav.setViewName("redirect:listpage.do");
 		 return mav;
 		 }

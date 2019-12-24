@@ -20,11 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>css/animate.min.css" rel="stylesheet">
     <link href="<%=basePath%>css/style.min.css" rel="stylesheet">
     <link href="<%=basePath%>css/login.min.css" rel="stylesheet">
+    <link href="<%=basePath%>css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <!--[if lt IE 8]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
     
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
   <script type="text/javascript">
   
   	function lala(img){
@@ -56,6 +58,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				}
   			});
   		});
+  		if(${param.isfail=='unknown'}){
+  			swal({title:"登陆失败",text:"用户名不存在"});
+  		}
+  		if(${param.isfail=='error'}){
+  			swal({title:"登陆失败",text:"密码错误"});
+  		}
+  		if(${param.isfail=='code'}){
+  			swal({title:"登陆失败",text:"验证码错误"});
+  		}
+  		if(${param.isfail=='other'}){
+  			swal({title:"登陆失败",text:"其他错误"});
+  		}
+  		if(${param.isfail=='notcompany'}){
+  			swal({title:"登陆失败",text:"用户非此公司员工"});
+  		}
   	});
   </script>
 

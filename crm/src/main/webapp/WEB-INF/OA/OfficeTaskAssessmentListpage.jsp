@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <i class="fa fa-times"></i>
                             </a>
                             <a class="close-link" href="../OfficeTaskAssessmentController/inaddOfficeTaskAssessment.do" target="_self">
-                                                                                                                                             添加任务
+                            添加任务
                             </a>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th style="font-family:宋体; font-size: 8px;">任务结束时间</th>
                                     <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
                                     <th style="font-family:宋体; font-size: 8px;">公司编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
+                                    <th style="font-family:宋体; font-size: 8px;" colspan="3"><center>操作</center></th>
                                 </tr>
                             </thead>
         <tbody>
@@ -108,23 +108,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  ${T.companyId}
                </td>
                <td style="font-family:宋体; font-size: 8px;">
-                 <a href="<%=basePath %>OfficeTaskDetailController/select.do?taskId=23" target="_self">详情</a>
-                 ||
-                 <a href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId=${T.taskId }"
-                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
-                 ||
-                 <a href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?taskId=${T.taskId }"
-                   onclick="return confirm('是否确定修改？')" target="_self">修改</a>
+                 <button type="button" onclick="return select(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
+                                                 详情
+                    </button>
+                 </td>
+                 <td style="font-family:宋体; font-size: 8px;">
+                 <button type="button" onclick="return deletew(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
+                                                   删除
+                    </button>
+                 </td>
+                 <td style="font-family:宋体; font-size: 8px;">           
+                   <button type="button" onclick="return update(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
+                                                   修改
+                    </button>
                </td>
             </tr>
          </c:forEach>
+            <script type="text/javascript">
+                    function update(e){
+                    if(confirm('是否确定修改？')==true){
+                    location.href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?taskId="+e;
+                      }
+                    };
+                    function deletew(e){
+                    if(confirm('是否确定删除？')==true){
+                       location.href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId="+e;
+                    }
+                    };
+                    function select(e){
+                     location.href="<%=basePath %>OfficeTaskDetailController/select.do?taskId="+e
+          
+                    }
+                    </script>
+                   
          <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="5">
-                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
-                 <td style="text-align: center;" colspan="5">
+                <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.firstPage }" target="_self">首页</a>
+                <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.prePage }" target="_self">上一页</a>
+                <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.nextPage }" target="_self">下一页</a>
+                <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.lastPage }" target="_self">尾页</a></td>
+                 <td style="text-align: center;" colspan="7">
                                        当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>

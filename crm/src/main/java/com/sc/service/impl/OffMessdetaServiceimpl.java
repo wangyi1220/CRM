@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMessdeta;
 import com.sc.mapper.OffMessdetaMapper;
+import com.sc.mapper.SysUsersMapper;
 import com.sc.service.OffMessdetaService;
 
 @Service
@@ -16,6 +17,8 @@ public class OffMessdetaServiceimpl implements OffMessdetaService {
 	
 	@Autowired
 	OffMessdetaMapper  offMessdetaMapper;
+	
+	SysUsersMapper  sysUsersMapper;
 
 	@Override
 	public void add(OffMessdeta md) {
@@ -80,6 +83,9 @@ public class OffMessdetaServiceimpl implements OffMessdetaService {
 
 	@Override
 	public OffMessdeta getbyid(Long did) {
+		OffMessdeta d =new OffMessdeta();
+		d=this.offMessdetaMapper.selectByPrimaryKey(did);
+		
 		return this.offMessdetaMapper.selectByPrimaryKey(did);
 		
 	}

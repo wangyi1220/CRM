@@ -16,13 +16,17 @@ import com.sc.entity.OfficeKpi;
 import com.sc.entity.OfficeTaskAssessment;
 import com.sc.service.OfficeKpiService;
 import com.sc.service.OfficeTaskAssessmentService;
+import com.sc.service.OfficeTaskDetailService;
+import com.sc.entity.OfficeTaskDetail;
 @Controller
 @RequestMapping("/OfficeTaskAssessmentController")
 public class OfficeTaskAssessmentController {
 	  @Autowired 
-	OfficeTaskAssessmentService OfficeTaskAssessmentService;
+	   OfficeTaskAssessmentService OfficeTaskAssessmentService;
 	  @Autowired
 	  OfficeKpiService  officeKpiService;
+	  @Autowired
+	  OfficeTaskDetailService officeTaskDetailService;
     @RequestMapping("/list.do")
     public ModelAndView list(ModelAndView mav){
     	List<OfficeTaskAssessment> list = this.OfficeTaskAssessmentService.select();
@@ -50,14 +54,29 @@ public class OfficeTaskAssessmentController {
     }
     @RequestMapping("/inaddOfficeTaskAssessment.do")
 	public ModelAndView inaddofficeKpi(ModelAndView mav){
+    	List<OfficeKpi> list = officeKpiService.select();
+    	mav.addObject("lhj",list);
 		mav.setViewName("OA/addOfficeTaskAssessment");
 		return mav;
 		}
     @RequestMapping("/add.do")
-    public ModelAndView add(ModelAndView mav,OfficeTaskAssessment t){
-    	System.out.println("添加新的任务"+t);
+    public ModelAndView add(ModelAndView mav,OfficeTaskAssessment t,OfficeTaskDetail d){
+    	
     	t.setFinalUpdateTime(new Date());
+    	
+//    	d.setTaskId(t.getTaskId());
+//    	System.out.println("添加新的任务"+t.getTaskId());
+    	
+    	System.out.println("办公任务最后修改时间"+new Date());
     	this.OfficeTaskAssessmentService.add(t);
+    	System.out.println("获取到新的id为￥￥￥￥￥￥￥￥￥"+t.getTaskId());
+    	d.setTaskId(t.getTaskId());
+    	System.out.println("添加新的任务"+t);
+    	d.setCompanyId(t.getCompanyId());
+    	System.out.println("公司编号"+t.getCompanyId());
+    	d.setFinalUpdataTime(new Date());
+        this.officeTaskDetailService.add(d);
+        System.out.println("添加新的任务"+d);
     	mav.setViewName("redirect:listpage.do");//重定向到list方法
     	return mav;
     }

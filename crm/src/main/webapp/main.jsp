@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>  
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="SysUsersInfoCtrl/goadd.do">用户表单</a>
+                            <li><a class="J_menuItem" href="SysUsersInfoCtrl/listPage.do">用户表单</a>
                             </li>
                             <li><a class="J_menuItem" href="SyDeptCtrl/listPage.do">部门表单</a>
                             </li>
@@ -215,13 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a class="J_menuItem" href="caiGouDanCtrl/cgdList.do">采购单</a></li>
                             <li><a class="J_menuItem" href="xuBuHuoCtrl/xbhList.do">需补货</a></li>
                             
-                            <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             
                         </ul>
                     </li>

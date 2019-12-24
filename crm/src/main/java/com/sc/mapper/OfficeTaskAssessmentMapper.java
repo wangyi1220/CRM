@@ -31,4 +31,5 @@ public interface OfficeTaskAssessmentMapper {
     int updateByPrimaryKey(OfficeTaskAssessment record);
     int  updateByCompanyId(OfficeTaskAssessment record);
     int  deleteByCompanyId(OfficeTaskAssessment record);
+    
 }
