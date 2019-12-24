@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OfficeKpi;
+import com.sc.entity.OfficeTaskAssessment;
 
 
 public interface OfficeKpiService {
@@ -22,8 +23,10 @@ public interface OfficeKpiService {
 	    
 	    
 	    public List <OfficeKpi> select();
-
-	   
+	    
+	    public List <OfficeTaskAssessment> toadd();
+	    
+	    
 	    public OfficeKpi login(OfficeKpi u);
 	    
 	    public PageInfo <OfficeKpi> selectpage(Integer pageNum,Integer pageSize);

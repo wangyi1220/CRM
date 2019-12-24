@@ -52,4 +52,10 @@ public class SysPowerinfoServiceImpl implements SysPowerinfoService {
 		
 	}
 
+	@Override
+	public List<SysPowerinfo> selectAll() {
+		List<SysPowerinfo> list = this.sysPowerinfoMapper.selectByExample(null);
+		return list;
+	}
+
 }

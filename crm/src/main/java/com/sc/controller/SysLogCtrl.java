@@ -30,8 +30,11 @@ public class SysLogCtrl {
 			session.setAttribute("logExample", log);
 		}
 		if(isall!=null&&isall.equals("yes?v=4.0")){
+			log.setUserId(null);
+			log.setVisitDate(null);
+			session.setAttribute("logExample", log);
 			System.out.println("全部");
-			info = this.sysLogService.selectPage(pageNum, pageSize, log);
+			info = this.sysLogService.selectPage(pageNum, pageSize, (SysLog)session.getAttribute("logExample"));
 		}else{
 			System.out.println("部分");
 			info = this.sysLogService.selectPage(pageNum, pageSize, (SysLog)session.getAttribute("logExample"));
@@ -55,6 +58,13 @@ public class SysLogCtrl {
 			}
 		}
 		
+		mav.setViewName("redirect:selectLog.do?isdel=yes");
+		return mav;
+	}
+	
+	@RequestMapping("/deleteAll.do")
+	public ModelAndView deleteAll(ModelAndView mav){
+		this.sysLogService.deleteAll();
 		mav.setViewName("redirect:selectLog.do?isdel=yes");
 		return mav;
 	}

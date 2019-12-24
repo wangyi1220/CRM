@@ -43,11 +43,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs"><strong class="font-bold">${nowuser.usersName }</strong></span>
+                                <span class="text-muted text-xs block">${cinfo.companyName }公司<b class="caret"></b></span>
                                 </span>
                             </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <!-- <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a class="J_menuItem" href="form_avatar.html">修改头像</a>
                                 </li>
                                 <li><a class="J_menuItem" href="profile.html">个人资料</a>
@@ -57,9 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li><a class="J_menuItem" href="mailbox.html">信箱</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
+                                <li><a href="logout.do" onclick="return confirm('是否确认退出？')">安全退出</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                    
                         </div>
                         <div class="logo-element">H+
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>
                                 <a href="#">用户管理<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do">用户列表</a>
+                                    <li><a class="J_menuItem" href="SysUsersCtrl/userList.do?isall=yes">用户列表</a>
                                     </li>
                                 </ul>
                             </li>
@@ -109,14 +109,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li>  
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">人事管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">用户表单</a>
+                            <li><a class="J_menuItem" href="SysUsersInfoCtrl/listPage.do">用户表单</a>
                             </li>
-                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">部门表单</a>
+                            <li><a class="J_menuItem" href="SyDeptCtrl/listPage.do">部门表单</a>
                             </li>
-                                                        <li><a class="J_menuItem" href="SysUsersCtrl/listPage.do">。。表单</a>
+                            <li><a class="J_menuItem" href="SysPostCtrl/listPage.do">职务信息表单</a>
                             </li>
-                            <li>
-                            
+                            <li><a class="J_menuItem" href="SysCompanyInfoCtrl/listPage.do">公司信息表</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -172,7 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="offmessctrl/listpage.do">短消息</a>
                             </li>
-                            
+                            <li><a class="J_menuItem" href="offmessdetactrl/richeng.do">个人日程</a>
+                            </li>
                             <li>
                                 <a href="#">办公考核 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
@@ -214,13 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a class="J_menuItem" href="caiGouDanCtrl/cgdList.do">采购单</a></li>
                             <li><a class="J_menuItem" href="xuBuHuoCtrl/xbhList.do">需补货</a></li>
                             
-                            <li>
-                                <a href="#">文件上传 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             
                         </ul>
                     </li>
@@ -241,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </button>
                 <nav class="page-tabs J_menuTabs">
                     <div class="page-tabs-content">
-                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                        <a href="javascript:;" class="active J_menuTab" data-id="mson.jsp">首页</a>
                     </div>
                 </nav>
                 <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
@@ -252,10 +247,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </button>
                     
                 </div>
-                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="logout.do" class="roll-nav roll-right J_tabExit" onclick="return confirm('是否确认退出？')"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v2.html?v=4.0" frameborder="0" data-id="index_v2.html" seamless></iframe>
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="mson.jsp" frameborder="0" data-id="mson.jsp" seamless></iframe>
             </div>
             
         </div>
