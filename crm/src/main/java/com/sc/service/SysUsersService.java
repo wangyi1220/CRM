@@ -11,7 +11,7 @@ public interface SysUsersService {
 	//¸Ä
 	public void update(SysUsers s);
 	
-	public SysUsers selectPower();
+	public SysUsers selectPower(SysUsers s);
 	
 	public SysUsers selectRole(Long uId);
 	

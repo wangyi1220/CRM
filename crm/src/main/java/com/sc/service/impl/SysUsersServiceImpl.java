@@ -42,13 +42,13 @@ public class SysUsersServiceImpl implements SysUsersService {
 }
 
 	@Override
-	public SysUsers selectPower() {
+	public SysUsers selectPower(SysUsers s) {
 		
-		
-			SysUsers sysUsers = new SysUsers();
-			sysUsers.setUsersId(61L);
-			SysUsers users = this.sysUsersMapper.selectPower(sysUsers);
-			return users;
+			if(s!=null){
+				SysUsers users = this.sysUsersMapper.selectPower(s);
+				return users;
+			}
+			return null;
 		
 	}
 
@@ -97,11 +97,9 @@ public class SysUsersServiceImpl implements SysUsersService {
 	@Override
 	public SysUsers login(SysUsers user) {
 		if(user!=null){
-			SysUsersExample example = new SysUsersExample();
-			Criteria criteria = example.createCriteria();
-			criteria.andUsersNameEqualTo(user.getUsersName());
-			List<SysUsers> list = this.sysUsersMapper.selectByExample(example);
-			return list.get(0);
+			
+			SysUsers users = this.sysUsersMapper.login(user);
+			return users;
 		}else{
 			return null;
 		}

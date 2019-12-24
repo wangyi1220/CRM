@@ -26,6 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript">
+  
+  	function lala(img){
+		img.src="validatecode.jsp?t="+new Date().getTime();
+	}	
+  
   	$(function(){
   		$("#cId").blur(function(e) {
   			var pk=$(this).val();

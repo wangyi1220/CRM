@@ -16,15 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.sc.entity.SysPowerinfo;
 import com.sc.realm.CustomFormAuthenticationFilter;
 import com.sc.realm.CustomRealmMD5;
+import com.sc.service.SysPowerinfoService;
 
 
 @Configuration	//shiro配置类
 public class ShiroConfig {
 	
 	@Autowired
-	/*SysPermissionService sysPermissionService;*/
+	SysPowerinfoService sysPowerinfoService;
 	
 	@Bean
 	public CustomRealmMD5 customRealmMD5(){
@@ -81,6 +83,7 @@ public class ShiroConfig {
 		filterMap.put("/upload/**", "anon");
 		filterMap.put("/login.jsp", "anon");
 		filterMap.put("/main.jsp", "anon");
+		filterMap.put("/mson.jsp", "anon");
 		filterMap.put("/validatecode.jsp", "anon");
 		
 		filterMap.put("/zhuce.jsp", "anon");
@@ -93,16 +96,16 @@ public class ShiroConfig {
 		filterMap.put("/test/test1.do", "anon");
 		
 		//设置权限
-		/*List<SysPermission> list = this.sysPermissionService.getallpermission();*/
-		/*if(list!=null&&list.size()>0){
-			for (SysPermission sp : list) {
-				String url = sp.getUrl();
-				String code = sp.getPercode();
+		List<SysPowerinfo> list = this.sysPowerinfoService.selectAll();
+		if(list!=null&&list.size()>0){
+			for (SysPowerinfo sp : list) {
+				String url = sp.getPowerUrl();
+				String code = sp.getPowerCode();
 				if(url!=null&&!url.equals("")&&code!=null&&!code.equals("")){
 					filterMap.put(url, "perms["+code+"]");
 				}
 			}
-		}*/
+		}
 		
 		filterMap.put("/**", "authc");
 		shiroFilter.setFilterChainDefinitionMap(filterMap);

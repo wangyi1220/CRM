@@ -42,6 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<button   type="submit" class="btn btn-primary btn-lg" 
    			 style="width: 100px;height: 30px;
    			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px" >楞头一下</button>
+   			<a href="SysLogCtrl/deleteAll.do" target="_self" onclick="return confirm('是否确认清空日志')">
+            	<button type="button" class="btn btn-w-m btn-primary" style="margin-left: 200px">清空日志</button>
+            </a>
    		</form>	
    			<div id="div1" style="width: 200px;height: 160px;
    			border: 1px solid red;position:absolute;
@@ -76,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                    <td>${log.power} </td>
 				                    <td><fmt:formatDate value="${log.visitDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				                    <td style="text-align: center;">
-				                    	<a href="SysLogCtrl/deleteLog.do?logId=${log.logId}" target="_self">删除</a>
+				                    	<a href="SysLogCtrl/deleteLog.do?logId=${log.logId}" target="_self" onclick="return confirm('是否确认删除')">删除</a>
 				                    </td>
 				                 
                		 </tr>

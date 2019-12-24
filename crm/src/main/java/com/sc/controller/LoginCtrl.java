@@ -60,9 +60,9 @@ public class LoginCtrl {
 		System.out.println("用户认证成功");
 		//获取主体
 		Subject sub = SecurityUtils.getSubject();
-		String usersName=(String) sub.getPrincipal();
-		System.out.println("主题是"+usersName);
-		/*session.setAttribute("nowuser", sysUsers);*/
+		SysUsers user=(SysUsers) sub.getPrincipal();
+		System.out.println("主题是"+user.toString());
+		session.setAttribute("nowuser", user);
 		mav.setViewName("redirect:../main.jsp");
 		
 		return mav;
@@ -79,7 +79,7 @@ public class LoginCtrl {
 		Message msg=null;
 		SysCompanyinfo companyinfo = this.sysCompanyInfoService.get(sci.getPk());
 		if(companyinfo!=null){
-			session.setAttribute("cid", companyinfo.getPk());
+			session.setAttribute("cinfo", companyinfo);
 			msg=new Message("200", "no", "公司代码存在");
 		}else{
 			msg=new Message("100", "yes", "公司代码不存在");
