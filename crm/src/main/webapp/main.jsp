@@ -40,10 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                            <span><img alt="image" class="img-circle" src="upload/${nowuser.sysUserinfo.empPhoto }" style="height: 80px;width: 80px"/></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">${nowuser.usersName }</strong></span>
+                               <span class="block m-t-xs"><strong class="font-bold">你好：${nowuser.usersName }</strong></span>
                                 <span class="text-muted text-xs block">${cinfo.companyName }公司<b class="caret"></b></span>
                                 </span>
                             </a>
@@ -123,43 +123,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">库存管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">仓库信息<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="KCCKControllerCtrl/add.do">添加仓库信息</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">查寻仓库信息</a>
+                                <a href="#">库存_仓库<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">                                   
+                                    <li><a class="J_menuItem" href="KCCKControllerCtrl/listPage.do">仓库信息</a>
                                     </li>
                                 </ul>
                             </li>
                              
                             <li>
-                                <a href="#">仓库商品信息<span class="fa arrow"></span></a>
+                                <a href="#">库存_商品信息<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="KCGSControllerCtrl/add.do">添加仓库商品信息</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="KCGSControllerCtrl/listPage.do">查寻仓库商品信息</a>
+                                   
+                                    <li><a class="J_menuItem" href="KCGSControllerCtrl/listPage.do">仓库商品信息</a>
                                     </li>
                                 </ul>
                             </li>
                             
-                              
                             <li>
-                                <a href="#">销售详情信息<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="sinfoctrl/add.do">添加销售详情信息</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="sinfoctrl/listPage.do">查询销售详情</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                <a href="cgdXqCtrl/cgdxqList.do">采购_出库<span class="fa arrow"></span></a>
+                               
+                            </li>  
                             
                               
                             <li>
-                                <a href="#">销售出库管理<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="SOUTControllerCtrl/add.do">添加仓库商品信息</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="SOUTControllerCtrl/listPage.do">查寻仓库商品信息</a>
+                                <a href="#">销售_出库单<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">                                    
+                                    <li><a class="J_menuItem" href="SOUTControllerCtrl/listPage.do">销售_出库单</a>
                                     </li>
                                 </ul>
                             </li>
