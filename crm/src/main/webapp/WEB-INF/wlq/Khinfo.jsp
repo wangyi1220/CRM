@@ -52,6 +52,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
                          </a>
                          <button type="button" class="btn btn-w-m btn-primary">总条数：${p.total}</button>
+                         <a href="SalekhinfoController/list.do" target="_self">
+                         <button type="button" class="btn btn-w-m btn-primary">返回上一级</button>
+                         </a>
                         <br>
 
                         <div class="ibox-content">
