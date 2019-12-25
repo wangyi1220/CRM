@@ -1,6 +1,7 @@
 package com.sc.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,27 +48,22 @@ public class OffMessController {
 			System.out.println("主"+x+"\n");
 			System.out.println("jian"+x.getMessid());
 			System.out.println("副"+offMessService.selectdeta1(x.getMessid())+"\n");
-			x.setOffMessdeta(offMessService.sousuod(x.getMessid()));
-			
+			x.setOffMessdeta(offMessService.sousuod(x.getMessid()));	
 		}
 		//查询list集合分页
 		mav.addObject("p", dd);
-		
-		
 		mav.setViewName("OFF/mailbox");// 路径/WEB-INF/userslistpage.jsp
 		return mav;
 	}
 	
-	
-	
-	//回复邮件
+	/*//回复邮件
 	@RequestMapping("/reply.do")
 	public ModelAndView reply(ModelAndView mav,String sender){
 		System.out.println("跳到回复页面！"+sender);
 		mav.addObject("sender", sender);
 		mav.setViewName("OFF/reply");
 		return mav;
-	}
+	}*/
 	
 	//查看消息详情
 		@RequestMapping("/details.do")
@@ -76,13 +72,10 @@ public class OffMessController {
 			List<OffMess> list = offMessService.mdetail(mid);
 			for (OffMess m : list) {
 				System.out.println(m.getOffMessdeta());
-					
-
 			}
 			
 			mav.addObject("list", list);
 			mav.setViewName("OFF/m_detail");
-			
 			return mav;
 		}
 	
@@ -93,19 +86,21 @@ public class OffMessController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="5")Integer pageSize){
 		System.out.println("进入短消息控制器方法");
-		
 		PageInfo<OffMess> dd = offMessService.selectdeta(pageNum, pageSize,"花花");
 		
+		List<Long> reid=new ArrayList();
+		
 		for (OffMess x : dd.getList()) {
-			System.out.println("主"+x+"\n");
+			/*System.out.println("主"+x+"\n");
 			System.out.println("jian"+x.getMessid());
-			System.out.println("副"+offMessService.selectdeta1(x.getMessid())+"\n");
+			System.out.println("副"+offMessService.selectdeta1(x.getMessid())+"\n");*/
 			x.setOffMessdeta(offMessService.selectdeta1(x.getMessid()));
 			
+			
+			
 		}
-		//查询list集合分页
-		mav.addObject("p", dd);
 		
+		mav.addObject("p", dd);
 		
 		mav.setViewName("OFF/mailbox");// 路径/WEB-INF/userslistpage.jsp
 		return mav;
@@ -115,27 +110,24 @@ public class OffMessController {
 	
 	@RequestMapping("/goadd.do")
 	public ModelAndView goadd(ModelAndView mav){
-		
 		List<SysUsers> users=this.sysUsersService.selectAllNOSelf(5L);
 		mav.addObject("users", users);
 		
 		 for (SysUsers u : users) {
 					System.out.println(u);
 			}
-
 		mav.setViewName("OFF/mail_compose");
 		return mav;
 	}
+	
 	
 	@RequestMapping("/add.do")
 	public ModelAndView add(ModelAndView mav,MultipartFile upload,HttpServletRequest req,
 			OffMess m,Long [] sid) throws IllegalStateException, IOException{
 		System.out.println("开始发送短消息"+m);
 		m.setLasttime(new Date());
-		
 		m.setSender("花花");
 		this.offMessService.write(m);
-		
 		for (Long id : sid) {
 			System.out.println(id+" 接收者编号");
 			OffMessdeta deta = new OffMessdeta();
@@ -144,9 +136,7 @@ public class OffMessController {
 			deta.setMessstate("未查看");
 	        deta.setLasttime(new Date());
 	        offMessdetaService.add(deta);
-			
 		}
-		
 		mav.setViewName("redirect:listpage.do");//重定向到listpage方法
 		return mav;
 	}

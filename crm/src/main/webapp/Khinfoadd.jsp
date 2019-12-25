@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!--日期格式化  -->
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	
+
 	<link rel="shortcut icon" href="favicon.ico"> 
 	<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -44,10 +46,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">客户属性：</label>
-                        <div class="col-sm-8">
-                            <input  name="userAttribute" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
-                        </div>
+                                <label class="col-sm-3 control-label">客户属性：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control m-b" name="userAttribute">
+                                        <option  value="民营企业">民营企业</option>
+                                        <option  value="国营企业">民营企业</option>
+                                    </select>
+                              </div>   
                     </div>
                   
                     <div class="form-group">
@@ -93,11 +98,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">客户状态：</label>
-                        <div class="col-sm-8">
-                            <input id="userState" name="userState" class="form-control">
-                        </div>
+                                <label class="col-sm-3 control-label">客户状态：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control m-b" name="userState">
+                                        <option  value="正在合作">正在合作</option>
+                                        <option  value="合作终止">合作终止</option>
+                                    </select>
+                              </div>   
                     </div>
+                   
                     <div class="form-group">
                         <label class="col-sm-3 control-label">客户来源：</label>
                         <div class="col-sm-8">
@@ -123,11 +132,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">开户银行：</label>
-                        <div class="col-sm-8">
-                            <input id="depositBank" name="depositBank" class="form-control">
-                        </div>
+                                <label class="col-sm-3 control-label">开户银行：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control m-b" name="depositBank">
+                                        <option  value="农业银行">农业银行</option>
+                                        <option  value="建设银行">建设银行</option>
+                                        <option  value="工商银行">工商银行</option>
+                                        
+                                    </select>
+                              </div>   
                     </div>
+                    
                     <div class="form-group">
                         <label class="col-sm-3 control-label">银行账户：</label>
                         <div class="col-sm-8">
@@ -137,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="form-group">
                         <label class="col-sm-3 control-label">下次联系时间：</label>
                         <div class="col-sm-8">
-                            <input id="nextContactTime" name="nextContactTime" class="form-control">
+                            <input type="text" class="form-control" name="nextContactTime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,12 +167,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <input id="sicCode" name="sicCode" class="form-control">
                         </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">支付方式：</label>
-                        <div class="col-sm-8">
-                            <input id="payMethod" name="payMethod" class="form-control">
-                        </div>
+                                <label class="col-sm-3 control-label">支付方式：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control m-b" name="payMethod">
+                                        <option  value="支付宝">支付宝</option>
+                                        <option  value="微信">微信</option>
+                                        <option  value="银行转账">银行转账</option>
+                                        
+                                    </select>
+                              </div>   
                     </div>
+                    
                     <div class="form-group">
                         <label class="col-sm-3 control-label">是否有效：</label>
                         <div class="col-sm-8">
@@ -182,12 +204,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <input id="companyId" name="companyId" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">最后修改时间：</label>
-                        <div class="col-sm-8">
-                            <input id="lastModified" name="lastModified" class="form-control">
-                        </div>
-                    </div>
                                         
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-3">
@@ -208,4 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
 </html>
+    <script>
+        $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+    </script>
 

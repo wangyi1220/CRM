@@ -64,7 +64,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务标题</td><td><input type="text" name="tsakTitle" style="width:100%"></td></tr>
                                     <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务具体内容</td><td><textarea name="taskConcreteContent" style="width:100%"> </textarea></td></tr>
                                    <tr style="font-family:宋体; font-size: 8px;"><td  style="font-family:宋体; font-size: 8px;">任务发布人</td><td><input type="text" name="taskIssuer" style="width:100%"></td></tr>
-                                    <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务考核指标</td><td><input type="text" name="taskKpi" style="width:100%"></td></tr>
+                                    <tr style="font-family:宋体; font-size: 8px;">
+                                    <td style="font-family:宋体; font-size: 8px;">
+                                    任务考核指标
+                                    </td>
+                                    <td>
+                                    <!-- <input type="text" name="taskKpi" style="width:100%"> -->
+                                    <select name="taskKpi" style="width:100%;height: 23px;">
+                                     <c:forEach items="${lhj}" var="k">
+                                    <option value="${k.kpiKpi}">${k.kpiKpi}</option>
+                                    </c:forEach>
+                                    </select>
+                                    </td>
+                                    </tr>
                                     <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;">任务开始时间</td><td><input name="taskStartTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
                                     
                                     

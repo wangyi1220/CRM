@@ -56,7 +56,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="ibox-content">
+					<!-- <div class="ibox-content">
 					<form action="listPage.do" method="post" target="_self">
 					<input type="text" id="t1" name="sorderInfoId" 
 						placeholder="请输入销售单详情编号，或销售单编号，或商品编号" style=" width: 450px;
@@ -68,7 +68,9 @@
 		   			</form>
 		   			<br>
 		   			<h2><a href="add.do" target="_self">添加</a></h2>
-		   			<br>
+		   			<br> -->
+		   			
+		   			<h2><a href="add.do" target="_self">添加</a></h2> 
 		   			<h2><a id="deleteSelect" target="_self">删除选中</a></h2> 
 
 						<table class="footable table table-stripped toggle-arrow-tiny"
@@ -99,12 +101,14 @@
 										<td>${k.note}</td>
 										<td>${k.companyId}</td>
 										<td>${k.lastModifyTime}</td>
-										<td><fmt:formatDate value="${k.lastModifyTime}"
-												pattern="yyyy-MM-dd HH:mm:ss" />
+										<td>
+										<fmt:formatDate value="${k.lastModifyTime}"
+											pattern="yyyy-MM-dd HH:mm:ss" />
 										</td>
-										<td><a href="goupdate.do?sid=${k.sorderInfoId }">修改</a>
-											/ <a
-											href="delete.do?sid=${k.sorderInfoId}"onclick="return confirm('是否确定删除？')">删除</a>
+										<td>										
+										<a href="goupdate.do?sid=${k.sorderInfoId }" target="_self">修改</a>
+										<a href="delete.do?sid=${k.sorderInfoId}"onclick="return confirm('是否确定删除？')" target="_self">删除</a>
+											
 											</td>
 											</tr>
 								</c:forEach>

@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th style="font-family:宋体; font-size: 8px;">状态</th>
                                     <th style="font-family:宋体; font-size: 8px;">公司编号</th>
                                     <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
+                                    <th style="font-family:宋体; font-size: 8px;" colspan="3"><center>操作</center></th>
                                 </tr>
                             </thead>
         <tbody>
@@ -97,14 +97,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </td>
                
                <td style="font-family:宋体; font-size: 8px;">
-                 <a href="<%=basePath %>OfficeTaskDetailController/goupdate.do?taskDetailId=${d.taskDetailId }" target="_self">修改</a>
-                 /
-                 <a href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId=${d.taskDetailId }"
-                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
-                   /
+                  <center><button type="button" class="btn btn-primary" data-toggle="modal" onclick="return update(${d.taskDetailId })">
+                                                                             修改 
+                    </button></center>
+                 </td>
+                   <td>                              
+                   <center>
+                     <button type="button" class="btn btn-primary" onclick="return deletw(${d.taskDetailId })" data-toggle="modal" >
+                                                                                                      删除
+                    </button>
+                    </center>
+                   </td>
+                   <td>
+                   <center>
                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${d.taskDetailId }">
                                                                              查看详情 
                     </button>
+                    </center>
+                    </td>
                     <div class="modal inmodal fade" id="${d.taskDetailId }" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
@@ -135,11 +145,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </c:forEach>
           <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="4">
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
-               <td style="text-align: center;" colspan="4">当前${p.pageNum }/${p.pages }页，共${p.total }条
+                <a href="<%=basePath %>OfficeTaskDetailController/listpage.do?pageNum=${p.firstPage }" target="_self">首页</a>
+                <a href="<%=basePath %>OfficeTaskDetailController/listpage.do?pageNum=${p.prePage }" target="_self">上一页</a>
+                <a href="<%=basePath %>OfficeTaskDetailController/listpage.do?pageNum=${p.nextPage }" target="_self">下一页</a>
+                <a href="<%=basePath %>OfficeTaskDetailController/listpage.do?pageNum=${p.lastPage }" target="_self">尾页</a></td>
+               <td style="text-align: center;" colspan="6">当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>
         </table>
@@ -148,6 +158,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
     </div>   
     </div>
+    <script type="text/javascript">
+        function  deletw(e){
+        if(confirm("确认删除")==true){
+        location.href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId="+e;
+        }
+        };
+        function  update(e){
+        if(confirm("确认修该")==true){
+        location.href="<%=basePath %>OfficeTaskDetailController/goupdate.do?taskDetailId="+e;
+        }
+        
+        }
+    
+    
+    </script>
     <script src="<%=basePath%>js/jquery.min.js?v=2.1.4"></script>
     <script src="<%=basePath%>js/bootstrap.min.js?v=3.3.5"></script>
     <script src="<%=basePath%>js/plugins/jeditable/jquery.jeditable.js"></script>

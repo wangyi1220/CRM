@@ -39,8 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         
                         <br>
                         <button type="button" class="btn btn-w-m btn-primary">客户：${name}</button>
-                         <a href="lxadd.jsp">
+                         <a href="SalekhinfoController/golxadd.do?id=${id}" target="_self">
                          <button type="button" class="btn btn-w-m btn-primary">添加联系人</button>
+                         </a>
+                         <a href="SalekhinfoController/list.do" target="_self">
+                         <button type="button" class="btn btn-w-m btn-primary">返回上一级</button>
                          </a>
                         <br>
 
@@ -89,31 +92,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">编辑界面</h4>
                                         </div>
-                                        <form action="" method="post" target="_self">
+                                        <form action="SalekhinfoController/lxupdate.do" method="post" target="_self">
+                                       
                                         <div class="modal-body">
-                                        <div class="form-group">
+                                        
+                                            <div>
                                             <div class="col-sm-8">
-                                                                                              公司编号：<input id="companyId" name="companyId" class="form-control">
+                                            <input type="hidden" name="contactId" value="${info.contactId}">
+                                                                                              联系人姓名：<input id="contactName" name="contactName" type="text" class="form-control" value="${info.contactName}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="col-sm-8">
+                                                                                              英文名：<input id="englishName" name="englishName" class="form-control" type="text" value="${info.englishName}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-8">
-                                                                                              公司编号：<input id="companyId" name="companyId" class="form-control">
+                                                                                              职务：<input id="post" name="post" class="form-control" type="text" value="${info.post}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-8">
-                                                                                              公司编号：<input id="companyId" name="companyId" class="form-control">
+                                                                                              部门：<input id="department" name="department" class="form-control" type="text" value="${info.department}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-8">
-                                                                                              公司编号：<input id="companyId" name="companyId" class="form-control">
+                                                                                              手机：<input id="mphone" name="mphone" class="form-control" type="text" value="${info.mphone}">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                                                              办公电话：<input id="ophone" name="ophone" class="form-control" type="text" value="${info.ophone}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                                                              电子邮箱：<input id="eMail" name="eMail" class="form-control" type="text" value="${info.eMail}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                                                             地址：<input id="address" name="address" class="form-control" type="text" value="${info.address}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                                                              备注信息：<input id="remarksInfo" name="remarksInfo" class="form-control" type="text" value="${info.remarksInfo}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                                                              公司编号：<input id="companyId" name="companyId" class="form-control" type="text" value="${info.companyId}">
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                             <input type="hidden" name="userId" value="${info.userId}">
+                                            </div>
+                                        </div> 
                                         
                                   
                                         </div>
+                                       
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
@@ -125,7 +167,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                                     
  
-                                   <a>删除</a> <a>联系记录</a></td>
+                                   <a href="SalekhinfoController/lxdelete.do?cid=${info.contactId}" target="_self" onclick="return confirm('是否确定删除？')">删除</a> 
+                                   <a href="SalekhlxjlController/lxjlcx.do?cid=${info.contactId}&cname=${info.contactName}" target="_self">联系记录</a>
+                                   </td>
                                     
                                 </tr>
                                 </c:forEach>
@@ -152,5 +196,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/content.min.js?v=1.0.0"></script>
     <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
   </body>
 </html>
