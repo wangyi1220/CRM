@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                             
                             <li>
-                                <a href="cgdXqCtrl/rukuList.do">采购_出库<span class="fa arrow"></span></a>
+                                <a href="cgdXqCtrl/cgdxqList.do">采购_出库<span class="fa arrow"></span></a>
                                
                             </li>  
                             
