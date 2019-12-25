@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do"  target="_self">
+                            <a class="close-link" href="../OfficeKpictrl/inaddofficeKpi.do"  target="_self" >
                                                                                                                                              添加指标
                             </a>
                         </div>
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th style="font-family:宋体; font-size: 8px;">备注说明</th>
                                     <th style="font-family:宋体; font-size: 8px;">公司编号</th>
                                     <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
+                                    <th style="宋体; font-size: 8px;" colspan="2" padding="20px"><center>操作</center></th>
                                 </tr>
                             </thead>
         <tbody>
@@ -91,32 +91,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </td>
                
                <td style="font-family:宋体; font-size: 8px;">
-                 <a href="<%=basePath %>OfficeKpictrl/goupdate.do?kpiId=${k.kpiId }" target="_self">修改</a>
-                 /
-                 <a href="<%=basePath %>OfficeKpictrl/delete.do?kpiId=${k.kpiId }&companyId=${k.companyId }"
-                   onclick="return confirm('是否确定删除？')" target="_self">删除</a>
-                 <%--  /
-                 <a href="<%=basePath %>OfficeTaskAssessmentController/selectKpi.do?kpiKpi=${k.kpiKpi}"
-                   onclick="return confirm('是否确定查看详情？')" target="_self">指标详情</a> --%>
-               </td>
+                 <a href= target="_self"></a>
+                <center> <button type="button" onclick="return update(${k.kpiId })" class="btn btn-primary" data-toggle="modal" >   
+                                                 修改
+                    </button></center>
+                </td>
+                <td style="font-family:宋体; font-size: 8px;">
+                   <center> <button type="button" onclick="return deletw(${k.kpiId },${k.companyId })" class="btn btn-primary" data-toggle="modal" >   
+                                                 删除
+                    </button></center>
+                 </td>
             </tr>
          </c:forEach>
           <tr style="font-family:宋体; font-size: 8px;">
              <td style="text-align: center;" colspan="3">
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.nextPage }">下一页</a>
-                <a href="OfficeKpictrl/listPage.do?pageNum=${p.lastPage }">尾页</a></td>
-               <td style="text-align: center;" colspan="3" style="font-family:宋体; font-size: 8px;">当前${p.pageNum }/${p.pages }页，共${p.total }条
+                <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.firstPage }" target="_self">首页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.prePage }" target="_self">上一页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.nextPage }" target="_self">下一页</a>
+                <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.lastPage }" target="_self">尾页</a></td>
+               <td style="text-align: center;" colspan="4" style="font-family:宋体; font-size: 8px;">当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>
-        </table>
+        </table> 
        </div>
       </div>
      </div>
     
     </div>
+     <script type="text/javascript">
+      function deletw(e1,e2){
+      alert(e1+"---"+e2)
+      if(confirm('是否确定删除？')==true){
+      location.href="<%=basePath %>OfficeKpictrl/delete.do?kpiId="+e1+"&companyId="+e2;
+      }
+      };
+      function update(e){
+      if(confirm("是否修改")==true){
+      location.href="<%=basePath %>OfficeKpictrl/goupdate.do?kpiId="+e;
+      
+      }
+      
+      }
      
+     
+     
+     </script>
     		
         
     <script src="js/jquery.min.js?v=2.1.4"></script>

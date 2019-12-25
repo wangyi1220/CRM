@@ -11,7 +11,7 @@ public interface SysUsersService {
 	//¸Ä
 	public void update(SysUsers s);
 	
-	public SysUsers selectPower();
+	public SysUsers selectPower(SysUsers s);
 	
 	public SysUsers selectRole(Long uId);
 	
@@ -24,4 +24,6 @@ public interface SysUsersService {
 	public PageInfo<SysUsers> selectUserinfo2(Integer pageNum,Integer pageSize,SysUsers user);
 	
 	public void deleteUser(SysUsers user);
+	
+	public SysUsers login(SysUsers user);
 }

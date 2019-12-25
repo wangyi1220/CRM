@@ -9,6 +9,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysCompanyinfo;
 import com.sc.entity.SysCompanyinfoExample;
+import com.sc.entity.SysUserinfo;
+import com.sc.entity.SysUserinfoExample;
 import com.sc.mapper.SysCompanyinfoMapper;
 import com.sc.service.SysCompanyInfoService;
 @Service
@@ -57,6 +59,13 @@ public class SysCompanyInfoServiceImpl implements SysCompanyInfoService {
 			return this.sysCompanyinfoMapper.selectByPrimaryKey(pk);
 		}
 		return null;
+	}
+
+	@Override
+	public List<SysCompanyinfo> selectlist() {
+		SysCompanyinfoExample example=new SysCompanyinfoExample();
+		List<SysCompanyinfo> list=sysCompanyinfoMapper.selectByExample(null);
+		return list;
 	}
 
 }

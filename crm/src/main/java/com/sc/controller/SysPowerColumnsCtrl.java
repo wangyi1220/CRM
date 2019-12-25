@@ -3,6 +3,8 @@ package com.sc.controller;
 import java.sql.SQLException;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ public class SysPowerColumnsCtrl {
 	
 	@Autowired
 	SysUsersService sysUsersService;
+	@Autowired
+	HttpSession session;
 	
 	@RequestMapping("/inAddPowerColumns.do")
 	public ModelAndView inAddPowerColumns(ModelAndView mav){
@@ -56,8 +60,9 @@ public class SysPowerColumnsCtrl {
 	public ModelAndView PowerinfoList(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="1000")Integer pageSize){
+		SysUsers user=(SysUsers)this.session.getAttribute("nowuser");
 		SysUsers sysUsers = new SysUsers();
-		sysUsers.setUsersId(61L);
+		sysUsers.setUsersId(user.getUsersId());
 		mav.addObject("p", this.sysPowerColumnsService.selectList(pageNum, pageSize,sysUsers));
 		mav.setViewName("wangyi/powerinfolist");
 		return mav;

@@ -55,13 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal" action="../SysRoleCtrl/addRole.do" target="_self">
+                        <form id="form1" method="post" class="form-horizontal" action="../SysRoleCtrl/addRole.do" target="_self">
                            
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">角色名称</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" placeholder="请输入角色名称" class="form-control" name="roleName">
+                                    <input type="text" placeholder="请输入角色名称" class="form-control" name="roleName" id="i1">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -108,12 +108,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
     <script>
         $(document).ready(function(){
-        	$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});
-        	if(${issuc=='yes'}){
-        		swal({title:"太帅了",text:"添加角色成功",type:"success"})
-        	}
+        	
+        	$("#form1").submit(function(){
+        		if($("#i1").val()==''){
+        			swal({title:"提交失败",text:"角色名称不能为空"});
+        			return false;
+        		}
+        		
+        	})
+        	
         	
         });
+        if(${issuc=='yes'}){
+        		swal({title:"太帅了",text:"添加角色成功",type:"success"})
+        	}
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

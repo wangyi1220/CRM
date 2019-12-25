@@ -9,9 +9,11 @@ import com.sc.entity.SaleSoutOrder;
 import com.sc.entity.SysUsers;
 
 public interface SOutOrderService {
-	       //分页查询
+	       //分页查询--通过对象
 			public PageInfo<SaleSoutOrder> select(Integer pageNum,Integer pageSize,  SaleSoutOrder sout);//sout--SaleSoutOrder
 
+		   //分页查询--通过soid
+				public PageInfo<SaleSoutOrder> select2(Integer pageNum,Integer pageSize,  Long soid);
 			//添加
 			public void add(SaleSoutOrder sout);
 			

@@ -24,9 +24,9 @@ public class SOutOrderServiceImpl implements SOutOrderService {
 	public PageInfo<SaleSoutOrder> select(Integer pageNum, Integer pageSize, SaleSoutOrder sout) {
 		PageHelper.startPage(pageNum, pageSize);
 		SaleSoutOrderExample example = new SaleSoutOrderExample();
-	    Criteria c = example.createCriteria();
+	   Criteria c = example.createCriteria();
 		if(sout!=null&&sout.getInvoiceNum()!=null){
-			c.andInvoiceNumLike(("%" + sout.getInvoiceNum() + "%"));
+			c.andInvoiceNumLike("%" + sout.getInvoiceNum() + "%");
 		}
 		
 		List<SaleSoutOrder> list = this.saleSoutOrderMapper.selectByExample(example);
@@ -63,6 +63,18 @@ public class SOutOrderServiceImpl implements SOutOrderService {
 	@Override
 	public SaleSoutOrder getSordeID(long soid) {
 		return saleSoutOrderMapper.selectByPrimaryKey(soid);
+	}
+
+
+	@Override//通过soid获取集合对象
+	public PageInfo<SaleSoutOrder> select2(Integer pageNum, Integer pageSize, Long soid) {
+		/*SaleSoutOrderExample e = new SaleSoutOrderExample();
+		Criteria c = e.createCriteria();
+		c.andCidEqualTo(soid);*/
+		//List<SaleSoutOrder> list = this.saleSoutOrderMapper.selectByExample(e);
+		List<SaleSoutOrder> list = this.saleSoutOrderMapper.selectByExample(null);
+		PageInfo<SaleSoutOrder> pageInfo = new PageInfo<SaleSoutOrder>(list);
+		return pageInfo;
 	}
 
 }

@@ -5,59 +5,121 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'login.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<script type="text/javascript">
-		var islogin="${param.islogin}";
-		if(islogin=="no"){
-			alert("请先登录");
-		}
-		function lala(img){
-			img.src="validatecode.jsp?t="+new Date().getTime();
-		}
-	</script>
 
-  </head>
-  
-  <body>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>H+ 后台主题UI框架 - 登录</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <link href="<%=basePath%>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=basePath%>css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=basePath%>css/animate.min.css" rel="stylesheet">
+    <link href="<%=basePath%>css/style.min.css" rel="stylesheet">
+    <link href="<%=basePath%>css/login.min.css" rel="stylesheet">
+    <link href="<%=basePath%>css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
     
-	<center>
-	<a href="OfficeKpictrl/listpage.do">wwwwwwww</a>
-		<h1>用户登录</h1>
-		<h2 style="color:red">
-			${param.isfail=="unknown" ? "用户名不存在":"" }
-			${param.isfail=="error" ? "密码不正确":"" }
-			${param.isfail=="code" ? "验证码错误":"" }
-			${param.isfail=="other" ? "登陆发生未知错误":"" }
-		</h2>
-		<form action="loginctrl/login.do" method="post">
-		
-			用户名：<input type="text" name="uname" placeholder="请输入用户名"><br><br>
-			密码：<input type="password" name="upass" placeholder="请输入密码"><br><br>
-			
-			验证码：<input type="text" name="randomcode" id="randomcode" size="8" placehoder="请输入验证码">
-			<img alt="" src="${basePath }validatecode.jsp" id="img" 
-			width="56px" height="20px" onclick="lala(this)">
-			<br>
-			<br>
-			<input type="submit" value="登陆">
-		</form>
-		
-		<a href="test/test1.do">test</a>
-		
-	</center>
-	
-  </body>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script src="<%=basePath%>js/plugins/sweetalert/sweetalert.min.js"></script>
+  <script type="text/javascript">
+  
+  	function lala(img){
+		img.src="validatecode.jsp?t="+new Date().getTime();
+	}	
+  
+  	$(function(){
+  		$("#cId").blur(function(e) {
+  			var pk=$(this).val();
+  			$.ajax({
+  				type: "post",
+  				url: "LoginCtrl/checkcId.do",
+  				data: "pk="+pk,
+  				dataType:"json",
+  				success:function(d){
+  					console.log(d);
+  					if(d.msgContent=="公司代码不存在"){
+  						$("#sp").html(d.msgContent);
+  						$("#sub").prop('disabled', true);
+  					}else{
+  						$("#sp").html("");
+  						$("#sub").prop('disabled', false);
+  					}
+  					
+  				},
+  				error: function(e){
+  					console.log(e);
+  					alert("检测用户名失败");
+  				}
+  			});
+  		});
+  		if(${param.isfail=='unknown'}){
+  			swal({title:"登陆失败",text:"用户名不存在"});
+  		}
+  		if(${param.isfail=='error'}){
+  			swal({title:"登陆失败",text:"密码错误"});
+  		}
+  		if(${param.isfail=='code'}){
+  			swal({title:"登陆失败",text:"验证码错误"});
+  		}
+  		if(${param.isfail=='other'}){
+  			swal({title:"登陆失败",text:"其他错误"});
+  		}
+  		if(${param.isfail=='notcompany'}){
+  			swal({title:"登陆失败",text:"用户非此公司员工"});
+  		}
+  	});
+  </script>
+
+</head>
+
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                    <div class="logopanel m-b">
+                        <h1>[ crm ]</h1>
+                    </div>
+                    <div class="m-b"></div>
+                    <h4>欢迎使用 <strong>客户关系管理系统</strong></h4>
+                    <ul class="m-b">
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 本系统包括：用户管理、客户管理、人事管理、事务管理、知识库管理、服务管理、统计报表七个功能模块。另包括权限管理模块用于系统的用户、角色和相关权限，收发邮件功能用于获得客户的详细需求。</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                
+                    <h4 class="no-margins">登录：</h4>
+                    <p class="m-t-md">登录到客户关系管理系统</p>
+                    <input type="text" class="form-control uname" placeholder="公司代码"
+                    	 style="width: 230px;margin-bottom: -50px;margin-left:32px " id="cId"/>
+                   	
+                 <form method="post" action="LoginCtrl/login.do">
+                 <br>
+                 	<p id="sp" style="color: red"></p>
+                    <input type="text" class="form-control uname" placeholder="用户名" style="margin-top: 40px" name="usersName"/>
+                    <input type="password" class="form-control pword m-b" placeholder="密码" name="usersPassword"/>
+                    <input type="text" class="form-control pword" placeholder="验证码" style="width: 100px" name="randomcode"/>
+                    <img alt="" src="${basePath }validatecode.jsp" id="img" 
+						width="56px" height="20px" onclick="lala(this)" style="margin-left: 120px;margin-top: -27px">
+                    <button class="btn btn-success btn-block" type="submit" id="sub">登录</button>
+                </form>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 2015 All Rights Reserved. H+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
 </html>

@@ -2,11 +2,12 @@ package com.sc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SaleSoutOrder implements Serializable {
-    private Long sorderId;//销售单编号
+    private Long sorderId;//销售单编号--soid
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date sorderDate;//制单日期
@@ -31,7 +32,8 @@ public class SaleSoutOrder implements Serializable {
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastModifyTime;//最后修改时间
-
+     
+    private List<SaleSinfo> saleSinfo;
     @Override
 	public String toString() {
 		return "SaleSoutOrder [sorderId=" + sorderId + ", sorderDate=" + sorderDate + ", invoiceNum=" + invoiceNum
@@ -84,8 +86,18 @@ public class SaleSoutOrder implements Serializable {
     public void setInvoiceNum(String invoiceNum) {
         this.invoiceNum = invoiceNum == null ? null : invoiceNum.trim();
     }
+    
+    
 
-    public Long getUid() {
+    public List<SaleSinfo> getSaleSinfo() {
+		return saleSinfo;
+	}
+
+	public void setSaleSinfo(List<SaleSinfo> saleSinfo) {
+		this.saleSinfo = saleSinfo;
+	}
+
+	public Long getUid() {
         return uid;
     }
 

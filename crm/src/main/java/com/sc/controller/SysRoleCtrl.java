@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,12 +35,17 @@ public class SysRoleCtrl {
 	
 	@Autowired
 	SysPowerRoleService sysPowerRoleService;
+	@Autowired
+	HttpSession session;
 	
 	
 	@RequestMapping("/goaddRole.do")
-	public ModelAndView goaddRole(ModelAndView mav){
+	public ModelAndView goaddRole(ModelAndView mav,String issuc){
 		List<SysRole> list = this.sysRoleService.selectAll();
 		List<SysRole> list1=null;
+		if(issuc!=null){
+			mav.addObject("issuc", "yes");
+		}
 		mav.addObject("r", list);
 		mav.setViewName("wangyi/addrole");
 		return mav;
@@ -47,10 +54,11 @@ public class SysRoleCtrl {
 	@RequestMapping("/addRole.do")
 	public ModelAndView addRole(ModelAndView mav,SysRole sr){
 		sr.setChangeDate(new Date());
-		sr.setOperaterId(61L);
+		SysUsers user = (SysUsers)this.session.getAttribute("nowuser");
+		sr.setOperaterId(user.getUsersId());
 		this.sysRoleService.addRole(sr);
-		mav.addObject("issuc", "yes");
-		mav.setViewName("wangyi/addrole");
+		
+		mav.setViewName("redirect:goaddRole.do?issuc=yes");
 		return mav;
 	}
 	
@@ -58,8 +66,8 @@ public class SysRoleCtrl {
 	public ModelAndView roleListe(ModelAndView mav,String addsuc,String updatesuc,String delsuc){
 		List<SysRole> list = new ArrayList<SysRole>();
 		List<Long> list1=new ArrayList<Long>();
-		long uId=61L;
-		SysUsers user = this.sysUsersService.selectRole(uId);
+		SysUsers user1 = (SysUsers)this.session.getAttribute("nowuser");
+		SysUsers user = this.sysUsersService.selectRole(user1.getUsersId());
 		long sId=user.getSysRole().getRoleId();
 		list1.add(sId);
 		for (int i = 0; i < list1.size(); i++) {
@@ -147,9 +155,10 @@ public class SysRoleCtrl {
 	public ModelAndView selectUsersAndNORoleUser(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="10")Integer pageSize,Long rId){
-		Long roleId=61l;
+		SysUsers user = (SysUsers)this.session.getAttribute("nowuser");
+		
 		mav.addObject("rId", rId);
-		mav.addObject("uis", this.sysRoleService.selectUsersAndNORoleUser(pageNum, pageSize, roleId));
+		mav.addObject("uis", this.sysRoleService.selectUsersAndNORoleUser(pageNum, pageSize, user.getUsersId()));
 		mav.setViewName("wangyi/adduserinrole");
 		return mav;
 		
@@ -204,29 +213,35 @@ public class SysRoleCtrl {
 			
 			for (SysPowerRole spr : list) {
 				int j=0;
-				for (int i = 0; i < pIds.length; i++) {
-					if(spr.getPowerId()==pIds[i]){
-						j=j+1;
-						break;
+				if(pIds!=null){
+					for (int i = 0; i < pIds.length; i++) {
+						if(spr.getPowerId()==pIds[i]){
+							j=j+1;
+							break;
+						}
 					}
 				}
+					
 				if(j==0){
 					this.sysPowerRoleService.delete(spr);
 				}
 			}
-			for (int i = 0; i < pIds.length; i++) {
-				int z=0;
-				for (SysPowerRole spr : list) {
-					if(pIds[i]==spr.getPowerId()){
-						z=z+1;
-						break;
+			if(pIds!=null){
+				for (int i = 0; i < pIds.length; i++) {
+					int z=0;
+					for (SysPowerRole spr : list) {
+						if(pIds[i]==spr.getPowerId()){
+							z=z+1;
+							break;
+						}
+					}
+					if(z==0){
+						sysPowerRole.setPowerId(pIds[i]);
+						this.sysPowerRoleService.insert(sysPowerRole);
 					}
 				}
-				if(z==0){
-					sysPowerRole.setPowerId(pIds[i]);
-					this.sysPowerRoleService.insert(sysPowerRole);
-				}
 			}
+				
 		}else{
 			for (Long pId : pIds) {
 				sysPowerRole.setPowerId(pId);
