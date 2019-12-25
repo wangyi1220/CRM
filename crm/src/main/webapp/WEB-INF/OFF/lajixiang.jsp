@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>H+ 后台主题UI框架 - 收件箱</title>
+    <title>H+ 后台主题UI框架 - 垃圾箱</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -63,30 +63,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-9 animated fadeInRight">
                 <div class="mail-box-header">
 
-                    <form target="_self" method="get" action="../offmessdetactrl/sousuod.do" class="pull-right mail-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    	搜索
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
                     <h2>
-                    收件箱 (${p.total })
+                    垃圾箱 (${p.total })
                 </h2>
                     <div class="mail-tools tooltip-demo m-t-md">
                         <div class="btn-group pull-right">
-                         <a target="_self"  href="../offmessdetactrl/listpagedeta.do?pageNum=${p.prePage }">
+                         <a target="_self"  href="../offmessdetactrl/listlajixiang.do?pageNum=${p.prePage }">
                             <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
                             </button></a>
-                            <a  target="_self" href="../offmessdetactrl/listpagedeta.do?pageNum=${p.nextPage }"><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
+                            <a  target="_self" href="../offmessdetactrl/listlajixiang.do?pageNum=${p.nextPage }"><button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
                             </button>
                              </a>
 
                         </div>
-                        <a target="_self" href="../offmessdetactrl/listpagedeta.do">
+                        <a target="_self" href="../offmessdetactrl/listlajixiang.do">
                         <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="
 邮件列表" id="btn1"><i class="fa fa-refresh"></i> 刷新</button></a>
                         
@@ -108,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 <td class=""><i class="fa fa-paperclip"></i></td>
                                 
-                                 <td class="mail-subject">状态 </td>
+                                 <td class="mail-subject">操作</td>
                                 
                                 <td class="text-right mail-date">发送时间</td>
                             </tr>
@@ -116,10 +107,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              <c:forEach items="${p.list }" var="d">
                             <tr class="read">
                                 <td class="check-mail">
-                                     <button   class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="放入垃圾箱">
+                                     <button   class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="永久删除">
                                      <a id="a1" target="_self" onclick="del(${d.detailsid })"
                                      href="javascript:;"  >
-                                     <%-- ../offmessdetactrl/delete.do?did=${d.detailsid } --%>
+                                    
                                      <i class="fa fa-trash-o"></i></a>
                         			</button>
                         			
@@ -127,18 +118,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             
                                 </td>
                                 
-                                <td class="mail-ontact"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.offMess.sender }</a> 
+                                <td class="mail-ontact"><a target="_self" href="">${d.offMess.sender }</a> 
                                 </td>
                                 
-                                <td class="mail-subject"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.offMess.title }</a>
+                                <td class="mail-subject"><a target="_self" href="">${d.offMess.title }</a>
                                 </td>
                                 
-                                <td class=""><i class="fa fa-paperclip"></i><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">
+                                <td class=""><i class="fa fa-paperclip"></i><a target="_self" href="">
                                 </td>
                                 
-                                <td class="text-right mail-date"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }">${d.messstate }</a></td>
+                                <td class="text-right mail-date"><a target="_self" href="../offmessdetactrl/huifu.do?did=${d.detailsid }">恢复</a></td>
                                 
-                                <td class="text-right mail-date"><a target="_self" href="../offmessdetactrl/details.do?did=${d.detailsid }"><fmt:formatDate value="${d.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <td class="text-right mail-date"><a target="_self" href=""><fmt:formatDate value="${d.lasttime }" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </td>
                                 
                             </tr>
@@ -175,8 +166,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         function del(did){
         
-               swal({title:"您确定要将这条消息放入垃圾箱吗？",
-               		text:"删除后可从垃圾箱恢复！",
+               swal({title:"您确定要删除这条信息吗",
+               		text:"删除后将无法恢复，请谨慎操作！",
                		type:"warning",
                		showCancelButton:true,
                		confirmButtonColor:"#DD6B55",
@@ -186,11 +177,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                		
 			  			$.ajax({
 			  				type: "post",
-			  				url: "../offmessdetactrl/delete.do?did="+did,
+			  				url: "../offmessdetactrl/cddel.do?did="+did,
 			  				dataType:"json",
 			  				success:function(d){
 			  				    console.log(11111)
-			  					swal({title:"删除成功！",text:"您已经删除了这条信息。",type:"success"},function(){
+			  					swal({title:"删除成功！",text:"您已经永久删除了这条信息。",type:"success"},function(){
 			  					    $("#btn1").click();
 			  					});
 			  					
