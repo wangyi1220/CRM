@@ -243,10 +243,13 @@ public class SysRoleCtrl {
 			}
 				
 		}else{
-			for (Long pId : pIds) {
-				sysPowerRole.setPowerId(pId);
-				this.sysPowerRoleService.insert(sysPowerRole);
+			if(pIds!=null){
+				for (Long pId : pIds) {
+					sysPowerRole.setPowerId(pId);
+					this.sysPowerRoleService.insert(sysPowerRole);
+				}
 			}
+				
 		}
 		mav.setViewName("redirect:roleList.do?updatesuc=yes");
 		return mav;
