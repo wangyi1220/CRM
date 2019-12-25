@@ -88,7 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="m-b"></div>
                     <h4>欢迎使用 <strong>客户关系管理系统</strong></h4>
-                    
+                    <ul class="m-b">
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 本系统包括：用户管理、客户管理、人事管理、事务管理、知识库管理、服务管理、统计报表七个功能模块。另包括权限管理模块用于系统的用户、角色和相关权限，收发邮件功能用于获得客户的详细需求。</li>
+                        
+                    </ul>
                 </div>
             </div>
             <div class="col-sm-5">

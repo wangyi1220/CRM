@@ -274,7 +274,7 @@
   	</collection>
   </resultMap>
   <select id="selectUsersAndInfos" resultMap="selectUsersAndInfosMap">
-  	select * from SYS_ROLE SR 
+  	select SU.*,SR.*,SURI.* from SYS_ROLE SR 
 	LEFT JOIN SYS_USERS_ROLE SUR ON SR.ROLE_ID=SUR.ROLE_ID 
 	LEFT JOIN SYS_USERS SU ON SUR.USERS_ID=SU.USERS_ID  
 	LEFT JOIN SYS_USERINFO SURI ON SU.EMP_ID=SURI.EMP_ID
