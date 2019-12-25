@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -59,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                	<td>${ui.sysUserinfo.empName}</td>
 	                                    <td>${ui.usersName}</td>
 	                                    <td>${ui.usersPassword}</td>
-	                                    <td>${ui.changeDate}</td>
+	                                    <td><fmt:formatDate value="${ui.changeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	                                </tr> 
                                 </c:forEach>
                                 

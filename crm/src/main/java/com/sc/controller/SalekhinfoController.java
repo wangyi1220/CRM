@@ -1,5 +1,7 @@
 package com.sc.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sc.entity.SaleKhcontacts;
 import com.sc.entity.SaleKhinfo;
 import com.sc.service.SaleService;
 
@@ -18,7 +21,7 @@ public class SalekhinfoController {
 	
 	@Autowired
 	SaleService saleService;
-	
+	//客户信息
 	@RequestMapping("/list.do")
 	public ModelAndView list(ModelAndView mav,
 			@RequestParam(defaultValue="1")Integer pageNum,
@@ -55,7 +58,7 @@ public class SalekhinfoController {
 	public ModelAndView update(ModelAndView mav,
 			HttpServletRequest req,
 			SaleKhinfo s){
-		
+		s.setLastModified(new Date());
 		this.saleService.update(s);
 		mav.setViewName("redirect:list.do");//重定向到list方法
 		return mav;		
@@ -65,12 +68,11 @@ public class SalekhinfoController {
 	public ModelAndView add(ModelAndView mav,
 			HttpServletRequest req,
 			SaleKhinfo s){
-		
+		s.setLastModified(new Date());
 		this.saleService.add(s);
 		mav.addObject("iscg", "yes");
 		mav.setViewName("redirect:list.do?iscg=yes");
 		return mav;
-
 }
 	//联系人
 	@RequestMapping("/lxcx.do")
@@ -91,5 +93,43 @@ public class SalekhinfoController {
 		
 		return mav;
 		
+	}
+	
+	@RequestMapping("/lxupdate.do")
+	public ModelAndView lxupdate(ModelAndView mav,
+			HttpServletRequest req,
+			SaleKhcontacts c){
+	
+		this.saleService.lxupdate(c);
+		mav.setViewName("redirect:lxcx.do");//重定向到list方法
+		return mav;		
+	}
+	
+	@RequestMapping("/golxadd.do")
+	public ModelAndView golxadd(ModelAndView mav,
+			Long id){
+		mav.addObject("id",id);
+		mav.setViewName("wlq/Khlxadd");
+		return mav;
+		
+	}
+	
+	@RequestMapping("/lxadd.do")
+	public ModelAndView lxadd(ModelAndView mav,
+			HttpServletRequest req,
+			SaleKhcontacts c){
+		
+		this.saleService.lxadd(c);
+		mav.addObject("iscg", "yes");
+		mav.setViewName("redirect:lxcx.do?iscg=yes");
+		return mav;
+}
+	@RequestMapping("/lxdelete.do")
+	public ModelAndView lxdelete(ModelAndView mav,
+			Long cid){
+		System.out.println("删除用户！"+cid);
+		this.saleService.lxdelete(cid);
+		mav.setViewName("redirect:lxcx.do");//重定向到list方法
+		return mav;
 	}
 }
