@@ -60,52 +60,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr >
-                                     <th style="font-family:宋体; font-size: 8px;">任务编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务标题</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务具体内容</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务发布人</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务考核指标</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务开始时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务结束时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">操作</th>
+                                     <th style="font-family:宋体; ">任务编号</th>
+                                    <th style="font-family:宋体; ">任务标题</th>
+                                    <th style="font-family:宋体; ">任务具体内容</th>
+                                    <th style="font-family:宋体; ">任务发布人</th>
+                                    <th style="font-family:宋体; ">任务考核指标</th>
+                                    <th style="font-family:宋体; ">任务开始时间</th>
+                                    <th style="font-family:宋体; ">任务结束时间</th>
+                                    <th style="font-family:宋体; ">最后修改时间</th>
+                                    <th style="font-family:宋体; ">公司编号</th>
+                                    <th style="font-family:宋体; ">操作</th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${kl}" var="T">
             <tr>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskId }
-               </td style="font-family:宋体; font-size: 8px;">
+               </td style="font-family:宋体; ">
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.tsakTitle}
                </td >
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskConcreteContent}
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskIssuer }
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskKpi }
                </td>
-                 <td style="font-family:宋体; font-size: 8px;">
+                 <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.taskStartTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-                 <td style="font-family:宋体; font-size: 8px;">
+                 <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.taskStopTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.finalUpdateTime }" pattern="yyyy-MM-dd"/>
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.companyId}
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  <a href="<%=basePath %>OfficeTaskDetailController/select.do?taskId=23" target="_self">详情</a>
                  ||
                  <a href="<%=basePath %>OfficeTaskAssessmentController/delete.do?taskId=${T.taskId }"
@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </td>
             </tr>
          </c:forEach>
-         <tr style="font-family:宋体; font-size: 8px;">
+         <tr style="font-family:宋体; ">
              <td style="text-align: center;" colspan="5">
                 <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.firstPage }">首页</a>
                 <a href="<%=basePath %>OfficeKpictrl/listPage.do?pageNum=${p.prePage }">上一页</a>

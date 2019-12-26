@@ -58,40 +58,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                           <center>
          <form action="../OfficeTaskDetailController/update.do" method="post" target="_self">
-         <table style="font-family:宋体; font-size: 8px;">
+         <table style="font-family:宋体; ">
                      
-           <tr style="font-family:宋体; font-size: 8px;">
+           <tr style="font-family:宋体; ">
            <input type="hidden" name="taskDetailId" value="${d.taskDetailId }">
-              <td style="font-family:宋体; font-size: 8px;">任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
-              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
+              <td style="font-family:宋体; ">任&nbsp;&nbsp;务&nbsp;&nbsp;编&nbsp;&nbsp;号:</td>  
+              <td style="font-family:宋体; "><input type="text" name="taskId" value="${d.taskId}" readonly="readonly"></td>
            </tr>
-           <tr style="font-family:宋体; font-size: 8px;">
-              <td style="font-family:宋体; font-size: 8px;">接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
-              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="taskUserId" value="${d.taskUserId }"></td>
+           <tr style="font-family:宋体; ">
+              <td style="font-family:宋体; ">接&nbsp;&nbsp;受&nbsp;&nbsp;用&nbsp;&nbsp;户:</td>
+              <td style="font-family:宋体; "><input type="text" name="taskUserId" value="${d.taskUserId }"></td>
            </tr>
-           <tr style="font-family:宋体; font-size: 8px;">
-              <td style="font-family:宋体; font-size: 8px;">任务是否完成:</td>
-              <td style="font-family:宋体; font-size: 8px;">
+           <tr style="font-family:宋体; ">
+              <td style="font-family:宋体; ">任务是否完成:</td>
+              <td style="font-family:宋体; ">
                <select name="taskIsfinshed" style="width:100%">
                <option value="已完成">已完成</option>
                <option value="未完成">未完成</option>
                </select>
              </td>
            </tr>
-            <tr style="font-family:宋体; font-size: 8px;">
-              <td style="font-family:宋体; font-size: 8px;">当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
-              <td style="font-family:宋体; font-size: 8px;">
+            <tr style="font-family:宋体; ">
+              <td style="font-family:宋体; ">当&nbsp;&nbsp;前&nbsp;&nbsp;状&nbsp;&nbsp;态:</td>
+              <td style="font-family:宋体; ">
               <select name="status1"style="width:100%">
               <option value="合作中">合作中</option>
                <option value="已完成合作">已完成合作</option>
               </select>
             </td>
-             <tr style="font-family:宋体; font-size: 8px;">
-              <td style="font-family:宋体; font-size: 8px;">公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
-              <td style="font-family:宋体; font-size: 8px;"><input type="text" name="companyId" value="${d.companyId }"></td>
+             <tr style="font-family:宋体; ">
+              <td style="font-family:宋体; ">公&nbsp;&nbsp;司&nbsp;&nbsp;id:</td>
+              <td style="font-family:宋体; "><input type="text" name="companyId" value="${d.companyId }"></td>
             </td>
             </tr>
-            <tr style="font-family:宋体; font-size: 8px;"><td style="font-family:宋体; font-size: 8px;"><input type="submit" value="提交"></td><td><input type="reset" value="重置"></td></tr>
+            <tr style="font-family:宋体; "><td style="font-family:宋体; "><input type="submit" value="提交"></td><td><input type="reset" value="重置"></td></tr>
          </table>
          </form> 
          </center>
