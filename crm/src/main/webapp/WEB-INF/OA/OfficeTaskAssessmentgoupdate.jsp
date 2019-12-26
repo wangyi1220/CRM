@@ -81,12 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
     		
        
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.5"></script>
-    <script src="js/plugins/jeditable/jquery.jeditable.js"></script>
-    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="<%=basePath %>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=basePath %>js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="<%=basePath %>js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="<%=basePath %>js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="<%=basePath %>js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="<%=basePath %>js/content.min.js?v=1.0.0"></script>
     <script>
         $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
     </script>
