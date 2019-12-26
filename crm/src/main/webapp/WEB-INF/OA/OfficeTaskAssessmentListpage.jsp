@@ -107,18 +107,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <td style="font-family:宋体; font-size: 8px;">
                  ${T.companyId}
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+              <%--  <td style="font-family:宋体; font-size: 8px;">
                  <button type="button" onclick="return select(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
                                                  详情
                     </button>
-                 </td>
+                 </td> --%>
                  <td style="font-family:宋体; font-size: 8px;">
                  <button type="button" onclick="return deletew(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
                                                    删除
                     </button>
                  </td>
                  <td style="font-family:宋体; font-size: 8px;">           
-                   <button type="button" onclick="return update(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
+                   <button type="button" onclick="return update(${T.taskId })" class="btn btn-primary" target="_self" data-toggle="modal" >   
                                                    修改
                     </button>
                </td>
@@ -126,9 +126,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </c:forEach>
             <script type="text/javascript">
                     function update(e){
-                    if(confirm('是否确定修改？')==true){
+                    
                     location.href="<%=basePath %>OfficeTaskAssessmentController/goupdate.do?taskId="+e;
-                      }
+                     
                     };
                     function deletew(e){
                     if(confirm('是否确定删除？')==true){

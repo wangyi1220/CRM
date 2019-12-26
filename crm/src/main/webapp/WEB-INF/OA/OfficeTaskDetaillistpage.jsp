@@ -97,8 +97,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </td>
                
                <td style="font-family:宋体; font-size: 8px;">
-                  <center><button type="button" class="btn btn-primary" data-toggle="modal" onclick="return update(${d.taskDetailId })">
-                                                                             修改 
+                  <center><button type="button" class="btn btn-primary" data-toggle="modal" target="_self" onclick="return update(${d.taskDetailId })">
+                                                                             √
                     </button></center>
                  </td>
                    <td>                              

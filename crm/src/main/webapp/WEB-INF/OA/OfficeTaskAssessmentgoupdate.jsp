@@ -60,12 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="ibox-content">
                
-                 <form action="../OfficeTaskAssessmentController/update.do" method="post">
+                 <form action="../OfficeTaskAssessmentController/update.do" method="post" target="_self">
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                                      <tr><td>任务编号</td><td><input type="text" name="taskId" value="${t.taskId} " style="width:100%;height: 60%"></td></tr>
                                      <tr><td>任务标题</td><td><input type="text" name="tsakTitle" value="${t.tsakTitle} " style="width:100%;height: 60%"></td></tr>
                                      <tr><td>任务具体内容</td><td><textarea name="taskConcreteContent" style="width:100%"> </textarea></td></tr>
-                                   <tr><td>任务发布人</td><td><input type="text" name="taskIssuer" value="${t.taskIssuer}" style="width:100%;height: 60%"></td></tr>
+                                     <tr><td>任务发布人</td><td><input type="text" name="taskIssuer" value="${t.taskIssuer}" style="width:100%;height: 60%"></td></tr>
                                      <tr><td>任务考核指标</td><td><input type="text" name="taskKpi" value="${t.taskKpi}" style="width:100%;height: 60%"></td></tr>
                                      <tr><td>任务开始时间</td><td><input name="taskStartTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
                                     <tr><td>任务结束时间</td><td><input name="taskStopTime" class=" Wdate"readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width:100%;height: 60%"/></td></tr>
