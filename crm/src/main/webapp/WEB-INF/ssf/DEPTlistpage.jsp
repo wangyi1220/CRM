@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td>
 
                                     
-                                    <a target="_self" href="SyDeptCtrl/delete.do?deptId=${info.deptId}" onclick="return confirm('是否确定删除？')">删除</a> <a>反馈</a></td>
+                                    <a target="_self" href="SyDeptCtrl/delete.do?deptId=${info.deptId}" onclick="return confirm('是否确定删除？')">删除</a></td>
                                     
                                 </tr>
                                 </c:forEach>
