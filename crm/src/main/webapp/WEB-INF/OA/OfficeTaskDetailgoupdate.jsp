@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                           <center>
-         <form action="../OfficeTaskDetailController/update.do" method="post">
+         <form action="../OfficeTaskDetailController/update.do" method="post" target="_self">
          <table style="font-family:宋体; font-size: 8px;">
                      
            <tr style="font-family:宋体; font-size: 8px;">
@@ -73,8 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td style="font-family:宋体; font-size: 8px;">任务是否完成:</td>
               <td style="font-family:宋体; font-size: 8px;">
                <select name="taskIsfinshed" style="width:100%">
-               <option value="finshed">finshed</option>
-               <option value="finshing">finshing</option>
+               <option value="已完成">已完成</option>
+               <option value="未完成">未完成</option>
                </select>
              </td>
            </tr>
