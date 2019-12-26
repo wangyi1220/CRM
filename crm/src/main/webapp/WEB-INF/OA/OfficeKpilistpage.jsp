@@ -61,55 +61,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                         <table class="table table-striped table-bordered table-hover dataTables-example" target="_self">
                             <thead>
-                                <tr style="font-family:宋体; font-size: 8px;">
-                                    <th style="font-family:宋体; font-size: 8px;">编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">考核指标</th>
-                                    <th style="font-family:宋体; font-size: 8px;">备注说明</th>
-                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
-                                    <th style="宋体; font-size: 8px;" colspan="2" padding="20px"><center>操作</center></th>
+                                <tr style="font-family:宋体; ">
+                                    <th style="font-family:宋体; ">编号</th>
+                                    <th style="font-family:宋体; ">考核指标</th>
+                                    <th style="font-family:宋体; ">备注说明</th>
+                                    <th style="font-family:宋体; ">公司编号</th>
+                                    <th style="font-family:宋体; ">最后修改时间</th>
+                                    <th style="宋体; " colspan="2" padding="20px"><center>操作</center></th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${p.list }" var="k">
-            <tr style="font-family:宋体; font-size: 8px;">
-               <td style="font-family:宋体; font-size: 8px;">
+            <tr style="font-family:宋体; ">
+               <td style="font-family:宋体; ">
                  ${k.kpiId }
                </td >
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${k.kpiKpi}
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${k.kpiDetail }
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${k.companyId }
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                <fmt:formatDate value="${k.finalUpdataTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  <a href= target="_self"></a>
                 <center> <button type="button" onclick="return update(${k.kpiId })" class="btn btn-primary" data-toggle="modal" >   
                                                  修改
                     </button></center>
                 </td>
-                <td style="font-family:宋体; font-size: 8px;">
+                <td style="font-family:宋体; ">
                    <center> <button type="button" onclick="return deletw(${k.kpiId },${k.companyId })" class="btn btn-primary" data-toggle="modal" >   
                                                  删除
                     </button></center>
                  </td>
             </tr>
          </c:forEach>
-          <tr style="font-family:宋体; font-size: 8px;">
+          <tr style="font-family:宋体; ">
              <td style="text-align: center;" colspan="3">
                 <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.firstPage }" target="_self">首页</a>
                 <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.prePage }" target="_self">上一页</a>
                 <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.nextPage }" target="_self">下一页</a>
                 <a href="<%=basePath %>OfficeKpictrl/listpage.do?pageNum=${p.lastPage }" target="_self">尾页</a></td>
-               <td style="text-align: center;" colspan="4" style="font-family:宋体; font-size: 8px;">当前${p.pageNum }/${p.pages }页，共${p.total }条
+               <td style="text-align: center;" colspan="4" style="font-family:宋体; ">当前${p.pageNum }/${p.pages }页，共${p.total }条
              </td>
           </tr>
         </table> 

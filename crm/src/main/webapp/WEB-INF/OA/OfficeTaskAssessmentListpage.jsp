@@ -62,62 +62,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table class="table table-striped table-bordered table-hover dataTables-example" target="_self">
                             <thead>
                                 <tr >
-                                     <th style="font-family:宋体; font-size: 8px;">任务编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务标题</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务具体内容</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务发布人</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务考核指标</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务开始时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">任务结束时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">最后修改时间</th>
-                                    <th style="font-family:宋体; font-size: 8px;">公司编号</th>
-                                    <th style="font-family:宋体; font-size: 8px;" colspan="3"><center>操作</center></th>
+                                     <th style="font-family:宋体; ">任务编号</th>
+                                    <th style="font-family:宋体; ">任务标题</th>
+                                    <th style="font-family:宋体; ">任务具体内容</th>
+                                    <th style="font-family:宋体; ">任务发布人</th>
+                                    <th style="font-family:宋体; ">任务考核指标</th>
+                                    <th style="font-family:宋体; ">任务开始时间</th>
+                                    <th style="font-family:宋体; ">任务结束时间</th>
+                                    <th style="font-family:宋体; ">最后修改时间</th>
+                                    <th style="font-family:宋体; ">公司编号</th>
+                                    <th style="font-family:宋体; " colspan="3"><center>操作</center></th>
                                 </tr>
                             </thead>
         <tbody>
          <c:forEach items="${p.list }" var="T">
             <tr>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskId }
-               </td style="font-family:宋体; font-size: 8px;">
+               </td style="font-family:宋体; ">
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.tsakTitle}
                </td >
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskConcreteContent}
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskIssuer }
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.taskKpi }
                </td>
-                 <td style="font-family:宋体; font-size: 8px;">
+                 <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.taskStartTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-                 <td style="font-family:宋体; font-size: 8px;">
+                 <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.taskStopTime }" pattern="yyyy-MM-dd"/>
                </td>
                
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                <fmt:formatDate value="${T.finalUpdateTime }" pattern="yyyy-MM-dd"/>
                </td>
-               <td style="font-family:宋体; font-size: 8px;">
+               <td style="font-family:宋体; ">
                  ${T.companyId}
                </td>
-              <%--  <td style="font-family:宋体; font-size: 8px;">
+              <%--  <td style="font-family:宋体; ">
                  <button type="button" onclick="return select(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
                                                  详情
                     </button>
                  </td> --%>
-                 <td style="font-family:宋体; font-size: 8px;">
+                 <td style="font-family:宋体; ">
                  <button type="button" onclick="return deletew(${T.taskId })" class="btn btn-primary" data-toggle="modal" >   
                                                    删除
                     </button>
                  </td>
-                 <td style="font-family:宋体; font-size: 8px;">           
+                 <td style="font-family:宋体; ">           
                    <button type="button" onclick="return update(${T.taskId })" class="btn btn-primary" target="_self" data-toggle="modal" >   
                                                    修改
                     </button>
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     }
                     </script>
                    
-         <tr style="font-family:宋体; font-size: 8px;">
+         <tr style="font-family:宋体; ">
              <td style="text-align: center;" colspan="5">
                 <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.firstPage }" target="_self">首页</a>
                 <a href="<%=basePath %>OfficeTaskAssessmentController/listpage.do?pageNum=${p.prePage }" target="_self">上一页</a>
