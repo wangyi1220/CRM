@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -71,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr>
                                     <td>${info.recordPriority}</td>
                                     <td>${info.feedbackType}</td>
-                                    <td>${info.feedbackTime}</td>
+                                    <td><fmt:formatDate value="${info.feedbackTime}" pattern="yyyy-MM-dd"/></td>
                                     <td>${info.feedbaclTheme}</td>
                                     <td>${info.feedbackDiscribe}</td>
                                     <td>${info.feedbackSource}</td>
