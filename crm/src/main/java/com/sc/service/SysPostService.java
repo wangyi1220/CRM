@@ -1,6 +1,9 @@
 package com.sc.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
+import com.sc.entity.SysCompanyinfo;
 import com.sc.entity.SysPost;
 
 public interface SysPostService {
@@ -14,4 +17,6 @@ public interface SysPostService {
 	public void update(SysPost s);
 	//通过主键获取信息
 	public SysPost get(Long postId);
+	//查 不分页
+	public List<SysPost> selectlist();
 }
