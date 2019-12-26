@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox float-e-margins">
                        <form action="SysPostCtrl/listPage.do" method="post" target="_self">
                             <div class="input-group">
-                            <input type="text" placeholder="请输入客户名称" name="empName" class="input form-control">
+                            <input type="text" placeholder="请输入部门名称" name="empName" class="input form-control">
                             <span class="input-group-btn">
                             <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                             </span>    
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <br>
                          <a href="SysPostCtrl/goadd.do" target="_self">
-                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加部门</button>
                          </a>
                         <br>
 
