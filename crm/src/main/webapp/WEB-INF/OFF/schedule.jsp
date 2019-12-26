@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 else $('#loading').hide();
             },
             eventAfterRender: function (event, element, view) {//数据绑定上去后添加相应信息在页面上
-           
+                 //alert(event.start);
                 var fstart = $.fullCalendar.formatDate(event.start, "HH:mm");
                 var fend = $.fullCalendar.formatDate(event.end, "HH:mm");
 
