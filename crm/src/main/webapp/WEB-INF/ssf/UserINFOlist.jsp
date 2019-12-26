@@ -38,18 +38,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">
-                       <form action="SysUsersInfoCtrl/list.do" method="post" target="_self">
-                            <div class="input-group">
-                            <input type="text" placeholder="请输入客户名称" name="empName" class="input form-control">
-                            <span class="input-group-btn">
-                            <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
-                            </span>    
-                        </div>
-                        </form>
+                       <form action="SysUsersInfoCtrl/listPage.do" method="post" target="_self">
+   		
+   			<h2 id="h1" style="font-weight: bolder;">楞头一下</h2>
+   			
+   			<select class="chosen-select" style="width:200px;" name="empId">
+                  <option value="0" hassubinfo="true">按账号搜索</option>
+                  <option value="1" hassubinfo="true">按姓名搜索</option>
+             </select>
+   			
+   			<input type="text" style=" width: 200px;height: 30px;font-size: 16pt; " name="empName">
+   			
+   			<button   type="submit" class="btn btn-primary btn-lg" 
+   			 style="width: 100px;height: 30px;
+   			border: 1px solid blue;position: absolute;top: 56px;line-height: 10px;margin-left: 25px" >楞头一下</button>
+   			
+   		</form>	
                         </div>
                         <br>
                          <a href="SysUsersInfoCtrl/goadd.do" target="_self">
-                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加新员工</button>
                          </a>
                         <br>
 
@@ -137,23 +145,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <h4 class="modal-title">编辑界面</h4>
                                         </div>
                                         <center>
-                                        <form action="SysUsersInfoCtrl/update.do" method="post" target="_self" enctype="multipart/form-data" onsubmit="return checksize()">
+                                        <form action="SysUsersInfoCtrl/update.do" method="post" target="_self" enctype="multipart/form-data">
                                          <div class="modal-body">
                                               <div>
                                               <input type="hidden" name="empId" value="${info.empId}">
                                               &emsp;&emsp;&emsp;&emsp;<span>员工姓名：<input type="text" name="empName"  value="${info.empName}">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                               <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>性&emsp;&emsp;别：<input type="text" name="empSex"  value="${info.empSex}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-                                              </div>
                                               <br>
                                               <div>
                                               <input type="hidden" name="empPhoto" value="${info.empPhoto }">
                                               <span><input type="file" name="upload"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                               <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>身份证号：<input type="text" name="idNumber"  id="idNumber" value="${info.idNumber}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
-                                              </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>家乡地址：<input type="text" name="jiaxiang"  value="${info.jiaxiang}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span></span>
                                               </div>
@@ -178,7 +182,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               <div>
                                               &emsp;&emsp;<span>网上联系详情：<input type="text" name="onlineDetail"  value="${info.onlineDetail}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
-                                                                                            <div>
+                                              &emsp;&emsp;&emsp;&emsp;<span>员工状态：<select type="text" name="empState"  style="width: 178px;height: 24px;border-radius: 5px;outline: none;}"><option>在职员工</option><option>离职员工</option><option>休假</option></select></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                              </div>                                          <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>审核状态：<select type="text" name="checkState"  style="width: 178px;height: 24px;border-radius: 5px;outline: none;}"><option>审核通过</option><option>审核失败</option><option>待审核</option></select></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                               </div>
                                                                                             <div>
@@ -243,11 +248,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 <script>
 function checksize(){
-/* var t=document.getElementById("idNumber");
-document.getElementById("count").innerText=t.value.length+""; */
-var number =document.getElementById("idNumber").value;
+var number =document.getElementById("idkk").value;
+alert(number);
 if(number.length!=18){
-    alert("编辑失败！身份证号为十八位，当前位数为："+number.length);
+    alert("编辑失败！身份证号为十八位，当前位数为：-----"+number.length);
     return false;
 
 }

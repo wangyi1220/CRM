@@ -24,7 +24,11 @@ public class SysuserInfoImpl implements SysUsersInfoService {
 		PageHelper.startPage(pageNum, pageSize);
 		
 		SysUserinfoExample e = new SysUserinfoExample();
+		Criteria c = e.createCriteria();
+		/*c.andEmpIdEqualTo(bianhao1);
+		c.andEmpNameLike("%"+mingzi1 +"%")*/
 		e.setOrderByClause("EMP_ID DESC");
+		
 		List<SysUserinfo> list = sysUserinfoMapper.selectByExample(e);
 		
 		PageInfo<SysUserinfo> pageInfo = new PageInfo<SysUserinfo>(list);
