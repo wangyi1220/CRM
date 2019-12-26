@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox float-e-margins">
                        <form action="SysPostCtrl/listPage.do" method="post" target="_self">
                             <div class="input-group">
-                            <input type="text" placeholder="请输入部门名称" name="empName" class="input form-control">
+                            <input type="text" placeholder="请输入职务名称" name="empName" class="input form-control">
                             <span class="input-group-btn">
                             <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                             </span>    
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <br>
                          <a href="SysPostCtrl/goadd.do" target="_self">
-                         <button type="button" class="btn btn-w-m btn-primary">添加部门</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加职务</button>
                          </a>
                         <br>
 
@@ -59,8 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <thead>
                                 <tr>
 
-                                    <th data-toggle="true">部门编号</th>
-                                    <th data-hide="all">部门名称</th>
+                                    <th data-toggle="true">职务编号</th>
+                                    <th data-hide="all">职务名称</th>
                                     <th data-hide="all">职务编号</th>
                                     <th data-hide="all">备注</th>
                                     <th data-hide="all">公司编号</th>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                          <div class="modal-body">
                                               <div>
                                               <input type="hidden" name="postId" value="${info.postId}">
-                                              &emsp;&emsp;&emsp;&emsp;<span>部门名称：<input type="text" name="postName"  value="${info.postName}"></span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>职务名称：<input type="text" name="postName"  value="${info.postName}"></span>
                                               </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>职务编号：<input type="text" name="deptId"  value="${info.deptId}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
