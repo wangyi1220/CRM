@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body class="gray-bg">
     <center>
-    <h1>添加用户</h1>
+    <h1>添加客户反馈</h1>
     </center>
     
          <div class="ibox-content">
@@ -52,14 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="form-group">
                         <label class="col-sm-3 control-label">反馈类型：</label>
                         <div class="col-sm-8">
-                            <input  name="feedbackType" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                            <input  name="feedbackType" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid" required>
                         </div>
                     </div>
                   
                     <div class="form-group">
                         <label class="col-sm-3 control-label">反馈时间：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="feedbackTime" data-mask="9999-99-99 99:99:99" placeholder="">
+                            <input type="text" class="form-control" name="feedbackTime" data-mask="9999-99-99 99:99:99" placeholder="" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,13 +71,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="form-group">
                         <label class="col-sm-3 control-label">反馈描述：</label>
                         <div class="col-sm-8">
-                            <input id="feedbackDiscribe" name="feedbackDiscribe" class="form-control">
+                            <input id="feedbackDiscribe" name="feedbackDiscribe" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">反馈来源：</label>
                         <div class="col-sm-8">
-                            <input id="feedbackSource" name="feedbackSource" class="form-control">
+                            <input id="feedbackSource" name="feedbackSource" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -90,8 +90,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-3 control-label">状态：</label>
                                 <div class="col-sm-8">
                                     <select class="form-control m-b" name="state">
-                                        <option  value="已处理">已处理</option>
                                         <option  value="未处理">未处理</option>
+                                        <option  value="已处理">已处理</option>
                                     </select>
                               </div>   
                     </div>
