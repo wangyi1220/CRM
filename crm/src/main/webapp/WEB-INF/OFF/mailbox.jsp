@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </li>
                                 
                                 <li>
-                                    <a target="_self" href="../offmessdetactrl/richeng.do"> <i class="fa fa-trash-o"></i> 个人日程</a>
+                                    <a target="_self" href="../offmessdetactrl/listlajixiang.do"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
                                 </li>
                             </ul>
                            

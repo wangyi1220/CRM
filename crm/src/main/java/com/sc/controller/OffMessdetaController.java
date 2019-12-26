@@ -3,6 +3,7 @@ package com.sc.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.entity.OffMessdeta;
+import com.sc.entity.SysUsers;
 import com.sc.service.OffMessdetaService;
 
 @Controller
@@ -22,6 +24,8 @@ public class OffMessdetaController {
 	
 	@Autowired
 	OffMessdetaService offMessdetaService;
+	@Autowired
+	HttpSession httpSession;
 	
 	
 		//垃圾箱恢复
@@ -45,7 +49,8 @@ public class OffMessdetaController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="5")Integer pageSize){
 		System.out.println("垃圾箱列表");
-		mav.addObject("p", offMessdetaService.selectlajxiang(pageNum, pageSize, 1L));
+		SysUsers user =(SysUsers)this.httpSession.getAttribute("nowuser");
+		mav.addObject("p", offMessdetaService.selectlajxiang(pageNum, pageSize, user.getUsersId()));
 		mav.setViewName("OFF/lajixiang");// 路径/WEB-INF/OFF/lajixiang.jsp
 		return mav;
 	}
@@ -67,7 +72,8 @@ public class OffMessdetaController {
 			HttpServletRequest req){
 		String starch = req.getParameter("search");
 		System.out.println("进入搜索方法！"+starch);
-		PageInfo<OffMessdeta> dd = offMessdetaService.sousuod(pageNum, pageSize, 1L, starch);
+		SysUsers user =(SysUsers)this.httpSession.getAttribute("nowuser");
+		PageInfo<OffMessdeta> dd = offMessdetaService.sousuod(pageNum, pageSize, user.getUsersId(), starch);
 		//查询list集合分页
 		mav.addObject("p", dd);
 		mav.setViewName("OFF/mailboxs");// 路径/WEB-INF/userslistpage.jsp
@@ -149,7 +155,8 @@ public class OffMessdetaController {
 			@RequestParam(defaultValue="1")Integer pageNum,
 			@RequestParam(defaultValue="5")Integer pageSize){
 		System.out.println("垃圾箱列表");
-		mav.addObject("p", offMessdetaService.selectdeta(pageNum, pageSize, 1L));
+		SysUsers user =(SysUsers)this.httpSession.getAttribute("nowuser");
+		mav.addObject("p", offMessdetaService.selectdeta(pageNum, pageSize, user.getUsersId()));
 		mav.setViewName("OFF/mailboxs");// 路径/WEB-INF/OFF/mailbox.jsp
 		return mav;
 	}

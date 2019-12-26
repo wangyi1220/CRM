@@ -17,7 +17,7 @@ public class OffMessdetaServiceimpl implements OffMessdetaService {
 	
 	@Autowired
 	OffMessdetaMapper  offMessdetaMapper;
-	
+	@Autowired
 	SysUsersMapper  sysUsersMapper;
 
 	@Override
