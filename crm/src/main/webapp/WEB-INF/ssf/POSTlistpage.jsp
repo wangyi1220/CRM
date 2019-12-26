@@ -64,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th data-hide="all">职务编号</th>
                                     <th data-hide="all">备注</th>
                                     <th data-hide="all">公司编号</th>
-                                    <th data-hide="all">修改时间</th>
-                                    <th data-hide="all">状态</th>
+                                   
+                                    
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>${info.deptId}</td>
                                     <td>${info.beizhu}</td>
                                     <td><span class="pie">${info.companyId}</span></td>
-                                    <td>${info.changDate}</td>
+                                  
                                     <td>
                                     <button class="btn btn-outline btn-info  dim" data-toggle="modal" data-target="#${info.postId}"  data-placement="bottom" title="编辑">
                                      <i class="fa fa-paste"></i>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </div>
                                               <div>
                                              <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span>
+                                              &emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span>
                                               </div>
                                         </div>
 
@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td>
 
                                     
-                                    <a target="_self" href="SysPostCtrl/delete.do?postId=${info.postId}" onclick="return confirm('是否确定删除？')">删除</a> <a>反馈</a></td>
+                                    <a target="_self" href="SysPostCtrl/delete.do?postId=${info.postId}" onclick="return confirm('是否确定删除？')">删除</a> </td>
                                     
                                 </tr>
                                 </c:forEach>
