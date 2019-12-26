@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="form-group">
                         <label class="col-sm-3 control-label">反馈时间：</label>
                         <div class="col-sm-8">
-                            <input id="feedbackTime" name="feedbackTime" class="form-control" type="text" >
+                            <input type="text" class="form-control" name="feedbackTime" data-mask="9999-99-99 99:99:99" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -110,7 +110,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </form>
          </div>
 
-
+<script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="js/plugins/jsKnob/jquery.knob.js"></script>
+    <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/nouslider/jquery.nouislider.min.js"></script>
+    <script src="js/plugins/switchery/switchery.js"></script>
+    <script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="js/plugins/clockpicker/clockpicker.js"></script>
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+    <script src="js/demo/form-advanced-demo.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.5"></script>

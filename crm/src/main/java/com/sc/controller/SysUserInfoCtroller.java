@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.entity.SysCompanyinfo;
+import com.sc.entity.SysPost;
 import com.sc.entity.SysUserinfo;
+import com.sc.entity.SysUsers;
 import com.sc.service.SysCompanyInfoService;
+import com.sc.service.SysPostService;
 import com.sc.service.SysUsersInfoService;
 
 @Controller
@@ -26,15 +31,26 @@ public class SysUserInfoCtroller {
 	SysUsersInfoService sysUsersInfoService;
 	@Autowired
 	SysCompanyInfoService sysCompanyInfoService;
+	@Autowired
+	SysPostService sysPostService;
 
 	@RequestMapping("/listPage.do")
-	public ModelAndView listPage(ModelAndView mav, @RequestParam(defaultValue = "1") Integer pageNum,
-			@RequestParam(defaultValue = "10") Integer pageSize,String iscg) {
-
-		mav.addObject("p", sysUsersInfoService.select(pageNum, pageSize));
-		if(iscg!=null){
-			mav.addObject("iscg", "yes");
+	public ModelAndView listPage(ModelAndView mav,
+			@RequestParam(defaultValue = "1") Integer pageNum,
+			@RequestParam(defaultValue = "10") Integer pageSize) {
+			/*String iscg,SysUserinfo info,HttpServletRequest req*/
+		/*System.out.println(info.getEmpId());
+		System.out.println(info.getEmpName());
+		HttpSession session = req.getSession();
+		if(info.getEmpId()!=null||info.getEmpName()!=null){
+			session.setAttribute("seluser", info);
 		}
+		PageInfo<SysUserinfo> sinfo = this.sysUsersInfoService.selectUserinfo2(pageNum, pageSize,(SysUsers)session.getAttribute("seluser") );
+*/
+		mav.addObject("p", sysUsersInfoService.select(pageNum, pageSize));
+		/*if(iscg!=null){
+			mav.addObject("iscg", "yes");
+		}*/
 		mav.setViewName("ssf/UserINFOlist");
 		System.out.println(sysUsersInfoService.select(pageNum, pageSize));
 
@@ -94,8 +110,10 @@ public class SysUserInfoCtroller {
 	public ModelAndView goadd(ModelAndView mav, SysUserinfo user) {
 		System.out.println("开始查询");
 		List<SysCompanyinfo> p = this.sysCompanyInfoService.selectlist();
-		System.out.println("55555555555"+p);
+		List<SysPost> q =this.sysPostService.selectlist();
+		System.out.println("55555555555"+p+q);
 		mav.addObject("p", p);
+		mav.addObject("q", q);
 		mav.setViewName("ssf/usersINFOadd");
 		System.out.println("准备添加用户");
 		return mav;
@@ -129,4 +147,5 @@ public class SysUserInfoCtroller {
 		}
 		return mav;
 	}
+	
 }

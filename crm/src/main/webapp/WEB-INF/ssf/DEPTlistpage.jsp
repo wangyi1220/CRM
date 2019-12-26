@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox float-e-margins">
                        <form action="SyDeptCtrl/listPage.do" method="post" target="_self">
                             <div class="input-group">
-                            <input type="text" placeholder="请输入客户名称" name="empName" class="input form-control">
+                            <input type="text" placeholder="请输入职务名称" name="empName" class="input form-control">
                             <span class="input-group-btn">
                             <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                             </span>    
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <br>
                          <a href="SyDeptCtrl/goadd.do" target="_self">
-                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加职务</button>
                          </a>
                         <br>
 
@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td>
 
                                     
-                                    <a target="_self" href="SyDeptCtrl/delete.do?deptId=${info.deptId}" onclick="return confirm('是否确定删除？')">删除</a> <a>反馈</a></td>
+                                    <a target="_self" href="SyDeptCtrl/delete.do?deptId=${info.deptId}" onclick="return confirm('是否确定删除？')">删除</a></td>
                                     
                                 </tr>
                                 </c:forEach>
