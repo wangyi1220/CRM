@@ -54,5 +54,11 @@ public class SysPostServiceImpl implements SysPostService {
 		}
 		return null;
 	}
+	@Override
+	public List<SysPost> selectlist() {
+		SysPostExample example=new SysPostExample();
+		List<SysPost> list=sysPostMapper.selectByExample(null);
+		return list;
+	}
 
 }

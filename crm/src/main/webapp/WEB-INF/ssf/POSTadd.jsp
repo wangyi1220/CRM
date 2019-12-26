@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>修改部门信息</title>
+<title>修改职务信息</title>
 <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
 <meta name="description"
 	content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
@@ -41,7 +41,7 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>添加部门信息</h5>
+						<h5>添加职务信息</h5>
 						<div class="ibox-tools">
 							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
 							</a> <a class="dropdown-toggle" data-toggle="dropdown"
@@ -63,7 +63,7 @@
 
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">部门编号：</label>
+								<label class="col-sm-2 control-label">职务编号：</label>
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" name="postId">
@@ -71,7 +71,7 @@
 							</div>
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">部门名称：</label>
+								<label class="col-sm-2 control-label">职务名称：</label>
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" name="postName">
@@ -94,14 +94,7 @@
 									<input type="text" class="form-control" name="beizhu">
 								</div>
 							</div>
-							<div class="hr-line-dashed"></div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">职务编号：</label>
-
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name="postId">
-								</div>
-							</div>
+							
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">公司编号：</label>
@@ -285,7 +278,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </td>
             </tr>
              <tr>
-              <td>部门编号</td>
+              <td>职务编号</td>
               <td>
                 <input type="text" name="deptId">
               </td>

@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox float-e-margins">
                        <form action="SysPostCtrl/listPage.do" method="post" target="_self">
                             <div class="input-group">
-                            <input type="text" placeholder="请输入客户名称" name="empName" class="input form-control">
+                            <input type="text" placeholder="请输入职务名称" name="empName" class="input form-control">
                             <span class="input-group-btn">
                             <button type="submit" class="btn btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                             </span>    
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <br>
                          <a href="SysPostCtrl/goadd.do" target="_self">
-                         <button type="button" class="btn btn-w-m btn-primary">添加客户</button>
+                         <button type="button" class="btn btn-w-m btn-primary">添加职务</button>
                          </a>
                         <br>
 
@@ -59,13 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <thead>
                                 <tr>
 
-                                    <th data-toggle="true">部门编号</th>
-                                    <th data-hide="all">部门名称</th>
+                                    <th data-toggle="true">职务编号</th>
+                                    <th data-hide="all">职务名称</th>
                                     <th data-hide="all">职务编号</th>
                                     <th data-hide="all">备注</th>
                                     <th data-hide="all">公司编号</th>
-                                    <th data-hide="all">修改时间</th>
-                                    <th data-hide="all">状态</th>
+                                   
+                                    
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>${info.deptId}</td>
                                     <td>${info.beizhu}</td>
                                     <td><span class="pie">${info.companyId}</span></td>
-                                    <td>${info.changDate}</td>
+                                  
                                     <td>
                                     <button class="btn btn-outline btn-info  dim" data-toggle="modal" data-target="#${info.postId}"  data-placement="bottom" title="编辑">
                                      <i class="fa fa-paste"></i>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                          <div class="modal-body">
                                               <div>
                                               <input type="hidden" name="postId" value="${info.postId}">
-                                              &emsp;&emsp;&emsp;&emsp;<span>部门名称：<input type="text" name="postName"  value="${info.postName}"></span>
+                                              &emsp;&emsp;&emsp;&emsp;<span>职务名称：<input type="text" name="postName"  value="${info.postName}"></span>
                                               </div>
                                               <div>
                                               &emsp;&emsp;&emsp;&emsp;<span>职务编号：<input type="text" name="deptId"  value="${info.deptId}"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               </div>
                                               <div>
                                              <div>
-                                              &emsp;&emsp;&emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span>
+                                              &emsp;&emsp;<span>最后修改时间：<input type="text" name="changDate"  value="<fmt:formatDate value="${info.changDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"></span>
                                               </div>
                                         </div>
 
@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td>
 
                                     
-                                    <a target="_self" href="SysPostCtrl/delete.do?postId=${info.postId}" onclick="return confirm('是否确定删除？')">删除</a> <a>反馈</a></td>
+                                    <a target="_self" href="SysPostCtrl/delete.do?postId=${info.postId}" onclick="return confirm('是否确定删除？')">删除</a> </td>
                                     
                                 </tr>
                                 </c:forEach>
