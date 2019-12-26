@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
         function  deletw(e){
         if(confirm("确认删除")==true){
-        alert("-----"+e)
+        
         location.href="<%=basePath %>OfficeTaskDetailController/delete.do?taskDetailId="+e;
         }
         };

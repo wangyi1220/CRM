@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
      <script type="text/javascript">
       function deletw(e1,e2){
-      alert(e1+"---"+e2)
+   
       if(confirm('是否确定删除？')==true){
       location.href="<%=basePath %>OfficeKpictrl/delete.do?kpiId="+e1+"&companyId="+e2;
       }
